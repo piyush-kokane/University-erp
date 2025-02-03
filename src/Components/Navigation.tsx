@@ -13,6 +13,11 @@ function Navigation() {
   const clearSearch = () => setSearchValue("");
   const handleLoginClick = () => navigate("/login");
 
+  const handleLogout = () => {
+    console.log("Logging out...");
+    navigate("/login"); // Redirect to login page
+  };
+  
   const handleMenuClick = (itemName: string, itemPath: string) => {
     setActiveMenuItem(itemName); // Update active tab
     navigate(itemPath); // Navigate to the page
@@ -22,7 +27,7 @@ function Navigation() {
     <>
       {/* Overlay when sidebar is open */}
       {sidebarOpen && <div className="overlay" onClick={toggleSidebar}></div>}
-      
+
       {/* Navbar */}
       <Navbar variant="dark" expand="lg" className="Nav-Bar px-3">
         <div className="navbar-container">
@@ -84,6 +89,14 @@ function Navigation() {
             </a>
           ))}
         </nav>
+
+        {/* Logout Button at Bottom */}
+        <div className="logout-container">
+          <button className="logout-btn" onClick={handleLogout}>
+            <span className="material-icons sidebar-icon">logout</span>
+            <span className={`sidebar-text ${sidebarOpen ? "visible" : ""}`}>Logout</span>
+          </button>
+        </div>
       </div>
     </>
   );
