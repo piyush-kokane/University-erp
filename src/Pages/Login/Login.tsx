@@ -18,12 +18,12 @@ const Login: React.FC = () => {
 
   return (
     <div className="login-page">
-      <img src="/Images/mit-logo-banner.png" alt="MIT WPU" className="mit-logo" />
+      <img src="/Images/mit-logo-banner1.png" alt="MIT WPU" className="mit-logo" />
 
       <div className="footer-links">
-        <a href="/privacy-policy" className="footer-link">Privacy Policy</a>
+        <a href="/privacy-policy" className="footer-link" target="_blank" rel="noopener noreferrer">Privacy Policy</a> {/* Opens link in new tab with security*/}
         <a className="footer-gap">|</a>
-        <a href="/terms-and-conditions" className="footer-link">Terms & Conditions</a>
+        <a href="/terms-and-conditions" className="footer-link" target="_blank" rel="noopener noreferrer">Terms & Conditions</a> {/* Opens link in new tab with security*/}
       </div>
 
       <div className="login-container">

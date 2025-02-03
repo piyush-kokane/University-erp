@@ -153,15 +153,18 @@
     left: 0;
     width: 70px;
     height: 100%;
-    background: rgb(0, 0, 50);
-    transition: width 0.3s ease-in-out;
+    background: rgba(0, 0, 50, 0.3) !important;
+    box-shadow: 5px 0px 15px rgba(200, 200, 200, 0.1);
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    transition: width 0.3s ease-in-out, background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .sidebar.open {
     width: 200px;
+    background: rgba(0, 0, 50, 0.8) !important;
+    box-shadow: 5px 0px 15px rgba(200, 200, 200, 0.2);
 }
 
 /* When sidebar is open, adjust padding-left for active element */
@@ -266,4 +269,57 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
+}
+
+.logout-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    padding: 12px !important;
+    color: white !important;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+    white-space: nowrap; /* Prevents text from wrapping */
+}
+
+.logout-btn:hover {
+    background: #ff4444;
+}
+
+.logout-btn .sidebar-icon {
+    font-size: 24px;
+    transition: transform 0.1s ease;
+}
+
+.logout-btn:hover .sidebar-icon {
+    transform: scale(1.1);
+}
+
+.logout-btn:hover .sidebar-text {
+    font-weight: bold;
+}
+
+.logout-btn .sidebar-text {
+    margin-left: 10px; /* Adds space between icon and text */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, font-weight 0.1s ease-in-out;
+}
+
+.sidebar.open .logout-btn .sidebar-text {
+    opacity: 1;
+    visibility: visible;
 }
