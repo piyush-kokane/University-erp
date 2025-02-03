@@ -1,0 +1,162 @@
+/* Login Page Styling */
+.login-page {
+    background-image: url('/Images/login-bg.png'); /* Add your background image */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Position the Mit logo at the top left of the page */
+.mit-logo {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    width: 150px;
+    height: auto; /* Maintain aspect ratio */
+  }
+
+.login-container {
+    background: rgba(150, 150, 150, 0.2); /* Semi-transparent background */
+    backdrop-filter: blur(10px); /* Apply blur effect */
+    padding: 40px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Optional: adds shadow around the container */
+    border: 2px solid rgba(255, 255, 255, 0.3); /* Added border */
+}
+
+.login-heading {
+    color: white;
+    margin-bottom: 40px;
+    font-size: 28px;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-radius: 25px; /* Apply rounded corners to the wrapper */
+    border: 1px solid #ccc;
+    background-color: rgba(255, 255, 255, 0.1);
+    overflow: hidden; /* Prevents icon from breaking the border-radius */
+    margin-bottom: 15px;
+}
+
+.input-field {
+    flex: 1; /* Takes up all available space */
+    padding: 12px 45px 12px 15px; /* Right padding to avoid overlapping icon */
+    border: none; /* Remove border from input itself */
+    background: transparent;
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+.input-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%); /* Centers the icon */
+    transform-origin: center; /* Sets the origin to center */
+    color: white;
+    font-size: 18px;
+    pointer-events: none; /* Prevents blocking clicks */
+}
+
+/* Style for password visibility toggle */
+.password-toggle {
+    cursor: pointer !important;
+    pointer-events: auto; /* Allow pointer events to be triggered */
+}
+
+/* Change the placeholder text color to white */
+.input-field::placeholder {
+    color: white;
+}
+
+.input-field:focus {
+    border-color: #4e9af1;
+}
+
+.remember-me {
+    text-align: left;
+    color: white;
+}
+/* remember-me checkbox */
+.remember-me input[type="checkbox"] {
+    margin-right: 5px; /* Add space between checkbox and label */
+  }
+  
+.actions-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-Bottom: 15px;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    background-color: white; /* White background */
+    color: black; /* Black text */
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+
+}
+
+.login-btn:hover {
+    background-color: rgb(0, 100, 255);
+    color: white;
+}
+
+.forgot-password {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        width: 80%;
+    }
+}
+
+/* Position the footer links at the bottom left of the page */
+.footer-links {
+    position: absolute;
+    bottom: 10px; /* Distance from the bottom of the page */
+    left: 20px; /* Distance from the left edge */
+    display: flex;
+    gap: 8px; /* Space between the two links */
+  }
+  
+  .footer-link {
+    color: white; /* Link color */
+    font-size: 14px; /* Adjust the font size */
+    text-decoration: none; /* Remove underline */
+  }
+  
+  .footer-link:hover {
+    text-decoration: underline; /* Underline on hover */
+    color: rgb(0, 200, 255);
+  }
+
+  .footer-gap {
+    color: gray;
+    font-size: 14px; /* Adjust the font size */
+    pointer-events: none; /* Prevents clicks or hovers */
+  }
