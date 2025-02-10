@@ -1,0 +1,39 @@
+.alert-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  .alert-box {
+    background: rgb(250, 250, 250);
+    border: 1px solid rgb(50, 50, 50);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .alert-box h2 {
+    margin-bottom: 10px;
+  }
+  
+  .alert-box button {
+    margin-top: 15px;
+    padding: 8px 16px;
+    background-color: rgb(0, 100, 255);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .alert-box button:hover {
+    background-color: rgb(0, 80, 200);
+  }
+  

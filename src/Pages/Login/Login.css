@@ -1,6 +1,5 @@
-/* Login Page Styling */
 .login-page {
-    background-image: url('/Images/login-bg.png'); /* Add your background image */
+    background-image: url('/Images/login-bg.png');
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -9,8 +8,7 @@
     align-items: center;
 }
 
-/* Position the Mit logo at the top left of the page */
-.mit-logo {
+.login-mit-logo {
     position: absolute;
     top: 10px;
     left: 20px;
@@ -19,15 +17,15 @@
   }
 
 .login-container {
-    background: rgba(150, 150, 150, 0.2); /* Semi-transparent background */
-    backdrop-filter: blur(10px); /* Apply blur effect */
+    background: rgba(150, 150, 150, 0.2);
+    backdrop-filter: blur(10px); /* blur effect */
     padding: 40px;
     border-radius: 8px;
     width: 100%;
     max-width: 400px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Optional: adds shadow around the container */
-    border: 2px solid rgba(255, 255, 255, 0.3); /* Added border */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .login-heading {
@@ -40,17 +38,17 @@
     position: relative;
     display: flex;
     align-items: center;
-    border-radius: 25px; /* Apply rounded corners to the wrapper */
+    border-radius: 25px;
     border: 1px solid #ccc;
     background-color: rgba(255, 255, 255, 0.1);
-    overflow: hidden; /* Prevents icon from breaking the border-radius */
+    overflow: hidden; /* hides overflow */
     margin-bottom: 15px;
 }
 
 .input-field {
     flex: 1; /* Takes up all available space */
-    padding: 12px 45px 12px 15px; /* Right padding to avoid overlapping icon */
-    border: none; /* Remove border from input itself */
+    padding: 12px 45px 12px 15px;
+    border: none;
     background: transparent;
     color: white;
     font-size: 16px;
@@ -62,19 +60,17 @@
     right: 15px;
     top: 50%;
     transform: translateY(-50%); /* Centers the icon */
-    transform-origin: center; /* Sets the origin to center */
+    transform-origin: center;
     color: white;
     font-size: 18px;
-    pointer-events: none; /* Prevents blocking clicks */
+    pointer-events: none; /* Prevents clicks */
 }
 
-/* Style for password visibility toggle */
 .password-toggle {
     cursor: pointer !important;
-    pointer-events: auto; /* Allow pointer events to be triggered */
+    pointer-events: auto;
 }
 
-/* Change the placeholder text color to white */
 .input-field::placeholder {
     color: white;
 }
@@ -87,9 +83,9 @@
     text-align: left;
     color: white;
 }
-/* remember-me checkbox */
+
 .remember-me input[type="checkbox"] {
-    margin-right: 5px; /* Add space between checkbox and label */
+    margin-right: 5px;
   }
   
 .actions-flex {
@@ -103,8 +99,8 @@
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
-    background-color: white; /* White background */
-    color: black; /* Black text */
+    background-color: white;
+    color: black;
     border: none;
     border-radius: 25px;
     font-size: 16px;
@@ -135,28 +131,27 @@
     }
 }
 
-/* Position the footer links at the bottom left of the page */
 .footer-links {
     position: absolute;
-    bottom: 10px; /* Distance from the bottom of the page */
-    left: 20px; /* Distance from the left edge */
+    bottom: 10px;
+    left: 20px;
     display: flex;
-    gap: 8px; /* Space between the two links */
+    gap: 8px;
   }
   
   .footer-link {
-    color: white; /* Link color */
-    font-size: 14px; /* Adjust the font size */
-    text-decoration: none; /* Remove underline */
+    color: white;
+    font-size: 14px;
+    text-decoration: none;
   }
   
   .footer-link:hover {
-    text-decoration: underline; /* Underline on hover */
+    text-decoration: underline;
     color: rgb(0, 200, 255);
   }
 
   .footer-gap {
     color: gray;
-    font-size: 14px; /* Adjust the font size */
-    pointer-events: none; /* Prevents clicks or hovers */
+    font-size: 14px;
+    pointer-events: none; /* prevent unwanted clicks */
   }

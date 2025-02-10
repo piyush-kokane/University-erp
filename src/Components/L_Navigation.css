@@ -83,10 +83,9 @@
     top: 50%;
     transform: translateY(-50%);
     color: #fff;
-    transition: opacity 0.3s ease-in-out;
 }
 
-.clear-btn {
+.search-clear-btn {
     position: absolute;
     right: 15px;
     top: 50%;
@@ -96,16 +95,11 @@
     color: #fff !important;
     font-size: 20px;
     cursor: pointer;
-    transition: opacity 0.3s ease-in-out;
-}
-
-.search-input:not(:placeholder-shown) ~ .search-icon {
-    opacity: 0;
 }
 
 .search-input::-webkit-search-decoration,
 .search-input::-webkit-search-cancel-button {
-    display: none;
+    display: none; /* Hide default clear button */
 }
 
 .material-icons {
@@ -153,7 +147,7 @@
     left: 0;
     width: 70px;
     height: 100%;
-    background: rgba(0, 0, 50, 0.3) !important;
+    background: rgba(0, 0, 50, 0.5) !important;
     box-shadow: 5px 0px 15px rgba(200, 200, 200, 0.1);
     overflow: hidden;
     display: flex;
@@ -169,7 +163,7 @@
 
 /* When sidebar is open, adjust padding-left for active element */
 .sidebar.open .sidebar-item.active {
-    padding-left: 30px !important; /* When sidebar is open */
+    padding-left: 30px !important;
 }
 
 .sidebar-menu {
@@ -201,7 +195,6 @@
     transition: padding-left 0.3s ease, margin 0.3s ease, border-left 0.3s ease, border-radius 0.3s ease, background 0.3s ease;
 }
 
-/* On hover, apply effects only if not active */
 .sidebar-item:hover {
     background: #444;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
