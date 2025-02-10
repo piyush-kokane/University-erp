@@ -28,7 +28,7 @@
 <ul>
   <li>Setup vite+react server on VS-code [https://youtu.be/WSbARHnQzsc?si=jTYfpPYmtJqOHdcX]</li>
   <li>How to use Git and Github [https://youtu.be/UwpnyY_bDvU?si=mAdYGSktJuwxMNSx]</li>
-  <li>Beginners Tutorial for React-JS and List Logic (A long video) [https://youtu.be/SqcY0GlETPk?si=hdxyxqFdp58AD3rY]</li>
+  <li>(React Beginners Tutorial) + (List Logic) A long video [https://youtu.be/SqcY0GlETPk?si=hdxyxqFdp58AD3rY]</li>
 </ul>
 
 
