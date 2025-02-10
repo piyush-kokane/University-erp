@@ -1,24 +1,42 @@
 import React, { useState } from "react";
 import { Navbar, Form, FormControl, Row, Col } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./Navigation.css";
 
 function Navigation() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [searchValue, setSearchValue] = useState("");
-  const [activeMenuItem, setActiveMenuItem] = useState("Dashboard"); // Default active tab
-  const navigate = useNavigate();
+  const menuItems = [
+    { name: "Dashboard", icon: "dashboard", path: "/dashboard" },
+    { name: "Profile", icon: "person", path: "/profile" },
+    { name: "Attendance", icon: "check_circle", path: "/attendance" },
+    { name: "Calendar", icon: "event", path: "/calendar" },
+    { name: "Time Table", icon: "schedule", path: "/timetable" },
+    { name: "Course", icon: "menu_book", path: "/course" },
+    { name: "Result", icon: "bar_chart", path: "/result" },
+    { name: "Circulars", icon: "campaign", path: "/circulars" },
+    { name: "Settings", icon: "settings", path: "/settings" },
+  ];
 
+
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
+
+  const [searchValue, setSearchValue] = useState("");
   const clearSearch = () => setSearchValue("");
+
+  const [activeMenuItem, setActiveMenuItem] = useState("Dashboard"); // Default active tab
+
   const handleLoginClick = () => navigate("/login");
 
-  const handleLogout = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  function handleLogout(){
     console.log("Logging out...");
-    navigate("/login"); // Redirect to login page
-  };
+    localStorage.setItem("loggedIn", "false"); // Set loggedIn to false
+    navigate("/login", { state: { from: location.pathname } }) // navigate to login page & set state.from to url of current page
+  }
   
-  const handleMenuClick = (itemName: string, itemPath: string) => {
+  function handleMenuClick(itemName: string, itemPath: string){
     setActiveMenuItem(itemName); // Update active tab
     navigate(itemPath); // Navigate to the page
   };
@@ -51,19 +69,19 @@ function Navigation() {
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
               />
-              {searchValue ? (
-                <button className="clear-btn" onClick={clearSearch} type="button">
-                  <span className="material-icons">close</span>
-                </button>
-              ) : (
-                <span className="material-icons search-icon">search</span>
-              )}
+              {searchValue 
+                ? <span className="material-icons search-clear-btn" onClick={clearSearch}>close</span> // if searchValue = true then show clear button
+                : <span className="material-icons search-icon">search</span> // else show search icon
+              }
             </Form>
           </div>
 
           {/* Right column (30%) */}
           <div className="navbar-right">
-            <span className="login-link" onClick={handleLoginClick}>Login</span>
+            <span className="login-link" onClick={handleLoginClick}>E-Library</span>
+            <button className="notification-btn" onClick={handleLoginClick}>
+              <span className="material-icons">notifications</span>
+            </button>
             <button className="profile-btn" onClick={handleLoginClick}>
               <span className="material-icons">person</span>
             </button>
@@ -101,13 +119,5 @@ function Navigation() {
     </>
   );
 }
-
-const menuItems = [
-  { name: "Dashboard", icon: "dashboard", path: "/dashboard" },
-  { name: "Attendance", icon: "check_circle", path: "/attendance" },
-  { name: "Calendar", icon: "event", path: "/calendar" },
-  { name: "Time Table", icon: "schedule", path: "/timetable" },
-  { name: "Settings", icon: "settings", path: "/settings" },
-];
 
 export default Navigation;

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Navbar, Form, FormControl, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import "./L-Navigation.css";
+import "./Navigation.css";
 
-function Navigation() {
+function L_Navigation() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [activeMenuItem, setActiveMenuItem] = useState("Dashboard"); // Default active tab
@@ -13,12 +13,13 @@ function Navigation() {
   const clearSearch = () => setSearchValue("");
   const handleLoginClick = () => navigate("/login");
 
-  const handleLogout = () => {
+  function handleLogout(){
     console.log("Logging out...");
-    navigate("/login"); // Redirect to login page
-  };
+    localStorage.setItem("loggedIn", "false"); // Set loggedIn to false
+    navigate("/login", { state: { from: location.pathname } }) // navigate to login page & set state.from to url of current page
+  }
   
-  const handleMenuClick = (itemName: string, itemPath: string) => {
+  function handleMenuClick(itemName: string, itemPath: string){
     setActiveMenuItem(itemName); // Update active tab
     navigate(itemPath); // Navigate to the page
   };
@@ -63,7 +64,7 @@ function Navigation() {
 
           {/* Right column (30%) */}
           <div className="navbar-right">
-            <span className="login-link" onClick={handleLoginClick}>Login</span>
+            <span className="login-link" onClick={handleLoginClick}>Student Portel</span>
             <button className="profile-btn" onClick={handleLoginClick}>
               <span className="material-icons">person</span>
             </button>
@@ -110,4 +111,4 @@ const menuItems = [
   { name: "Settings", icon: "settings", path: "/settings" },
 ];
 
-export default Navigation;
+export default L_Navigation;
