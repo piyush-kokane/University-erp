@@ -57,7 +57,7 @@ function Layout() {
   return (
     <>
       {/* Show Alert_box if ShowAlert=true */}
-      {ShowAlert && <Alert message="Please login first" Type="Alert" onClose={() => setShowAlert(false)} />}
+      {ShowAlert && <Alert message="Please login first" Type="warning" onClose={() => setShowAlert(false)} />}
 
       {/* Show Navigation & BG for Landing Page only */}
       {onLanding && <><L_Navigation /></>}
@@ -89,10 +89,12 @@ function Layout() {
   );
 }
 
+/*
 // Force refress tab on back pressed
 window.addEventListener("popstate", () => {
   window.location.reload();
 });
+*/
 
 function App() {  
   return (
