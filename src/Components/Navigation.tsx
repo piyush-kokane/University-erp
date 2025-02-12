@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Navbar, Form, FormControl, Row, Col } from "react-bootstrap";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./Navigation.css";
+import Settings from "./Settings";
 
 function Navigation() {
   const menuItems = [

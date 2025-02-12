@@ -34,6 +34,7 @@ function Layout() {
   const [onUnknown, setonUnknown] = useState(false); // if user is on unknown page set onUnknown to true
   const [ShowAlert, setShowAlert] = useState(false);
 
+  console.log(onLanding,onLogin,onPolicy,onUnknown)
 
   // Check if user is loggedin
   function CheckLogin({ element }: { element: JSX.Element }) {
@@ -56,7 +57,7 @@ function Layout() {
   return (
     <>
       {/* Show Alert_box if ShowAlert=true */}
-      {ShowAlert && <Alert message="Please login first" onClose={() => setShowAlert(false)} />}
+      {ShowAlert && <Alert message="Please login first" Type="Alert" onClose={() => setShowAlert(false)} />}
 
       {/* Show Navigation & BG for Landing Page only */}
       {onLanding && <><L_Navigation /></>}
@@ -88,7 +89,12 @@ function Layout() {
   );
 }
 
-function App() {
+// Force refress tab on back pressed
+window.addEventListener("popstate", () => {
+  window.location.reload();
+});
+
+function App() {  
   return (
     <Router>
       <Layout />
