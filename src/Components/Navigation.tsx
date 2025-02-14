@@ -44,6 +44,7 @@ function Navigation() {
 
   return (
     <>
+    <Settings />
       {/* Overlay when sidebar is open */}
       {sidebarOpen && <div className="overlay" onClick={toggleSidebar}></div>}
 

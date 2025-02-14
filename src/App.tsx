@@ -34,15 +34,21 @@ function Layout() {
   const [onUnknown, setonUnknown] = useState(false); // if user is on unknown page set onUnknown to true
   const [ShowAlert, setShowAlert] = useState(false);
 
-  console.log(onLanding,onLogin,onPolicy,onUnknown)
+  console.log(ShowAlert)
 
   // Check if user is loggedin
   function CheckLogin({ element }: { element: JSX.Element }) {
     const isLoggedIn = localStorage.getItem("loggedIn") === "true"; // Read from localStorage
   
+    // Show alert only after render (needed to use useEffect else warnng)
+    useEffect(() => {
+      if (!isLoggedIn) {
+        setShowAlert(true);
+      }
+    }, [isLoggedIn]); // Runs only when isLoggedIn changes
+
     // If not loggedin redirect to login page and show alert
     if (!isLoggedIn) {
-      setShowAlert(true);
       return <Navigate to="/login" state={{ from: location.pathname }} />;
       // navigate to login & set state.from to the url of page user is trying to access 
       // this state.from variable is used to set fallback after login
@@ -89,14 +95,14 @@ function Layout() {
   );
 }
 
-/*
+
 // Force refress tab on back pressed
 window.addEventListener("popstate", () => {
   window.location.reload();
 });
-*/
 
-function App() {  
+
+function App() { 
   return (
     <Router>
       <Layout />
