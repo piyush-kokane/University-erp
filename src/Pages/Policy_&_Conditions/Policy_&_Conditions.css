@@ -1,0 +1,94 @@
+.Policy-page {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-image: url('/Images/login-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    height: auto;
+    min-height: 100vh;
+    padding-top: 100px;
+    padding-bottom: 200px;
+}
+
+.Policy-page-logo{
+    width: 150px;
+}
+
+@media (max-width: 768px) { /* For small screens */
+    .Policy-page-logo {
+        width: 120px;
+    }
+}
+
+@media (max-width: 480px) { /* For extra small screens */
+    .Policy-page-logo {
+        width: 80px;
+    }
+}
+
+.Policy-container{
+    position: relative;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+    padding: 30px 30px 60px 30px;
+    margin: 0px 50px;
+    max-width: 1000px;
+}
+
+.Policy-page-back-0{
+    position: absolute;
+    top: -48px;
+    left: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 0px 15px;
+    color: white;
+    background: rgb(0, 100, 255);
+    border: none;
+    border-radius: 5px;
+    height: 38px;
+}
+.Policy-page-back-0 h1{
+    font-size: 20px;
+    margin-top: 5px;
+}
+.Policy-page-back-0:hover{
+    background: rgb(0, 80, 200);
+}
+
+.Policy-page-back-1{
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    padding: 0px;
+    color: rgb(0, 150, 255);
+    background: none;
+    border: none;
+}
+.Policy-page-back-1 h1{
+    font-size: 18px;
+    margin-bottom: 0px;
+}
+.Policy-page-back-1:hover{
+    color: rgb(0, 100, 220);
+}
+
+
+
+
+
