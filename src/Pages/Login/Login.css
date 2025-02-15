@@ -1,0 +1,156 @@
+.login-page {
+    background-image: url('/Images/login-bg.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-mit-logo {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    width: 150px;
+    height: auto; /* Maintain aspect ratio */
+  }
+
+.login-container {
+    background: rgba(150, 150, 150, 0.2);
+    backdrop-filter: blur(10px); /* blur effect */
+    padding: 40px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.login-heading {
+    color: white;
+    margin-bottom: 40px;
+    font-size: 28px;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    background-color: rgba(255, 255, 255, 0.1);
+    overflow: hidden; /* hides overflow */
+    margin-bottom: 15px;
+}
+
+.input-field {
+    flex: 1; /* Takes up all available space */
+    padding: 12px 45px 12px 15px;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+.input-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%); /* Centers the icon */
+    transform-origin: center;
+    color: white;
+    font-size: 18px;
+    pointer-events: none; /* Prevents clicks */
+}
+
+.password-toggle {
+    cursor: pointer !important;
+    pointer-events: auto;
+}
+
+.input-field::placeholder {
+    color: white;
+}
+
+.input-field:focus {
+    border-color: #4e9af1;
+}
+
+.remember-me {
+    text-align: left;
+    color: white;
+}
+
+.remember-me input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  
+.actions-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-Bottom: 15px;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+
+}
+
+.login-btn:hover {
+    background-color: rgb(0, 100, 255);
+    color: white;
+}
+
+.forgot-password {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        width: 80%;
+    }
+}
+
+.footer-links {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    display: flex;
+    gap: 8px;
+  }
+  
+  .footer-link {
+    color: white;
+    font-size: 14px;
+    text-decoration: none;
+  }
+  
+  .footer-link:hover {
+    text-decoration: underline;
+    color: rgb(0, 200, 255);
+  }
+
+  .footer-gap {
+    color: gray;
+    font-size: 14px;
+    pointer-events: none; /* prevent unwanted clicks */
+  }
