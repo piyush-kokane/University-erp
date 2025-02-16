@@ -39,7 +39,7 @@ function Layout() {
   function CheckLogin({ element }: { element: React.ReactElement }) {
     const isLoggedIn = localStorage.getItem("loggedIn") === "true"; // Read from localStorage
   
-    // Show alert only after render (needed to use useEffect else warnng)
+    // Show alert only after render (needed to use useEffect else warning)
     useEffect(() => {
       if (!isLoggedIn) {
         setShowAlert(true);

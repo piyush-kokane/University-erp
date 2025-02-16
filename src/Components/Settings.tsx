@@ -1,48 +1,52 @@
 import { useState } from "react";
 import "./Settings.css"
 
-function Settings(){
-    const [isDarkMode, setIsDarkMode] = useState(false);
+
+interface SettingsProps {
+    Close: () => void;
+}
+
+
+function Settings({Close} : SettingsProps){
+    const [DarkMode, setDarkMode] = useState(false);
+    const [Notification, setNotification] = useState(false);
+    const [Email, setEmail] = useState(false);
 
     return(
         <div className="settings-overlay">
             <div className="settings-container">
-                <span className="material-icons settings-cancle-btn">close</span>
-                <h2>Settings</h2>
+                <span className="material-icons settings-cancle-btn" onClick={Close}>close</span>
+                <h1>Settings</h1>
 
                 {/* Theme toggle */}
-                <div className="theme-toggle-container">
-                    <h4>Theme</h4>
-                    <div className={`toggle-switch ${isDarkMode ? "dark" : ""}`} onClick={() => setIsDarkMode(!isDarkMode)}>
-                        <div className="toggle-thumb">
+                <div className="toggle-container">
+                    <h1>Theme</h1>
+                    <div className={`theme-toggle-switch ${DarkMode ? "dark" : ""}`} onClick={() => setDarkMode(!DarkMode)}>
+                        <div className="theme-toggle-thumb">
                             <span className="material-icons">
-                                {isDarkMode ? "dark_mode" : "light_mode"}
+                                {DarkMode ? "dark_mode" : "light_mode"}
                             </span>
                         </div>
                     </div>
                 </div>
-                
+
+                <div className="settings-container_"/> {/* divider */}
+
                 {/* Notifications toggle */}
-                <div className="theme-toggle-container">
-                    <h4>Theme</h4>
-                    <div className={`toggle-switch ${isDarkMode ? "dark" : ""}`} onClick={() => setIsDarkMode(!isDarkMode)}>
-                        <div className="toggle-thumb">
-                            <span className="material-icons">
-                                {isDarkMode ? "dark_mode" : "light_mode"}
-                            </span>
-                        </div>
+                <div className="toggle-container">
+                    <h1>Notifications</h1>
+                    <div className={`toggle-switch ${Notification ? "dark" : ""}`} onClick={() => setNotification(!Notification)}>
+                        <div className="toggle-thumb" />
                     </div>
                 </div>
+
+                <div className="settings-container_"/> {/* divider */}
                 
-                {/* Theme toggle */}
-                <div className="theme-toggle-container">
-                    <h4>Theme</h4>
-                    <div className={`toggle-switch ${isDarkMode ? "dark" : ""}`} onClick={() => setIsDarkMode(!isDarkMode)}>
-                        <div className="toggle-thumb">
-                            <span className="material-icons">
-                                {isDarkMode ? "dark_mode" : "light_mode"}
-                            </span>
-                        </div>
+                {/* email toggle */}
+                <div className="toggle-container">
+                    <h1>email</h1>
+                    <div className={`toggle-switch ${Email ? "dark" : ""}`} onClick={() => setEmail(!Email)}>
+                        <div className="toggle-thumb" />
                     </div>
                 </div>
                 
