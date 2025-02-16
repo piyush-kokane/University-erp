@@ -13,9 +13,11 @@ function Navigation() {
     { name: "Course", icon: "menu_book", path: "/course" },
     { name: "Result", icon: "bar_chart", path: "/result" },
     { name: "Circulars", icon: "campaign", path: "/circulars" },
-    { name: "Settings", icon: "settings", path: "/settings" },
   ];
 
+
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const toggleSettings = () => setSettingsOpen(!sidebarOpen);
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
@@ -44,7 +46,10 @@ function Navigation() {
   return (
     <>
       {/* Overlay when sidebar is open */}
-      {sidebarOpen && <div className="overlay" onClick={toggleSidebar}></div>}
+      {sidebarOpen && <div className="Navbar-overlay" onClick={toggleSidebar}></div>}
+
+      {/* Settings panel */}
+      {settingsOpen && <Settings Close={() => setSettingsOpen(false)}/>}
 
       {/* Navbar */}
       <div className="Nav-Bar">
@@ -79,10 +84,9 @@ function Navigation() {
 
           {/* Right column (30%) */}
           <div className="navbar-right">
-            <span className="login-link" onClick={handleLoginClick}>E-Library</span>
-            <button className="notification-btn" onClick={handleLoginClick}>
-              <span className="material-icons">notifications</span>
-            </button>
+            <span className="navbar-login-link" onClick={handleLoginClick}>E-Library</span>
+            <span className="material-icons navbar-btn" onClick={handleLoginClick}>notifications</span>
+            <span className="material-icons navbar-btn" onClick={toggleSettings}>settings</span>
             <button className="profile-btn" onClick={handleLoginClick}>
               <span className="material-icons">person</span>
             </button>

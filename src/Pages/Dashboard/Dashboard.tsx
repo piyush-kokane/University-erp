@@ -4,9 +4,9 @@ import "./Dashboard.css"; // Add some custom styles if needed
 const DashboardPage: React.FC = () => {
   return (
     <>
-      <div className="container mt-4">
+      <div className="dashboard-container">
         <h1>Welcome to MIT-WPU</h1>
-        <p>This is the main content area.</p>
+        <p>This is the dashboard page.</p>
       </div>
     </>
   );
