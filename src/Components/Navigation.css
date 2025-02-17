@@ -12,11 +12,13 @@
 */
 
 .Nav-Bar {
+    position: fixed;
     background: rgb(0, 0, 10);
     display: flex;
     align-items: center;
     padding: 0px 12px !important;
     height: 55px;
+    width: 100%;
 }
 
 .Navbar-overlay {
@@ -216,6 +218,7 @@
     display: flex;
     flex-direction: column;
     padding: 10px !important;
+    gap: 10px;
 }
 
 .sidebar-item {
