@@ -25,7 +25,7 @@ function Navigation() {
   const [searchValue, setSearchValue] = useState("");
   const clearSearch = () => setSearchValue("");
 
-  const [activeMenuItem, setActiveMenuItem] = useState("Dashboard"); // Default active tab
+  const [activeMenuItem, setActiveMenuItem] = useState("Dashboard"); // Default active tab = dashboard
 
   const handleLoginClick = () => navigate("/login");
 
@@ -114,12 +114,10 @@ function Navigation() {
         </nav>
 
         {/* Logout Button at Bottom */}
-        <div className="logout-container">
-          <button className="logout-btn" onClick={handleLogout}>
+        <a className="sidebar-item logout-btn" onClick={handleLogout}>
             <span className="material-icons sidebar-icon">logout</span>
             <span className={`sidebar-text ${sidebarOpen ? "visible" : ""}`}>Logout</span>
-          </button>
-        </div>
+        </a>
       </div>
     </>
   );
