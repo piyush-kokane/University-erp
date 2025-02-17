@@ -1,0 +1,161 @@
+
+  
+  .app-container {
+    text-align: center;
+  }
+  
+  /* Navbar */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #004080;
+    color: white;
+    padding: 15px 20px;
+  }
+  
+  .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  
+  .navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .navbar li {
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .navbar li:hover {
+    color: #ffcc00;
+  }
+  
+  /* Hero Section */
+  .hero {
+    background: url('/BG.png') center/cover no-repeat;
+    color: white;
+    padding: 100px 20px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+  }
+  
+  .hero-content p {
+    font-size: 1.5rem;
+  }
+  
+  .cta-button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    color: white;
+    background: #ffcc00;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .cta-button:hover {
+    background: #e6b800;
+  }
+  
+  /* Features Section */
+  .features {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px;
+    background: white;
+  }
+  
+  .feature-card {
+    text-align: center;
+    width: 30%;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .feature-card img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  /* Departments */
+  .departments {
+    background: #004080;
+    color: white;
+    padding: 50px;
+  }
+  
+  .department-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .department-card {
+    background: #ffcc00;
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  /* Events */
+  .events {
+    padding: 50px;
+  }
+  
+  .event-card {
+    background: white;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Testimonials */
+  .testimonials {
+    background: #f9f9f9;
+    padding: 50px;
+  }
+  
+  .testimonial-card {
+    background: white;
+    padding: 20px;
+    margin: 15px auto;
+    width: 50%;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Footer */
+  .footer {
+    background: #002244;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .footer ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .footer li {
+    cursor: pointer;
+  }
+  
+  .footer li:hover {
+    color: #ffcc00;
+  }
+  
