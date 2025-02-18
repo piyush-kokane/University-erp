@@ -27,7 +27,7 @@ function BG() {
         options={{
           particles: {
             number: {
-              value: 100, // Creates 100 particles
+              value: 0, // Creates 100 particles
               density: {
                 enable: true, // Ensures the particle count adjusts based on screen size
                 value_area: 800, // Determines the space where particles are distributed
