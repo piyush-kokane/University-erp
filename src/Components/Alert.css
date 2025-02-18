@@ -1,3 +1,25 @@
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+}
+
 .alert-overlay {
     position: fixed;
     width: 100%;
@@ -35,13 +57,18 @@
     font-size: 22px;
     pointer-events: auto; /* Allows clicking through */
     cursor: default;
-  }
+    animation: slideIn 0.3s ease-out;
+}
 
-  .alert-box p:nth-of-type(1){
-    margin: 0px;
-    font-weight: 500;
-    margin-right: -10px;
-  }
+.alert-box.hidden {
+  animation: slideOut 0.3s ease-out forwards;
+}
+
+.alert-box p:nth-of-type(1){
+  margin: 0px;
+  font-weight: 500;
+  margin-right: -10px;
+}
 
   .alert-box p:nth-of-type(2){
     margin: 0px;
@@ -53,7 +80,6 @@
   }
   
   .alert-close {
-    background: none;
     font-weight: 800;
     font-size: 22px;
     color: rgba(0, 0, 0, 0.2);
