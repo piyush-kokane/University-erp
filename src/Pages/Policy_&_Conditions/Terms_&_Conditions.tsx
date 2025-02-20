@@ -1,4 +1,3 @@
-import React from "react";
 import "./Policy_&_Conditions.css"
 
 function Terms_Conditions() {

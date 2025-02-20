@@ -1,60 +1,184 @@
 @import "tailwindcss";
 
 
-/* Define global variables */
-@layer base {
-    :root {
-        --navbar-bg: 0, 0, 10;
-        --sidebar-bg: 255, 255, 255;
-        --background: 255, 255, 255;
-        --text: 0, 0, 0;
-    }
-
-    * {
-        @apply
-        transition-colors duration-100 ease-in-out;
-    }
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
 }
 
-/* Light Theme */
-.light {
-    --navbar-bg: 0, 0, 10;
-    --sidebar-bg: 255, 255, 255;
-    --background: 255, 255, 255;
-    --text: 0, 0, 0;
+@keyframes slide-Up-In {
+    from { transform: translateY(30px); opacity: 0; } /* Move up */
+    to { transform: translateY(0); opacity: 1; }
+}
+@keyframes slide-Up-Out {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(30px); opacity: 0; } /* Move up */
 }
 
-/* Dark Theme */
-.dark {
-    --navbar-bg: 0, 0, 10;
-    --sidebar-bg: 20, 20, 20;
-    --background: 0, 0, 0;
-    --text: 255, 255, 255;
+@keyframes slide-Down-In {
+    from { transform: translateY(-30px); opacity: 0; } /* Move up */
+    to { transform: translateY(0); opacity: 1; }
+}
+@keyframes slide-Down-Out {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(-30px); opacity: 0; } /* Move up */
 }
 
-/* Custom Theme Example */
-.custom {
-    --navbar-bg: 10, 10, 50;
-    --sidebar-bg: 30, 30, 30;
-    --background: 10, 10, 10;
-    --text: 255, 200, 150;
+@keyframes slide-Left-In {
+    from { transform: translateX(30px); opacity: 0; } /* Move up */
+    to { transform: translateX(0); opacity: 1; }
+}
+@keyframes slide-Left-Out {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(30px); opacity: 0; } /* Move up */
+}
+
+@keyframes slide-Right-In {
+    from { transform: translateX(-30px); opacity: 0; } /* Move up */
+    to { transform: translateX(0); opacity: 1; }
+}
+@keyframes slide-Right-Out {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(-30px); opacity: 0; } /* Move up */
 }
 
 
 
 
-/* Add Tailwind Utility Classes */
-@layer utilities {
-    .bg-navbar {
-        background-color: rgb(var(--navbar-bg));
-    }
-    .bg-sidebar {
-        background-color: rgb(var(--sidebar-bg));
-    }
-    .bg-background {
-        background-color: rgb(var(--background));
-    }
-    .text-primary {
-        color: rgb(var(--text));
-    }
+/* ========================== */
+/* 🌍 Global Styles for HTML Elements */
+/* ========================== */
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+/* Body */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Heading Sizes */
+h1 { font-size: 2rem; }
+h2 { font-size: 1.7rem; }
+h3 { font-size: 1.4rem; }
+h4 { font-size: 1.2rem; }
+h5 { font-size: 1rem; }
+h6 { font-size: 0.9rem; }
+
+/* Paragraphs */
+p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+/* Lists */
+ul, ol {
+    padding-left: 25px;
+    margin-bottom: 15px;
+}
+
+ul li {
+    list-style-type: disc;
+    margin-bottom: 8px;
+}
+
+ol li {
+    list-style-type: decimal;
+    margin-bottom: 8px;
+}
+
+/* Links */
+a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Buttons */
+button {
+    background: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background: #007BFF;
+    color: white;
+}
+
+/* Blockquotes */
+blockquote {
+    font-style: italic;
+    border-left: 4px solid #007BFF;
+    padding-left: 10px;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+/* Code */
+code {
+    background: #f4f4f4;
+    padding: 5px;
+    border-radius: 5px;
+    font-family: monospace;
+}
+
+/* Horizontal Rule */
+hr {
+    border: 0;
+    height: 1px;
+    background: #ccc;
+    margin: 20px 0;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+

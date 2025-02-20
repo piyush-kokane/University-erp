@@ -15,6 +15,7 @@ import _Landing from "./Pages/_Landing/Landing";
 import Login from "./Pages/Login/Login";
 import Policy from "./Pages/Policy_&_Conditions/Policy_&_Conditions"
 import Dashboard from "./Pages/Dashboard/Dashboard";
+import Profile from "./Pages/Profile/Profile";
 import Attendence from "./Pages/Attendence/Attendence";
 import Calendar from "./Pages/Calendar/Calendar";
 import Time_Table from "./Pages/Time_Table/Time_Table";
@@ -62,7 +63,7 @@ function Layout() {
   return (
     <>
       {/* Show Alert_box if ShowAlert=true */}
-      {ShowAlert && <Alert message="Please login first" Type="warning" onClose={() => setShowAlert(false)} />}
+      {ShowAlert && <Alert message="Please login first" Type="warning" Close={() => setShowAlert(false)} />}
 
       {/* Show Navigation & BG for Landing Page only */}
       {onLanding && <><L_Navigation /></>}
@@ -83,6 +84,7 @@ function Layout() {
 
         {/* Protected pages */}
         <Route path="/dashboard" element={<CheckLogin element={<Dashboard />} />} />
+        <Route path="/profile" element={<CheckLogin element={<Profile />} />} />
         <Route path="/attendance" element={<CheckLogin element={<Attendence />} />} />
         <Route path="/calendar" element={<CheckLogin element={<Calendar />} />} />
         <Route path="/timetable" element={<CheckLogin element={<Time_Table />} />} />

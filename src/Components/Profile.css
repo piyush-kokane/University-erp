@@ -1,0 +1,125 @@
+.profile-overlay.fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.profile-overlay.fade-out {
+    animation: fadeOut 0.3s ease-out;
+}
+
+.profile-card.slide-in {
+    animation: slide-Down-In 0.3s ease-out;
+}
+
+.profile-card.slide-out {
+    animation: slide-Down-Out 0.3s ease-out;
+}
+
+.profile-overlay{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 9998; /* One index less then Alert */
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.profile-card{
+    position: absolute;
+    top: 65px;
+    right: 10px;
+    background: url('/Images/BG.png') no-repeat center center;
+    background-size: cover; /* Cover the entire panel */
+    border-radius: 9px;
+    border: 1px solid rgb(240, 240, 240);
+    width: 100%;
+    padding-top: 100px;
+    padding-bottom: 0px;
+    max-width: 350px;
+}
+
+.profile-container {
+    background: rgb(240, 240, 240);
+    border-radius: 8px;
+    padding: 30px;
+    padding-top: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.profile-container img{
+    transform: translateY(-50%);
+    margin-bottom: -50px;
+    width: 120px; /* Adjust size as needed */
+    height: 120px;
+    border-radius: 50%; /* Makes it a perfect circle */
+    object-fit: cover; /* Ensures the image fills the circle */
+    border: 5px solid white; /* Optional: Border */
+}
+
+.profile-container h1{
+    font-size: 22px;
+    font-weight: 500;
+    color: rgb(0, 50, 160);
+    margin-bottom: 0px;
+}
+
+.profile-container h2{
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 0px;
+}
+
+.profile-container div{
+    height: 2px;
+    width: 40px;
+    margin: 10px;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.profile-container p{
+    font-size: 16px;
+    color: rgb(100, 100, 100);
+    margin-bottom: 0px;
+}
+
+.profile-container a{
+    font-size: 18px !important;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+    padding: 8px 20px;
+    background: rgb(0, 100, 255);
+    text-decoration: none !important;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.profile-container a:hover{
+    background: rgb(0, 50, 200);
+}
+
+.profile-arrow{
+    position: absolute;
+    font-size: 25px;
+    top:-15px;
+    right: 5px;
+    color: rgb(240, 240, 240);
+}
+
+.profile-cancle-btn{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 25px;
+    color: white;
+    cursor: pointer;
+}
+
+.profile-cancle-btn:hover{
+    font-weight: 1000;
+    color: red;
+}
