@@ -64,6 +64,29 @@
     gap: 15px
   }
 
+  @media (max-width: 768px) { /* For small screens */
+    .navbar-left {
+        width: 35%;
+    }
+    .navbar-middle {
+        width: 30%;
+    }
+    .navbar-right {
+        width: 35%;
+    }
+}
+@media (max-width: 580px) { /* For extra small screens */
+    .navbar-left {
+        width: 50%;
+    }
+    .navbar-middle {
+        visibility: hidden;
+    }
+    .navbar-right {
+        width: 50%;
+    }
+}
+
 .menu-btn {
     border: none !important;
     background: none !important;
@@ -243,7 +266,7 @@
     padding: 12px !important;
     color: white !important;
     cursor: pointer;
-    text-decoration: none;
+    text-decoration: none !important;
     border-radius: 8px;
     transition: background 0.3s ease;
     white-space: nowrap; /* Prevents text from wrapping */

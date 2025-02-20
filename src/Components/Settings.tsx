@@ -8,14 +8,21 @@ interface SettingsProps {
 
 
 function Settings({Close} : SettingsProps){
+    const [closing, setClosing] = useState(false);
+
     const [DarkMode, setDarkMode] = useState(false);
     const [Notification, setNotification] = useState(false);
     const [Email, setEmail] = useState(false);
 
+    function handleClose() {
+        setClosing(true); // Start fade-out animation
+        setTimeout(() => Close(), 300); // delay, Matches animation duration (0.3s) // Call close function after animation
+    }
+
     return(
-        <div className="settings-overlay">
-            <div className="settings-container">
-                <span className="material-icons settings-cancle-btn" onClick={Close}>close</span>
+        <div className={`settings-overlay ${closing ? "fade-out" : "fade-in"}`} onClick={handleClose}>
+            <div className={`settings-container ${closing ? "slide-out" : "slide-in"}`} onClick={(e) => e.stopPropagation()}>
+                <span className="material-icons settings-cancle-btn" onClick={handleClose}>close</span>
                 <h1>Settings</h1>
 
                 {/* Theme toggle */}

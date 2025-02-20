@@ -1,0 +1,19 @@
+.profilepg-container {
+    padding: 100px 150px;
+    color: white;
+    background: url('/Images/BG.png') no-repeat center center;
+    background-size: cover; /* Cover the entire panel */
+    border-radius: 9px;
+    border: 1px solid rgb(240, 240, 240);
+}
+  
+.profilepg-container h1 {
+    font-size: 40px;
+    font-weight: bold;
+    
+}
+  
+.profilepg-container p {
+    font-size: 20px;
+}
+  

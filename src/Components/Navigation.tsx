@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "./Navigation.css";
 import Settings from "./Settings";
 import Notifications from "./Notifications";
+import Profile from "./Profile";
 
 function Navigation() {
   const menuItems = [
@@ -16,6 +17,9 @@ function Navigation() {
     { name: "Circulars", icon: "campaign", path: "/circulars" },
   ];
 
+
+  const [profileOpen, setProfileOpen] = useState(false);
+  const toggleProfile = () => setProfileOpen(true);
 
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const toggleNotifications = () => setNotificationsOpen(true);
@@ -51,6 +55,9 @@ function Navigation() {
     <>
       {/* Overlay when sidebar is open */}
       {sidebarOpen && <div className="Navbar-overlay" onClick={toggleSidebar}></div>}
+
+      {/* Profile panel */}
+      {profileOpen && <Profile Close={() => setProfileOpen(false)}/>}
 
       {/* Settings panel */}
       {settingsOpen && <Settings Close={() => setSettingsOpen(false)}/>}
@@ -94,7 +101,7 @@ function Navigation() {
             <span className="navbar-login-link" onClick={handleLoginClick}>E-Library</span>
             <span className="material-icons navbar-btn" onClick={toggleNotifications}>notifications</span>
             <span className="material-icons navbar-btn" onClick={toggleSettings}>settings</span>
-            <button className="profile-btn" onClick={handleLoginClick}>
+            <button className="profile-btn" onClick={toggleProfile}>
               <span className="material-icons">person</span>
             </button>
           </div>
