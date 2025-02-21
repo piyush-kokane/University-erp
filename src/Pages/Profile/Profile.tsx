@@ -1,10 +1,27 @@
 import "./Profile.css";
 
 function Profile() {
+    let Profile="/Images/Profile.jpg";
+    let Name="Piyush Jayant Kokane";
+    let PRN="1132230781";
+    let Branch="SY. B.Sc. CS.";
+    let Bio="I study at MIT-WPU, and I have technical skills in React, TypeScript, Node.js, PHP, MySQL, MongoDB, Tailwind CSS, HTML, CSS, JavaScript, WordPress, and Figma.";
+
+
   return (
-    <div className="profilepg-container">
-    <h1>Welcome to MIT-WPU</h1>
-    <p>This is the dashboard page.</p>
+    <div className="profilepg-page">
+        <div className="profilepg-container">
+            <div className="profilepg-navbar">
+                <img src={Profile} />
+                <h1>{Name}</h1>
+                <div className="profilepg-navbar-options">
+                    <h2>About</h2>
+                    <h2>Cource Progress</h2>
+                    <h2>Documents</h2>
+                </div>
+                <span className="material-icons">more_vert</span>
+            </div>
+        </div>
     </div>
   );
 }

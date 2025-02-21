@@ -12,11 +12,11 @@ function Profile({Close} : ProfileProps){
     const navigate = useNavigate();
     const [closing, setClosing] = useState(false);
 
-    let Profile="/Images/Profile.png";
+    let Profile="/Images/Profile.jpg";
     let Name="Piyush Jayant Kokane";
     let PRN="1132230781";
     let Branch="SY. B.Sc. CS.";
-    let Bio="I study at MIT-WPU, and I have technical skills in React, TypeScript, Node.js, PHP, MySQL, MongoDB, Tailwind CSS, HTML, CSS, JavaScript, WordPress, and Figma.";
+    let Bio="I study at MIT-WPU, and I have technical skills in React, TypeScript, Node.js, PHP, MySQL, MongoDB, Tailwind CSS, HTML, CSS, JavaScript.";
 
     function handleClose() {
         setClosing(true); // Start fade-out animation
@@ -30,7 +30,7 @@ function Profile({Close} : ProfileProps){
                 <span className="material-icons profile-cancle-btn" onClick={handleClose}>close</span>
 
                 <div className="profile-container">
-                    <img src={Profile}></img>
+                    <img src={Profile} />
                     <h1>{Name}</h1>
                     <h2>PRN: {PRN}</h2>
                     <h2>{Branch}</h2>
