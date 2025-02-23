@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Settings.css"
 
 
@@ -14,10 +14,28 @@ function Settings({Close} : SettingsProps){
     const [Notification, setNotification] = useState(false);
     const [Email, setEmail] = useState(false);
 
+
+    // Check saved theme and setDarkMode accordingly
+    useEffect(() => {
+        let savedTheme = localStorage.getItem("theme") || "light";
+        setDarkMode(savedTheme == "dark");
+    }, []); // Runs only once when component loads
+
+
+    function ToggleTheme() {
+        setDarkMode(!DarkMode);
+
+        const newTheme = DarkMode ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+    }
+
+
     function handleClose() {
         setClosing(true); // Start fade-out animation
         setTimeout(() => Close(), 300); // delay, Matches animation duration (0.3s) // Call close function after animation
     }
+
 
     return(
         <div className={`settings-overlay ${closing ? "fade-out" : "fade-in"}`} onClick={handleClose}>
@@ -28,7 +46,7 @@ function Settings({Close} : SettingsProps){
                 {/* Theme toggle */}
                 <div className="toggle-container">
                     <h1>Theme</h1>
-                    <div className={`theme-toggle-switch ${DarkMode ? "dark" : ""}`} onClick={() => setDarkMode(!DarkMode)}>
+                    <div className={`theme-toggle-switch ${DarkMode ? "dark" : ""}`} onClick={ToggleTheme}>
                         <div className="theme-toggle-thumb">
                             <span className="material-icons">
                                 {DarkMode ? "dark_mode" : "light_mode"}
@@ -57,7 +75,7 @@ function Settings({Close} : SettingsProps){
                     </div>
                 </div>
                 
-                
+                                
             </div>
         </div>
     );

@@ -31,8 +31,8 @@
     right: 0px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-    border-left: 2px solid rgba(255, 255, 255, 0.5);
-    background: rgba(0, 0, 50, 0.8);
+    border-left: 2px solid rgba(150, 150, 150, 0.8);
+    background: var(--sidebar-open-color);
     backdrop-filter: blur(10px); /* blur effect */
     z-index: 9997; /* two index less then Alert & one index less then settings */
 }
@@ -45,7 +45,7 @@
     height: 35px;
     top: 0px;
     padding: 5px 20px;
-    color: white;
+    color: var(--text-primary-color);
     border-top-left-radius: 10px;
     background: rgba(150, 150, 150, 0.3);
 }
@@ -74,7 +74,7 @@
 }
 
 .notifications-refresh-btn:hover {
-    color: darkgray;
+    color: rgb(150, 150, 150);
 }
 
 .notifications-footer{
@@ -85,7 +85,7 @@
     height: 35px;
     bottom: 0px;
     padding: 5px 20px;
-    color: white;
+    color: var(--text-primary-color);
     border-bottom-left-radius: 10px;
     background: rgba(150, 150, 150, 0.2);
 }
@@ -119,25 +119,26 @@
     background: transparent; /* No track background */
 }
 .notifications-container::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3); /* Semi-transparent scrollbar */
+    background: rgba(130, 130, 130, 0.5); /* Semi-transparent scrollbar */
     border-radius: 3px; /* Rounded scrollbar */
 }
 
 .notifications-item{
     position: relative;
-    color: white;
 }
 
 .notifications-item h1{
     font-size: 18px;
     margin-bottom: 0px;
+    color: var(--text-primary-color);
 }
 
 .notifications-item p{
     font-size: 14px;
     margin-bottom: 42px;
     text-align: justify;
-    color: rgb(220, 220, 220);
+    color: var(--text-primary-color);
+    opacity: 0.8;
 }
 
 .notifications-item h2{

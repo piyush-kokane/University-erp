@@ -1,6 +1,6 @@
 .dashboard-container {
   padding: 100px 150px;
-  color: white;
+  color: var(--text-primary-color);
 }
 
 .dashboard-container h1 {

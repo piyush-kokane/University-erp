@@ -31,13 +31,13 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    background: rgba(150, 150, 150, 0.5);
+    background: var(--settings-color);
     backdrop-filter: blur(10px); /* blur effect */
     padding: 40px 30px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     border: 2px solid rgba(200, 200, 200, 0.3);
-    color: white;
+    color: var(--text-primary-color);
     width: 100%;
     max-width: 400px;
     justify-content: center;
@@ -90,7 +90,7 @@
     width: 50px;
     height: 25px;
     border-radius: 20px;
-    background-color: #ccc;
+    background-color: var(--settings-toggle-color);
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -107,7 +107,7 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background-color: white;
+    background-color: whitesmoke;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -130,7 +130,7 @@
     width: 50px;
     height: 25px;
     border-radius: 20px;
-    background-color: #ccc;
+    background-color: var(--settings-toggle-color);
     display: flex;
     align-items: center;
     cursor: pointer;

@@ -29,7 +29,7 @@
     background: url('/Images/BG.png') no-repeat center center;
     background-size: cover; /* Cover the entire panel */
     border-radius: 9px;
-    border: 1px solid rgb(240, 240, 240);
+    border: 1px solid var(--panel-border-color);
     width: 100%;
     padding-top: 100px;
     padding-bottom: 0px;
@@ -37,7 +37,7 @@
 }
 
 .profile-container {
-    background: rgb(240, 240, 240);
+    background: var(--panel-color);
     border-radius: 8px;
     padding: 30px;
     padding-top: 0px;
@@ -56,13 +56,13 @@
     height: 120px;
     border-radius: 50%; /* Makes it a perfect circle */
     object-fit: cover; /* Ensures the image fills the circle */
-    border: 5px solid white; /* Optional: Border */
+    border: 5px solid var(--profile-img-border-color); /* Optional: Border */
 }
 
 .profile-container h1{
     font-size: 22px;
     font-weight: 500;
-    color: rgb(0, 50, 160);
+    color: var(--profile-accent-color);
     margin-bottom: 0px;
 }
 
@@ -70,18 +70,19 @@
     font-size: 20px;
     font-weight: 500;
     margin-bottom: 0px;
+    color: var(--text-secondary-color);
 }
 
 .profile-container div{
     height: 2px;
     width: 40px;
     margin: 10px;
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(150, 150, 150, 0.5);
 }
 
 .profile-container p{
     font-size: 16px;
-    color: rgb(100, 100, 100);
+    color: var(--text-tertiary-color);
     margin-bottom: 0px;
 }
 
@@ -92,14 +93,14 @@
     font-weight: 500;
     color: white;
     padding: 8px 20px;
-    background: rgb(0, 100, 255);
+    background: var(--profile-button-color);
     text-decoration: none !important;
     border-radius: 50px;
     cursor: pointer;
 }
 
 .profile-container a:hover{
-    background: rgb(0, 50, 200);
+    background: var(--profile-button-hover-color);
 }
 
 .profile-arrow{
@@ -107,7 +108,7 @@
     font-size: 25px;
     top:-15px;
     right: 5px;
-    color: rgb(240, 240, 240);
+    color: var(--panel-border-color);
 }
 
 .profile-cancle-btn{
@@ -117,6 +118,7 @@
     font-size: 25px;
     color: white;
     cursor: pointer;
+    text-shadow: 0px 0px 10px black;
 }
 
 .profile-cancle-btn:hover{

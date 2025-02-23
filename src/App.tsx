@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation  } from "react-router-dom";
 
-import BG1 from "./BG/BG-1";
-import BG2 from "./BG/BG-2";
-import BG3 from "./BG/BG-3";
+import BG3 from "./BG/BG";
 import Navigation from "./Components/Navigation";
 import L_Navigation from "./Components/L_Navigation";
 
@@ -95,6 +93,12 @@ function Layout() {
     </>
   );
 }
+
+// Apply saved theme on page load
+window.onload = function() {
+  let savedTheme = localStorage.getItem("theme") || "light";
+  document.documentElement.setAttribute("data-theme", savedTheme);
+};
 
 /*
 // Force refress tab on back pressed

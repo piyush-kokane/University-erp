@@ -70,7 +70,7 @@ function Navigation() {
         <div className="navbar-container">
           {/* Left column (30%) */}
           <div className="navbar-left">
-            <button className="menu-btn me-3" onClick={toggleSidebar}>
+            <button className="menu-btn" onClick={toggleSidebar}>
               <div className="menu-line"></div>
               <div className="menu-line"></div>
               <div className="menu-line"></div>
@@ -98,12 +98,10 @@ function Navigation() {
 
           {/* Right column (30%) */}
           <div className="navbar-right">
-            <span className="navbar-login-link" onClick={handleLoginClick}>E-Library</span>
+            <span className="navbar-link" onClick={handleLoginClick}>E-Library</span>
             <span className="material-icons navbar-btn" onClick={toggleNotifications}>notifications</span>
             <span className="material-icons navbar-btn" onClick={toggleSettings}>settings</span>
-            <button className="profile-btn" onClick={toggleProfile}>
-              <span className="material-icons">person</span>
-            </button>
+            <span className="material-icons profile-btn" onClick={toggleProfile}>person</span>
           </div>
         </div>
       </div>

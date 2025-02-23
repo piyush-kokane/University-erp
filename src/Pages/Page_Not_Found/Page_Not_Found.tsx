@@ -31,7 +31,7 @@ function Page_Not_Found({ setonUnknown }: PNF_Props) {
         <div className="PNF-container">
             <img src="/Images/mit-logo-1.png" alt="MIT WPU" className="PNF-mit-logo" />
             <h1 className="PNF-title">ERROR-404</h1>
-            <h1 className="PNF-message">404 - PAGE NOT FOUND</h1>
+            <h1 className="PNF-message">!!ㅤPAGE NOT FOUNDㅤ!!</h1>
         </div>
 
 
