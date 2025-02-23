@@ -49,6 +49,121 @@
 
 
 
+
+/* Default light theme */
+:root {
+    /* Background */
+    --bg-color: rgba(200, 200, 200, 0.7);
+    --bg-invert: 1;
+
+    /* Text */
+    --text-invert-color: white;
+    --text-primary-color: black;
+    --text-secondary-color: rgb(70, 70, 70);
+    --text-tertiary-color: rgb(100, 100, 100);
+
+    /* navbar */
+    --navbar-color: rgb(255, 255, 255);
+    --navbar-text-color: rgb(50, 50, 50);
+    --navbar-hover-color: rgb(150, 150, 150);
+    
+    /* sidebar */
+    --sidebar-close-color: rgba(255, 255, 255, 0.5);
+    --sidebar-open-color: rgba(255, 255, 255, 0.9);
+    --sidebar-text-color: rgb(50, 50, 50);
+    --sidebar-active-color: rgb(150, 150, 150);
+    --sidebar-active-text-color: rgb(255, 255, 255);
+    --sidebar-hover-color: rgb(120, 200, 255);
+    --sidebar-accent-color: rgb(100, 100, 100);
+
+    /* Settings panel */
+    --settings-color: rgba(255, 255, 255, 0.8);
+    --settings-toggle-color: rgb(180, 180, 180);
+
+    /* Profile panel */
+    --profile-img-border-color: rgb(255, 255, 255);
+    --profile-accent-color: rgb(0, 50, 160);
+    --profile-button-color: rgb(0, 100, 255);
+    --profile-button-hover-color: rgb(0, 50, 200);
+
+    /* Profile page */
+    --profilepg-accent-color: rgb(120, 200, 255);
+
+    /* Page not found */
+    --pnf-color: rgb(255, 255, 255);
+    
+    /* Panel general */
+    --panel-color: rgb(240, 240, 240);
+    --panel-border-color: rgb(240, 240, 240);
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+    --bg-color: rgba(50, 50, 50, 0.5);
+    --bg-invert: 0;
+
+    /* Text */
+    --text-invert-color: black;
+    --text-primary-color: white;
+    --text-secondary-color: rgb(220, 220, 220);
+    --text-tertiary-color: rgb(200, 200, 200);
+
+    /* navbar */
+    --navbar-color: rgb(0, 0, 10);
+    --navbar-text-color: rgb(255, 255, 255);
+    --sidebar-close-color: rgb(200, 200, 255);
+
+    /* sidebar */
+    --sidebar-close-color: rgba(0, 0, 50, 0.5);
+    --sidebar-open-color: rgba(0, 0, 50, 0.8);
+    --sidebar-text-color: rgb(255, 255, 255);
+    --sidebar-active-color: rgb(85, 85, 85); /* #555 */
+    --sidebar-active-text-color: rgb(255, 255, 255);
+    --sidebar-hover-color: rgb(68, 68, 68); /* #444 */
+    --sidebar-accent-color: rgb(255, 255, 255);
+    
+    /* Settings panel */
+    --settings-color: rgba(150, 150, 150, 0.5);
+    --settings-toggle-color: rgb(200, 200, 200);
+    
+    /* Profile panel */
+    --profile-img-border-color: rgb(50, 50, 50);
+    --profile-accent-color: rgb(150, 200, 255);
+    --profile-button-color: rgb(50, 50, 50);
+    --profile-button-hover-color: rgb(0, 30, 100);
+
+    /* Profile page */
+    --profilepg-accent-color: rgb(255, 255, 255);
+
+    /* Page not found */
+    --pnf-color: rgb(30, 30, 30);
+        
+    /* Panel general */
+    --panel-color: rgb(70, 70, 70);
+    --panel-border-color: rgb(120, 120, 120);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ========================== */
 /* 🌍 Global Styles for HTML Elements */
 /* ========================== */
