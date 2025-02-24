@@ -4,16 +4,14 @@ import "./Landing.css";
 
 function Navigation() {
     return (
-        <div className="app-container">
+      <div className="app-container">
 
   
-        <section className="hero">
-          <div className="hero-content">
-            <h1>Welcome to Our University</h1>
-            <p>Shaping the Future with Excellence in Education</p>
-            <button className="cta-button">Apply Now</button>
-          </div>
-        </section>
+        <div className="banner-video">
+          <h2>Welcome to</h2>
+          <h1>MIT WORLD PEACE UNIVERSITY</h1>
+          <p>Shaping the Future with Excellence in Education</p>
+        </div>
   
         <section className="features">
           <div className="feature-card">
