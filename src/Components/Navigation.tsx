@@ -35,8 +35,6 @@ function Navigation() {
 
   const [activeMenuItem, setActiveMenuItem] = useState("Dashboard"); // Default active tab = dashboard
 
-  const handleLoginClick = () => navigate("/login");
-
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -98,7 +96,7 @@ function Navigation() {
 
           {/* Right column (30%) */}
           <div className="navbar-right">
-            <span className="navbar-link" onClick={handleLoginClick}>E-Library</span>
+            <span className="navbar-link" onClick={() =>navigate("/e-library")}>E-Library</span>
             <span className="material-icons navbar-btn" onClick={toggleNotifications}>notifications</span>
             <span className="material-icons navbar-btn" onClick={toggleSettings}>settings</span>
             <span className="material-icons profile-btn" onClick={toggleProfile}>person</span>

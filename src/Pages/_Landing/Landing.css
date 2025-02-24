@@ -1,9 +1,37 @@
+.app-container {
+  text-align: center;
+  padding: 55px 0px 0px 70px;
+}
 
-  
-  .app-container {
-    text-align: center;
-  }
-  
+.banner-video{
+  width: 100%;
+  height: calc(100vh - 55px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  color: white;
+  background: url('/Images/MIT-WPU-Pune.png') center/cover no-repeat;}
+
+.banner-video h2 {
+  margin-top: 150px;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 20px rgba(0, 0, 0, 1);
+  font-size: clamp(20px, 4vw, 40px);
+}
+.banner-video h1 {
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 20px rgba(0, 0, 0, 1);
+  font-size: clamp(20px, 4vw, 45px);
+  transform: scaleY(1.2);
+}
+.banner-video p {
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 20px rgba(0, 0, 0, 1);
+  font-size: clamp(12px, 2vw, 22px);
+}
+
+
   /* Navbar */
   .navbar {
     display: flex;

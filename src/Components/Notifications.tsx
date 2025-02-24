@@ -44,10 +44,7 @@ function Notifications({Close} : NotificationsProps){
                 
                 <div className="notifications-container">
                     {notifications.map((item) => (
-                        <div 
-                        key={item.title} 
-                        className={"notifications-item"}
-                        >
+                        <div  className={"notifications-item"} >
                             <h1>{item.title}</h1>
                             <p>{item.message}</p>
                             <h2>{item.date}</h2>

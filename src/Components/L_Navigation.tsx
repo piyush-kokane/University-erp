@@ -1,16 +1,42 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./Navigation.css";
+import Settings from "./Settings";
+import Notifications from "./Notifications";
+import Profile from "./Profile";
 
 function L_Navigation() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [searchValue, setSearchValue] = useState("");
-  const [activeMenuItem, setActiveMenuItem] = useState("Dashboard"); // Default active tab
-  const navigate = useNavigate();
+  const menuItems = [
+    { name: "Dashboard", icon: "dashboard", path: "/dashboard" },
+    { name: "Profile", icon: "person", path: "/profile" },
+    { name: "Attendance", icon: "check_circle", path: "/attendance" },
+    { name: "Calendar", icon: "event", path: "/calendar" },
+    { name: "Time Table", icon: "schedule", path: "/timetable" },
+    { name: "Course", icon: "menu_book", path: "/course" },
+    { name: "Result", icon: "bar_chart", path: "/result" },
+    { name: "Circulars", icon: "campaign", path: "/circulars" },
+  ];
 
+
+  const [profileOpen, setProfileOpen] = useState(false);
+  const toggleProfile = () => setProfileOpen(true);
+
+  const [notificationsOpen, setNotificationsOpen] = useState(false);
+  const toggleNotifications = () => setNotificationsOpen(true);
+
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const toggleSettings = () => setSettingsOpen(true);
+
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
+
+  const [searchValue, setSearchValue] = useState("");
   const clearSearch = () => setSearchValue("");
-  const handleLoginClick = () => navigate("/login");
+
+  const [activeMenuItem, setActiveMenuItem] = useState("Dashboard"); // Default active tab = dashboard
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   function handleLogout(){
     console.log("Logging out...");
@@ -26,14 +52,23 @@ function L_Navigation() {
   return (
     <>
       {/* Overlay when sidebar is open */}
-      {sidebarOpen && <div className="overlay" onClick={toggleSidebar}></div>}
+      {sidebarOpen && <div className="Navbar-overlay" onClick={toggleSidebar}></div>}
+
+      {/* Profile panel */}
+      {profileOpen && <Profile Close={() => setProfileOpen(false)}/>}
+
+      {/* Settings panel */}
+      {settingsOpen && <Settings Close={() => setSettingsOpen(false)}/>}
+
+      {/* Notification panel */}
+      {notificationsOpen && <Notifications Close={() => setNotificationsOpen(false)}/>}
 
       {/* Navbar */}
       <div className="Nav-Bar">
         <div className="navbar-container">
           {/* Left column (30%) */}
           <div className="navbar-left">
-            <button className="menu-btn me-3" onClick={toggleSidebar}>
+            <button className="menu-btn" onClick={toggleSidebar}>
               <div className="menu-line"></div>
               <div className="menu-line"></div>
               <div className="menu-line"></div>
@@ -51,22 +86,20 @@ function L_Navigation() {
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
               />
-              {searchValue ? (
-                <button className="clear-btn" onClick={clearSearch} type="button">
-                  <span className="material-icons">close</span>
-                </button>
-              ) : (
-                <span className="material-icons search-icon">search</span>
-              )}
+
+              {searchValue 
+                ? <span className="material-icons search-clear-btn" onClick={clearSearch}>close</span> // if searchValue = true then show clear button
+                : <span className="material-icons search-icon">search</span> // else show search icon
+              }
             </form>
           </div>
 
           {/* Right column (30%) */}
           <div className="navbar-right">
-            <span className="login-link" onClick={handleLoginClick}>Student Portel</span>
-            <button className="profile-btn" onClick={handleLoginClick}>
-              <span className="material-icons">person</span>
-            </button>
+            <span className="navbar-link" onClick={() =>navigate("/login")}>Student Portal</span>
+            <span className="material-icons navbar-btn" onClick={toggleNotifications}>notifications</span>
+            <span className="material-icons navbar-btn" onClick={toggleSettings}>settings</span>
+            <span className="material-icons profile-btn" onClick={toggleProfile}>person</span>
           </div>
         </div>
       </div>
@@ -91,23 +124,13 @@ function L_Navigation() {
         </nav>
 
         {/* Logout Button at Bottom */}
-        <div className="logout-container">
-          <button className="logout-btn" onClick={handleLogout}>
+        <a className="sidebar-item logout-btn" onClick={handleLogout}>
             <span className="material-icons sidebar-icon">logout</span>
             <span className={`sidebar-text ${sidebarOpen ? "visible" : ""}`}>Logout</span>
-          </button>
-        </div>
+        </a>
       </div>
     </>
   );
 }
-
-const menuItems = [
-  { name: "Dashboard", icon: "dashboard", path: "/dashboard" },
-  { name: "Attendance", icon: "check_circle", path: "/attendance" },
-  { name: "Calendar", icon: "event", path: "/calendar" },
-  { name: "Time Table", icon: "schedule", path: "/timetable" },
-  { name: "Settings", icon: "settings", path: "/settings" },
-];
 
 export default L_Navigation;
