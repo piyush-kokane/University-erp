@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./Navigation.css";
 import Settings from "./Settings";
 import Notifications from "./Notifications";
 import Profile from "./Profile";
+import { rectBounce } from "tsparticles-engine";
 
-function Navigation() {
+
+
+function Navigation() { // This ensures activemenuItem is "Dashboard" if not provided.
   const menuItems = [
     { name: "Dashboard", icon: "dashboard", path: "/dashboard" },
     { name: "Profile", icon: "person", path: "/profile" },
@@ -38,16 +41,26 @@ function Navigation() {
   const navigate = useNavigate();
   const location = useLocation();
 
+
+  // if page url changes due to redirect, set actve menue item to accordingly
+  useEffect(() => {
+    if(location.pathname === "/profile")
+      setActiveMenuItem("Profile");
+  }, [location.pathname]); // Runs only when location.pathname changes
+
+
   function handleLogout(){
     console.log("Logging out...");
     localStorage.setItem("loggedIn", "false"); // Set loggedIn to false
     navigate("/login", { state: { from: location.pathname } }) // navigate to login page & set state.from to url of current page
   }
+
   
   function handleMenuClick(itemName: string, itemPath: string){
     setActiveMenuItem(itemName); // Update active tab
     navigate(itemPath); // Navigate to the page
   };
+
 
   return (
     <>

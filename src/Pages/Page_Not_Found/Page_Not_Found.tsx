@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import { useState } from "react";
 import "./Page_Not_Found.css";
 
 interface PNF_Props {

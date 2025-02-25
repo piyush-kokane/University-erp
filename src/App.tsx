@@ -100,12 +100,12 @@ window.onload = function() {
   document.documentElement.setAttribute("data-theme", savedTheme);
 };
 
-/*
+
 // Force refress tab on back pressed
 window.addEventListener("popstate", () => {
   window.location.reload();
 });
-*/
+
 
 function App() { 
   return (

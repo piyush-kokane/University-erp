@@ -12,11 +12,11 @@ function Profile({Close} : ProfileProps){
     const navigate = useNavigate();
     const [closing, setClosing] = useState(false);
 
-    let Profile="/Images/Profile.jpg";
+    let Profile="/User_Data/Profile.jpg";
     let Name="Piyush Jayant Kokane";
     let PRN="1132230781";
     let Branch="SY. B.Sc. CS.";
-    let Bio="I study at MIT-WPU, and I have technical skills in React, TypeScript, Node.js, PHP, MySQL, MongoDB, Tailwind CSS, HTML, CSS, JavaScript.";
+    let ShortBio="I study at MIT-WPU, and I have technical skills in React, TypeScript, Node.js, PHP, MySQL, MongoDB, Tailwind CSS, HTML, CSS, JavaScript.";
 
     function handleClose() {
         setClosing(true); // Start fade-out animation
@@ -35,7 +35,7 @@ function Profile({Close} : ProfileProps){
                     <h2>PRN: {PRN}</h2>
                     <h2>{Branch}</h2>
                     <div />
-                    <p>{Bio}</p>
+                    <p>{ShortBio}</p>
                     <a onClick={() => navigate("/profile")}>View Profile</a>
                 </div>
                 
