@@ -154,20 +154,6 @@
     justify-self: center;
 }
 
-.profilepg-container-line-1 {
-    width: calc(100% + 30px);
-    height: 3px;
-    margin: 10px -15px;
-    background: rgba(150, 150, 150, 0.5);
-}
-
-.profilepg-container-line-2 {
-    width: calc(100% + 20px);
-    height: 2px;
-    margin: 0px -10px;
-    background: rgba(150, 150, 150, 0.5);
-}
-
 .profilepg-sub-container {
     position: relative;
     display: flex;

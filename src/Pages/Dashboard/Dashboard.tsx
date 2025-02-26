@@ -148,7 +148,7 @@ function DashboardPage() {
           <span className="material-icons" onClick={handleSwap}>cached</span>
           {attendanceType}
         </h1>
-        <div className="profilepg-container-line-2"/>
+        <div className="page-container-line-2"/>
 
         <div className="attendance-container">
           
@@ -184,7 +184,7 @@ function DashboardPage() {
 
         </div>
 
-        <div className="profilepg-container-line-2"/>
+        <div className="page-container-line-2"/>
         <a className="dashboard-footer-link">View full Attendance ➜</a>
       </div>
     );
@@ -223,7 +223,7 @@ function DashboardPage() {
     return (
       <div className="page-base-container">
         <h1 className="attendance-title">Circular</h1>
-        <div className="profilepg-container-line-2"/>
+        <div className="page-container-line-2"/>
 
         <div className="circular-container">
           {circular.map((item) => (
@@ -237,7 +237,7 @@ function DashboardPage() {
           ))}
         </div>
 
-        <div className="profilepg-container-line-2"/>
+        <div className="page-container-line-2"/>
         <a className="dashboard-footer-link">All Circulars ➜</a>
       </div>
     );
@@ -247,7 +247,7 @@ function DashboardPage() {
     return (
       <div className="page-base-container">
         <h1 className="attendance-title">Circular</h1>
-        <div className="profilepg-container-line-2"/>
+        <div className="page-container-line-2"/>
 
         <div className="timetable-container">
           <table className="timetable-table">
@@ -273,7 +273,7 @@ function DashboardPage() {
           </table>
         </div>
 
-        <div className="profilepg-container-line-2"/>
+        <div className="page-container-line-2"/>
         <a className="dashboard-footer-link">Full Time-Table ➜</a>
       </div>
     );

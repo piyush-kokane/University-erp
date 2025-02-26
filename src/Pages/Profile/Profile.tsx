@@ -74,7 +74,7 @@ function Profile() {
                     <h2>{Biotag}</h2>
                     <p>{LongBio}</p>
                     
-                    <div className="profilepg-container-line-2"/>
+                    <div className="page-container-line-2"/>
                     {ProgramInfo.map((item) => (
                         <div className="profilepg-sub-container">
                             <h1>{item.Key}</h1>
@@ -88,7 +88,7 @@ function Profile() {
                 {/* Content panel 2 */}
                 <div className="page-base-container profilepg-container">
                     <h1>More Information</h1>
-                    <div className="profilepg-container-line-1"/>
+                    <div className="page-container-line-1"/>
                     {StudentInfo.map((item) => (
                         <div className="profilepg-sub-container">
                             <h1>{item.Key}</h1>
@@ -102,7 +102,7 @@ function Profile() {
                 {/* Content panel 3 */}
                 <div className="page-base-container profilepg-container">
                     <h1>Student Address</h1>
-                    <div className="profilepg-container-line-1"/>
+                    <div className="page-container-line-1"/>
                     {StudentAddress.map((item) => (
                         <div className="profilepg-sub-container">
                             <h1>{item.Key}</h1>
@@ -116,7 +116,7 @@ function Profile() {
                 {/* Content panel 4 */}
                 <div className="page-base-container profilepg-container">
                     <h1>Parent/Guardian Information</h1>
-                    <div className="profilepg-container-line-1"/>
+                    <div className="page-container-line-1"/>
                     {Parent1Info.map((item) => (
                         <div className="profilepg-sub-container">
                             <h1>{item.Key}</h1>
@@ -125,7 +125,7 @@ function Profile() {
                         </div>
                     ))}
     
-                    <div className="profilepg-container-line-2"/>
+                    <div className="page-container-line-2"/>
                     {Parent2Info.map((item) => (
                         <div className="profilepg-sub-container">
                             <h1>{item.Key}</h1>
@@ -147,7 +147,7 @@ function Profile() {
                     <h2>{Biotag}</h2>
                     <p>{LongBio}</p>
                     
-                    <div className="profilepg-container-line-2"/>
+                    <div className="page-container-line-2"/>
                     {ProgramInfo.map((item) => (
                         <div className="profilepg-sub-container">
                             <h1>{item.Key}</h1>
@@ -161,7 +161,7 @@ function Profile() {
                 {/* Content panel 2 */}
                 <div className="page-base-container profilepg-container">
                     <h1>More Information</h1>
-                    <div className="profilepg-container-line-1"/>
+                    <div className="page-container-line-1"/>
                     {StudentInfo.map((item) => (
                         <div className="profilepg-sub-container">
                             <h1>{item.Key}</h1>
@@ -175,7 +175,7 @@ function Profile() {
                 {/* Content panel 3 */}
                 <div className="page-base-container profilepg-container">
                     <h1>Student Address</h1>
-                    <div className="profilepg-container-line-1"/>
+                    <div className="page-container-line-1"/>
                     {StudentAddress.map((item) => (
                         <div className="profilepg-sub-container">
                             <h1>{item.Key}</h1>
@@ -189,7 +189,7 @@ function Profile() {
                 {/* Content panel 4 */}
                 <div className="page-base-container profilepg-container">
                     <h1>Parent/Guardian Information</h1>
-                    <div className="profilepg-container-line-1"/>
+                    <div className="page-container-line-1"/>
                     {Parent1Info.map((item) => (
                         <div className="profilepg-sub-container">
                             <h1>{item.Key}</h1>
@@ -198,7 +198,7 @@ function Profile() {
                         </div>
                     ))}
     
-                    <div className="profilepg-container-line-2"/>
+                    <div className="page-container-line-2"/>
                     {Parent2Info.map((item) => (
                         <div className="profilepg-sub-container">
                             <h1>{item.Key}</h1>
@@ -228,12 +228,12 @@ function Profile() {
                 {UserDocuments.map((item) => (
                     <div className="page-base-container profilepg-container">
                         <h1>{item.Key}</h1>
-                        <div className="profilepg-container-line-1"/>
+                        <div className="page-container-line-1"/>
 
                         {openDocuments[item.Key] && (
                             <>
                               <img src={item.img} alt={item.Key} />
-                              <div className="profilepg-container-line-1"/>
+                              <div className="page-container-line-1"/>
                             </>
                         )}
                         
@@ -249,7 +249,7 @@ function Profile() {
         );
     }        
 
-    
+
 
     return (
         <div className="page-container">
