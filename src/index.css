@@ -1,299 +1,371 @@
 @import "tailwindcss";
 
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-@keyframes fadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
-}
-
-@keyframes slide-Up-In {
-    from { transform: translateY(30px); opacity: 0; } /* Move up */
-    to { transform: translateY(0); opacity: 1; }
-}
-@keyframes slide-Up-Out {
-    from { transform: translateY(0); opacity: 1; }
-    to { transform: translateY(30px); opacity: 0; } /* Move up */
-}
-
-@keyframes slide-Down-In {
-    from { transform: translateY(-30px); opacity: 0; } /* Move up */
-    to { transform: translateY(0); opacity: 1; }
-}
-@keyframes slide-Down-Out {
-    from { transform: translateY(0); opacity: 1; }
-    to { transform: translateY(-30px); opacity: 0; } /* Move up */
-}
-
-@keyframes slide-Left-In {
-    from { transform: translateX(30px); opacity: 0; } /* Move up */
-    to { transform: translateX(0); opacity: 1; }
-}
-@keyframes slide-Left-Out {
-    from { transform: translateX(0); opacity: 1; }
-    to { transform: translateX(30px); opacity: 0; } /* Move up */
-}
-
-@keyframes slide-Right-In {
-    from { transform: translateX(-30px); opacity: 0; } /* Move up */
-    to { transform: translateX(0); opacity: 1; }
-}
-@keyframes slide-Right-Out {
-    from { transform: translateX(0); opacity: 1; }
-    to { transform: translateX(-30px); opacity: 0; } /* Move up */
-}
 
 
 
+/*** General Animations ***/
+
+    /* fade */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    @keyframes fadeOut {
+        from { opacity: 1; }
+        to { opacity: 0; }
+    }
+
+    /* slide Up */
+    @keyframes slide-Up-In {
+        from { transform: translateY(30px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes slide-Up-Out {
+        from { transform: translateY(0); opacity: 1; }
+        to { transform: translateY(30px); opacity: 0; }
+    }
+
+    /* slide Down */
+    @keyframes slide-Down-In {
+        from { transform: translateY(-30px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes slide-Down-Out {
+        from { transform: translateY(0); opacity: 1; }
+        to { transform: translateY(-30px); opacity: 0; }
+    }
+
+    /* slide Left */
+    @keyframes slide-Left-In {
+        from { transform: translateX(30px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes slide-Left-Out {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(30px); opacity: 0; }
+    }
+
+    /* slide Right */
+    @keyframes slide-Right-In {
+        from { transform: translateX(-30px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes slide-Right-Out {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(-30px); opacity: 0; }
+    }
+
+/* ---------- */
 
 
-/* Default light theme */
-:root {
-    /* Background */
-    --bg-color: rgba(200, 200, 200, 0.7);
-    --bg-invert: 1;
 
-    /* Text */
-    --text-invert-color: white;
-    --text-primary-color: black;
-    --text-secondary-color: rgb(70, 70, 70);
-    --text-tertiary-color: rgb(100, 100, 100);
 
-    /* navbar */
-    --navbar-color: rgb(255, 255, 255);
-    --navbar-text-color: rgb(50, 50, 50);
-    --navbar-hover-color: rgb(150, 150, 150);
-    
-    /* sidebar */
-    --sidebar-close-color: rgba(255, 255, 255, 0.5);
-    --sidebar-open-color: rgba(255, 255, 255, 0.9);
-    --sidebar-text-color: rgb(50, 50, 50);
-    --sidebar-active-color: rgb(150, 150, 150);
-    --sidebar-active-text-color: rgb(255, 255, 255);
-    --sidebar-hover-color: rgb(120, 200, 255);
-    --sidebar-accent-color: rgb(100, 100, 100);
 
-    /* Settings panel */
-    --settings-color: rgba(255, 255, 255, 0.8);
-    --settings-toggle-color: rgb(180, 180, 180);
+/*** themes ***/
 
-    /* Profile panel */
-    --profile-img-border-color: rgb(255, 255, 255);
-    --profile-accent-color: rgb(0, 50, 160);
-    --profile-button-color: rgb(0, 100, 255);
-    --profile-button-hover-color: rgb(0, 50, 200);
+    /* Default light theme */
+    :root {
+        /* Background */
+        --bg-color: rgba(200, 200, 200, 0.7);
+        --bg-invert: 1;
 
-    /* Profile page */
-    --profilepg-accent-color: rgb(120, 200, 255);
+        /* Text */
+        --text-invert-color: white;
+        --text-primary-color: black;
+        --text-secondary-color: rgb(70, 70, 70);
+        --text-tertiary-color: rgb(100, 100, 100);
 
-    /* Page not found */
-    --pnf-color: rgb(255, 255, 255);
-    
-    /* Panel general */
-    --panel-color: rgb(240, 240, 240);
-    --panel-border-color: rgb(240, 240, 240);
-}
-
-/* Dark theme */
-[data-theme="dark"] {
-    --bg-color: rgba(50, 50, 50, 0.5);
-    --bg-invert: 0;
-
-    /* Text */
-    --text-invert-color: black;
-    --text-primary-color: white;
-    --text-secondary-color: rgb(220, 220, 220);
-    --text-tertiary-color: rgb(200, 200, 200);
-
-    /* navbar */
-    --navbar-color: rgb(0, 0, 10);
-    --navbar-text-color: rgb(255, 255, 255);
-    --sidebar-close-color: rgb(200, 200, 255);
-
-    /* sidebar */
-    --sidebar-close-color: rgba(0, 0, 50, 0.5);
-    --sidebar-open-color: rgba(0, 0, 50, 0.8);
-    --sidebar-text-color: rgb(255, 255, 255);
-    --sidebar-active-color: rgb(85, 85, 85); /* #555 */
-    --sidebar-active-text-color: rgb(255, 255, 255);
-    --sidebar-hover-color: rgb(68, 68, 68); /* #444 */
-    --sidebar-accent-color: rgb(255, 255, 255);
-    
-    /* Settings panel */
-    --settings-color: rgba(150, 150, 150, 0.5);
-    --settings-toggle-color: rgb(200, 200, 200);
-    
-    /* Profile panel */
-    --profile-img-border-color: rgb(50, 50, 50);
-    --profile-accent-color: rgb(150, 200, 255);
-    --profile-button-color: rgb(50, 50, 50);
-    --profile-button-hover-color: rgb(0, 30, 100);
-
-    /* Profile page */
-    --profilepg-accent-color: rgb(255, 255, 255);
-
-    /* Page not found */
-    --pnf-color: rgb(30, 30, 30);
+        /* navbar */
+        --navbar-color: rgb(255, 255, 255);
+        --navbar-text-color: rgb(50, 50, 50);
+        --navbar-hover-color: rgb(150, 150, 150);
         
-    /* Panel general */
-    --panel-color: rgb(70, 70, 70);
-    --panel-border-color: rgb(120, 120, 120);
-}
+        /* sidebar */
+        --sidebar-close-color: rgba(255, 255, 255, 0.5);
+        --sidebar-open-color: rgba(255, 255, 255, 0.9);
+        --sidebar-text-color: rgb(50, 50, 50);
+        --sidebar-active-color: rgb(150, 150, 150);
+        --sidebar-active-text-color: rgb(255, 255, 255);
+        --sidebar-hover-color: rgb(120, 200, 255);
+        --sidebar-accent-color: rgb(100, 100, 100);
+
+        /* Settings panel */
+        --settings-color: rgba(255, 255, 255, 0.8);
+        --settings-toggle-color: rgb(180, 180, 180);
+
+        /* Profile panel */
+        --profile-img-border-color: rgb(255, 255, 255);
+        --profile-accent-color: rgb(0, 50, 160);
+        --profile-button-color: rgb(0, 100, 255);
+        --profile-button-hover-color: rgb(0, 50, 200);
+
+        /* Profile page */
+        --profilepg-accent-color: rgb(120, 200, 255);
+
+        /* Page not found */
+        --pnf-color: rgb(255, 255, 255);
+        
+        /* Panel general */
+        --panel-color: rgb(240, 240, 240);
+        --panel-border-color: rgb(240, 240, 240);
+    }
+
+    /* Dark theme */
+    [data-theme="dark"] {
+        --bg-color: rgba(50, 50, 50, 0.5);
+        --bg-invert: 0;
+
+        /* Text */
+        --text-invert-color: black;
+        --text-primary-color: white;
+        --text-secondary-color: rgb(220, 220, 220);
+        --text-tertiary-color: rgb(200, 200, 200);
+
+        /* navbar */
+        --navbar-color: rgb(0, 0, 10);
+        --navbar-text-color: rgb(255, 255, 255);
+        --sidebar-close-color: rgb(200, 200, 255);
+
+        /* sidebar */
+        --sidebar-close-color: rgba(0, 0, 50, 0.5);
+        --sidebar-open-color: rgba(0, 0, 50, 0.8);
+        --sidebar-text-color: rgb(255, 255, 255);
+        --sidebar-active-color: rgb(85, 85, 85); /* #555 */
+        --sidebar-active-text-color: rgb(255, 255, 255);
+        --sidebar-hover-color: rgb(68, 68, 68); /* #444 */
+        --sidebar-accent-color: rgb(255, 255, 255);
+        
+        /* Settings panel */
+        --settings-color: rgba(150, 150, 150, 0.5);
+        --settings-toggle-color: rgb(200, 200, 200);
+        
+        /* Profile panel */
+        --profile-img-border-color: rgb(50, 50, 50);
+        --profile-accent-color: rgb(150, 200, 255);
+        --profile-button-color: rgb(50, 50, 50);
+        --profile-button-hover-color: rgb(0, 30, 100);
+
+        /* Profile page */
+        --profilepg-accent-color: rgb(255, 255, 255);
+
+        /* Page not found */
+        --pnf-color: rgb(30, 30, 30);
+            
+        /* Panel general */
+        --panel-color: rgb(70, 70, 70);
+        --panel-border-color: rgb(120, 120, 120);
+    }
+
+/* ---------- */
 
 
 
 
 
+/*** General page layout and size shrink ***/
+
+    .page-container {
+        width: 100%;
+        height: 100%;
+        padding: 55px 0px 0px 70px;
+    }
+
+    .page-main-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 20px;
+        padding: 40px;
+    }
+
+    .page-parent-base-container {
+        width: 100%;
+        column-count: 2; 
+        column-gap: 20px; 
+    }
+
+    .page-base-container {
+        position: relative;
+        break-inside: avoid; /* Prevent items from breaking awkwardly */
+        width: 100%;
+        padding: 40px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        background: var(--panel-color);
+        text-align: center;
+    }
+
+    @media (max-width: 1280px) {
+        .page-main-container {
+            transform: scale(0.9);
+            transform-origin: top left;
+            width: 111%;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .page-main-container {
+            transform: scale(0.7);
+            transform-origin: top left;
+            width: 143%;
+        }
+        .page-parent-base-container {
+            /* On smaller screen reduce column count to 1 */
+            column-count: 1; 
+        }
+    }
+
+    @media (max-width: 768px) {
+        .page-main-container {
+            transform: scale(0.5);
+            transform-origin: top left;
+            width: 200%;
+        }
+    }
+
+    @media (max-width: 600px) { /* For extra small screens, when side bar is hidden */
+        .page-container {
+            padding: 55px 0px 0px 0px;
+        }
+    }
+
+/* ---------- */
 
 
 
 
 
+/*** 🌍 Global Styles for HTML Elements ***/
 
+    /* General Reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
+    /* Body */
+    body {
+        font-family: 'Arial', sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f9f9f9;
+        overflow-x: hidden;
+    }
 
+    /* Headings */
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
 
+    /* Heading Sizes */
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.7rem; }
+    h3 { font-size: 1.4rem; }
+    h4 { font-size: 1.2rem; }
+    h5 { font-size: 1rem; }
+    h6 { font-size: 0.9rem; }
 
+    /* Paragraphs */
+    p {
+        font-size: 1rem;
+        margin-bottom: 15px;
+    }
 
+    /* Lists */
+    ul, ol {
+        padding-left: 25px;
+        margin-bottom: 15px;
+    }
 
+    ul li {
+        list-style-type: disc;
+        margin-bottom: 8px;
+    }
 
+    ol li {
+        list-style-type: decimal;
+        margin-bottom: 8px;
+    }
 
+    /* Links */
+    a {
+        color: #007BFF;
+        text-decoration: none;
+    }
 
+    a:hover {
+        text-decoration: underline;
+    }
 
+    /* Buttons */
+    button {
+        background: #007BFF;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        font-size: 1rem;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background 0.3s;
+    }
 
-/* ========================== */
-/* 🌍 Global Styles for HTML Elements */
-/* ========================== */
+    button:hover {
+        background: #0056b3;
+    }
 
-/* General Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    /* Tables */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
 
-/* Body */
-body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f9f9f9;
-}
+    th, td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
 
-/* Headings */
-h1, h2, h3, h4, h5, h6 {
-    font-weight: bold;
-    margin-bottom: 15px;
-}
+    th {
+        background: #007BFF;
+        color: white;
+    }
 
-/* Heading Sizes */
-h1 { font-size: 2rem; }
-h2 { font-size: 1.7rem; }
-h3 { font-size: 1.4rem; }
-h4 { font-size: 1.2rem; }
-h5 { font-size: 1rem; }
-h6 { font-size: 0.9rem; }
+    /* Blockquotes */
+    blockquote {
+        font-style: italic;
+        border-left: 4px solid #007BFF;
+        padding-left: 10px;
+        color: #444;
+        margin-bottom: 15px;
+    }
 
-/* Paragraphs */
-p {
-    font-size: 1rem;
-    margin-bottom: 15px;
-}
+    /* Code */
+    code {
+        background: #f4f4f4;
+        padding: 5px;
+        border-radius: 5px;
+        font-family: monospace;
+    }
 
-/* Lists */
-ul, ol {
-    padding-left: 25px;
-    margin-bottom: 15px;
-}
+    /* Horizontal Rule */
+    hr {
+        border: 0;
+        height: 1px;
+        background: #ccc;
+        margin: 20px 0;
+    }
 
-ul li {
-    list-style-type: disc;
-    margin-bottom: 8px;
-}
+    /* Images */
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin-bottom: 15px;
+        border-radius: 5px;
+    }
 
-ol li {
-    list-style-type: decimal;
-    margin-bottom: 8px;
-}
-
-/* Links */
-a {
-    color: #007BFF;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-/* Buttons */
-button {
-    background: #007BFF;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    font-size: 1rem;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background 0.3s;
-}
-
-button:hover {
-    background: #0056b3;
-}
-
-/* Tables */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-th, td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
-}
-
-th {
-    background: #007BFF;
-    color: white;
-}
-
-/* Blockquotes */
-blockquote {
-    font-style: italic;
-    border-left: 4px solid #007BFF;
-    padding-left: 10px;
-    color: #444;
-    margin-bottom: 15px;
-}
-
-/* Code */
-code {
-    background: #f4f4f4;
-    padding: 5px;
-    border-radius: 5px;
-    font-family: monospace;
-}
-
-/* Horizontal Rule */
-hr {
-    border: 0;
-    height: 1px;
-    background: #ccc;
-    margin: 20px 0;
-}
-
-/* Images */
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin-bottom: 15px;
-    border-radius: 5px;
-}
-
+/* ---------- */

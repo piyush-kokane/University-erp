@@ -79,7 +79,7 @@ function Navigation() { // This ensures activemenuItem is "Dashboard" if not pro
       {/* Navbar */}
       <div className="Nav-Bar">
         <div className="navbar-container">
-          {/* Left column (30%) */}
+          {/* Left column */}
           <div className="navbar-left">
             <button className="menu-btn" onClick={toggleSidebar}>
               <div className="menu-line"></div>
@@ -89,7 +89,7 @@ function Navigation() { // This ensures activemenuItem is "Dashboard" if not pro
             <h1 className="navbar-title">{activeMenuItem}</h1>
           </div>
 
-          {/* Middle column (40%) */}
+          {/* Middle column */}
           <div className="navbar-middle">
             <form className="search-container">
               <input
@@ -107,7 +107,7 @@ function Navigation() { // This ensures activemenuItem is "Dashboard" if not pro
             </form>
           </div>
 
-          {/* Right column (30%) */}
+          {/* Right column */}
           <div className="navbar-right">
             <span className="navbar-link" onClick={() =>navigate("/e-library")}>E-Library</span>
             <span className="material-icons navbar-btn" onClick={toggleNotifications}>notifications</span>

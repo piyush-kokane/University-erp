@@ -98,7 +98,7 @@
 }
 
 .notifications-footer h1:hover{
-    color: rgb(60, 180, 255);
+    color: rgb(50, 150, 255);
 }
 
 .notifications-container{
@@ -107,7 +107,7 @@
     gap: 15px;
     padding: 20px;
     margin: 35px 0px;
-    max-height: calc(100vh - 35px - 35px); /* Limits height to 80% of the viewport */
+    max-height: calc(100vh - 35px - 35px); /* Limits height */
     overflow-y: auto;
 }
 

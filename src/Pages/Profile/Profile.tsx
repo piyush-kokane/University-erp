@@ -39,7 +39,7 @@ function Profile() {
     ];
 
     const StudentAddress = [
-        { Key: "Permanent Address", value: "Address" },
+        { Key: "Permanent Address", value: "Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address " },
         { Key: "Current Address", value: "Address" },
         { Key: "Area", value: "Area" },
         { Key: "Land Mark", value: "Land Mark" },
@@ -69,12 +69,12 @@ function Profile() {
         return (
             <>
                 {/* Content panel 1 */}
-                <div className="profilepg-container profilepg-about">
+                <div className="page-base-container profilepg-about">
                     <h1>About Me</h1>
                     <h2>{Biotag}</h2>
                     <p>{LongBio}</p>
                     
-                    <div className="profilepg-container-line-3"/>
+                    <div className="profilepg-container-line-2"/>
                     {ProgramInfo.map((item) => (
                         <div className="profilepg-sub-container">
                             <h1>{item.Key}</h1>
@@ -86,7 +86,7 @@ function Profile() {
     
     
                 {/* Content panel 2 */}
-                <div className="profilepg-container">
+                <div className="page-base-container profilepg-container">
                     <h1>More Information</h1>
                     <div className="profilepg-container-line-1"/>
                     {StudentInfo.map((item) => (
@@ -100,7 +100,7 @@ function Profile() {
     
     
                 {/* Content panel 3 */}
-                <div className="profilepg-container">
+                <div className="page-base-container profilepg-container">
                     <h1>Student Address</h1>
                     <div className="profilepg-container-line-1"/>
                     {StudentAddress.map((item) => (
@@ -114,7 +114,7 @@ function Profile() {
     
     
                 {/* Content panel 4 */}
-                <div className="profilepg-container">
+                <div className="page-base-container profilepg-container">
                     <h1>Parent/Guardian Information</h1>
                     <div className="profilepg-container-line-1"/>
                     {Parent1Info.map((item) => (
@@ -142,12 +142,12 @@ function Profile() {
         return (
             <>
                 {/* Content panel 1 */}
-                <div className="profilepg-container profilepg-about">
+                <div className="page-base-container profilepg-about">
                     <h1>Cource</h1>
                     <h2>{Biotag}</h2>
                     <p>{LongBio}</p>
                     
-                    <div className="profilepg-container-line-3"/>
+                    <div className="profilepg-container-line-2"/>
                     {ProgramInfo.map((item) => (
                         <div className="profilepg-sub-container">
                             <h1>{item.Key}</h1>
@@ -159,7 +159,7 @@ function Profile() {
     
     
                 {/* Content panel 2 */}
-                <div className="profilepg-container">
+                <div className="page-base-container profilepg-container">
                     <h1>More Information</h1>
                     <div className="profilepg-container-line-1"/>
                     {StudentInfo.map((item) => (
@@ -173,7 +173,7 @@ function Profile() {
     
     
                 {/* Content panel 3 */}
-                <div className="profilepg-container">
+                <div className="page-base-container profilepg-container">
                     <h1>Student Address</h1>
                     <div className="profilepg-container-line-1"/>
                     {StudentAddress.map((item) => (
@@ -187,7 +187,7 @@ function Profile() {
     
     
                 {/* Content panel 4 */}
-                <div className="profilepg-container">
+                <div className="page-base-container profilepg-container">
                     <h1>Parent/Guardian Information</h1>
                     <div className="profilepg-container-line-1"/>
                     {Parent1Info.map((item) => (
@@ -224,12 +224,9 @@ function Profile() {
         
         return (
             <>
-
-
-                
                 {/* Content panel 2 */}
                 {UserDocuments.map((item) => (
-                    <div className="profilepg-container">
+                    <div className="page-base-container profilepg-container">
                         <h1>{item.Key}</h1>
                         <div className="profilepg-container-line-1"/>
 
@@ -248,44 +245,43 @@ function Profile() {
                         } </span>
                     </div>
                 ))}
-
-    
-
-
             </>
         );
     }        
 
+    
 
     return (
-        <div className="profilepg-page">
-            <div className="profilepg-container-0">
-                {/* Profile & navigation panel */}
-                <div className="profilepg-navbar">
-                    <img src={Profile} />
-                    <h1>{Name}</h1>
-                    <div className="profilepg-navbar-options">
-                        <h2 className={panel === "about" ? "active" : ""} onClick={() => setPanel("about")}>About</h2>
-                        <h2 className={panel === "cource" ? "active" : ""} onClick={() => setPanel("cource")}>Cource Progress</h2>
-                        <h2 className={panel === "documents" ? "active" : ""} onClick={() => setPanel("documents")}>Documents</h2>
+        <div className="page-container">
+            <div className="page-main-container">
+                <div className="profilepg-container-0">
+                    {/* Profile & navigation panel */}
+                    <div className="profilepg-navbar">
+                        <img src={Profile} />
+                        <h1>{Name}</h1>
+                        <div className="profilepg-navbar-options">
+                            <h2 className={panel === "about" ? "active" : ""} onClick={() => setPanel("about")}>About</h2>
+                            <h2 className={panel === "cource" ? "active" : ""} onClick={() => setPanel("cource")}>Cource Progress</h2>
+                            <h2 className={panel === "documents" ? "active" : ""} onClick={() => setPanel("documents")}>Documents</h2>
+                        </div>
+                        <span className="material-icons">more_vert</span>
                     </div>
-                    <span className="material-icons">more_vert</span>
                 </div>
-            </div>
 
-            {/* Content panel */}
-            <div className="profilepg-container-1">
-                
-                {panel === "about" // if panel = about then render About panel
-                ? <About />
+                {/* Content panel */}
+                <div className="page-parent-base-container">
+                    
+                    {panel === "about" // if panel = about then render About panel
+                    ? <About />
 
-                : panel === "cource"  // if panel = cource then render Cource panel
-                ? <Cource />
+                    : panel === "cource"  // if panel = cource then render Cource panel
+                    ? <Cource />
 
-                // else render Documents panel
-                : <Documents />
-                }
+                    // else render Documents panel
+                    : <Documents />
+                    }
 
+                </div>
             </div>
         </div>
     );
