@@ -25,6 +25,7 @@
     background: url('/Images/BG.png') no-repeat center center;
     background-size: cover; /* Cover the entire panel */
     border-radius: 10px;
+    overflow: hidden;
     border: 1px solid var(--panel-color);
 }
 
@@ -45,6 +46,7 @@
     margin-top: -60px;
     font-size: 32px;
     font-weight: bold;
+    white-space: nowrap;
     text-shadow: 0px 0px 20px black;
 }
 
@@ -119,10 +121,10 @@
 .profilepg-container a {
     position: absolute;
     display: flex;
-    bottom: 28px;
-    right: 50px;
+    bottom: 22px;
+    right: 45px;
     color: var(--text-tertiary-color);
-    font-size: 22px;
+    font-size: 20px;
 }
 
 .profilepg-container a:hover {
@@ -136,8 +138,8 @@
     width: fit-content;
     justify-self: center;
     margin-top: 15px;
-    margin-bottom: -20px;
-    font-size: 22px;
+    margin-bottom: -25px;
+    font-size: 20px;
     cursor: pointer;
 }
 
@@ -174,15 +176,17 @@
 
 .profilepg-sub-container h1 {
     margin: 0px;
-    font-size: 24px;
+    font-size: 20px;
     text-align: left;
 }
 
 .profilepg-sub-container h2 {
     margin: 0px;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: normal;
     text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .profilepg-about > h1{
@@ -195,10 +199,17 @@
     margin-bottom: 10px;
     line-height: 30px;
     font-size: 26px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .profilepg-about > p{
+    display: -webkit-box;
     color: var(--text-tertiary-color);
     text-align: justify;
     margin-bottom: 20px;
     font-size: 18px;
+    -webkit-line-clamp: 7; /* Set max number of lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }

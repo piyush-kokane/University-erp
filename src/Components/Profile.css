@@ -81,9 +81,13 @@
 }
 
 .profile-container p{
+    display: -webkit-box;
     font-size: 16px;
     color: var(--text-tertiary-color);
     margin-bottom: 0px;
+    -webkit-line-clamp: 5; /* Set max number of lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .profile-container a{

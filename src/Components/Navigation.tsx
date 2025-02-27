@@ -44,8 +44,10 @@ function Navigation() { // This ensures activemenuItem is "Dashboard" if not pro
 
   // if page url changes due to redirect, set actve menue item to accordingly
   useEffect(() => {
-    if(location.pathname === "/profile")
-      setActiveMenuItem("Profile");
+    menuItems.forEach(item => {
+      if(location.pathname === item.path)
+        setActiveMenuItem(item.name);
+    });
   }, [location.pathname]); // Runs only when location.pathname changes
 
 
