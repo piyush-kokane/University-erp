@@ -1,7 +1,11 @@
 import {useState} from "react";
+import { useNavigate } from "react-router-dom";
 import "./Dashboard.css"; // Add some custom styles if needed
 
 function DashboardPage() {
+  const navigate = useNavigate();
+  const isSmallScreen = window.innerWidth <= 1024;
+
   const term_attendance = [
     { subject: "Mathematics", attended: 85, total: 100 },
     { subject: "Physics", attended: 75, total: 100 },
@@ -185,7 +189,7 @@ function DashboardPage() {
         </div>
 
         <div className="page-container-line-2"/>
-        <a className="dashboard-footer-link">View full Attendance ➜</a>
+        <a className="dashboard-footer-link" onClick={() => navigate("/attendance")}>View full Attendance ➜</a>
       </div>
     );
   }
@@ -238,7 +242,7 @@ function DashboardPage() {
         </div>
 
         <div className="page-container-line-2"/>
-        <a className="dashboard-footer-link">All Circulars ➜</a>
+        <a className="dashboard-footer-link" onClick={() => navigate("/circular")}>All Circulars ➜</a>
       </div>
     );
   }
@@ -246,7 +250,7 @@ function DashboardPage() {
   function Timetable() {
     return (
       <div className="page-base-container">
-        <h1 className="attendance-title">Circular</h1>
+        <h1 className="attendance-title">Time Table</h1>
         <div className="page-container-line-2"/>
 
         <div className="timetable-container">
@@ -274,7 +278,7 @@ function DashboardPage() {
         </div>
 
         <div className="page-container-line-2"/>
-        <a className="dashboard-footer-link">Full Time-Table ➜</a>
+        <a className="dashboard-footer-link" onClick={() => navigate("/timetable")}>Full Time-Table ➜</a>
       </div>
     );
   }
@@ -286,10 +290,24 @@ function DashboardPage() {
       <div className="page-container">
         <div className="page-main-container">
           <div className="page-parent-base-container">
-            <Attendance />
-            <Circular />
-            <Summary />
-            <Timetable />
+            { isSmallScreen
+            ?
+              // if small screen following layout (1-column layout)
+              <>
+                <Summary />
+                <Attendance />
+                <Timetable />
+                <Circular />
+              </>
+            : 
+              // if large screen following layout (2-column layout)
+              <>
+                <Attendance />
+                <Circular />
+                <Summary />
+                <Timetable />
+              </>
+            }
           </div>
         </div>
       </div>

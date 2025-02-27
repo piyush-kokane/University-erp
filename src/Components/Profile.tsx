@@ -36,7 +36,7 @@ function Profile({Close} : ProfileProps){
                     <h2>{Branch}</h2>
                     <div />
                     <p>{ShortBio}</p>
-                    <a onClick={() => navigate("/profile")}>View Profile</a>
+                    <a onClick={() => {navigate("/profile"); handleClose(); }}>View Profile</a>
                 </div>
                 
                 

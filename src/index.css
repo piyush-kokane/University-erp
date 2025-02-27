@@ -183,6 +183,7 @@
         width: 100%;
         column-count: 2; 
         column-gap: 20px; 
+        overflow: hidden;
     }
 
     .page-base-container {
