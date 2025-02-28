@@ -9,7 +9,7 @@ interface NotificationsProps {
 
 function Notifications({Close} : NotificationsProps){
     const notifications = [
-        { title: "Dashboard", message: "dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard ", date: "29/3/25", time: "09:30 PM" },
+        { title: "Dashboard", message: "dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard ", date: "29/3/25", time: "09:30 PM" },
         { title: "Dashboard", message: "dashboard", date: "29/3/25", time: "09:30 PM" },
         { title: "Dashboard", message: "dashboard", date: "29/3/25", time: "09:30 PM" },
         { title: "Dashboard", message: "dashboard", date: "29/3/25", time: "09:30 PM" },
@@ -18,9 +18,23 @@ function Notifications({Close} : NotificationsProps){
         { title: "Dashboard", message: "dashboard", date: "29/3/25", time: "09:30 PM" },
         { title: "Dashboard", message: "dashboard", date: "29/3/25", time: "09:30 PM" },
         { title: "Dashboard", message: "dashboard", date: "29/3/25", time: "09:30 PM" },
-        { title: "Dashboard", message: "dashboard", date: "29/3/25", time: "09:30 PM" },
+        { title: "Dashboard", message: "dashboard message", date: "29/3/25", time: "09:30 PM" },
     ];
 
+    const circular = [
+        { title: "Dashboard", message: "circular message", date: "29/3/25", time: "09:30 PM" },
+        { title: "Dashboard", message: "circular message", date: "29/3/25", time: "09:30 PM" },
+        { title: "Dashboard", message: "circular message", date: "29/3/25", time: "09:30 PM" },
+        { title: "Dashboard", message: "circular message", date: "29/3/25", time: "09:30 PM" },
+        { title: "Dashboard", message: "circular message", date: "29/3/25", time: "09:30 PM" },
+        { title: "Dashboard", message: "circular message", date: "29/3/25", time: "09:30 PM" },
+        { title: "Dashboard", message: "circular message", date: "29/3/25", time: "09:30 PM" },
+        { title: "Dashboard", message: "circular message", date: "29/3/25", time: "09:30 PM" },
+        { title: "Dashboard", message: "circular message", date: "29/3/25", time: "09:30 PM" },
+        { title: "Dashboard", message: "circular message", date: "29/3/25", time: "09:30 PM" },
+    ];
+
+    const allNotifications = notifications.concat(circular);
 
     const [closing, setClosing] = useState(false);
 
@@ -43,7 +57,7 @@ function Notifications({Close} : NotificationsProps){
                 </div>
                 
                 <div className="notifications-container">
-                    {notifications.map((item) => (
+                    {allNotifications.map((item) => (
                         <div  className={"notifications-item"} >
                             <h1>{item.title}</h1>
                             <p>{item.message}</p>

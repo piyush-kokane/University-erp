@@ -4,7 +4,6 @@ import "./Navigation.css";
 import Settings from "./Settings";
 import Notifications from "./Notifications";
 import Profile from "./Profile";
-import { rectBounce } from "tsparticles-engine";
 
 
 
