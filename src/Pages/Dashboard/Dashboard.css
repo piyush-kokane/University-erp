@@ -181,11 +181,16 @@
 }
 
 .circular-item p{
+  display: -webkit-box;
   font-size: 18px;
   margin-bottom: 42px;
   text-align: justify;
   color: var(--text-primary-color);
   opacity: 0.8;
+  -webkit-line-clamp: 5; /* Set max number of lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
 }
 
 .circular-item h2{
