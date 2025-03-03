@@ -1,6 +1,7 @@
 import {useState} from "react";
 import { useNavigate } from "react-router-dom";
-import "./Dashboard.css"; // Add some custom styles if needed
+import "./Dashboard.css";
+import Footer from "../../Components/Footer/Footer";
 
 function DashboardPage() {
   const navigate = useNavigate();
@@ -148,8 +149,8 @@ function DashboardPage() {
 
     return (
       <div className="page-base-container">
-        <h1 className="attendance-title">
-          <span className="material-icons" onClick={handleSwap}>cached</span>
+        <h1 className="attendance-title" onClick={handleSwap}>
+          <span className="material-icons">cached</span>
           {attendanceType}
         </h1>
         <div className="page-container-line-2"/>
@@ -310,6 +311,7 @@ function DashboardPage() {
             }
           </div>
         </div>
+        <Footer />
       </div>
     </>
   );

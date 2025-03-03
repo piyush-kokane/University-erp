@@ -15,25 +15,27 @@
 }
 
 .profile-overlay{
+    display: flex;
     position: fixed;
     width: 100%;
     height: 100%;
+    padding: 65px 10px 0px 5px;
     z-index: 9998; /* One index less then Alert */
     background: rgba(0, 0, 0, 0.5);
+    justify-content: right;
 }
 
 .profile-card{
-    position: absolute;
-    top: 65px;
-    right: 10px;
+    position: relative;
     background: url('/Images/BG.png') no-repeat center center;
     background-size: cover; /* Cover the entire panel */
     border-radius: 9px;
     border: 1px solid var(--panel-border-color);
     width: 100%;
+    max-width: 350px;
+    height: fit-content;
     padding-top: 100px;
     padding-bottom: 0px;
-    max-width: 350px;
 }
 
 .profile-container {
@@ -52,11 +54,11 @@
 .profile-container img{
     transform: translateY(-50%);
     margin-bottom: -50px;
-    width: 120px; /* Adjust size as needed */
+    width: 120px;
     height: 120px;
-    border-radius: 50%; /* Makes it a perfect circle */
-    object-fit: cover; /* Ensures the image fills the circle */
-    border: 5px solid var(--profile-img-border-color); /* Optional: Border */
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--profile-img-border-color);
 }
 
 .profile-container h1{

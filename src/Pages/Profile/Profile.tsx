@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Profile.css";
+import Footer from "../../Components/Footer/Footer";
 
 
 
@@ -7,7 +8,7 @@ function Profile() {
     const [panel, setPanel] = useState("about");
 
     let Profile="/User_Data/Profile.jpg";
-    let Name="Piyush Jayant Kokane";
+    let FullName="Piyush Jayant Kokane";
     let LongBio="I am a student at MIT-WPU with a strong technical background in web development and software engineering. My expertise includes React, TypeScript, Node.js, PHP, MySQL, MongoDB, Tailwind CSS, HTML, CSS, JavaScript, WordPress, and Figma. I have experience working on projects like university ERP systems, online shopping platforms, and productivity apps, focusing on creating efficient and user-friendly applications.";
     let Biotag="I am proficient programmer";
 
@@ -258,7 +259,7 @@ function Profile() {
                     {/* Profile & navigation panel */}
                     <div className="profilepg-navbar">
                         <img src={Profile} />
-                        <h1>{Name}</h1>
+                        <h1>{FullName}</h1>
                         <div className="profilepg-navbar-options">
                             <h2 className={panel === "about" ? "active" : ""} onClick={() => setPanel("about")}>About</h2>
                             <h2 className={panel === "cource" ? "active" : ""} onClick={() => setPanel("cource")}>Cource Progress</h2>
@@ -283,6 +284,7 @@ function Profile() {
 
                 </div>
             </div>
+            <Footer />
         </div>
     );
 }

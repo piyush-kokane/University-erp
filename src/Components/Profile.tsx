@@ -13,7 +13,7 @@ function Profile({Close} : ProfileProps){
     const [closing, setClosing] = useState(false);
 
     let Profile="/User_Data/Profile.jpg";
-    let Name="Piyush Jayant Kokane";
+    let FullName="Piyush Jayant Kokane";
     let PRN="1132230781";
     let Branch="SY. B.Sc. CS.";
     let ShortBio="I study at MIT-WPU, and I have technical skills in React, TypeScript, Node.js, PHP, MySQL, MongoDB, Tailwind CSS, HTML, CSS, JavaScript.";
@@ -31,7 +31,7 @@ function Profile({Close} : ProfileProps){
 
                 <div className="profile-container">
                     <img src={Profile} />
-                    <h1>{Name}</h1>
+                    <h1>{FullName}</h1>
                     <h2>PRN: {PRN}</h2>
                     <h2>{Branch}</h2>
                     <div />
