@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./Navigation.css";
 import Settings from "./Settings";
@@ -21,7 +21,7 @@ function Navigation() { // This ensures activemenuItem is "Dashboard" if not pro
 
 
   const [profileOpen, setProfileOpen] = useState(false);
-  const toggleProfile = () => setProfileOpen(true);
+  const toggleProfile  = () => setProfileOpen(true);
 
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const toggleNotifications = () => setNotificationsOpen(true);

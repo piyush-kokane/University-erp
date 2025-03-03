@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
-import "./App.css";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation  } from "react-router-dom";
+import "./App.css";
 
-import BG3 from "./BG/BG";
+import BG from "./BG/BG";
 import Navigation from "./Components/Navigation";
 import L_Navigation from "./Components/L_Navigation";
 
 import Alert from "./Components/Alert";
+import AlertSystem from "./Components/Alert/AlertSystem";
 
 import Page_Not_Found from "./Pages/Page_Not_Found/Page_Not_Found";
 import _Landing from "./Pages/_Landing/Landing";
@@ -31,8 +32,6 @@ function Layout() {
 
   const [onUnknown, setonUnknown] = useState(false); // if user is on unknown page set onUnknown to true
   const [ShowAlert, setShowAlert] = useState(false);
-
-  console.log(ShowAlert)
 
   // Check if user is loggedin
   function CheckLogin({ element }: { element: React.ReactElement }) {
@@ -67,7 +66,7 @@ function Layout() {
       {onLanding && <><L_Navigation /></>}
 
       {/* Show Navigation & BG for Protected Pages only */}
-      {(!onLanding && !onLogin && !onPolicy && !onUnknown) && <><Navigation /><BG3 /></>}
+      {(!onLanding && !onLogin && !onPolicy && !onUnknown) && <><Navigation /><BG /></>}
 
       <Routes>
         {/* Landing page */}
@@ -101,17 +100,20 @@ window.onload = function() {
 };
 
 
-// Force refress tab on back pressed
+/*/ Force refress tab on back pressed
 window.addEventListener("popstate", () => {
   window.location.reload();
 });
-
+*/
 
 function App() { 
   return (
-    <Router>
-      <Layout />
-    </Router>
+    <>
+      <AlertSystem />
+      <Router>
+        <Layout />
+      </Router>
+    </>
   );
 }
 

@@ -1,0 +1,31 @@
+.footer {   
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: none;
+    color: var(--text-tertiary-color);
+    padding: 20px 20px 40px 20px;
+}
+
+.footer h1,h2 {
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0px;
+    width: fit-content;
+    align-self: center;
+}
+
+.footer h2:hover {
+    color: rgb(50, 150, 255);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.footer span {
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+
+
+
