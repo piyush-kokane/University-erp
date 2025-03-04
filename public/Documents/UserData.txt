@@ -1,0 +1,93 @@
+### User Data to store ###
+
+
+
+*** Local Storage ***
+"loggedIn"
+"theme"
+
+
+
+
+
+*** Database ***
+
+Profile
+Banner
+
+FullName
+FirstName
+LastName
+
+Biotag
+LongBio
+ShortBio
+
+creditsEarned
+creditsRemaining
+
+term_attendance[]
+week_attendance[]
+TotalAttendancePercentage
+
+circular[]
+
+weeklySchedule[][]
+
+UserDocuments = [
+    { 10th Marksheet },
+    { 12th Marksheet },
+    { Leaving Certificate },
+    { Signature },
+]
+
+ProgramInfo = [
+    { PRN },
+    { Branch },
+    { Term },
+]
+
+
+StudentInfo = [
+    { Gender },
+    { Date Of Birth },
+    { Blood Group },
+    { gmail },
+    { Phone No },
+    { Emergency No },
+    { Aadhar No },
+    { Admission Type },
+    { Admission Status },
+    { Admission Date },
+]
+
+StudentAddress = [
+    { Permanent Address },
+    { Current Address },
+    { Area },
+    { Land Mark },
+    { City },
+    { Pincode },
+    { State },
+    { Country },
+]
+
+Parent1Info = [
+    { Guardian Type },
+    { gmail },
+    { Contact },
+    { Profession },
+]
+
+Parent2Info = [
+    { Guardian Type },
+    { gmail },
+    { Contact },
+    { Profession },
+]
+
+
+
+
+
+
