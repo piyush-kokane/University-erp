@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./Navigation.css";
-import Settings from "./Settings";
-import Notifications from "./Notifications";
-import Profile from "./Profile";
+import Settings from "../Settings/Settings";
+import Notifications from "../Notifications/Notifications";
+import Profile from "../Profile/Profile";
 
 
 
