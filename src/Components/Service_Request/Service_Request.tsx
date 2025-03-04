@@ -1,30 +1,27 @@
 import { useState } from "react";
 import "./Service_Request.css"
-import Alert from "../Alert";
 
 interface ServiceRequestProps {
     Close: () => void;
 }
 
-
 function ServiceRequest({Close} : ServiceRequestProps){
-    let FirstName="Piyush";
-    let LastName="Kokane";
-    let gmail="google@gmai.com";
+    const FirstName="Piyush";
+    const LastName="Kokane";
+    const gmail="google@gmai.com";
 
     const [issue, setIssue] = useState("");
-    const [files, setFiles] = useState<File[]>([]);
+    const [files, setFiles] = useState<File[]>([]); // Array of files
 
-    const [ShowAlert, setShowAlert] = useState(false);
     const [closing, setClosing] = useState(false);
 
     function handleClose() {
         setClosing(true); // Start fade-out animation
-        setTimeout(() => Close(), 300); // delay, Matches animation duration (0.3s) // Call close function after animation
+        setTimeout(Close, 300); // delay, Matches animation duration (0.3s) // Call close function after animation
     }
 
     function handleSubmit(e: React.FormEvent) {
-        e.preventDefault();
+        e.preventDefault(); // prevents refresh of tab
         console.log("Submitting:", { issue, files });
     }
 
