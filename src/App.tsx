@@ -3,10 +3,9 @@ import { BrowserRouter as Router, Routes, Route, Navigate, useLocation  } from "
 import "./App.css";
 
 import BG from "./BG/BG";
-import Navigation from "./Components/Navigation";
+import Navigation from "./Components/Navigation/Navigation";
 import L_Navigation from "./Components/L_Navigation";
 
-import Alert from "./Components/Alert";
 import AlertSystem from "./Components/Alert/AlertSystem";
 
 import Page_Not_Found from "./Pages/Page_Not_Found/Page_Not_Found";
@@ -31,18 +30,14 @@ function Layout() {
                    location.pathname == "/terms-&-conditions";
 
   const [onUnknown, setonUnknown] = useState(false); // if user is on unknown page set onUnknown to true
-  const [ShowAlert, setShowAlert] = useState(false);
 
   // Check if user is loggedin
   function CheckLogin({ element }: { element: React.ReactElement }) {
     const isLoggedIn = localStorage.getItem("loggedIn") === "true"; // Read from localStorage
   
-    // Show alert only after render (needed to use useEffect else warning)
-    useEffect(() => {
-      if (!isLoggedIn) {
-        setShowAlert(true);
-      }
-    }, [isLoggedIn]); // Runs only when isLoggedIn changes
+    if (!isLoggedIn) {
+      {/* showAlert("This is an alert!", "warning", 5) */}
+    }
 
     // If not loggedin redirect to login page and show alert
     if (!isLoggedIn) {
@@ -59,9 +54,6 @@ function Layout() {
   
   return (
     <>
-      {/* Show Alert_box if ShowAlert=true */}
-      {ShowAlert && <Alert message="Please login first" Type="warning" Close={() => setShowAlert(false)} />}
-
       {/* Show Navigation & BG for Landing Page only */}
       {onLanding && <><L_Navigation /></>}
 
