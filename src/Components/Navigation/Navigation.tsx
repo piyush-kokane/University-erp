@@ -8,6 +8,10 @@ import Profile from "../Profile/Profile";
 
 
 function Navigation() { // This ensures activemenuItem is "Dashboard" if not provided.
+  const isLoggedIn = localStorage.getItem("loggedIn") === "true";
+
+  const Profilepic="/User_Data/Profile.jpg";
+
   const menuItems = [
     { name: "Dashboard", icon: "dashboard", path: "/dashboard" },
     { name: "Profile", icon: "person", path: "/profile" },
@@ -112,7 +116,10 @@ function Navigation() { // This ensures activemenuItem is "Dashboard" if not pro
               {isSmallScreen && <span className="material-icons navbar-search-btn" onClick={enableSearchbar}>search</span>}
               <span className="material-icons navbar-btn" onClick={toggleNotifications}>notifications</span>
               <span className="material-icons navbar-btn" onClick={toggleSettings}>settings</span>
-              <span className="material-icons navbar-profile-btn" onClick={toggleProfile}>person</span>
+              { isLoggedIn 
+              ? <img className="navbar-profile-btn" src={Profilepic} onClick={toggleProfile}/>
+              : <span className="material-icons navbar-login-btn" onClick={() =>navigate("/login", { state: { from: location.pathname } })}>person</span>
+              }
             </div>
           </>
         }

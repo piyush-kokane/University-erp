@@ -1,11 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./Navigation/Navigation.css";
 import Settings from "./Settings/Settings";
 import Notifications from "./Notifications/Notifications";
 import Profile from "./Profile/Profile";
 
-function L_Navigation() {
+
+
+function L_Navigation() { // This ensures activemenuItem is "Dashboard" if not provided.
+  const isLoggedIn = localStorage.getItem("loggedIn") === "true";
+
+  const Profilepic="/User_Data/Profile.jpg";
+
   const menuItems = [
     { name: "Dashboard", icon: "dashboard", path: "/dashboard" },
     { name: "Profile", icon: "person", path: "/profile" },
@@ -17,9 +23,24 @@ function L_Navigation() {
     { name: "Circulars", icon: "campaign", path: "/circulars" },
   ];
 
+  // Check for windows resize and set isSmallScreen accordingly, no practical use, for better performance remove useEffect
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 600);
+  useEffect(() => {
+    function handleResize() {
+        setIsSmallScreen(window.innerWidth <= 600);
+    }
+
+    window.addEventListener("resize", handleResize); // Listen for resize
+    return () => window.removeEventListener("resize", handleResize); // Cleanup on unmount
+  }, []);
+
+
+  const [Searchbar, setSearchbar] = useState(false); // if isSmallScreen hide searchbar by defauly
+  const enableSearchbar  = () => setSearchbar(true);
+  const disableSearchbar  = () => setSearchbar(false);
 
   const [profileOpen, setProfileOpen] = useState(false);
-  const toggleProfile = () => setProfileOpen(true);
+  const toggleProfile  = () => setProfileOpen(true);
 
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const toggleNotifications = () => setNotificationsOpen(true);
@@ -38,16 +59,28 @@ function L_Navigation() {
   const navigate = useNavigate();
   const location = useLocation();
 
+
+  // if page url changes due to redirect, set actve menue item to accordingly
+  useEffect(() => {
+    menuItems.forEach(item => {
+      if(location.pathname === item.path)
+        setActiveMenuItem(item.name);
+    });
+  }, [location.pathname]); // Runs only when location.pathname changes
+
+
   function handleLogout(){
     console.log("Logging out...");
     localStorage.setItem("loggedIn", "false"); // Set loggedIn to false
     navigate("/login", { state: { from: location.pathname } }) // navigate to login page & set state.from to url of current page
   }
+
   
   function handleMenuClick(itemName: string, itemPath: string){
     setActiveMenuItem(itemName); // Update active tab
     navigate(itemPath); // Navigate to the page
   };
+
 
   return (
     <>
@@ -65,43 +98,49 @@ function L_Navigation() {
 
       {/* Navbar */}
       <div className="Nav-Bar">
-        <div className="navbar-container">
-          {/* Left column (30%) */}
-          <div className="navbar-left">
-            <button className="menu-btn" onClick={toggleSidebar}>
-              <div className="menu-line"></div>
-              <div className="menu-line"></div>
-              <div className="menu-line"></div>
-            </button>
-            <h1 className="navbar-title">{activeMenuItem}</h1>
-          </div>
+        {(!Searchbar || !isSmallScreen) &&
+          <>
+            {/* Left container */}
+            <div className="navbar-left-container">
+              <button className="menu-btn" onClick={toggleSidebar}>
+                <div className="menu-line"></div>
+                <div className="menu-line"></div>
+                <div className="menu-line"></div>
+              </button>
+              <h1 className="navbar-title">{activeMenuItem}</h1>
+            </div>
 
-          {/* Middle column (40%) */}
-          <div className="navbar-middle">
-            <form className="search-container">
-              <input
-                type="text"
-                placeholder="Search..."
-                className="search-input"
-                value={searchValue}
-                onChange={(e) => setSearchValue(e.target.value)}
-              />
-
-              {searchValue 
-                ? <span className="material-icons search-clear-btn" onClick={clearSearch}>close</span> // if searchValue = true then show clear button
-                : <span className="material-icons search-icon">search</span> // else show search icon
+            {/* Right container */}
+            <div className="navbar-right-container">
+              <span className="navbar-link" onClick={() =>navigate("/dashboard")}>Student Portal</span>
+              {isSmallScreen && <span className="material-icons navbar-search-btn" onClick={enableSearchbar}>search</span>}
+              <span className="material-icons navbar-btn" onClick={toggleNotifications}>notifications</span>
+              <span className="material-icons navbar-btn" onClick={toggleSettings}>settings</span>
+              { isLoggedIn 
+              ? <img className="navbar-profile-btn" src={Profilepic} onClick={toggleProfile}/>
+              : <span className="material-icons navbar-login-btn" onClick={() =>navigate("/login", { state: { from: location.pathname } })}>person</span>
               }
-            </form>
-          </div>
+            </div>
+          </>
+        }
 
-          {/* Right column (30%) */}
-          <div className="navbar-right">
-            <span className="navbar-link" onClick={() =>navigate("/login")}>Student Portal</span>
-            <span className="material-icons navbar-btn" onClick={toggleNotifications}>notifications</span>
-            <span className="material-icons navbar-btn" onClick={toggleSettings}>settings</span>
-            <span className="material-icons profile-btn" onClick={toggleProfile}>person</span>
-          </div>
-        </div>
+        {/* Search container */}
+        {(Searchbar || !isSmallScreen) &&
+          <form className="navbar-search-container">
+            <input
+              type="text"
+              placeholder="Search..."
+              className="search-input"
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+            />
+
+            {searchValue 
+              ? <span className="material-icons search-clear-btn" onClick={() => {clearSearch(), disableSearchbar()}}>close</span> // if searchValue = true then show clear button
+              : <span className="material-icons search-icon">search</span> // else show search icon
+            }
+          </form>
+        }
       </div>
 
       {/* Sidebar */}
