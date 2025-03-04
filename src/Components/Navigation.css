@@ -1,27 +1,3 @@
-@import "tailwindcss";
-
-/*
-.Nav-Bar {
-    @apply 
-    bg-[rgb(0,0,10)]
-    flex 
-    items-center 
-    p-[0px_12px]
-    h-[55px];
-}
-*/
-
-.Nav-Bar {
-    position: fixed;
-    background: var(--navbar-color);
-    display: flex;
-    align-items: center;
-    padding: 0px 12px !important;
-    height: 55px;
-    width: 100%;
-    z-index: 1000;
-}
-
 .Navbar-overlay {
     position: fixed;
     top: 0;
@@ -32,7 +8,53 @@
     z-index: 1000;
 }
 
-  .navbar-title{
+.Nav-Bar {
+    position: fixed;
+    background: var(--navbar-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    height: 55px;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar-container-left {
+    position: absolute;
+    left: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-container-middle {
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    z-index: 9999;
+}
+
+.navbar-container-right {
+    position: absolute;
+    right: 12px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px
+}
+
+@media (max-width: 768px) { /* For small screens */
+    .navbar-container-middle {
+        width: 30%;
+    }
+}
+@media (max-width: 600px) { /* For extra small screens */
+    .navbar-container-middle {
+        width: 100%;
+    }
+}
+
+.navbar-title{
     font-size: 20px; /* Equivalent to text-xl in Tailwind */
     font-weight: bold;
     color: var(--navbar-text-color);
@@ -41,56 +63,6 @@
     white-space: nowrap;
   }
   
-  .navbar-container {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    align-items: center;
-  }
-  
-  .navbar-left {
-    width: 30%;
-    display: flex;
-    align-items: center;
-  }
-  
-  .navbar-middle {
-    width: 40%;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .navbar-right {
-    width: 30%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 15px
-  }
-
-@media (max-width: 768px) { /* For small screens */
-    .navbar-left {
-        width: 35%;
-    }
-    .navbar-middle {
-        width: 30%;
-    }
-    .navbar-right {
-        width: 35%;
-    }
-}
-@media (max-width: 580px) { /* For extra small screens */
-    .navbar-left {
-        width: 50%;
-    }
-    .navbar-middle {
-        visibility: hidden;
-    }
-    .navbar-right {
-        width: 50%;
-    }
-}
-
 .menu-btn {
     border: none !important;
     background: none !important;
@@ -169,17 +141,12 @@
     vertical-align: middle;
 }
 
-.profile-btn {
-    width: 30px !important;
-    height: 30px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.navbar-profile-btn {
     background: var(--navbar-text-color);
     color: var(--navbar-color);
-    border: none !important;
+    padding: 6px;
     font-size: 20px;
+    border-radius: 50%;
     cursor: pointer;
 }
 
@@ -187,10 +154,13 @@
     background: var(--navbar-hover-color);
 }
 
+.navbar-search-btn {
+    color: var(--navbar-text-color);
+    font-size: 20px;
+    cursor: pointer;
+}
+
 .navbar-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     color: var(--navbar-text-color);
     font-size: 20px;
     cursor: pointer;
@@ -204,7 +174,7 @@
     color: var(--navbar-text-color);
     text-decoration: none;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: normal;
     cursor: pointer;
     white-space: nowrap;
 }
