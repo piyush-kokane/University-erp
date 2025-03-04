@@ -19,6 +19,21 @@ function Navigation() { // This ensures activemenuItem is "Dashboard" if not pro
     { name: "Circulars", icon: "campaign", path: "/circulars" },
   ];
 
+  // Check for windows resize and set isSmallScreen accordingly, no practical use, for better performance remove useEffect
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 600);
+  useEffect(() => {
+    function handleResize() {
+        setIsSmallScreen(window.innerWidth <= 600);
+    }
+
+    window.addEventListener("resize", handleResize); // Listen for resize
+    return () => window.removeEventListener("resize", handleResize); // Cleanup on unmount
+  }, []);
+
+
+  const [Searchbar, setSearchbar] = useState(false); // if isSmallScreen hide searchbar by defauly
+  const enableSearchbar  = () => setSearchbar(true);
+  const disableSearchbar  = () => setSearchbar(false);
 
   const [profileOpen, setProfileOpen] = useState(false);
   const toggleProfile  = () => setProfileOpen(true);
@@ -79,19 +94,32 @@ function Navigation() { // This ensures activemenuItem is "Dashboard" if not pro
 
       {/* Navbar */}
       <div className="Nav-Bar">
-        <div className="navbar-container">
-          {/* Left column */}
-          <div className="navbar-left">
-            <button className="menu-btn" onClick={toggleSidebar}>
-              <div className="menu-line"></div>
-              <div className="menu-line"></div>
-              <div className="menu-line"></div>
-            </button>
-            <h1 className="navbar-title">{activeMenuItem}</h1>
-          </div>
+        {(!Searchbar || !isSmallScreen) &&
+          <>
+            {/* Left container */}
+            <div className="navbar-container-left">
+              <button className="menu-btn" onClick={toggleSidebar}>
+                <div className="menu-line"></div>
+                <div className="menu-line"></div>
+                <div className="menu-line"></div>
+              </button>
+              <h1 className="navbar-title">{activeMenuItem}</h1>
+            </div>
 
-          {/* Middle column */}
-          <div className="navbar-middle">
+            {/* Right container */}
+            <div className="navbar-container-right">
+              <span className="navbar-link" onClick={() =>navigate("/e-library")}>E-Library</span>
+              {isSmallScreen && <span className="material-icons navbar-search-btn" onClick={enableSearchbar}>search</span>}
+              <span className="material-icons navbar-btn" onClick={toggleNotifications}>notifications</span>
+              <span className="material-icons navbar-btn" onClick={toggleSettings}>settings</span>
+              <span className="material-icons navbar-profile-btn" onClick={toggleProfile}>person</span>
+            </div>
+          </>
+        }
+
+        {/* Search container */}
+        {(Searchbar || !isSmallScreen) &&
+          <div className="navbar-container-middle">
             <form className="search-container">
               <input
                 type="text"
@@ -102,20 +130,12 @@ function Navigation() { // This ensures activemenuItem is "Dashboard" if not pro
               />
 
               {searchValue 
-                ? <span className="material-icons search-clear-btn" onClick={clearSearch}>close</span> // if searchValue = true then show clear button
+                ? <span className="material-icons search-clear-btn" onClick={() => {clearSearch(), disableSearchbar()}}>close</span> // if searchValue = true then show clear button
                 : <span className="material-icons search-icon">search</span> // else show search icon
               }
             </form>
           </div>
-
-          {/* Right column */}
-          <div className="navbar-right">
-            <span className="navbar-link" onClick={() =>navigate("/e-library")}>E-Library</span>
-            <span className="material-icons navbar-btn" onClick={toggleNotifications}>notifications</span>
-            <span className="material-icons navbar-btn" onClick={toggleSettings}>settings</span>
-            <span className="material-icons profile-btn" onClick={toggleProfile}>person</span>
-          </div>
-        </div>
+        }
       </div>
 
       {/* Sidebar */}
