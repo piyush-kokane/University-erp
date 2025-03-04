@@ -8,7 +8,7 @@ interface AlertProps {
     Close: () => void;
 }
 
-export function Alert({ message, Type, TimeOut, Close }: AlertProps) {
+export default function Alert({ message, Type, TimeOut, Close }: AlertProps) {
     const icon = (Type === "success" ? "check_circle" : Type);
 
     const [isClosing, setIsClosing] = useState(false);        

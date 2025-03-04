@@ -3,6 +3,7 @@
 
 .login-page {
     @apply 
+    relative
     h-screen
     bg-[url('/Images/login-bg.png')]
     bg-cover

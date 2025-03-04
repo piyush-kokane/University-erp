@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Alert } from "./Alert";
+import  Alert from "./Alert";
 import "./Alert.css";
 
 
@@ -18,7 +18,7 @@ export default function AlertSystem() {
 
     return (
         <div>
-            <button onClick={() => showAlert("This is an alert!", "warning", 5)}>Show Alert</button>
+            {/*<button onClick={() => showAlert("This is an alert!", "warning", 5)}>Show Alert</button>*/}
             
             <div className="alert-container">
                 {alerts.map(alert => (
