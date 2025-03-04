@@ -20,38 +20,11 @@
     z-index: 1000;
 }
 
-.navbar-container-left {
+.navbar-left-container {
     position: absolute;
     left: 12px;
     display: flex;
     align-items: center;
-}
-
-.navbar-container-middle {
-    display: flex;
-    justify-content: center;
-    width: 40%;
-    z-index: 9999;
-}
-
-.navbar-container-right {
-    position: absolute;
-    right: 12px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 15px
-}
-
-@media (max-width: 768px) { /* For small screens */
-    .navbar-container-middle {
-        width: 30%;
-    }
-}
-@media (max-width: 600px) { /* For extra small screens */
-    .navbar-container-middle {
-        width: 100%;
-    }
 }
 
 .navbar-title{
@@ -89,10 +62,23 @@
     width: 24px !important;
 }
 
-.search-container {
+.navbar-search-container {
     position: relative;
-    width: 100%;
+    display: flex;
+    width: 40%;
     height: 38px;
+    z-index: 9999;
+}
+
+@media (max-width: 768px) { /* For small screens */
+    .navbar-search-container {
+        width: 30%;
+    }
+}
+@media (max-width: 600px) { /* For extra small screens */
+    .navbar-search-container {
+        width: 100%;
+    }
 }
 
 .search-input {
@@ -139,6 +125,15 @@
 .material-icons {
     font-size: 20px;
     vertical-align: middle;
+}
+
+.navbar-right-container {
+    position: absolute;
+    right: 12px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px
 }
 
 .navbar-profile-btn {

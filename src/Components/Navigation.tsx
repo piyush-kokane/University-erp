@@ -97,7 +97,7 @@ function Navigation() { // This ensures activemenuItem is "Dashboard" if not pro
         {(!Searchbar || !isSmallScreen) &&
           <>
             {/* Left container */}
-            <div className="navbar-container-left">
+            <div className="navbar-left-container">
               <button className="menu-btn" onClick={toggleSidebar}>
                 <div className="menu-line"></div>
                 <div className="menu-line"></div>
@@ -107,7 +107,7 @@ function Navigation() { // This ensures activemenuItem is "Dashboard" if not pro
             </div>
 
             {/* Right container */}
-            <div className="navbar-container-right">
+            <div className="navbar-right-container">
               <span className="navbar-link" onClick={() =>navigate("/e-library")}>E-Library</span>
               {isSmallScreen && <span className="material-icons navbar-search-btn" onClick={enableSearchbar}>search</span>}
               <span className="material-icons navbar-btn" onClick={toggleNotifications}>notifications</span>
@@ -119,22 +119,20 @@ function Navigation() { // This ensures activemenuItem is "Dashboard" if not pro
 
         {/* Search container */}
         {(Searchbar || !isSmallScreen) &&
-          <div className="navbar-container-middle">
-            <form className="search-container">
-              <input
-                type="text"
-                placeholder="Search..."
-                className="search-input"
-                value={searchValue}
-                onChange={(e) => setSearchValue(e.target.value)}
-              />
+          <form className="navbar-search-container">
+            <input
+              type="text"
+              placeholder="Search..."
+              className="search-input"
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+            />
 
-              {searchValue 
-                ? <span className="material-icons search-clear-btn" onClick={() => {clearSearch(), disableSearchbar()}}>close</span> // if searchValue = true then show clear button
-                : <span className="material-icons search-icon">search</span> // else show search icon
-              }
-            </form>
-          </div>
+            {searchValue 
+              ? <span className="material-icons search-clear-btn" onClick={() => {clearSearch(), disableSearchbar()}}>close</span> // if searchValue = true then show clear button
+              : <span className="material-icons search-icon">search</span> // else show search icon
+            }
+          </form>
         }
       </div>
 
