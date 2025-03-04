@@ -131,12 +131,22 @@
     position: absolute;
     right: 12px;
     display: flex;
-    justify-content: flex-end;
     align-items: center;
     gap: 15px
 }
 
 .navbar-profile-btn {
+    background: var(--navbar-text-color);
+    object-fit: cover;
+    padding: 2px;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    margin: 0px;
+}
+
+.navbar-login-btn {
     background: var(--navbar-text-color);
     color: var(--navbar-color);
     padding: 6px;
