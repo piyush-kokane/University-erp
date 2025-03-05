@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserData  } from "../../Context/UserDataContext";
 import "./Notifications.css"
 
 
@@ -8,31 +9,10 @@ interface NotificationsProps {
 
 
 function Notifications({Close} : NotificationsProps){
-    const notifications = [
-        { title: "Dashboard", message: "dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard ", date: "29/3/25", time: "09:30 PM" },
-        { title: "Dashboard", message: "dashboard", date: "29/3/25", time: "09:30 PM" },
-        { title: "Dashboard", message: "dashboard", date: "29/3/25", time: "09:30 PM" },
-        { title: "Dashboard", message: "dashboard", date: "29/3/25", time: "09:30 PM" },
-        { title: "Dashboard", message: "dashboard", date: "29/3/25", time: "09:30 PM" },
-        { title: "Dashboard", message: "dashboard", date: "29/3/25", time: "09:30 PM" },
-        { title: "Dashboard", message: "dashboard", date: "29/3/25", time: "09:30 PM" },
-        { title: "Dashboard", message: "dashboard", date: "29/3/25", time: "09:30 PM" },
-        { title: "Dashboard", message: "dashboard", date: "29/3/25", time: "09:30 PM" },
-        { title: "Dashboard", message: "dashboard message", date: "29/3/25", time: "09:30 PM" },
-    ];
+    const user = useContext(UserData);
 
-    const circular = [
-        { title: "Dashboard", message: "circular message", date: "29/3/25", time: "09:30 PM" },
-        { title: "Dashboard", message: "circular message", date: "29/3/25", time: "09:30 PM" },
-        { title: "Dashboard", message: "circular message", date: "29/3/25", time: "09:30 PM" },
-        { title: "Dashboard", message: "circular message", date: "29/3/25", time: "09:30 PM" },
-        { title: "Dashboard", message: "circular message", date: "29/3/25", time: "09:30 PM" },
-        { title: "Dashboard", message: "circular message", date: "29/3/25", time: "09:30 PM" },
-        { title: "Dashboard", message: "circular message", date: "29/3/25", time: "09:30 PM" },
-        { title: "Dashboard", message: "circular message", date: "29/3/25", time: "09:30 PM" },
-        { title: "Dashboard", message: "circular message", date: "29/3/25", time: "09:30 PM" },
-        { title: "Dashboard", message: "circular message", date: "29/3/25", time: "09:30 PM" },
-    ];
+    const notifications = user?.notifications || [];
+    const circular = user?.circular || [];
 
     const allNotifications = notifications.concat(circular);
 

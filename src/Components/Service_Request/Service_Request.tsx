@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserData  } from "../../Context/UserDataContext";
 import "./Service_Request.css"
 
 interface ServiceRequestProps {
@@ -6,9 +7,11 @@ interface ServiceRequestProps {
 }
 
 function ServiceRequest({Close} : ServiceRequestProps){
-    const FirstName="Piyush";
-    const LastName="Kokane";
-    const gmail="google@gmai.com";
+    const user = useContext(UserData);
+    
+    const FirstName = user?.FirstName;
+    const LastName = user?.LastName;
+    const gmail = user?.StudentInfo.find(info => info.Key === "gmail")?.value;
 
     const [issue, setIssue] = useState("");
     const [files, setFiles] = useState<File[]>([]); // Array of files

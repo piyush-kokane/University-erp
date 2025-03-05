@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserData  } from "../../Context/UserDataContext";
 import "./Profile.css";
 import Footer from "../../Components/Footer/Footer";
 
@@ -7,62 +8,27 @@ import Footer from "../../Components/Footer/Footer";
 function Profile() {
     const [panel, setPanel] = useState("about");
 
-    let Profile="/User_Data/Profile.jpg";
-    let Banner="/User_Data/Banner.png";
-    let FullName="Piyush Jayant Kokane";
-    let LongBio="I am a student at MIT-WPU with a strong technical background in web development and software engineering. My expertise includes React, TypeScript, Node.js, PHP, MySQL, MongoDB, Tailwind CSS, HTML, CSS, JavaScript, WordPress, and Figma. I have experience working on projects like university ERP systems, online shopping platforms, and productivity apps, focusing on creating efficient and user-friendly applications.";
-    let Biotag="I am proficient programmer";
+    const user = useContext(UserData);
 
+    let Profile = user?.Profile;
+    let Banner = user?.Banner;
+    let FullName = user?.FullName;
+    let LongBio = user?.LongBio;
+    let Biotag = user?.Biotag;
 
-    const UserDocuments = [
-        { Key: "10th Marksheet", img: "/User_Data/10th_Marlsheet.png" },
-        { Key: "12th Marksheet", img: "/User_Data/12th_Marlsheet.png" },
-        { Key: "Leaving Certificate", img: "/User_Data/Leaving_Certificate.png" },
-        { Key: "Signature", img: "/User_Data/Signature.png" },
-    ];
+    const UserDocuments = user?.UserDocuments || [];
+
+    const StudentInfo = user?.StudentInfo || [];
+
+    const StudentAddress = user?.StudentAddress || [];
+
+    const Parent1Info = user?.Parent1Info || [];
+    const Parent2Info = user?.Parent2Info || [];
 
     const ProgramInfo = [
-        { Key: "PRN", value: "1132230781" },
-        { Key: "Branch", value: "B.Sc. Computer Sci" },
-        { Key: "Term", value: "Semester 4" },
-    ];
-
-    const StudentInfo = [
-        { Key: "Gender", value: "Male" },
-        { Key: "Date Of Birth", value: "18/2/2005" },
-        { Key: "Blood Group", value: "AB+" },
-        { Key: "gmail", value: "google@gmail.com" },
-        { Key: "Phone No.", value: "8806808503" },
-        { Key: "Emergency No.", value: "8806808503" },
-        { Key: "Aadhar No.", value: "8806808503" },
-        { Key: "Admission Type", value: "CET" },
-        { Key: "Admission Status", value: "Active" },
-        { Key: "Admission Date", value: "24/3/2023" },
-    ];
-
-    const StudentAddress = [
-        { Key: "Permanent Address", value: "Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address " },
-        { Key: "Current Address", value: "Address" },
-        { Key: "Area", value: "Area" },
-        { Key: "Land Mark", value: "Land Mark" },
-        { Key: "City", value: "Pune" },
-        { Key: "Pincode", value: "411038" },
-        { Key: "State", value: "Maharashtra" },
-        { Key: "Country", value: "India" },
-    ];
-
-    const Parent1Info = [
-        { Key: "Guardian Type", value: "Father" },
-        { Key: "Fathers's gmail", value: "google@gmail.com" },
-        { Key: "Father's Contact", value: "9875642587" },
-        { Key: "Father's Profession", value: "Job" },
-    ];
-    
-    const Parent2Info = [
-        { Key: "Guardian Type", value: "Mother" },
-        { Key: "Mother's gmail", value: "google@gmail.com" },
-        { Key: "Mother's Contact", value: "9875642587" },
-        { Key: "Mother's Profession", value: "Housewife" },
+        { Key: "PRN", value: user?.Prn },
+        { Key: "Branch", value: user?.Branch },
+        { Key: "Term", value: user?.Term },
     ];
 
 
