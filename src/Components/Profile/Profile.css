@@ -27,7 +27,6 @@
 
 .profile-card{
     position: relative;
-    background: url('/Images/BG.png') no-repeat center center;
     background-size: cover; /* Cover the entire panel */
     border-radius: 9px;
     border: 1px solid var(--panel-border-color);
@@ -36,6 +35,16 @@
     height: fit-content;
     padding-top: 100px;
     padding-bottom: 0px;
+    overflow: hidden;
+}
+
+.profile-card-banner {
+    position: absolute;
+    object-fit: cover;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
 
 .profile-container {
@@ -49,7 +58,6 @@
     justify-content: center;
     text-align: center;
 }
-
 
 .profile-container img{
     transform: translateY(-50%);

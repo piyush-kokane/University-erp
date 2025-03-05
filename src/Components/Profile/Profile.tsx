@@ -13,6 +13,7 @@ function Profile({Close} : ProfileProps){
     const [closing, setClosing] = useState(false);
 
     let Profile="/User_Data/Profile.jpg";
+    let Banner="/User_Data/Banner.png";
     let FullName="Piyush Jayant Kokane";
     let PRN="1132230781";
     let Branch="SY. B.Sc. CS.";
@@ -26,6 +27,8 @@ function Profile({Close} : ProfileProps){
     return(
         <div className={`profile-overlay ${closing ? "fade-out" : "fade-in"}`} onClick={handleClose}>
             <div className={`profile-card ${closing ? "slide-out" : "slide-in"}`} onClick={(e) => e.stopPropagation()}>
+                <img className="profile-card-banner" src={Banner}></img>
+                
                 <span className="material-icons profile-arrow">arrow_drop_up</span>
                 <span className="material-icons profile-cancle-btn" onClick={handleClose}>close</span>
 
@@ -38,8 +41,7 @@ function Profile({Close} : ProfileProps){
                     <p>{ShortBio}</p>
                     <a onClick={() => {navigate("/profile"); handleClose(); }}>View Profile</a>
                 </div>
-                
-                
+
             </div>
         </div>
     );

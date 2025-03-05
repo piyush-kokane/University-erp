@@ -8,6 +8,7 @@ function Profile() {
     const [panel, setPanel] = useState("about");
 
     let Profile="/User_Data/Profile.jpg";
+    let Banner="/User_Data/Banner.png";
     let FullName="Piyush Jayant Kokane";
     let LongBio="I am a student at MIT-WPU with a strong technical background in web development and software engineering. My expertise includes React, TypeScript, Node.js, PHP, MySQL, MongoDB, Tailwind CSS, HTML, CSS, JavaScript, WordPress, and Figma. I have experience working on projects like university ERP systems, online shopping platforms, and productivity apps, focusing on creating efficient and user-friendly applications.";
     let Biotag="I am proficient programmer";
@@ -256,6 +257,7 @@ function Profile() {
         <div className="page-container">
             <div className="page-main-container">
                 <div className="profilepg-container-0">
+                    <img className="profilepg-banner" src={Banner}></img>
                     {/* Profile & navigation panel */}
                     <div className="profilepg-navbar">
                         <img src={Profile} />
