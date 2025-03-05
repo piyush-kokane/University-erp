@@ -1,5 +1,7 @@
+import { useContext } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserData  } from "../../Context/UserDataContext";
 import "./Profile.css"
 
 
@@ -12,12 +14,14 @@ function Profile({Close} : ProfileProps){
     const navigate = useNavigate();
     const [closing, setClosing] = useState(false);
 
-    let Profile="/User_Data/Profile.jpg";
-    let Banner="/User_Data/Banner.png";
-    let FullName="Piyush Jayant Kokane";
-    let PRN="1132230781";
-    let Branch="SY. B.Sc. CS.";
-    let ShortBio="I study at MIT-WPU, and I have technical skills in React, TypeScript, Node.js, PHP, MySQL, MongoDB, Tailwind CSS, HTML, CSS, JavaScript.";
+    const user = useContext(UserData);
+
+    const Profile = user?.Profile;
+    const Banner = user?.Banner;
+    const FullName = user?.FullName;
+    const PRN = user?.Prn;
+    const Branch = user?.Branch;
+    const ShortBio = user?.ShortBio;
 
     function handleClose() {
         setClosing(true); // Start fade-out animation

@@ -23,12 +23,16 @@ Biotag
 LongBio
 ShortBio
 
+PRN
+Branch
+Term
+
 creditsEarned
 creditsRemaining
 
+TotalAttendancePercentage
 term_attendance[]
 week_attendance[]
-TotalAttendancePercentage
 
 circular[]
 
@@ -40,13 +44,6 @@ UserDocuments = [
     { Leaving Certificate },
     { Signature },
 ]
-
-ProgramInfo = [
-    { PRN },
-    { Branch },
-    { Term },
-]
-
 
 StudentInfo = [
     { Gender },
