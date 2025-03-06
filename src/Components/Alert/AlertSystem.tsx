@@ -25,7 +25,7 @@ export function AlertSystemProvider({ children }: { children: ReactNode }) {
     const [alerts, setAlerts] = useState<AlertProp[]>([]);
 
     function showAlert(message: string, Type: AlertType = "info", TimeOut: number = 5) {
-        const id = alerts.length + 1; // Unique ID based on current alerts count
+        const id = Date.now(); // Unique ID
         setAlerts(prev => [...prev, { id, message, Type, TimeOut }]); // Add new alert
     }
 
