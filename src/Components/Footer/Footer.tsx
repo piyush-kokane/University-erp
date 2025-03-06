@@ -5,7 +5,6 @@ import ServiceRequest from "../Service_Request/Service_Request";
 function Footer(){
     const [ServiceRequestOpen, setServiceRequestOpen] = useState(false);
 
-
     return(
         <div className="footer">
             <h1>© 2025 All Rights Reservedㅤ-ㅤWebsite Design and Development by MIT-WPU</h1>
