@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import { UserData  } from "../../Context/UserDataContext";
+import { AlertSystemContext } from "../Alert/AlertSystem";
 import "./Service_Request.css"
 
 interface ServiceRequestProps {
@@ -7,6 +8,8 @@ interface ServiceRequestProps {
 }
 
 function ServiceRequest({Close} : ServiceRequestProps){
+    const AlertSystem = useContext(AlertSystemContext);
+
     const user = useContext(UserData);
     
     const FirstName = user?.FirstName;
@@ -26,6 +29,7 @@ function ServiceRequest({Close} : ServiceRequestProps){
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault(); // prevents refresh of tab
         console.log("Submitting:", { issue, files });
+        AlertSystem?.showAlert("Submited", "warning", 5);
     }
 
     function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {

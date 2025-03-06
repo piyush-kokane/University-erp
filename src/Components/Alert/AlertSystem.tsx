@@ -1,13 +1,30 @@
-import { useState } from "react";
+import { useState, createContext, ReactNode } from "react";
 import  Alert from "./Alert";
 import "./Alert.css";
 
 
 
-export default function AlertSystem() {
-    const [alerts, setAlerts] = useState<{ id: number; message: string; Type: "info" | "warning" | "error" | "success"; TimeOut: number }[]>([]);
+type AlertType = "info" | "warning" | "error" | "success";
 
-    function showAlert(message: string, Type: "info" | "warning" | "error" | "success" = "info", TimeOut: number = 5) {
+interface AlertProp {
+    id: number;
+    message: string;
+    Type: AlertType;
+    TimeOut: number;
+}
+
+interface AlertContextType {
+    showAlert: (message: string, Type?: AlertType, TimeOut?: number) => void;
+}
+
+// Create the context
+export const AlertSystemContext = createContext<AlertContextType | undefined>(undefined);
+
+// Provider component
+export function AlertSystemProvider({ children }: { children: ReactNode }) {
+    const [alerts, setAlerts] = useState<AlertProp[]>([]);
+
+    function showAlert(message: string, Type: AlertType = "info", TimeOut: number = 5) {
         const id = alerts.length + 1; // Unique ID based on current alerts count
         setAlerts(prev => [...prev, { id, message, Type, TimeOut }]); // Add new alert
     }
@@ -17,9 +34,10 @@ export default function AlertSystem() {
     }
 
     return (
-        <div>
-            {/*<button onClick={() => showAlert("This is an alert!", "warning", 5)}>Show Alert</button>*/}
-            
+        <AlertSystemContext.Provider value={{ showAlert }}>
+            {children}
+
+            {/* Alert Display Container */}
             <div className="alert-container">
                 {alerts.map(alert => (
                     <Alert
@@ -31,6 +49,6 @@ export default function AlertSystem() {
                     />
                 ))}
             </div>
-        </div>
+        </AlertSystemContext.Provider>
     );
 }
