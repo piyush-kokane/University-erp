@@ -9,7 +9,6 @@ interface ServiceRequestProps {
 
 function ServiceRequest({Close} : ServiceRequestProps){
     const AlertSystem = useContext(AlertSystemContext);
-
     const user = useContext(UserData);
     
     const FirstName = user?.FirstName;
@@ -30,6 +29,9 @@ function ServiceRequest({Close} : ServiceRequestProps){
         e.preventDefault(); // prevents refresh of tab
         console.log("Submitting:", { issue, files });
         AlertSystem?.showAlert("Submited", "warning", 5);
+        // Self fixed Service form alert bug, no idea how
+        // Service form was closing on alert close and after submiting
+        // Now commiting to find what the F#*K happened
     }
 
     function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
