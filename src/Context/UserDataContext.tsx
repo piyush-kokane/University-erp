@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import { createContext, ReactNode } from "react";
 
 
 
@@ -56,7 +56,7 @@ interface UserContextType {
 export const UserData = createContext<UserContextType | null>(null);
 
 // Provider component
-export const UserContextProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const UserContextProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const user = {
         Profile: "/User_Data/Profile.jpg",
         Banner: "/User_Data/Banner.png",

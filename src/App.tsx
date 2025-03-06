@@ -1,12 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useContext, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation  } from "react-router-dom";
+import { AlertSystemContext } from "./Components/Alert/AlertSystem";
 import "./App.css";
 
 import BG from "./BG/BG";
 import Navigation from "./Components/Navigation/Navigation";
 import L_Navigation from "./Components/L_Navigation";
-
-import AlertSystem from "./Components/Alert/AlertSystem";
 
 import Page_Not_Found from "./Pages/Page_Not_Found/Page_Not_Found";
 import _Landing from "./Pages/_Landing/Landing";
@@ -23,6 +22,8 @@ import Time_Table from "./Pages/Time_Table/Time_Table";
 
 
 function Layout() {
+  const AlertSystem = useContext(AlertSystemContext);
+
   const location = useLocation();
   const onLanding = location.pathname == "/"; // check if user is on landg page if yes set onLanding to true
   const onLogin = location.pathname == "/login"; // check if user is on landg page if yes set onLogin to true
@@ -36,7 +37,7 @@ function Layout() {
     const isLoggedIn = localStorage.getItem("loggedIn") === "true"; // Read from localStorage
   
     if (!isLoggedIn) {
-      {/* showAlert("This is an alert!", "warning", 5) */}
+      AlertSystem?.showAlert("Please login first", "warning", 5);
     }
 
     // If not loggedin redirect to login page and show alert
@@ -101,7 +102,6 @@ window.addEventListener("popstate", () => {
 function App() { 
   return (
     <>
-      <AlertSystem />
       <Router>
         <Layout />
       </Router>
