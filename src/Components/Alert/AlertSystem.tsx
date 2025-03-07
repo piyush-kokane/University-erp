@@ -1,4 +1,4 @@
-import { useState, createContext, ReactNode } from "react";
+import { useState, createContext, useEffect, ReactNode } from "react";
 import  Alert from "./Alert";
 import "./Alert.css";
 
@@ -23,14 +23,19 @@ export const AlertSystemContext = createContext<AlertContextType | undefined>(un
 // Provider component
 export function AlertSystemProvider({ children }: { children: ReactNode }) {
     const [alerts, setAlerts] = useState<AlertProp[]>([]);
+    //let alerts: AlertProp[] = [];
 
     function showAlert(message: string, Type: AlertType = "info", TimeOut: number = 5) {
         const id = Date.now(); // Unique ID
         setAlerts(prev => [...prev, { id, message, Type, TimeOut }]); // Add new alert
+        //alerts.push({ id, message, Type, TimeOut })
+        console.log("added", alerts);
     }
 
     function removeAlert(id: number) {
         setAlerts(prev => prev.filter(alert => alert.id !== id)); // Remove alert by ID
+        //alerts = alerts.filter(alert => alert.id !== id);
+        console.log("removed", alerts);
     }
 
     return (

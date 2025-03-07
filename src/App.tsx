@@ -37,7 +37,8 @@ function Layout() {
     const isLoggedIn = localStorage.getItem("loggedIn") === "true"; // Read from localStorage
   
     if (!isLoggedIn) {
-      AlertSystem?.showAlert("Please login first", "warning", 5);
+      //AlertSystem?.showAlert("Please login first", "warning", 5);
+      console.log("Please login first")
     }
 
     // If not loggedin redirect to login page and show alert
