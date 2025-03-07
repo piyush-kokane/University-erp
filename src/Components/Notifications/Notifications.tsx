@@ -36,7 +36,7 @@ function Notifications({Close} : NotificationsProps){
                     <span className="material-icons notifications-refresh-btn" onClick={handleClose}>cached</span>
                 </div>
                 
-                <div className="notifications-container">
+                <div className="notifications-container scrollbar">
                     {allNotifications.map((item) => (
                         <div  className={"notifications-item"} >
                             <h1>{item.title}</h1>

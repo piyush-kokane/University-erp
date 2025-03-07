@@ -155,25 +155,6 @@
   overflow-y: auto;
 }
 
-/* Custom scrollbar for WebKit browsers (Chrome, Edge, Safari) */
-.timetable-container::-webkit-scrollbar,
-.circular-container::-webkit-scrollbar {
-  width: 6px;
-}
-.timetable-container::-webkit-scrollbar-track,
-.circular-container::-webkit-scrollbar-track {
-  background: transparent; /* No track background */
-}
-.timetable-container::-webkit-scrollbar-thumb,
-.circular-container::-webkit-scrollbar-thumb {
-  background: rgba(130, 130, 130, 0.5); /* Semi-transparent scrollbar */
-  border-radius: 3px; /* Rounded scrollbar */
-}
-.timetable-container::-webkit-scrollbar-button,
-.circular-container::-webkit-scrollbar-button {
-  display: none;
-}
-
 .circular-item{
   position: relative;
   padding-top: 20px;
