@@ -25,7 +25,7 @@ function Layout() {
   const AlertSystem = useContext(AlertSystemContext);
   const location = useLocation();
 
-  
+
   // all available routes 
   const routes = {
     landing: "/",

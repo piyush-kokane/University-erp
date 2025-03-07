@@ -233,6 +233,9 @@
 .sidebar::-webkit-scrollbar-track {
   background: transparent;
 }
+.sidebar::-webkit-scrollbar-button {
+    display: none;
+}
 
 /* When sidebar is open, adjust padding-left for active element */
 .sidebar.open .sidebar-item.active {

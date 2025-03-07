@@ -169,6 +169,10 @@
   background: rgba(130, 130, 130, 0.5); /* Semi-transparent scrollbar */
   border-radius: 3px; /* Rounded scrollbar */
 }
+.timetable-container::-webkit-scrollbar-button,
+.circular-container::-webkit-scrollbar-button {
+  display: none;
+}
 
 .circular-item{
   position: relative;
