@@ -111,21 +111,6 @@
     overflow-y: auto;
 }
 
-/* Custom scrollbar for WebKit browsers (Chrome, Edge, Safari) */
-.notifications-container::-webkit-scrollbar {
-    width: 6px;
-}
-.notifications-container::-webkit-scrollbar-track {
-    background: transparent; /* No track background */
-}
-.notifications-container::-webkit-scrollbar-thumb {
-    background: rgba(130, 130, 130, 0.5); /* Semi-transparent scrollbar */
-    border-radius: 3px; /* Rounded scrollbar */
-}
-.notifications-container::-webkit-scrollbar-button {
-    display: none;
-}
-
 .notifications-item{
     position: relative;
 }

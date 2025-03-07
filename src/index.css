@@ -72,8 +72,8 @@
 
         /* scrollbar */
         --scrollbar-bg-color: rgb(240, 240, 240);
-        --scrollbar-thumb-color: rgb(150, 150, 150);
-        --scrollbar-thumb-hover-color: rgb(120, 120, 120);
+        --scrollbar-thumb-color: rgba(130, 130, 130, 0.5);
+        --scrollbar-thumb-hover-color: rgba(130, 130, 130, 0.8);
 
         /* text */
         --text-invert-color: white;
@@ -124,8 +124,8 @@
 
         /* scrollbar */
         --scrollbar-bg-color: rgb(60, 60, 60);
-        --scrollbar-thumb-color: rgb(120, 120, 120);
-        --scrollbar-thumb-hover-color: rgb(150, 150, 150);
+        --scrollbar-thumb-color: rgba(130, 130, 130, 0.5);
+        --scrollbar-thumb-hover-color: rgba(130, 130, 130, 0.8);
 
         /* text */
         --text-invert-color: black;
@@ -280,7 +280,7 @@
         overflow-x: hidden;
     }
 
-    /* Scrollbar  */
+    /* Main Scrollbar  */
     ::-webkit-scrollbar {
         width: 10px;
     }
@@ -300,7 +300,7 @@
     
     ::-webkit-scrollbar-button:single-button:decrement {
         background-color: var(--scrollbar-bg-color);
-        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23969696'><path d='M7 14l5-5 5 5z'/></svg>");
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23828282'><path d='M7 14l5-5 5 5z'/></svg>");
         background-size: 16px 16px !important;
         background-repeat: no-repeat;
         background-position: center;
@@ -313,7 +313,7 @@
     
     ::-webkit-scrollbar-button:single-button:increment {
         background-color: var(--scrollbar-bg-color);
-        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23969696'><path d='M7 10l5 5 5-5z'/></svg>");
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23828282'><path d='M7 10l5 5 5-5z'/></svg>");
         background-size: 16px 16px !important;
         background-repeat: no-repeat;
         background-position: center;
@@ -324,6 +324,24 @@
         background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2387CEEB'><path d='M7 10l5 5 5-5z'/></svg>");
     }
     
+    /* General Scrollbar  */
+    .scrollbar::-webkit-scrollbar {
+        width: 6px;
+    }
+    .scrollbar::-webkit-scrollbar-track {
+        background: transparent; /* No track background */
+    }
+    .scrollbar::-webkit-scrollbar-thumb {
+        background: var(--scrollbar-thumb-color); /* Semi-transparent scrollbar */
+        border-radius: 3px; /* Rounded scrollbar */
+    }
+    .scrollbar::-webkit-scrollbar-thumb:hover {
+        background: var(--scrollbar-thumb-hover-color); /* Semi-transparent scrollbar */
+    }
+    .scrollbar::-webkit-scrollbar-button {
+        display: none;
+    }
+
     /* Headings */
     h1, h2, h3, h4, h5, h6 {
         font-weight: bold;

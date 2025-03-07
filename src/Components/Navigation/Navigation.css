@@ -226,16 +226,6 @@
 .sidebar::-webkit-scrollbar {
   width: 3px;
 }
-.sidebar::-webkit-scrollbar-thumb {
-  background: rgba(130, 130, 130, 0.5);
-  border-radius: 10px;
-}
-.sidebar::-webkit-scrollbar-track {
-  background: transparent;
-}
-.sidebar::-webkit-scrollbar-button {
-    display: none;
-}
 
 /* When sidebar is open, adjust padding-left for active element */
 .sidebar.open .sidebar-item.active {

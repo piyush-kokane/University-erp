@@ -71,6 +71,7 @@ function ServiceRequest({Close} : ServiceRequestProps){
                     <form className="service-form" onSubmit={handleSubmit}>
                         <textarea
                             placeholder="Describe your issue..."
+                            className="scrollbar"
                             onChange={(e) => setIssue(e.target.value)}
                         />
 

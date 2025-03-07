@@ -118,7 +118,7 @@ function DashboardPage() {
         <h1 className="attendance-title">Circular</h1>
         <div className="page-container-line-2"/>
 
-        <div className="circular-container">
+        <div className="circular-container scrollbar">
           {circular.map((item) => (
             <div  className={"circular-item"} >
               {/*<h1>{item.title}</h1>*/} {/* Not showing Title */}
@@ -142,7 +142,7 @@ function DashboardPage() {
         <h1 className="attendance-title">Time Table</h1>
         <div className="page-container-line-2"/>
 
-        <div className="timetable-container">
+        <div className="timetable-container scrollbar">
           <table className="timetable-table">
             <thead>
               <tr>

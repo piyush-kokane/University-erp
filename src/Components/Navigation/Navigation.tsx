@@ -142,7 +142,7 @@ function Navigation() {
 
       {/* Sidebar */}
       <div 
-        className={`sidebar ${sidebarOpen ? "open" : ""}`}  /* Change class name according to sidebarOpen */
+        className={`sidebar scrollbar ${sidebarOpen ? "open" : ""}`}  /* Change class name according to sidebarOpen */
         onMouseEnter={() => setSidebarOpen(true)} 
         onMouseLeave={() => setSidebarOpen(false)}
       >
