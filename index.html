@@ -7,6 +7,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet"> <!-- Google fonts -->
     <link rel="icon" type="image/png" href="/Images/mit-logo.png" /> <!-- Website logo -->
     <title>MIT-WPU-ERP</title> <!-- Website title -->
+
+    <!-- Apply saved theme on page load -->
+    <script>
+      (function() {
+          let savedTheme = localStorage.getItem("theme") || "light";
+          document.documentElement.setAttribute("data-theme", savedTheme);
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -87,13 +87,6 @@ function Layout() {
   );
 }
 
-// Apply saved theme on page load
-window.onload = function() {
-  let savedTheme = localStorage.getItem("theme") || "light";
-  document.documentElement.setAttribute("data-theme", savedTheme);
-};
-
-
 /*/ Force refress tab on back pressed
 window.addEventListener("popstate", () => {
   window.location.reload();
