@@ -7,7 +7,23 @@ import Profile from "../Profile/Profile";
 
 
 
-function Navigation() { // This ensures activemenuItem is "Dashboard" if not provided.
+function Navigation() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+
+  // Check for windows resize and set isSmallScreen accordingly, no practical use, for better performance remove useEffect
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 600);
+  useEffect(() => {
+    function handleResize() {
+        setIsSmallScreen(window.innerWidth <= 600);
+    }
+
+    window.addEventListener("resize", handleResize); // Listen for resize
+    return () => window.removeEventListener("resize", handleResize); // Cleanup on unmount
+  }, []);
+  
+
   const isLoggedIn = localStorage.getItem("loggedIn") === "true";
 
   const Profilepic="/User_Data/Profile.jpg";
@@ -22,17 +38,6 @@ function Navigation() { // This ensures activemenuItem is "Dashboard" if not pro
     { name: "Result", icon: "bar_chart", path: "/result" },
     { name: "Circulars", icon: "campaign", path: "/circulars" },
   ];
-
-  // Check for windows resize and set isSmallScreen accordingly, no practical use, for better performance remove useEffect
-  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 600);
-  useEffect(() => {
-    function handleResize() {
-        setIsSmallScreen(window.innerWidth <= 600);
-    }
-
-    window.addEventListener("resize", handleResize); // Listen for resize
-    return () => window.removeEventListener("resize", handleResize); // Cleanup on unmount
-  }, []);
 
 
   const [Searchbar, setSearchbar] = useState(false); // if isSmallScreen hide searchbar by defauly
@@ -54,13 +59,10 @@ function Navigation() { // This ensures activemenuItem is "Dashboard" if not pro
   const [searchValue, setSearchValue] = useState("");
   const clearSearch = () => setSearchValue("");
 
-  const [activeMenuItem, setActiveMenuItem] = useState("Dashboard"); // Default active tab = dashboard
-
-  const navigate = useNavigate();
-  const location = useLocation();
+  const [activeMenuItem, setActiveMenuItem] = useState("");
 
 
-  // if page url changes due to redirect, set actve menue item to accordingly
+  // if page url changes due to redirect, set actve menue item accordingly to url
   useEffect(() => {
     menuItems.forEach(item => {
       if(location.pathname === item.path)
@@ -75,11 +77,6 @@ function Navigation() { // This ensures activemenuItem is "Dashboard" if not pro
     navigate("/login", { state: { from: location.pathname } }) // navigate to login page & set state.from to url of current page
   }
 
-  
-  function handleMenuClick(itemName: string, itemPath: string){
-    setActiveMenuItem(itemName); // Update active tab
-    navigate(itemPath); // Navigate to the page
-  };
 
 
   return (
@@ -154,7 +151,7 @@ function Navigation() { // This ensures activemenuItem is "Dashboard" if not pro
             <a 
               key={item.name} 
               className={`sidebar-item ${activeMenuItem === item.name ? "active" : ""}`}
-              onClick={() => handleMenuClick(item.name, item.path)}
+              onClick={() => navigate(item.path)}
             >
               <span className="material-icons sidebar-icon">{item.icon}</span>
               <span className={`sidebar-text ${sidebarOpen ? "visible" : ""}`}>{item.name}</span>
