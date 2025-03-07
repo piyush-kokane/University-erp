@@ -2,40 +2,49 @@
 
 
 
-*** DOM ***
-<>
-    <AlertSystem /> // has global function "showAlert()" to show alerts
 
-    <App>
-        <Router>
-            onLanding && <L_Navigation />
 
-            onProctectedPage && <><Navigation /><BG /></>
+*** Context Providers ***
+<UserContextProvider>
+    <AlertSystemProvider>
+    <App />
+    </AlertSystemProvider>
+</UserContextProvider>
 
-            <Routes>
-                <Landing_Page /> // path="/"
 
-                <Login_Page /> // path="/login"
 
-                <Policy_Page />     // path="/privacy-policy"
-                <Conditions_Page /> // path="/terms-&-conditions"
 
-                // Protected pages, check if login before rendering component
-                <Dashboard_Page />  // path="/dashboard"
-                <Profile_Page />    // path="/Profile"
-                <Attendence_Page /> // path="/attendance"
-                <Calendar_Page />   // path="/calendar"
-                <TimTable_Page />   // path="/timetable"
-                <Course_Page />     // path="/course"
-                <Result_Page />     // path="/result"
-                <Circulars_Page />  // path="/circulars"
 
-                <Page_Not_Found />  // path="/*"
-            </Routes>
+*** Routing ***
+<App>
+    <Router>
+        onLanding && <L_Navigation />
 
-        </Router>
-    </App>
-</>
+        onProctectedPage && <><Navigation /><BG /></>
+
+        <Routes>
+            <Landing_Page /> // path="/"
+
+            <Login_Page /> // path="/login"
+
+            <Policy_Page />     // path="/privacy-policy"
+            <Conditions_Page /> // path="/terms-&-conditions"
+
+            // Protected pages, check if login before rendering component
+            <Dashboard_Page />  // path="/dashboard"
+            <Profile_Page />    // path="/Profile"
+            <Attendence_Page /> // path="/attendance"
+            <Calendar_Page />   // path="/calendar"
+            <TimTable_Page />   // path="/timetable"
+            <Course_Page />     // path="/course"
+            <Result_Page />     // path="/result"
+            <Circulars_Page />  // path="/circulars"
+
+            <Page_Not_Found />  // path="/*"
+        </Routes>
+
+    </Router>
+</App>
 
 
 
