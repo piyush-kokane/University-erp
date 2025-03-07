@@ -22,15 +22,21 @@ function ServiceRequest({Close} : ServiceRequestProps){
     const [closing, setClosing] = useState(false);
 
     function handleClose() {
-        setClosing(true); // Start fade-out animation
-        setTimeout(Close, 300); // delay, Matches animation duration (0.3s) // Call close function after animation
+        const isFormEmpty = (issue.trim().length === 0) && (files.length === 0);
+
+        if(isFormEmpty){
+            setClosing(true); // Start fade-out animation
+            setTimeout(Close, 300); // delay, Matches animation duration (0.3s) // Call close function after animation
+        }
+        else{
+            AlertSystem?.showAlert("Your Form will close", "warning", 5);
+        }
     }
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault(); // prevents refresh of tab
         console.log("Submitting:", { issue, files });
-        AlertSystem?.showAlert("Submited", "warning", 5);
-        // so the exact problem is that when alerts changes it causes global rerender causing ServiceRequestOpen to false
+        AlertSystem?.showAlert("Your Response had been submited", "success", 5);
     }
 
     function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
