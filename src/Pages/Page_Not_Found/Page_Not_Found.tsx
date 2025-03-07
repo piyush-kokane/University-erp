@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Page_Not_Found.css";
 
 
 
 function Page_Not_Found() {
+  const navigate = useNavigate();
+
   const [searchValue, setSearchValue] = useState("");
   const clearSearch = () => setSearchValue("");
 
@@ -36,11 +39,11 @@ function Page_Not_Found() {
           <div className="PNF-footer-line"/>
           <div className="PNF-footer-links">
             <h1>Go to:</h1>
-            <a href="/">Home</a>
+            <a onClick={() => navigate("/")}>Home</a>
             <p>|</p>
-            <a href="/dashboard">Dashboard</a>
+            <a onClick={() => navigate("/dashboard")}>Dashboard</a>
             <p>|</p>
-            <a href="">E-Library</a>
+            <a onClick={() => navigate("/elibrary")}>E-Library</a>
           </div>
         </div>
     </div>
