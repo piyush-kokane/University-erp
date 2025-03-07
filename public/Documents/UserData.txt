@@ -2,7 +2,7 @@
 
 
 
-*** Local Storage ***
+*** Only Local Storage ***
 "loggedIn"
 "theme"
 
@@ -10,22 +10,34 @@
 
 
 
-*** Database ***
-
-Profile
-Banner
+*** UserDataContext ***
+// Available throught app
+// Once fetched from Api data is stored in localStorage so that on page refresh or page change Api is not called again
 
 FullName
 FirstName
 LastName
+gmail
+contact
+
+PRN
+Branch
+Term
+
+Profile
+Banner
 
 Biotag
 LongBio
 ShortBio
 
-PRN
-Branch
-Term
+
+
+
+
+*** UserData fetched in individual Components ***
+// Whenever respective component is called it fetch data 
+// Advantages: low memory usage & Faster initial page load
 
 creditsEarned
 creditsRemaining
@@ -84,6 +96,60 @@ Parent2Info = [
 ]
 
 
+
+
+
+*** Following is which component usage which UserData ***
+
+
+** Navigation.tsx **
+Profilepic : img
+
+
+** Notifications **
+notifications : 2D array
+circular      : 2D array
+
+
+** Profile Panel **
+Profilepic : img
+Banner     : img
+FullName   : string
+PRN        : string
+Branch     : string
+ShortBio   : string
+
+
+** Profile Page **
+Profilepic     : img
+Banner         : img
+FullName       : string
+PRN            : string
+Branch         : string
+Term           : string
+Biotag         : string
+LongBio        : string
+UserDocuments  : 2D array
+StudentInfo    : 2D array
+StudentAddress : 2D array
+Parent1Info    : 2D array
+Parent2Info    : 2D array
+
+
+** Service Request Form **
+FirstName : string
+LastName  : string
+gmail     : string
+
+
+** Dashboard Page **
+creditsEarned             : number
+creditsRemaining          : number
+TotalAttendancePercentage : number
+termAttendance            : 2D array
+weekAttendance            : 2D array
+circular                  : 2D array
+weeklySchedule            : Object array
 
 
 
