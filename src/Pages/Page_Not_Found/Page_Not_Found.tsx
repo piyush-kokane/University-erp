@@ -1,15 +1,12 @@
 import { useState } from "react";
 import "./Page_Not_Found.css";
 
-interface PNF_Props {
-  setonUnknown: (value: boolean) => void;
-}
 
-function Page_Not_Found({ setonUnknown }: PNF_Props) {
+
+function Page_Not_Found() {
   const [searchValue, setSearchValue] = useState("");
   const clearSearch = () => setSearchValue("");
 
-  setonUnknown(true);
 
   return (
     <div className="PNF">
