@@ -66,11 +66,16 @@
 
     /* Default light theme */
     :root {
-        /* Background */
+        /* background */
         --bg-color: rgba(200, 200, 200, 0.7);
         --bg-invert: 1;
 
-        /* Text */
+        /* scrollbar */
+        --scrollbar-bg-color: rgb(240, 240, 240);
+        --scrollbar-thumb-color: rgb(150, 150, 150);
+        --scrollbar-thumb-hover-color: rgb(120, 120, 120);
+
+        /* text */
         --text-invert-color: white;
         --text-primary-color: black;
         --text-secondary-color: rgb(70, 70, 70);
@@ -113,10 +118,16 @@
 
     /* Dark theme */
     [data-theme="dark"] {
+        /* background */
         --bg-color: rgba(50, 50, 50, 0.5);
         --bg-invert: 0;
 
-        /* Text */
+        /* scrollbar */
+        --scrollbar-bg-color: rgb(60, 60, 60);
+        --scrollbar-thumb-color: rgb(120, 120, 120);
+        --scrollbar-thumb-hover-color: rgb(150, 150, 150);
+
+        /* text */
         --text-invert-color: black;
         --text-primary-color: white;
         --text-secondary-color: rgb(220, 220, 220);
@@ -264,11 +275,55 @@
     body {
         font-family: 'Arial', sans-serif;
         line-height: 1.6;
-        color: #333;
-        background-color: #f9f9f9;
+        color: var(--text-primary-color);
+        background-color: var(--bg-color);
         overflow-x: hidden;
     }
 
+    /* Scrollbar  */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+  
+    ::-webkit-scrollbar-thumb {
+        background: var(--scrollbar-thumb-color);
+        border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--scrollbar-thumb-hover-color);
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: var(--scrollbar-bg-color);
+    }
+    
+    ::-webkit-scrollbar-button:single-button:decrement {
+        background-color: var(--scrollbar-bg-color);
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23969696'><path d='M7 14l5-5 5 5z'/></svg>");
+        background-size: 16px 16px !important;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 12px;
+        width: 10px;
+    }
+    ::-webkit-scrollbar-button:single-button:decrement:hover {
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2387CEEB'><path d='M7 14l5-5 5 5z'/></svg>");
+    }
+    
+    ::-webkit-scrollbar-button:single-button:increment {
+        background-color: var(--scrollbar-bg-color);
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23969696'><path d='M7 10l5 5 5-5z'/></svg>");
+        background-size: 16px 16px !important;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 12px;
+        width: 10px;
+    }
+    ::-webkit-scrollbar-button:single-button:increment:hover {
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2387CEEB'><path d='M7 10l5 5 5-5z'/></svg>");
+    }
+    
     /* Headings */
     h1, h2, h3, h4, h5, h6 {
         font-weight: bold;

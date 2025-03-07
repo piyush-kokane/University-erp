@@ -122,6 +122,9 @@
     background: rgba(130, 130, 130, 0.5); /* Semi-transparent scrollbar */
     border-radius: 3px; /* Rounded scrollbar */
 }
+.notifications-container::-webkit-scrollbar-button {
+    display: none;
+}
 
 .notifications-item{
     position: relative;
