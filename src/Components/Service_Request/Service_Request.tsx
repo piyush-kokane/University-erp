@@ -14,7 +14,7 @@ function ServiceRequest({Close} : ServiceRequestProps){
     
     const FirstName = user?.FirstName;
     const LastName = user?.LastName;
-    const gmail = user?.StudentInfo.find(info => info.Key === "gmail")?.value;
+    const gmail = user?.gmail;
 
     const [issue, setIssue] = useState("");
     const [files, setFiles] = useState<File[]>([]); // Array of files
