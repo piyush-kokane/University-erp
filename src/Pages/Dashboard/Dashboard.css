@@ -141,7 +141,11 @@
   color: var(--text-secondary-color);
   font-size: 22px;
   font-weight: normal;
+  width: 100%;
+  padding: 0px 10px;
+  overflow: hidden;
   white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .circular-container{

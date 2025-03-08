@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import "./Navigation.css";
+import { UserData  } from "../../Context/UserDataContext";
 import Settings from "../Settings/Settings";
 import Notifications from "../Notifications/Notifications";
 import Profile from "../Profile/Profile";
+import "./Navigation.css";
 
 
 
@@ -16,7 +17,8 @@ function Navigation() {
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 600);
   useEffect(() => {
     function handleResize() {
-        setIsSmallScreen(window.innerWidth <= 600);
+      setIsSmallScreen(window.innerWidth <= 600);
+      console.log(isSmallScreen)
     }
 
     window.addEventListener("resize", handleResize); // Listen for resize
@@ -26,7 +28,8 @@ function Navigation() {
 
   const isLoggedIn = localStorage.getItem("loggedIn") === "true";
 
-  const Profilepic="/User_Data/Profile.jpg";
+  const user = useContext(UserData);
+  const Profilepic = user?.Profile;
 
   const menuItems = [
     { name: "Dashboard", icon: "dashboard", path: "/dashboard" },

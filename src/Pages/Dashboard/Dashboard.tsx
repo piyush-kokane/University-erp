@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserData  } from "../../Context/UserDataContext";
 import "./Dashboard.css";
@@ -6,7 +6,19 @@ import Footer from "../../Components/Footer/Footer";
 
 function DashboardPage() {
   const navigate = useNavigate();
-  const isSmallScreen = window.innerWidth <= 1024;
+
+
+  // Check for windows resize and set isSmallScreen accordingly, no practical use, for better performance remove useEffect
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 1024);
+  useEffect(() => {
+    function handleResize() {
+        setIsSmallScreen(window.innerWidth <= 1024);
+    }
+
+    window.addEventListener("resize", handleResize); // Listen for resize
+    return () => window.removeEventListener("resize", handleResize); // Cleanup on unmount
+  }, []);
+
 
   const user = useContext(UserData);
 

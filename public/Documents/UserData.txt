@@ -36,7 +36,7 @@ ShortBio
 
 
 *** UserData fetched in individual Components ***
-// Whenever respective component is called it fetch data 
+// Whenever respective component is called it fetch data and stored in localStorage
 // Advantages: low memory usage & Faster initial page load
 
 creditsEarned
