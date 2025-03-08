@@ -76,7 +76,12 @@ function Navigation() {
 
   function handleLogout(){
     console.log("Logging out...");
-    localStorage.setItem("loggedIn", "false"); // Set loggedIn to false
+
+    // Clear localStorage except "theme"
+    const theme = localStorage.getItem("theme");
+    localStorage.clear();
+    if (theme) localStorage.setItem("theme", theme);
+
     navigate("/login", { state: { from: location.pathname } }) // navigate to login page & set state.from to url of current page
   }
 
