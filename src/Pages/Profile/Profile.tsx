@@ -16,14 +16,49 @@ function Profile() {
     let LongBio = user?.LongBio;
     let Biotag = user?.Biotag;
 
-    const UserDocuments = user?.UserDocuments || [];
+    const UserDocuments = [
+        { Key: "10th Marksheet", img: "/User_Data/10th_Marlsheet.png" },
+        { Key: "12th Marksheet", img: "/User_Data/12th_Marlsheet.png" },
+        { Key: "Leaving Certificate", img: "/User_Data/Leaving_Certificate.png" },
+        { Key: "Signature", img: "/User_Data/Signature.png" },
+    ];
 
-    const StudentInfo = user?.StudentInfo || [];
+    const StudentInfo = [
+        { Key: "Gender", value: "Male" },
+        { Key: "Date Of Birth", value: "18/2/2005" },
+        { Key: "Blood Group", value: "AB+" },
+        { Key: "gmail", value: "google@gmail.com" },
+        { Key: "Phone No.", value: "8806808503" },
+        { Key: "Emergency No.", value: "8806808503" },
+        { Key: "Aadhar No.", value: "8806808503" },
+        { Key: "Admission Type", value: "CET" },
+        { Key: "Admission Status", value: "Active" },
+        { Key: "Admission Date", value: "24/3/2023" },
+    ];
 
-    const StudentAddress = user?.StudentAddress || [];
+    const StudentAddress = [
+        { Key: "Permanent Address", value: "Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address " },
+        { Key: "Current Address", value: "Address" },
+        { Key: "Area", value: "Area" },
+        { Key: "Land Mark", value: "Land Mark" },
+        { Key: "City", value: "Pune" },
+        { Key: "Pincode", value: "411038" },
+        { Key: "State", value: "Maharashtra" },
+        { Key: "Country", value: "India" },
+    ];
 
-    const Parent1Info = user?.Parent1Info || [];
-    const Parent2Info = user?.Parent2Info || [];
+    const Parent1Info = [
+        { Key: "Guardian Type", value: "Father" },
+        { Key: "Fathers's gmail", value: "google@gmail.com" },
+        { Key: "Father's Contact", value: "9875642587" },
+        { Key: "Father's Profession", value: "Job" },
+    ];
+    const Parent2Info = [
+        { Key: "Guardian Type", value: "Mother" },
+        { Key: "Mother's gmail", value: "google@gmail.com" },
+        { Key: "Mother's Contact", value: "9875642587" },
+        { Key: "Mother's Profession", value: "Housewife" },
+    ];
 
     const ProgramInfo = [
         { Key: "PRN", value: user?.Prn },
