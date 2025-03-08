@@ -13,6 +13,7 @@
 *** UserDataContext ***
 // Available throught app
 // Once fetched from Api data is stored in localStorage so that on page refresh or page change Api is not called again
+// Once logout localStorage is cleared
 
 FullName
 FirstName
@@ -38,6 +39,7 @@ ShortBio
 *** UserData fetched in individual Components ***
 // Whenever respective component is called it fetch data and stored in localStorage
 // Advantages: low memory usage & Faster initial page load
+// Once logout localStorage is cleared
 
 creditsEarned
 creditsRemaining
