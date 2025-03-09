@@ -58,6 +58,20 @@ const sampleParent2Info = [
 ];
 
 
+const defaultStudentInfo = [
+    { Key: "Gender", value: "Male" },
+    { Key: "Date Of Birth", value: "18/2/2005" },
+    { Key: "Blood Group", value: "AB+" },
+    { Key: "gmail", value: "google@gmail.com" },
+    { Key: "Phone No.", value: "8806808503" },
+    { Key: "Emergency No.", value: "8806808503" },
+    { Key: "Aadhar No.", value: "8806808503" },
+    { Key: "Admission Type", value: "CET" },
+    { Key: "Admission Status", value: "Active" },
+    { Key: "Admission Date", value: "24/3/2023" },
+];
+
+
 interface UDTF_Type {
     key: string;
     src: string;
