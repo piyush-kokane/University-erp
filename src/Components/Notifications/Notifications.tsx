@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import "./Notifications.css"
 
 
-interface NotificationsProps {
+interface NotificationProps {
     Close: () => void;
 }
 
-const sampleCircular = [
+const sampleCirculars = [
     {
       title: "Circular/Notice",
       message: "Recruitment Forms For Dhvani, The Official Music Club of MIT World Peace University, are now available! If you have a passion for music and want to be a part of an incredible team, submit your application before the deadline. Auditions will be held next week.",
@@ -157,61 +157,59 @@ const sampleNotifications = [
 ];
 
 
-const fetchNotifications = async () => {
+interface UDTF_Type {
+  key: string;
+  src: string;
+}
+const UserData_to_fetch = [
+  // key is data stored in localStorage, src is  API endpoint
+  {key: "Notifications", src: "http://localhost:5000/api/notifications"},
+  {key: "Circulars", src: "http://localhost:5000/api/circulars"},
+];
+
+const fetchData = async (item: UDTF_Type) => {
   try {
-    ///const response = await fetch("https://api.erp.com/notifications"); // Replace with API endpoint
+    ///const response = await fetch(item.src);
     ///const data = await response.json();
     ///return data;
 
-    return sampleNotifications;
+    if (item.key === "Notifications")  return sampleNotifications;
+    if (item.key === "Circulars")  return sampleCirculars;   
   }
   catch (error) {
-    console.error("Error fetching notifications:", error);
-    return []; // Return an empty array in case of error
-  }
-};
-const fetchCircular = async () => {
-  try {
-    ///const response = await fetch("https://api.erp.com/circulars"); // Replace with API endpoint
-    ///const data = await response.json();
-    ///return data;
-
-    return sampleCircular;
-  }
-  catch (error) {
-    console.error("Error fetching notifications:", error);
+    console.error(`Error fetching data for ${item.key}:`, error);
     return []; // Return an empty array in case of error
   }
 };
 
 
-function Notifications({Close} : NotificationsProps){
+function Notification({Close} : NotificationProps){
     // initialise constants for UserDta, get data from localStorage if stored
-    const [notifications, setNotifications] = useState(
-      JSON.parse(localStorage.getItem("notifications") || "[]"));
+    const [Notifications, setNotifications] = useState(
+      JSON.parse(localStorage.getItem("Notifications") || "[]"));
     
-    const [circular, setCircular] = useState(
-      JSON.parse(localStorage.getItem("circular") || "[]"));
+    const [Circulars, setCirculars] = useState(
+      JSON.parse(localStorage.getItem("Circulars") || "[]"));
     
 
     // Update UserData & localStorage if not set
     useEffect(() => {
-      if (!localStorage.getItem("notifications")) {
-        fetchNotifications().then((data) => {
-          localStorage.setItem("notifications", JSON.stringify(data));
-          setNotifications(data);
-        });
-      }
+      UserData_to_fetch.forEach((item: UDTF_Type) => {
+        if (!localStorage.getItem(item.key)) {
+          fetchData(item).then((data) => {
+            // update localStorage
+            localStorage.setItem(item.key, JSON.stringify(data));
 
-      if (!localStorage.getItem("circular")) {
-        fetchCircular().then((data) => {
-          localStorage.setItem("circular", JSON.stringify(data));
-          setCircular(data);
-        });
-      }
+            // determine which variable to update
+            if (item.key === "Notifications") setNotifications(data);
+            if (item.key === "Circulars") setCirculars(data);
+          });
+        }
+      });
     }, []);
 
-    const allNotifications = [...notifications, ...circular]; // allNotifications = notifications + circular
+
+    const allNotifications = [...Notifications, ...Circulars]; // allNotifications = Notifications + Circulars
 
     const [closing, setClosing] = useState(false);
 
@@ -253,4 +251,4 @@ function Notifications({Close} : NotificationsProps){
     );
 }
 
-export default Notifications;
+export default Notification;
