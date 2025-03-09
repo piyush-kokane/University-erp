@@ -160,14 +160,23 @@ const sampleNotifications = [
 
 function Notifications({Close} : NotificationsProps){
     // get data from localStorage, if not set fetch from api
-    const notifications = JSON.parse(localStorage.getItem("notifications") || JSON.stringify(sampleNotifications));
-    const circular = JSON.parse(localStorage.getItem("circular") || JSON.stringify(sampleCircular));
+    const [notifications] = useState(
+      JSON.parse(localStorage.getItem("notifications") || JSON.stringify(sampleNotifications))
+    );
+    
+    const [circular] = useState(
+      JSON.parse(localStorage.getItem("circular") || JSON.stringify(sampleCircular))
+    );
 
-    // Update localStorage when data changes
+    // Update localStorage if not set
     useEffect(() => {
-      localStorage.setItem("notifications", JSON.stringify(notifications));
-      localStorage.setItem("circular", JSON.stringify(circular));
-    }, [notifications, circular]);
+      if (!localStorage.getItem("notifications"))
+        localStorage.setItem("notifications", JSON.stringify(notifications));
+
+      if (!localStorage.getItem("circular"))
+        localStorage.setItem("circular", JSON.stringify(circular));
+      
+    }, []);
 
     const allNotifications = [...notifications, ...circular]; // allNotifications = notifications + circular
 
