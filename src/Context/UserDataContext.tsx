@@ -1,5 +1,6 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
 
+
 // type def for UserData
 interface UserContextType {
   FullName: string;
@@ -17,8 +18,9 @@ interface UserContextType {
   ShortBio: string;
 }
 
+
 // Default user data for trial
-const sampleData: UserContextType = {
+const sampleData = {
   FullName: "Piyush Jayant Kokane",
   FirstName: "Piyush",
   LastName: "Kokane",
@@ -34,20 +36,43 @@ const sampleData: UserContextType = {
   ShortBio:"I study at MIT-WPU, and I have technical skills in React, TypeScript, Node.js, PHP, MySQL, MongoDB, Tailwind CSS, HTML, CSS, JavaScript.",
 };
 
+
+const fetchData = async () => {
+  try {
+    ///const response = await fetch("http://localhost:5000/api/userdata"); // fetch from API endpoint
+    ///const data = await response.json();
+    ///return data;
+    
+
+    // remove following code once backend is integrated
+    return sampleData; 
+  }
+  catch (error) {
+    console.error("Error fetching user data:", error);
+    return {}; // Return an empty array in case of error
+  }
+};
+
+
 // Create the context
 export const UserData = createContext<UserContextType | null>(null);
 
+
 // Provider component
 export const UserContextProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  // get data from localStorage, if not set fetch from api
-  const [user] = useState<UserContextType>(
-    JSON.parse(localStorage.getItem("UserData") || JSON.stringify(sampleData))
+  // initialise constants for UserDta, get data from localStorage if stored
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem("UserData") || "null")
   );
 
-  // Update localStorage if not set if not set
+  // Update UserData & localStorage if not set
   useEffect(() => {
-    if (!localStorage.getItem("UserData"))
-      localStorage.setItem("UserData", JSON.stringify(user));
+    if (!localStorage.getItem("UserData")) {  
+      fetchData().then((data) => {
+        localStorage.setItem("UserData", JSON.stringify(data));
+        setUser(data);
+      });
+    }
   }, []);
 
   return <UserData.Provider value={user}>{children}</UserData.Provider>;
