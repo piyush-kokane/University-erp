@@ -58,73 +58,39 @@ const sampleParent2Info = [
 ];
 
 
+interface UDTF_Type {
+    key: string;
+    src: string;
+}
+const UserData_to_fetch = [
+    // key is data stored in localStorage, src is  API endpoint
+    {key: "UserDocuments", src: "http://localhost:5000/api/userdocuments"},
+    {key: "StudentInfo", src: "http://localhost:5000/api/studentinfo"},
+    {key: "StudentAddress", src: "http://localhost:5000/api/studentaddress"},
+    {key: "Parent1Info", src: "http://localhost:5000/api/parent1info"},
+    {key: "Parent2Info", src: "http://localhost:5000/api/parent2info"},
+];
+  
+  
+const fetchData = async (item: UDTF_Type) => {
+    try {
+        ///const response = await fetch(item.src);
+        ///const data = await response.json();
+        ///return data;
+    
 
-const fetchUserDocuments = async () => {
-    try {
-        ///const response = await fetch("https://api.erp.com/UserDocuments"); // Replace with API endpoint
-        ///const data = await response.json();
-        ///return data;
-    
-        return sampleUserDocuments;
+        // remove following code once backend is integrated
+        if (item.key === "UserDocuments")  return sampleUserDocuments;
+        if (item.key === "StudentInfo")  return sampleStudentInfo;   
+        if (item.key === "StudentAddress")  return sampleStudentAddress;   
+        if (item.key === "Parent1Info")  return sampleParent1Info;   
+        if (item.key === "Parent2Info")  return sampleParent2Info;   
     }
     catch (error) {
-        console.error("Error fetching user documents:", error);
+        console.error(`Error fetching data for ${item.key}:`, error);
         return []; // Return an empty array in case of error
     }
 };
-const fetchStudentInfo = async () => {
-    try {
-        ///const response = await fetch("https://api.erp.com/StudentInfo"); // Replace with API endpoint
-        ///const data = await response.json();
-        ///return data;
-    
-        return sampleStudentInfo;
-    }
-    catch (error) {
-        console.error("Error fetching student info:", error);
-        return []; // Return an empty array in case of error
-    }
-};
-const fetchStudentAddress = async () => {
-    try {
-        ///const response = await fetch("https://api.erp.com/StudentAddress"); // Replace with API endpoint
-        ///const data = await response.json();
-        ///return data;
-    
-        return sampleStudentAddress;
-    }
-    catch (error) {
-        console.error("Error fetching circulars:", error);
-        return []; // Return an empty array in case of error
-    }
-};
-const fetchParent1Info = async () => {
-    try {
-        ///const response = await fetch("https://api.erp.com/Parent1Info"); // Replace with API endpoint
-        ///const data = await response.json();
-        ///return data;
-    
-        return sampleParent1Info;
-    }
-    catch (error) {
-        console.error("Error fetching circulars:", error);
-        return []; // Return an empty array in case of error
-    }
-};
-const fetchParent2Info = async () => {
-    try {
-        ///const response = await fetch("https://api.erp.com/Parent2Info"); // Replace with API endpoint
-        ///const data = await response.json();
-        ///return data;
-    
-        return sampleParent2Info;
-    }
-    catch (error) {
-        console.error("Error fetching circulars:", error);
-        return []; // Return an empty array in case of error
-    }
-};
-
 
 
 function Profile() {
@@ -164,42 +130,22 @@ function Profile() {
 
     // Update UserData & localStorage if not set
     useEffect(() => {
-        if (!localStorage.getItem("UserDocuments")) {
-            fetchUserDocuments().then((data) => {
-                localStorage.setItem("UserDocuments", JSON.stringify(data));
-                setUserDocuments(data);
-            });
-        }
+      UserData_to_fetch.forEach((item: UDTF_Type) => {
+        if (!localStorage.getItem(item.key)) {
+          fetchData(item).then((data) => {
+            // update localStorage
+            localStorage.setItem(item.key, JSON.stringify(data));
 
-        if (!localStorage.getItem("StudentInfo")) {
-            fetchStudentInfo().then((data) => {
-                localStorage.setItem("StudentInfo", JSON.stringify(data));
-                setStudentInfo(data);
-            });
+            // determine which variable to update
+            if (item.key === "UserDocuments") setUserDocuments(data);
+            if (item.key === "StudentInfo") setStudentInfo(data);
+            if (item.key === "StudentAddress") setStudentAddress(data);
+            if (item.key === "Parent1Info") setParent1Info(data);
+            if (item.key === "Parent2Info") setParent2Info(data);
+          });
         }
-
-        if (!localStorage.getItem("StudentAddress")) {
-            fetchStudentAddress().then((data) => {
-                localStorage.setItem("StudentAddress", JSON.stringify(data));
-                setStudentAddress(data);
-            });
-        }
-
-        if (!localStorage.getItem("Parent1Info")) {
-            fetchParent1Info().then((data) => {
-                localStorage.setItem("Parent1Info", JSON.stringify(data));
-                setParent1Info(data);
-            });
-        }
-
-        if (!localStorage.getItem("Parent2Info")) {
-            fetchParent2Info().then((data) => {
-                localStorage.setItem("Parent2Info", JSON.stringify(data));
-                setParent2Info(data);
-            });
-        }
+      });
     }, []);
-
 
     
     function About() {    

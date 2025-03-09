@@ -5,6 +5,29 @@ import Footer from "../../Components/Footer/Footer";
 
 
 
+// type def for UserData
+interface AttendanceType {
+  subject: string;
+  attended: number;
+  total: number;
+}
+
+interface CircularsType {
+  title: string;
+  message: string;
+  date: string;
+  time: string;
+}
+
+interface ScheduleEntry {
+  subject: string;
+  time: string;
+};
+type WeeklySchedule = {
+  [day: string]: ScheduleEntry[];
+};
+
+
 const sampleCreditsEarned = 4;
 const sampleCreditsRemaining = 10;
 const sampleTotalAttendancePercentage = 85;
@@ -16,7 +39,6 @@ const sampleTermAttendance = [
   { subject: "English", attended: 60, total: 100 },
   { subject: "Computer Science", attended: 95, total: 100 },
 ];
-
 const sampleWeekAttendance = [
   { subject: "Mathematics", attended: 45, total: 100 },
   { subject: "Physics", attended: 59, total: 100 },
@@ -100,13 +122,6 @@ const sampleCirculars = [
   },
 ];
 
-interface ScheduleEntry {
-  subject: string;
-  time: string;
-};
-type WeeklySchedule = {
-  [day: string]: ScheduleEntry[];
-};
 const sampleWeeklySchedule: WeeklySchedule = {
   Monday: [
     { subject: "Mathematics", time: "9:00 AM - 10:00 AM" },
@@ -131,60 +146,37 @@ const sampleWeeklySchedule: WeeklySchedule = {
 };
 
 
+interface UDTF_Type {
+  key: string;
+  src: string;
+}
+const UserData_to_fetch = [
+  // key is data stored in localStorage, src is  API endpoint
+  {key: "TermAttendance", src: "http://localhost:5000/api/termAttendance"},
+  {key: "WeekAttendance", src: "http://localhost:5000/api/weekattendance"},
+  {key: "Circulars", src: "http://localhost:5000/api/circulars"},
+  {key: "WeeklySchedule", src: "http://localhost:5000/api/weeklyschedule"},
+];
 
-const fetchStudentInfo = async () => {
+
+const fetchData = async (item: UDTF_Type) => {
   try {
-    ///const response = await fetch("https://api.erp.com/StudentInfo"); // Replace with API endpoint
+    ///const response = await fetch(item.src);
     ///const data = await response.json();
     ///return data;
 
-    return sampleTermAttendance;
+
+    // remove following code once backend is integrated
+    if (item.key === "TermAttendance")  return sampleTermAttendance;
+    if (item.key === "WeekAttendance")  return sampleWeekAttendance;   
+    if (item.key === "Circulars")  return sampleCirculars;   
+    if (item.key === "WeeklySchedule")  return sampleWeeklySchedule;   
   }
   catch (error) {
-    console.error("Error fetching circulars:", error);
+    console.error(`Error fetching data for ${item.key}:`, error);
     return []; // Return an empty array in case of error
   }
 };
-const fetchStudentAddress = async () => {
-  try {
-    ///const response = await fetch("https://api.erp.com/StudentAddress"); // Replace with API endpoint
-    ///const data = await response.json();
-    ///return data;
-
-    return sampleWeekAttendance;
-  }
-  catch (error) {
-    console.error("Error fetching circulars:", error);
-    return []; // Return an empty array in case of error
-  }
-};
-const fetchParent1Info = async () => {
-  try {
-    ///const response = await fetch("https://api.erp.com/Parent1Info"); // Replace with API endpoint
-    ///const data = await response.json();
-    ///return data;
-
-    return sampleCirculars;
-  }
-  catch (error) {
-    console.error("Error fetching circulars:", error);
-    return []; // Return an empty array in case of error
-  }
-};
-const fetchParent2Info = async () => {
-  try {
-    ///const response = await fetch("https://api.erp.com/Parent2Info"); // Replace with API endpoint
-    ///const data = await response.json();
-    ///return data;
-
-    return sampleWeeklySchedule;
-  }
-  catch (error) {
-    console.error("Error fetching circulars:", error);
-    return []; // Return an empty array in case of error
-  }
-};
-
 
 
 function DashboardPage() {
@@ -205,8 +197,13 @@ function DashboardPage() {
 
   // initialise constants for UserDta, get data from localStorage if stored
   const [CreditsEarned, setCreditsEarned] = useState(
-    Number(localStorage.getItem("CreditsEarned") || sampleCreditsEarned)
-  );
+    Number(localStorage.getItem("CreditsEarned") || 0));
+
+  const [CreditsRemaining, setCreditsRemaining] = useState(
+    Number(localStorage.getItem("CreditsRemaining") || 0));
+
+  const [TotalAttendancePercentage, setTotalAttendancePercentage] = useState(
+    Number(localStorage.getItem("TotalAttendancePercentage") || 0));
 
   const [TermAttendance, setTermAttendance] = useState(
     JSON.parse(localStorage.getItem("TermAttendance") || "[]"));
@@ -221,70 +218,36 @@ function DashboardPage() {
     JSON.parse(localStorage.getItem("WeeklySchedule") || "[]"));
 
 
-
   // Update UserData & localStorage if not set
   useEffect(() => {
-    if (!localStorage.getItem("TermAttendance")) {
-      fetchUserDocuments().then((data) => {
-        localStorage.setItem("TermAttendance", JSON.stringify(data));
-        setUserDocuments(data);
-      });
-    }
+    UserData_to_fetch.forEach((item: UDTF_Type) => {
+      if (!localStorage.getItem(item.key)) {
+        fetchData(item).then((data) => {
+          // update localStorage
+          localStorage.setItem(item.key, JSON.stringify(data));
 
-    if (!localStorage.getItem("WeekAttendance")) {
-      fetchStudentInfo().then((data) => {
-        localStorage.setItem("WeekAttendance", JSON.stringify(data));
-        setStudentInfo(data);
-      });
-    }
-
-    if (!localStorage.getItem("Circulars")) {
-      fetchStudentAddress().then((data) => {
-        localStorage.setItem("Circulars", JSON.stringify(data));
-        setStudentAddress(data);
-      });
-    }
-
-    if (!localStorage.getItem("WeeklySchedule")) {
-      fetchParent1Info().then((data) => {
-        localStorage.setItem("WeeklySchedule", JSON.stringify(data));
-        setParent1Info(data);
-      });
-    }
+          // determine which variable to update
+          if (item.key === "TermAttendance") setTermAttendance(data);
+          if (item.key === "WeekAttendance") setWeekAttendance(data);
+          if (item.key === "Circulars") setCirculars(data);
+          if (item.key === "WeeklySchedule") setWeeklySchedule(data);
+        });
+      }
+    });
   }, []);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   function Attendance() {
     const [attendanceType, setAttendanceType] = useState("This Term Attendance");
-    const [attendance, setAttendance] = useState(termAttendance);
+    const [attendance, setAttendance] = useState(TermAttendance);
   
     function handleSwap() {
       if (attendanceType === "This Term Attendance") {
         setAttendanceType("This Week Attendance");
-        setAttendance(weekAttendance);
+        setAttendance(WeekAttendance);
       } else {
         setAttendanceType("This Term Attendance");
-        setAttendance(termAttendance);
+        setAttendance(TermAttendance);
       }
     }
 
@@ -300,14 +263,14 @@ function DashboardPage() {
           
           {/* maped for subject names, seperaet div to make alignment perfect */}
           <div className="attendance-container-left">
-            {attendance.map((item) => (
+            {attendance.map((item: AttendanceType) => (
               <h1 className="attendance-subject-name">{item.subject}</h1>
             ))}
           </div>
 
           {/* maped for subject progress bar */}
           <div className="attendance-container-middle">
-            {attendance.map((item) => {
+            {attendance.map((item: AttendanceType) => {
               const attendancePercentage = (item.attended / item.total) * 100;
 
               return (
@@ -323,7 +286,7 @@ function DashboardPage() {
           
           {/* maped for subject progress */}
           <div className="attendance-container-right">
-            {attendance.map((item) => (
+            {attendance.map((item: AttendanceType) => (
               <h1 className="attendance-subject-attendance">{item.attended}/{item.total}</h1>
             ))}
           </div>
@@ -343,14 +306,14 @@ function DashboardPage() {
         {/* Credits Earned */}
         <div className="summary-container-1">
           <span className="material-icons">paid</span>
-          <h1>{creditsEarned}</h1>
+          <h1>{CreditsEarned}</h1>
           <h2>Credits Earned</h2>
         </div>
 
         {/* Credits Remaining */}
         <div className="summary-container-1">
           <span className="material-icons">paid</span>
-          <h1>{creditsRemaining}</h1>
+          <h1>{CreditsRemaining}</h1>
           <h2>Credits Remaining</h2>
         </div>
 
@@ -372,7 +335,7 @@ function DashboardPage() {
         <div className="page-container-line-2"/>
 
         <div className="circular-container scrollbar">
-          {circular.map((item) => (
+          {Circulars.map((item: CircularsType) => (
             <div  className={"circular-item"} >
               {/*<h1>{item.title}</h1>*/} {/* Not showing Title */}
               <p>{item.message}</p>
@@ -405,9 +368,9 @@ function DashboardPage() {
               </tr>
             </thead>
             <tbody>
-              {Object.keys(weeklySchedule).map((day) => {
-                const classes = weeklySchedule[day];
-                return classes.map((cls, index) => (
+              {Object.keys(WeeklySchedule).map((day) => {
+                const classes = WeeklySchedule[day];
+                return classes.map((cls: ScheduleEntry, index: number) => (
                   <tr key={day + index}>
                     {index === 0 && <td rowSpan={classes.length}>{day}</td>}
                     <td>{cls.subject}</td>
