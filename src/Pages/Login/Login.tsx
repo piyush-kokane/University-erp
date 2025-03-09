@@ -1,8 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
+import { UserData  } from "../../Context/UserDataContext";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./Login.css";
 
 function Login() {
+  const userContext = useContext(UserData);
+  if (!userContext) throw new Error("useContext(UserData) must be used within a UserContextProvider");
+  const { user, updateUserData } = userContext;
+
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
@@ -13,13 +19,13 @@ function Login() {
   const goTo = location.state?.from || "/dashboard";
 
 
-
   // Handle login logic here
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault(); // prevents refresh of tab
     navigate(goTo); // Navigate to the goTo route 
     console.log("Logging in with", { username, password, rememberMe });
     localStorage.setItem("loggedIn", "true"); // Set loggedIn to true
+    updateUserData();
   };
 
 

@@ -14,7 +14,9 @@ function Profile({Close} : ProfileProps){
     const navigate = useNavigate();
     const [closing, setClosing] = useState(false);
 
-    const user = useContext(UserData);
+    const userContext = useContext(UserData);
+    if (!userContext) throw new Error("useContext(UserData) must be used within a UserContextProvider");
+    const { user, updateUserData } = userContext;
 
     const Profile = user?.Profile;
     const Banner = user?.Banner;

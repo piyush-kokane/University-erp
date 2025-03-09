@@ -96,8 +96,10 @@ const fetchData = async (item: UDTF_Type) => {
 function Profile() {
     const [panel, setPanel] = useState("about");
 
-    const user = useContext(UserData);
-
+    const userContext = useContext(UserData);
+    if (!userContext) throw new Error("useContext(UserData) must be used within a UserContextProvider");
+    const { user, updateUserData } = userContext;
+    
     let Profile = user?.Profile;
     let Banner = user?.Banner;
     let FullName = user?.FullName;

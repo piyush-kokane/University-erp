@@ -10,7 +10,9 @@ interface ServiceRequestProps {
 function ServiceRequest({Close} : ServiceRequestProps){
     const AlertSystem = useContext(AlertSystemContext);
 
-    const user = useContext(UserData);
+    const userContext = useContext(UserData);
+    if (!userContext) throw new Error("useContext(UserData) must be used within a UserContextProvider");
+    const { user, updateUserData } = userContext;
     
     const FirstName = user?.FirstName;
     const LastName = user?.LastName;

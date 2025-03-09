@@ -49,31 +49,40 @@ const fetchData = async () => {
   }
   catch (error) {
     console.error("Error fetching user data:", error);
-    return {}; // Return an empty array in case of error
+    return {} // Return an empty array in case of error
   }
 };
 
 
+interface UserContextValue {
+  user: UserContextType | null;
+  updateUserData: () => void;
+}
+
 // Create the context
-export const UserData = createContext<UserContextType | null>(null);
+export const UserData = createContext<UserContextValue | null>(null);
 
 
 // Provider component
 export const UserContextProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   // initialise constants for UserDta, get data from localStorage if stored
   const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem("UserData") || "null")
-  );
+    JSON.parse(localStorage.getItem("UserData") || "{}"));
 
   // Update UserData & localStorage if not set
   useEffect(() => {
-    if (!localStorage.getItem("UserData")) {  
-      fetchData().then((data) => {
-        localStorage.setItem("UserData", JSON.stringify(data));
-        setUser(data);
-      });
+    if (!localStorage.getItem("UserData")) {
+      updateUserData();
     }
   }, []);
 
-  return <UserData.Provider value={user}>{children}</UserData.Provider>;
+  // Update UserData & localStorage
+  function updateUserData() {
+    fetchData().then((data) => {
+      localStorage.setItem("UserData", JSON.stringify(data));
+      setUser(data);
+    });
+  }
+
+  return <UserData.Provider value={{ user, updateUserData }}>{children}</UserData.Provider>;
 };
