@@ -152,6 +152,9 @@ interface UDTF_Type {
 }
 const UserData_to_fetch = [
   // key is data stored in localStorage, src is  API endpoint
+  {key: "CreditsEarned", src: "http://localhost:5000/api/termAttendance"},
+  {key: "CreditsRemaining", src: "http://localhost:5000/api/termAttendance"},
+  {key: "TotalAttendancePercentage", src: "http://localhost:5000/api/termAttendance"},
   {key: "TermAttendance", src: "http://localhost:5000/api/termAttendance"},
   {key: "WeekAttendance", src: "http://localhost:5000/api/weekattendance"},
   {key: "Circulars", src: "http://localhost:5000/api/circulars"},
@@ -167,6 +170,9 @@ const fetchData = async (item: UDTF_Type) => {
 
 
     // remove following code once backend is integrated
+    if (item.key === "CreditsEarned")  return sampleCreditsEarned;
+    if (item.key === "CreditsRemaining")  return sampleCreditsRemaining;
+    if (item.key === "TotalAttendancePercentage")  return sampleTotalAttendancePercentage;
     if (item.key === "TermAttendance")  return sampleTermAttendance;
     if (item.key === "WeekAttendance")  return sampleWeekAttendance;   
     if (item.key === "Circulars")  return sampleCirculars;   
@@ -227,6 +233,9 @@ function DashboardPage() {
           localStorage.setItem(item.key, JSON.stringify(data));
 
           // determine which variable to update
+          if (item.key === "CreditsEarned") setCreditsEarned(Number(data));
+          if (item.key === "CreditsRemaining") setCreditsRemaining(Number(data));
+          if (item.key === "TotalAttendancePercentage") setTotalAttendancePercentage(Number(data));
           if (item.key === "TermAttendance") setTermAttendance(data);
           if (item.key === "WeekAttendance") setWeekAttendance(data);
           if (item.key === "Circulars") setCirculars(data);
