@@ -28,7 +28,10 @@ function Navigation() {
 
   const isLoggedIn = localStorage.getItem("loggedIn") === "true";
 
-  const user = useContext(UserData);
+  const userContext = useContext(UserData);
+  if (!userContext) throw new Error("useContext(UserData) must be used within a UserContextProvider");
+  const { user, updateUserData } = userContext;
+  
   const Profilepic = user?.Profile;
 
   const menuItems = [
