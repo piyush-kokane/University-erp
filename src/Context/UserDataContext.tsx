@@ -36,6 +36,15 @@ const sampleData = {
   ShortBio:"I study at MIT-WPU, and I have technical skills in React, TypeScript, Node.js, PHP, MySQL, MongoDB, Tailwind CSS, HTML, CSS, JavaScript.",
 };
 
+const defaultData = {
+  FullName: "Not Loading",
+  contact: "xxx-xxxx-xxx",
+  Prn: "not loading",
+  Branch: "not loading",
+  Term: "not loading",
+  Profile: "/Images/profile.png",
+  Banner: "/Images/BG.png",
+};
 
 const fetchData = async () => {
   try {
@@ -49,7 +58,7 @@ const fetchData = async () => {
   }
   catch (error) {
     console.error("Error fetching user data:", error);
-    return {} // Return an empty array in case of error
+    return defaultData // Return an empty array in case of error
   }
 };
 
