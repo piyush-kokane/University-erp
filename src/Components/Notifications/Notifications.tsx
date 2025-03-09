@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./Notifications.css"
 
 
-interface NotificationProps {
+interface NotificationsProps {
     Close: () => void;
 }
 
@@ -167,12 +167,15 @@ const UserData_to_fetch = [
   {key: "Circulars", src: "http://localhost:5000/api/circulars"},
 ];
 
+
 const fetchData = async (item: UDTF_Type) => {
   try {
     ///const response = await fetch(item.src);
     ///const data = await response.json();
     ///return data;
+    
 
+    // remove following code once backend is integrated
     if (item.key === "Notifications")  return sampleNotifications;
     if (item.key === "Circulars")  return sampleCirculars;   
   }
@@ -183,7 +186,7 @@ const fetchData = async (item: UDTF_Type) => {
 };
 
 
-function Notification({Close} : NotificationProps){
+function Notifications({Close} : NotificationsProps){
     // initialise constants for UserDta, get data from localStorage if stored
     const [Notifications, setNotifications] = useState(
       JSON.parse(localStorage.getItem("Notifications") || "[]"));
@@ -251,4 +254,4 @@ function Notification({Close} : NotificationProps){
     );
 }
 
-export default Notification;
+export default Notifications;
