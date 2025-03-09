@@ -25,7 +25,7 @@ const sampleWeekAttendance = [
   { subject: "Computer Science", attended: 80, total: 100 },
 ];
 
-const sampleCircular = [
+const sampleCirculars = [
   {
     title: "Circular/Notice",
     message: "Recruitment Forms For Dhvani, The Official Music Club of MIT World Peace University, are now available! If you have a passion for music and want to be a part of an incredible team, submit your application before the deadline. Auditions will be held next week.",
@@ -131,6 +131,62 @@ const sampleWeeklySchedule: WeeklySchedule = {
 };
 
 
+
+const fetchStudentInfo = async () => {
+  try {
+    ///const response = await fetch("https://api.erp.com/StudentInfo"); // Replace with API endpoint
+    ///const data = await response.json();
+    ///return data;
+
+    return sampleTermAttendance;
+  }
+  catch (error) {
+    console.error("Error fetching circulars:", error);
+    return []; // Return an empty array in case of error
+  }
+};
+const fetchStudentAddress = async () => {
+  try {
+    ///const response = await fetch("https://api.erp.com/StudentAddress"); // Replace with API endpoint
+    ///const data = await response.json();
+    ///return data;
+
+    return sampleWeekAttendance;
+  }
+  catch (error) {
+    console.error("Error fetching circulars:", error);
+    return []; // Return an empty array in case of error
+  }
+};
+const fetchParent1Info = async () => {
+  try {
+    ///const response = await fetch("https://api.erp.com/Parent1Info"); // Replace with API endpoint
+    ///const data = await response.json();
+    ///return data;
+
+    return sampleCirculars;
+  }
+  catch (error) {
+    console.error("Error fetching circulars:", error);
+    return []; // Return an empty array in case of error
+  }
+};
+const fetchParent2Info = async () => {
+  try {
+    ///const response = await fetch("https://api.erp.com/Parent2Info"); // Replace with API endpoint
+    ///const data = await response.json();
+    ///return data;
+
+    return sampleWeeklySchedule;
+  }
+  catch (error) {
+    console.error("Error fetching circulars:", error);
+    return []; // Return an empty array in case of error
+  }
+};
+
+
+
 function DashboardPage() {
   const navigate = useNavigate();
 
@@ -147,46 +203,54 @@ function DashboardPage() {
   }, []);
 
 
-  // get data from localStorage, if not set fetch from api
-  const [CreditsEarned] = useState(
+  // initialise constants for UserDta, get data from localStorage if stored
+  const [CreditsEarned, setCreditsEarned] = useState(
     Number(localStorage.getItem("CreditsEarned") || sampleCreditsEarned)
   );
 
-  const [termAttendance] = useState(
-    JSON.parse(localStorage.getItem("termAttendance") || JSON.stringify(sampleTermAttendance))
-  );
+  const [TermAttendance, setTermAttendance] = useState(
+    JSON.parse(localStorage.getItem("TermAttendance") || "[]"));
   
-  const [weekAttendance] = useState(
-    JSON.parse(localStorage.getItem("weekAttendance") || JSON.stringify(sampleWeekAttendance))
-  );
+  const [WeekAttendance, setWeekAttendance] = useState(
+    JSON.parse(localStorage.getItem("WeekAttendance") || "[]"));
 
-  const [circular] = useState(
-    JSON.parse(localStorage.getItem("circular") || JSON.stringify(sampleCircular))
-  );
+  const [Circulars, setCirculars] = useState(
+    JSON.parse(localStorage.getItem("Circulars") || "[]"));
 
-  const [WeeklySchedule] = useState(
-    JSON.parse(localStorage.getItem("WeeklySchedule") || JSON.stringify(sampleWeeklySchedule))
-  );
+  const [WeeklySchedule, setWeeklySchedule] = useState(
+    JSON.parse(localStorage.getItem("WeeklySchedule") || "[]"));
 
 
 
-  // Update localStorage if not set
+  // Update UserData & localStorage if not set
   useEffect(() => {
-    if (!localStorage.getItem("UserDocuments"))
-      localStorage.setItem("UserDocuments", JSON.stringify(UserDocuments));
+    if (!localStorage.getItem("TermAttendance")) {
+      fetchUserDocuments().then((data) => {
+        localStorage.setItem("TermAttendance", JSON.stringify(data));
+        setUserDocuments(data);
+      });
+    }
 
-    if (!localStorage.getItem("StudentInfo"))
-      localStorage.setItem("StudentInfo", JSON.stringify(StudentInfo));
-  
-    if (!localStorage.getItem("StudentAddress"))
-      localStorage.setItem("StudentAddress", JSON.stringify(StudentAddress));
-  
-    if (!localStorage.getItem("Parent1Info"))
-      localStorage.setItem("Parent1Info", JSON.stringify(Parent1Info));
-  
-    if (!localStorage.getItem("Parent2Info"))
-      localStorage.setItem("Parent2Info", JSON.stringify(Parent2Info));
-    
+    if (!localStorage.getItem("WeekAttendance")) {
+      fetchStudentInfo().then((data) => {
+        localStorage.setItem("WeekAttendance", JSON.stringify(data));
+        setStudentInfo(data);
+      });
+    }
+
+    if (!localStorage.getItem("Circulars")) {
+      fetchStudentAddress().then((data) => {
+        localStorage.setItem("Circulars", JSON.stringify(data));
+        setStudentAddress(data);
+      });
+    }
+
+    if (!localStorage.getItem("WeeklySchedule")) {
+      fetchParent1Info().then((data) => {
+        localStorage.setItem("WeeklySchedule", JSON.stringify(data));
+        setParent1Info(data);
+      });
+    }
   }, []);
 
 

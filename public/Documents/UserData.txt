@@ -41,16 +41,18 @@ ShortBio
 // Advantages: low memory usage & Faster initial page load
 // Once logout localStorage is cleared
 
-creditsEarned
-creditsRemaining
+CreditsEarned
+CreditsRemaining
 
 TotalAttendancePercentage
-term_attendance[]
-week_attendance[]
+Term_attendance[]
+Week_attendance[]
 
-circular[]
+notifications[]
 
-weeklySchedule[][]
+circulars[]
+
+WeeklySchedule[][]
 
 UserDocuments = [
     { 10th Marksheet },
@@ -110,7 +112,7 @@ Profilepic : img
 
 ** Notifications **
 notifications : 2D array
-circular      : 2D array
+circulars     : 2D array
 
 
 ** Profile Panel **
@@ -145,13 +147,13 @@ gmail     : string
 
 
 ** Dashboard Page **
-creditsEarned             : number
-creditsRemaining          : number
+CreditsEarned             : number
+CreditsRemaining          : number
 TotalAttendancePercentage : number
-termAttendance            : 2D array
-weekAttendance            : 2D array
-circular                  : 2D array
-weeklySchedule            : Object array
+TermAttendance            : 2D array
+WeekAttendance            : 2D array
+circulars                 : 2D array
+WeeklySchedule            : Object array
 
 
 
