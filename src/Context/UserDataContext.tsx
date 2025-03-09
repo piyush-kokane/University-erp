@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
 
-// Interface for context type
+// type def for UserData
 interface UserContextType {
   FullName: string;
   FirstName: string;
