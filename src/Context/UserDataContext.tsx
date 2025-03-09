@@ -40,12 +40,15 @@ export const UserData = createContext<UserContextType | null>(null);
 // Provider component
 export const UserContextProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   // get data from localStorage, if not set fetch from api
-  const user: UserContextType = JSON.parse(localStorage.getItem("UserData") || JSON.stringify(sampleData));
+  const [user] = useState<UserContextType>(
+    JSON.parse(localStorage.getItem("UserData") || JSON.stringify(sampleData))
+  );
 
-  // Update localStorage when data changes
+  // Update localStorage if not set if not set
   useEffect(() => {
-    localStorage.setItem("UserData", JSON.stringify(user));
-  }, [user]);
+    if (!localStorage.getItem("UserData"))
+      localStorage.setItem("UserData", JSON.stringify(user));
+  }, []);
 
   return <UserData.Provider value={user}>{children}</UserData.Provider>;
 };
