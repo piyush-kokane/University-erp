@@ -6,7 +6,6 @@ interface NotificationsProps {
     Close: () => void;
 }
 
-
 const sampleCircular = [
     {
       title: "Circular/Notice",
@@ -158,24 +157,58 @@ const sampleNotifications = [
 ];
 
 
+const fetchNotifications = async () => {
+  try {
+    ///const response = await fetch("https://api.erp.com/notifications"); // Replace with API endpoint
+    ///const data = await response.json();
+    ///return data;
+
+    return sampleNotifications;
+  }
+  catch (error) {
+    console.error("Error fetching notifications:", error);
+    return []; // Return an empty array in case of error
+  }
+};
+const fetchCircular = async () => {
+  try {
+    ///const response = await fetch("https://api.erp.com/circulars"); // Replace with API endpoint
+    ///const data = await response.json();
+    ///return data;
+
+    return sampleCircular;
+  }
+  catch (error) {
+    console.error("Error fetching notifications:", error);
+    return []; // Return an empty array in case of error
+  }
+};
+
+
 function Notifications({Close} : NotificationsProps){
-    // get data from localStorage, if not set fetch from api
-    const [notifications] = useState(
-      JSON.parse(localStorage.getItem("notifications") || JSON.stringify(sampleNotifications))
-    );
+    // initialise constants for UserDta, get data from localStorage if stored
+    const [notifications, setNotifications] = useState(
+      JSON.parse(localStorage.getItem("notifications") || "[]"));
     
-    const [circular] = useState(
-      JSON.parse(localStorage.getItem("circular") || JSON.stringify(sampleCircular))
-    );
+    const [circular, setCircular] = useState(
+      JSON.parse(localStorage.getItem("circular") || "[]"));
+    
 
-    // Update localStorage if not set
+    // Update UserData & localStorage if not set
     useEffect(() => {
-      if (!localStorage.getItem("notifications"))
-        localStorage.setItem("notifications", JSON.stringify(notifications));
+      if (!localStorage.getItem("notifications")) {
+        fetchNotifications().then((data) => {
+          localStorage.setItem("notifications", JSON.stringify(data));
+          setNotifications(data);
+        });
+      }
 
-      if (!localStorage.getItem("circular"))
-        localStorage.setItem("circular", JSON.stringify(circular));
-      
+      if (!localStorage.getItem("circular")) {
+        fetchCircular().then((data) => {
+          localStorage.setItem("circular", JSON.stringify(data));
+          setCircular(data);
+        });
+      }
     }, []);
 
     const allNotifications = [...notifications, ...circular]; // allNotifications = notifications + circular
@@ -202,7 +235,7 @@ function Notifications({Close} : NotificationsProps){
                 
                 <div className="notifications-container scrollbar">
                     {allNotifications.map((item) => (
-                        <div  className={"notifications-item"} >
+                        <div className={"notifications-item"} >
                             <h1>{item.title}</h1>
                             <p>{item.message}</p>
                             <h2>{item.date}</h2>
