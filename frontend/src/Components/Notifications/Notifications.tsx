@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Notifications.css"
 
 
@@ -187,71 +188,73 @@ const fetchData = async (item: UDTF_Type) => {
 
 
 function Notifications({Close} : NotificationsProps){
-    // initialise constants for UserDta, get data from localStorage if stored
-    const [Notifications, setNotifications] = useState(
-      JSON.parse(localStorage.getItem("Notifications") || "[]"));
-    
-    const [Circulars, setCirculars] = useState(
-      JSON.parse(localStorage.getItem("Circulars") || "[]"));
-    
+  const navigate = useNavigate();
 
-    // Update UserData & localStorage if not set
-    useEffect(() => {
-      UserData_to_fetch.forEach((item: UDTF_Type) => {
-        if (!localStorage.getItem(item.key)) {
-          fetchData(item).then((data) => {
-            // update localStorage
-            localStorage.setItem(item.key, JSON.stringify(data));
+  // initialise constants for UserDta, get data from localStorage if stored
+  const [Notifications, setNotifications] = useState(
+    JSON.parse(localStorage.getItem("Notifications") || "[]"));
+  
+  const [Circulars, setCirculars] = useState(
+    JSON.parse(localStorage.getItem("Circulars") || "[]"));
+  
 
-            // determine which variable to update
-            if (item.key === "Notifications") setNotifications(data);
-            if (item.key === "Circulars") setCirculars(data);
-          });
-        }
-      });
-    }, []);
+  // Update UserData & localStorage if not set
+  useEffect(() => {
+    UserData_to_fetch.forEach((item: UDTF_Type) => {
+      if (!localStorage.getItem(item.key)) {
+        fetchData(item).then((data) => {
+          // update localStorage
+          localStorage.setItem(item.key, JSON.stringify(data));
+
+          // determine which variable to update
+          if (item.key === "Notifications") setNotifications(data);
+          if (item.key === "Circulars") setCirculars(data);
+        });
+      }
+    });
+  }, []);
 
 
-    const allNotifications = [...Notifications, ...Circulars]; // allNotifications = Notifications + Circulars
+  const allNotifications = [...Notifications, ...Circulars]; // allNotifications = Notifications + Circulars
 
-    const [closing, setClosing] = useState(false);
+  const [closing, setClosing] = useState(false);
 
-    function handleClose() {
-        setClosing(true); // Start fade-out animation
-        setTimeout(() => Close(), 300); // delay, Matches animation duration (0.3s) // Call close function after animation
-    }
+  function handleClose() {
+    setClosing(true); // Start fade-out animation
+    setTimeout(() => Close(), 300); // delay, Matches animation duration (0.3s) // Call close function after animation
+  }
 
-    return(
-        <>
-            {/* Overlay when notifications is open */}
-            <div className={`notifications-overlay ${closing ? "fade-out" : "fade-in"}`} onClick={handleClose} />
+  return(
+    <>
+      {/* Overlay when notifications is open */}
+      <div className={`notifications-overlay ${closing ? "fade-out" : "fade-in"}`} onClick={handleClose} />
 
-            {/* Notifications Panel */}
-            <div className={`notifications-panel ${closing ? "slide-out" : "slide-in"}`}>
-                <div className="notifications-header">
-                    <h5>Notifications</h5>
-                    <span className="material-icons notifications-cancle-btn" onClick={handleClose}>close</span>
-                    <span className="material-icons notifications-refresh-btn" onClick={handleClose}>cached</span>
-                </div>
-                
-                <div className="notifications-container scrollbar">
-                    {allNotifications.map((item) => (
-                        <div className={"notifications-item"} >
-                            <h1>{item.title}</h1>
-                            <p>{item.message}</p>
-                            <h2>{item.date}</h2>
-                            <h3>{item.time}</h3>
-                            <div />
-                        </div>
-                    ))}
-                </div>
-
-                <div className="notifications-footer">
-                    <h1>See All ➜</h1>
-                </div>
+      {/* Notifications Panel */}
+      <div className={`notifications-panel ${closing ? "slide-out" : "slide-in"}`}>
+        <div className="notifications-header">
+          <h5>Notifications</h5>
+          <span className="material-icons notifications-cancle-btn" onClick={handleClose}>close</span>
+          <span className="material-icons notifications-refresh-btn" onClick={handleClose}>cached</span>
+        </div>
+        
+        <div className="notifications-container scrollbar">
+          {allNotifications.map((item, index) => (
+            <div key={index} className={"notifications-item"} >
+              <h1>{item.title}</h1>
+              <p>{item.message}</p>
+              <h2>{item.date}</h2>
+              <h3>{item.time}</h3>
+              <div />
             </div>
-        </>
-    );
+          ))}
+        </div>
+
+        <div className="notifications-footer">
+          <h1 onClick={() => navigate("/circular")}>See All ➜</h1>
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default Notifications;
