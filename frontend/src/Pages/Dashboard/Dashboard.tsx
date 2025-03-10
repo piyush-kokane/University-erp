@@ -273,7 +273,7 @@ function DashboardPage() {
           {/* maped for subject names, seperaet div to make alignment perfect */}
           <div className="attendance-container-left">
             {attendance.map((item: AttendanceType) => (
-              <h1 className="attendance-subject-name">{item.subject}</h1>
+              <h1 key={item.subject} className="attendance-subject-name">{item.subject}</h1>
             ))}
           </div>
 
@@ -283,7 +283,7 @@ function DashboardPage() {
               const attendancePercentage = (item.attended / item.total) * 100;
 
               return (
-                <div className="attendance-progress-bar">
+                <div key={item.subject} className="attendance-progress-bar">
                   <div 
                     className={`attendance-progress-fill ${attendancePercentage >= 80 ? "high" : attendancePercentage >= 60 ? "mid" : "low"}`}
                     style={{ width: `${attendancePercentage}%` }}
@@ -296,7 +296,7 @@ function DashboardPage() {
           {/* maped for subject progress */}
           <div className="attendance-container-right">
             {attendance.map((item: AttendanceType) => (
-              <h1 className="attendance-subject-attendance">{item.attended}/{item.total}</h1>
+              <h1 key={item.subject} className="attendance-subject-attendance">{item.attended}/{item.total}</h1>
             ))}
           </div>
 
@@ -344,8 +344,8 @@ function DashboardPage() {
         <div className="page-container-line-2"/>
 
         <div className="circular-container scrollbar">
-          {Circulars.map((item: CircularsType) => (
-            <div  className={"circular-item"} >
+          {Circulars.map((item: CircularsType, index: number) => (
+            <div  key={index} className={"circular-item"} >
               {/*<h1>{item.title}</h1>*/} {/* Not showing Title */}
               <p>{item.message}</p>
               <h2>{item.date}</h2>

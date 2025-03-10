@@ -102,7 +102,7 @@ const fetchData = async (item: UDTF_Type) => {
     }
     catch (error) {
         console.error(`Error fetching data for ${item.key}:`, error);
-        return []; // Return an empty array in case of error
+        return defaultStudentInfo; // Return an empty array in case of error
     }
 };
 
@@ -175,7 +175,7 @@ function Profile() {
                     
                     <div className="page-container-line-2"/>
                     {ProgramInfo.map((item) => (
-                        <div className="profilepg-sub-container">
+                        <div key={item.Key} className="profilepg-sub-container">
                             <h1>{item.Key}</h1>
                             <h2>{item.value}</h2>
                             <div />
@@ -189,7 +189,7 @@ function Profile() {
                     <h1>More Information</h1>
                     <div className="page-container-line-1"/>
                     {StudentInfo.map((item: UserDataType) => (
-                        <div className="profilepg-sub-container">
+                        <div key={item.Key} className="profilepg-sub-container">
                             <h1>{item.Key}</h1>
                             <h2>{item.value}</h2>
                             <div />
@@ -203,7 +203,7 @@ function Profile() {
                     <h1>Student Address</h1>
                     <div className="page-container-line-1"/>
                     {StudentAddress.map((item: UserDataType) => (
-                        <div className="profilepg-sub-container">
+                        <div key={item.Key} className="profilepg-sub-container">
                             <h1>{item.Key}</h1>
                             <h2>{item.value}</h2>
                             <div />
@@ -217,7 +217,7 @@ function Profile() {
                     <h1>Parent/Guardian Information</h1>
                     <div className="page-container-line-1"/>
                     {Parent1Info.map((item: UserDataType) => (
-                        <div className="profilepg-sub-container">
+                        <div key={item.Key} className="profilepg-sub-container">
                             <h1>{item.Key}</h1>
                             <h2>{item.value}</h2>
                             <div />
@@ -226,7 +226,7 @@ function Profile() {
     
                     <div className="page-container-line-2"/>
                     {Parent2Info.map((item: UserDataType) => (
-                        <div className="profilepg-sub-container">
+                        <div key={item.Key} className="profilepg-sub-container">
                             <h1>{item.Key}</h1>
                             <h2>{item.value}</h2>
                             <div />
@@ -248,7 +248,7 @@ function Profile() {
                     
                     <div className="page-container-line-2"/>
                     {ProgramInfo.map((item) => (
-                        <div className="profilepg-sub-container">
+                        <div key={item.Key} className="profilepg-sub-container">
                             <h1>{item.Key}</h1>
                             <h2>{item.value}</h2>
                             <div />
@@ -262,7 +262,7 @@ function Profile() {
                     <h1>More Information</h1>
                     <div className="page-container-line-1"/>
                     {StudentInfo.map((item: UserDataType) => (
-                        <div className="profilepg-sub-container">
+                        <div key={item.Key} className="profilepg-sub-container">
                             <h1>{item.Key}</h1>
                             <h2>{item.value}</h2>
                             <div />
@@ -276,7 +276,7 @@ function Profile() {
                     <h1>Student Address</h1>
                     <div className="page-container-line-1"/>
                     {StudentAddress.map((item: UserDataType) => (
-                        <div className="profilepg-sub-container">
+                        <div key={item.Key} className="profilepg-sub-container">
                             <h1>{item.Key}</h1>
                             <h2>{item.value}</h2>
                             <div />
@@ -290,7 +290,7 @@ function Profile() {
                     <h1>Parent/Guardian Information</h1>
                     <div className="page-container-line-1"/>
                     {Parent1Info.map((item: UserDataType) => (
-                        <div className="profilepg-sub-container">
+                        <div key={item.Key} className="profilepg-sub-container">
                             <h1>{item.Key}</h1>
                             <h2>{item.value}</h2>
                             <div />
@@ -299,7 +299,7 @@ function Profile() {
     
                     <div className="page-container-line-2"/>
                     {Parent2Info.map((item: UserDataType) => (
-                        <div className="profilepg-sub-container">
+                        <div key={item.Key} className="profilepg-sub-container">
                             <h1>{item.Key}</h1>
                             <h2>{item.value}</h2>
                             <div />
@@ -325,7 +325,7 @@ function Profile() {
             <>
                 {/* Content panel 2 */}
                 {UserDocuments.map((item: UserDataType) => (
-                    <div className="page-base-container profilepg-container">
+                    <div key={item.Key} className="page-base-container profilepg-container">
                         <h1>{item.Key}</h1>
                         <div className="page-container-line-1"/>
 
