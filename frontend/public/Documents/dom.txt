@@ -1,0 +1,87 @@
+### Website Architecture ###
+
+
+
+
+
+*** Context Providers ***
+<UserContextProvider>
+    <AlertSystemProvider>
+    <App />
+    </AlertSystemProvider>
+</UserContextProvider>
+
+
+
+
+
+*** Routing ***
+<App>
+    <Router>
+        onLanding && <L_Navigation />
+
+        onProctectedPage && <><Navigation /><BG /></>
+
+        <Routes>
+            <Landing_Page /> // path="/"
+
+            <Login_Page /> // path="/login"
+
+            <Policy_Page />     // path="/privacy-policy"
+            <Conditions_Page /> // path="/terms-&-conditions"
+
+            // Protected pages, check if login before rendering component
+            <Dashboard_Page />  // path="/dashboard"
+            <Profile_Page />    // path="/Profile"
+            <Attendence_Page /> // path="/attendance"
+            <Calendar_Page />   // path="/calendar"
+            <TimTable_Page />   // path="/timetable"
+            <Course_Page />     // path="/course"
+            <Result_Page />     // path="/result"
+            <Circulars_Page />  // path="/circulars"
+
+            <Page_Not_Found />  // path="/*"
+        </Routes>
+
+    </Router>
+</App>
+
+
+
+
+
+*** Navigation Layout for protected pages ***
+<Navigation>
+    // Search-bar inbuild
+    // side-bar inbuild
+
+    <Profile_Card />
+    <Settings_Panel />
+    <Notifications_Panel />
+</Navigation>
+
+
+
+
+
+*** Layout of each protected page ***
+<div className="page-container"> // Parent-Container, Usable space
+    <div className="page-main-container"> // Main-Container, Scales on break-points
+        <div className="page-parent-base-container"> // Parent of base-container, have 2 columns mishnory layout & 1 column on small screens
+            <div className="page-base-container" /> // Holds component-1 to display
+            <div className="page-base-container" /> // Holds component-2 to display
+            ...
+            <div className="page-base-container" /> // Holds component-n to display
+        </div>
+    </div>
+    <Footer />
+</div>
+
+
+
+
+
+*** each proected page has footer ***
+<Footer>
+    <Service_Form />
+</Footer>
