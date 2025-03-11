@@ -16,7 +16,8 @@
 <h3>Note:</h3>
 <ol>
   <li><b>Notes & Notices will be added to Discussion tab on Git-Hub</b></li>
-  <li>Important documents will be uploaded in "Public/Documents" folder</li>
+  <li>I had created separate folders for frontend & backend</li>
+  <li>Important documents will be uploaded in "Documents" folder</li>
   <li>While editing please don't remove some unnecessary pieces of code, It may required in future</li>
   <li>Feel free to use ai as it will boost our progress, Just make sure to learn instead of just Ctrl+V</li> 
   <li>For now consider "localhost/dashboard" as default landing page Not "localhost/"</li>

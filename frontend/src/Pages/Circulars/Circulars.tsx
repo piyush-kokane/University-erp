@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Notifications.css"
+import "./circulars.css";
+import Footer from "../../Components/Footer/Footer";
 
 
-interface NotificationsProps {
-    Close: () => void;
-}
+interface DataType {
+    title: string;
+    message: string;
+    date: string;
+    time: string;
+  }
+
 
 const sampleCirculars = [
     {
@@ -159,89 +164,74 @@ const sampleNotifications = [
 
 
 interface UDTF_Type {
-  key: string;
-  src: string;
+    key: string;
+    src: string;
 }
 const UserData_to_fetch = [
-  // key is data stored in localStorage, src is  API endpoint
-  {key: "Notifications", src: "http://localhost:5000/api/notifications"},
-  {key: "Circulars", src: "http://localhost:5000/api/circulars"},
+    // key is data stored in localStorage, src is  API endpoint
+    {key: "Notifications", src: "http://localhost:5000/api/notifications"},
+    {key: "Circulars", src: "http://localhost:5000/api/circulars"},
 ];
 
 
 const fetchData = async (item: UDTF_Type) => {
-  try {
-    ///const response = await fetch(item.src);
-    ///const data = await response.json();
-    ///return data;
+    try {
+        ///const response = await fetch(item.src);
+        ///const data = await response.json();
+        ///return data;
+        
     
-
-    // remove following code once backend is integrated
-    if (item.key === "Notifications")  return sampleNotifications;
-    if (item.key === "Circulars")  return sampleCirculars;   
-  }
-  catch (error) {
-    console.error(`Error fetching data for ${item.key}:`, error);
-    return []; // Return an empty array in case of error
-  }
+        // remove following code once backend is integrated
+        if (item.key === "Notifications")  return sampleNotifications;
+        if (item.key === "Circulars")  return sampleCirculars;   
+    }
+    catch (error) {
+        console.error(`Error fetching data for ${item.key}:`, error);
+        return []; // Return an empty array in case of error
+    }
 };
 
 
-function Notifications({Close} : NotificationsProps){
-  const navigate = useNavigate();
+function Circulars() {
+    const navigate = useNavigate();
 
-  
-  // initialise constants for UserDta, get data from localStorage if stored
-  const [Notifications, setNotifications] = useState(
-    JSON.parse(localStorage.getItem("Notifications") || "[]"));
-  
-  const [Circulars, setCirculars] = useState(
-    JSON.parse(localStorage.getItem("Circulars") || "[]"));
-  
 
-  // Update UserData & localStorage if not set
-  useEffect(() => {
-    UserData_to_fetch.forEach((item: UDTF_Type) => {
-      if (!localStorage.getItem(item.key)) {
-        fetchData(item).then((data) => {
-          // update localStorage
-          localStorage.setItem(item.key, JSON.stringify(data));
+    // initialise constants for UserDta, get data from localStorage if stored
+    const [Notifications, setNotifications] = useState(
+        JSON.parse(localStorage.getItem("Notifications") || "[]"));
+    
+    const [Circulars, setCirculars] = useState(
+        JSON.parse(localStorage.getItem("Circulars") || "[]"));
+    
 
-          // determine which variable to update
-          if (item.key === "Notifications") setNotifications(data);
-          if (item.key === "Circulars") setCirculars(data);
+    // Update UserData & localStorage if not set
+    useEffect(() => {
+        UserData_to_fetch.forEach((item: UDTF_Type) => {
+            if (!localStorage.getItem(item.key)) {
+                fetchData(item).then((data) => {
+                    // update localStorage
+                    localStorage.setItem(item.key, JSON.stringify(data));
+
+                    // determine which variable to update
+                    if (item.key === "Notifications") setNotifications(data);
+                    if (item.key === "Circulars") setCirculars(data);
+                });
+            }
         });
-      }
-    });
-  }, []);
+    }, []);
 
 
-  const allNotifications = [...Notifications, ...Circulars]; // allNotifications = Notifications + Circulars
 
-  const [closing, setClosing] = useState(false);
+  function Circular() {
+    return (
+      <div className="page-base-container">
+        <h1 className="attendance-title">Circular</h1>
+        <div className="page-container-line-2"/>
 
-  function handleClose() {
-    setClosing(true); // Start fade-out animation
-    setTimeout(() => Close(), 300); // delay, Matches animation duration (0.3s) // Call close function after animation
-  }
-
-  return(
-    <>
-      {/* Overlay when notifications is open */}
-      <div className={`notifications-overlay ${closing ? "fade-out" : "fade-in"}`} onClick={handleClose} />
-
-      {/* Notifications Panel */}
-      <div className={`notifications-panel ${closing ? "slide-out" : "slide-in"}`}>
-        <div className="notifications-header">
-          <h5>Notifications</h5>
-          <span className="material-icons notifications-cancle-btn" onClick={handleClose}>close</span>
-          <span className="material-icons notifications-refresh-btn" onClick={handleClose}>cached</span>
-        </div>
-        
-        <div className="notifications-container scrollbar">
-          {allNotifications.map((item, index) => (
-            <div key={index} className={"notifications-item"} >
-              <h1>{item.title}</h1>
+        <div className="circular-container scrollbar">
+          {Circulars.map((item: DataType, index: number) => (
+            <div  key={index} className={"circular-item"} >
+              {/*<h1>{item.title}</h1>*/} {/* Not showing Title */}
               <p>{item.message}</p>
               <h2>{item.date}</h2>
               <h3>{item.time}</h3>
@@ -250,12 +240,32 @@ function Notifications({Close} : NotificationsProps){
           ))}
         </div>
 
-        <div className="notifications-footer">
-          <h1 onClick={() => navigate("/circular")}>See All ➜</h1>
-        </div>
+        <div className="page-container-line-2"/>
+        <a className="dashboard-footer-link" onClick={() => navigate("/circular")}>All Circulars ➜</a>
       </div>
-    </>
-  );
+    );
+  }
+
+
+
+
+    return (
+        <>
+            <div className="page-container">
+                <div className="circularpg-tabs">
+                    <a>Circulars</a>
+                    <a>Notifications</a>
+                </div>
+                <div className="page-main-container">
+
+                        <Circular />
+
+
+                </div>
+                <Footer />
+            </div>
+        </>
+    );
 }
 
-export default Notifications;
+export default Circulars;
