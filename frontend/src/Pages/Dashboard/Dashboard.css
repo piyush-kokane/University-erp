@@ -32,11 +32,9 @@
   color: var(--text-primary-color);
   width: fit-content;
   justify-self: center;
-  margin-top: -15px;
-  margin-bottom: 15px;
-  font-size: 26px;
   cursor: pointer;
 }
+
 .attendance-title span{
   margin: 0px;
   margin-right: 10px;

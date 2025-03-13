@@ -118,13 +118,6 @@
     text-decoration: underline;
 }
 
-.profilepg-container h1 {
-    color: var(--text-primary-color);
-    margin-top: -15px;
-    margin-bottom: 15px;
-    font-size: 26px;
-}
-
 .profilepg-container a {
     position: absolute;
     display: flex;

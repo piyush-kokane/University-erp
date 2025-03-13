@@ -4,12 +4,12 @@
     gap: 10px;
     background: none;
     color: var(--text-tertiary-color);
-    padding: 20px 20px 40px 20px;
+    padding: 20px 40px 40px 40px;
 }
 
 .footer h1,
 .footer h2 {
-    font-size: 14px;
+    font-size: clamp(12px, 1.5vw, 14px);
     font-weight: normal;
     margin: 0px;
     width: fit-content;

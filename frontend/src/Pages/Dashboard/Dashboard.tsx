@@ -340,7 +340,7 @@ function DashboardPage() {
   function Circular() {
     return (
       <div className="page-base-container">
-        <h1 className="attendance-title">Circular</h1>
+        <h1>Circulars</h1>
         <div className="page-container-line-2"/>
 
         <div className="circular-container scrollbar">
@@ -364,7 +364,7 @@ function DashboardPage() {
   function Timetable() {
     return (
       <div className="page-base-container">
-        <h1 className="attendance-title">Time Table</h1>
+        <h1>Time Table</h1>
         <div className="page-container-line-2"/>
 
         <div className="timetable-container scrollbar">

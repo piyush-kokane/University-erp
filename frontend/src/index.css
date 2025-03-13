@@ -208,6 +208,13 @@
         text-align: center;
     }
 
+    .page-base-container h1 {
+        color: var(--text-primary-color);
+        margin-top: -15px;
+        margin-bottom: 15px;
+        font-size: 26px;
+    }
+
     .page-container-line-1 {
         width: calc(100% + 30px);
         height: 3px;
@@ -226,6 +233,7 @@
         .page-main-container {
             transform: scale(0.9);
             transform-origin: top left;
+            margin-bottom: -110px;
             width: 111%;
         }
     }
@@ -234,6 +242,7 @@
         .page-main-container {
             transform: scale(0.7);
             transform-origin: top left;
+            margin-bottom: -580px;
             width: 143%;
         }
         .page-parent-base-container {
@@ -246,6 +255,7 @@
         .page-main-container {
             transform: scale(0.5);
             transform-origin: top left;
+            margin-bottom: -960px;
             width: 200%;
         }
     }

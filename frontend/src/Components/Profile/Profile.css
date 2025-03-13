@@ -114,7 +114,7 @@
 }
 
 .profile-container a:hover{
-    background: var(--profile-button-hover-color);
+    background: linear-gradient(to right, var(--profile-button-hover-color), #4c00b0);
 }
 
 .profile-arrow{
