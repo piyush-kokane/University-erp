@@ -5,11 +5,11 @@ import Footer from "../../Components/Footer/Footer";
 
 
 interface DataType {
-    title: string;
-    message: string;
-    date: string;
-    time: string;
-  }
+  title: string;
+  message: string;
+  date: string;
+  time: string;
+}
 
 
 const sampleCirculars = [
@@ -164,73 +164,73 @@ const sampleNotifications = [
 
 
 interface UDTF_Type {
-    key: string;
-    src: string;
+  key: string;
+  src: string;
 }
 const UserData_to_fetch = [
-    // key is data stored in localStorage, src is  API endpoint
-    {key: "Notifications", src: "http://localhost:5000/api/notifications"},
-    {key: "Circulars", src: "http://localhost:5000/api/circulars"},
+  // key is data stored in localStorage, src is  API endpoint
+  {key: "Notifications", src: "http://localhost:5000/api/notifications"},
+  {key: "Circulars", src: "http://localhost:5000/api/circulars"},
 ];
 
 
 const fetchData = async (item: UDTF_Type) => {
-    try {
-        ///const response = await fetch(item.src);
-        ///const data = await response.json();
-        ///return data;
-        
+  try {
+    ///const response = await fetch(item.src);
+    ///const data = await response.json();
+    ///return data;
     
-        // remove following code once backend is integrated
-        if (item.key === "Notifications")  return sampleNotifications;
-        if (item.key === "Circulars")  return sampleCirculars;   
-    }
-    catch (error) {
-        console.error(`Error fetching data for ${item.key}:`, error);
-        return []; // Return an empty array in case of error
-    }
+
+    // remove following code once backend is integrated
+    if (item.key === "Notifications")  return sampleNotifications;
+    if (item.key === "Circulars")  return sampleCirculars;   
+  }
+  catch (error) {
+    console.error(`Error fetching data for ${item.key}:`, error);
+    return []; // Return an empty array in case of error
+  }
 };
 
 
 function Circulars() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
 
-    // initialise constants for UserDta, get data from localStorage if stored
-    const [Notifications, setNotifications] = useState(
-        JSON.parse(localStorage.getItem("Notifications") || "[]"));
-    
-    const [Circulars, setCirculars] = useState(
-        JSON.parse(localStorage.getItem("Circulars") || "[]"));
-    
+  // initialise constants for UserDta, get data from localStorage if stored
+  const [Notifications, setNotifications] = useState(
+    JSON.parse(localStorage.getItem("Notifications") || "[]"));
+  
+  const [Circulars, setCirculars] = useState(
+    JSON.parse(localStorage.getItem("Circulars") || "[]"));
+  
 
-    // Update UserData & localStorage if not set
-    useEffect(() => {
-        UserData_to_fetch.forEach((item: UDTF_Type) => {
-            if (!localStorage.getItem(item.key)) {
-                fetchData(item).then((data) => {
-                    // update localStorage
-                    localStorage.setItem(item.key, JSON.stringify(data));
+  // Update UserData & localStorage if not set
+  useEffect(() => {
+    UserData_to_fetch.forEach((item: UDTF_Type) => {
+      if (!localStorage.getItem(item.key)) {
+        fetchData(item).then((data) => {
+          // update localStorage
+          localStorage.setItem(item.key, JSON.stringify(data));
 
-                    // determine which variable to update
-                    if (item.key === "Notifications") setNotifications(data);
-                    if (item.key === "Circulars") setCirculars(data);
-                });
-            }
+          // determine which variable to update
+          if (item.key === "Notifications") setNotifications(data);
+          if (item.key === "Circulars") setCirculars(data);
         });
-    }, []);
+      }
+    });
+  }, []);
 
 
 
   function Circular() {
     return (
-      <div className="page-base-container">
-        <h1 className="attendance-title">Circular</h1>
+      <div className="page-base-container circular-base-container">
+        <h1>Circulars</h1>
         <div className="page-container-line-2"/>
 
-        <div className="circular-container scrollbar">
+        <div className="circularpg-circular-container">
           {Circulars.map((item: DataType, index: number) => (
-            <div  key={index} className={"circular-item"} >
+            <div  key={index} className={"circularpg-circular-item"} >
               {/*<h1>{item.title}</h1>*/} {/* Not showing Title */}
               <p>{item.message}</p>
               <h2>{item.date}</h2>
@@ -249,23 +249,23 @@ function Circulars() {
 
 
 
-    return (
-        <>
-            <div className="page-container">
-                <div className="circularpg-tabs">
-                    <a>Circulars</a>
-                    <a>Notifications</a>
-                </div>
-                <div className="page-main-container">
+  return (
+    <>
+      <div className="page-container">
+        <div className="circularpg-tabs">
+          <a>Circulars</a>
+          <a>Notifications</a>
+        </div>
+        <div className="page-main-container">
 
-                        <Circular />
+          <Circular />
 
 
-                </div>
-                <Footer />
-            </div>
-        </>
-    );
+        </div>
+        <Footer />
+      </div>
+    </>
+  );
 }
 
 export default Circulars;
