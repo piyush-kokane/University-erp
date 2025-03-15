@@ -348,8 +348,10 @@ function DashboardPage() {
             <div  key={index} className={"circular-item"} >
               {/*<h1>{item.title}</h1>*/} {/* Not showing Title */}
               <p>{item.message}</p>
-              <h2>{item.date}</h2>
-              <h3>{item.time}</h3>
+              <div>
+                <h2>{item.date}</h2>
+                <h2>{item.time}</h2>
+              </div>
               <div />
             </div>
           ))}
