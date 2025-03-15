@@ -243,8 +243,10 @@ function Notifications({Close} : NotificationsProps){
             <div key={index} className={"notifications-item"} >
               <h1>{item.title}</h1>
               <p>{item.message}</p>
-              <h2>{item.date}</h2>
-              <h3>{item.time}</h3>
+              <div>
+                <h2>{item.date}</h2>
+                <h2>{item.time}</h2>
+              </div>
               <div />
             </div>
           ))}

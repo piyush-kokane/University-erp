@@ -224,17 +224,20 @@ function Circulars() {
 
   function Circular() {
     return (
-      <div className="page-base-container circular-base-container">
+      <div className="page-base-container circularpg-page-base-container">
         <h1>Circulars</h1>
         <div className="page-container-line-2"/>
 
         <div className="circularpg-circular-container">
           {Circulars.map((item: DataType, index: number) => (
             <div  key={index} className={"circularpg-circular-item"} >
-              {/*<h1>{item.title}</h1>*/} {/* Not showing Title */}
+              <h1>{item.title}</h1>
               <p>{item.message}</p>
-              <h2>{item.date}</h2>
-              <h3>{item.time}</h3>
+              <div>
+                <h2>{item.date}</h2>
+                <label><span className="material-icons">visibility</span><h2>view</h2></label>
+                <h2>{item.time}</h2>
+              </div>
               <div />
             </div>
           ))}
@@ -257,9 +260,7 @@ function Circulars() {
           <a>Notifications</a>
         </div>
         <div className="page-main-container">
-
-          <Circular />
-
+            <Circular />
 
         </div>
         <Footer />
