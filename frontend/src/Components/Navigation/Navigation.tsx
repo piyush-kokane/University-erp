@@ -67,12 +67,29 @@ function Navigation() {
 
   const [activeMenuItem, setActiveMenuItem] = useState("");
 
+  const [activeTab, setActiveTab] = useState(localStorage.getItem("activeTab") || "");
 
-  // if page url changes due to redirect, set actve menue item accordingly to url
+
+  //  EventListener for localStorage change, updates activeTab on change
+  useEffect(() => {
+    function handleChange() {
+      setActiveTab(localStorage.getItem("activeTab") || "");
+      console.log("haiiiiiiiiiiaiaiiaia")
+    }
+
+    window.addEventListener("resize", handleChange); // Listen for resize
+    return () => window.removeEventListener("resize", handleChange); // Cleanup on unmount
+  }, []);
+
+
+  // if page url changes, set ActiveMenuItem & set ActiveTab accordingly to url
   useEffect(() => {
     menuItems.forEach(item => {
-      if(location.pathname === item.path)
+      if(location.pathname === item.path) {
         setActiveMenuItem(item.name);
+        setActiveTab(item.name);
+        localStorage.setItem("activeTab", item.name)
+      }
     });
   }, [location.pathname]); // Runs only when location.pathname changes
 
@@ -115,7 +132,7 @@ function Navigation() {
                 <div className="menu-line"></div>
                 <div className="menu-line"></div>
               </button>
-              <h1 className="navbar-title">{activeMenuItem}</h1>
+              <h1 className="navbar-title">{activeTab}</h1>
             </div>
 
             {/* Right container */}
