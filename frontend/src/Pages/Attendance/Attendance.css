@@ -1,0 +1,25 @@
+.attendance-dropdown-holder {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.attendance-dropdown {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.attendance-dropdown select {
+    width: 200px;
+    padding: 5px;
+    border-radius: 5px;
+    color: var(--text-primary-color);
+    background: var(--panel-transparent-color);
+}
+.attendance-dropdown select option {
+    border-radius: 5px;
+    margin-top: 5px;
+    border: 1px;
+}
+
