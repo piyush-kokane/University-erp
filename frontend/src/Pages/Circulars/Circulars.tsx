@@ -244,7 +244,7 @@ function Circulars() {
         </div>
 
         <div className="page-container-line-2"/>
-        <a className="dashboard-footer-link" onClick={() => navigate("/circular")}>All Circulars ➜</a>
+        <a className="dashboard-footer-link" onClick={() => navigate("/circulars")}>All Circulars ➜</a>
       </div>
     );
   }
@@ -256,8 +256,8 @@ function Circulars() {
     <>
       <div className="page-container">
         <div className="circularpg-tabs">
-          <a>Circulars</a>
-          <a>Notifications</a>
+          <a onClick={() => localStorage.setItem("activeTab", "Circulars")}>Circulars</a>
+          <a onClick={() => localStorage.setItem("activeTab", "Notification")}>Notifications</a>
         </div>
         <div className="page-main-container">
             <Circular />

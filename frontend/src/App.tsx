@@ -13,7 +13,7 @@ import Login from "./Pages/Login/Login";
 import Policy from "./Pages/Policy_&_Conditions/Policy_&_Conditions"
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Profile from "./Pages/Profile/Profile";
-import Attendence from "./Pages/Attendence/Attendence";
+import Attendance from "./Pages/Attendance/Attendance";
 import Calendar from "./Pages/Calendar/Calendar";
 import Time_Table from "./Pages/Time_Table/Time_Table";
 import Circulars from "./Pages/Circulars/Circulars";
@@ -112,7 +112,7 @@ function Layout() {
         {/* Protected pages */}
         <Route path={routes.dashboard} element={<CheckLogin element={<Dashboard />} />} />
         <Route path={routes.profile} element={<CheckLogin element={<Profile />} />} />
-        <Route path={routes.attendance} element={<CheckLogin element={<Attendence />} />} />
+        <Route path={routes.attendance} element={<CheckLogin element={<Attendance />} />} />
         <Route path={routes.calendar} element={<CheckLogin element={<Calendar />} />} />
         <Route path={routes.timetable} element={<CheckLogin element={<Time_Table />} />} />
         <Route path={routes.circulars} element={<CheckLogin element={<Circulars />} />} />

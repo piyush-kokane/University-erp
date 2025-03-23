@@ -5,6 +5,7 @@
 *** Only Local Storage ***
 "loggedIn"
 "theme"
+"activeTab"
 
 
 

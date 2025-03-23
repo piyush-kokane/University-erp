@@ -358,7 +358,7 @@ function DashboardPage() {
         </div>
 
         <div className="page-container-line-2"/>
-        <a className="dashboard-footer-link" onClick={() => navigate("/circular")}>All Circulars ➜</a>
+        <a className="dashboard-footer-link" onClick={() => navigate("/circulars")}>All Circulars ➜</a>
       </div>
     );
   }
