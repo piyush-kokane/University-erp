@@ -57,45 +57,20 @@
     font-weight: normal;
     align-items: center;
     justify-content: center;
-    color: var(--text-primary-color);
+    color: white;
     gap: 5px;
 }
 
 .attendance-dropdown-holder span {
     font-size: 16px;
     font-weight: normal;
-    color: var(--text-primary-color);
+    color: white;
 }
 
 
 
-.attendance-dropdown label {
-    width: 80px;
-    text-align: right;
-    white-space: nowrap;
-
-}
 
 
-
-.attendance-dropdown select {
-    width: 200px;
-    height: 30px;
-    padding: 5px;
-    border-radius: 5px;
-    background: var(--panel-transparent-color);
-}
-
-.attendance-dropdown select:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-.attendance-dropdown select option {
-    border-radius: 5px;
-    margin-top: 5px;
-    border: 1px;
-}
 
 
 
@@ -105,7 +80,14 @@
     position: relative;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    color: var(--text-primary-color);
+}
+
+.dropdown label {
+    width: 80px;
+    text-align: right;
+    white-space: nowrap;
 }
 
 .dropdown-wrapper {
@@ -113,15 +95,33 @@
     width: 200px;
 }
 
+.dropdown-wrapper span {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-40%);
+    font-size: 16px;
+    color: var(--text-primary-color);
+    cursor: pointer;
+}
+
 .dropdown-input {
     width: 100%;
     height: 30px;
     padding: 8px;
+    padding-right: 22px;
     border: none;
     border-radius: 5px;
     background: var(--panel-transparent-color);
-
     font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dropdown-input:focus {
+    outline: 1px solid var(--panel-border-color);
+    box-shadow: 0 0 5px rgba(130, 130, 130, 0.5);
 }
 
 .dropdown-list {
@@ -142,12 +142,18 @@
 
 .dropdown-list li {
     display: flex;
+    display: block;
+    text-align: left;
+    line-height: 35px;
     padding: 0px 10px;
     cursor: pointer;
     height: 35px;
+    width: 100%;
     margin: 0px;
-    align-items: center;
     border-bottom: 1px solid rgba(130, 130, 130, 0.2);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .dropdown-list li:hover {
