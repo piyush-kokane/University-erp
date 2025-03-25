@@ -4,7 +4,8 @@ import "./Attendance.css";
 
 
 function Search_Context(){
-    const [date, setDate] = useState("");
+    const [startDate, setStartDate] = useState("");
+    const [endDate, setEndDate] = useState("");
 
     const programOptions = [
         { key: "bca", label: "B.Ca Computer Science" },
@@ -78,15 +79,15 @@ function Search_Context(){
     // ----------------------------------------------------------------------------------------------------
 
     return(
-        <div className="page-base-container attendance-dropdown-base-container">
+        <div className="page-base-container attendance-select-base-container">
             
             <h1><span className="material-symbols-outlined">info</span><b>Search Context :</b>  Please fill all the details and click on the Search button to the right..!</h1>
             
-            <div className="attendance-dropdown-holder">
+            <div className="attendance-select-holder">
                 {/* Program Searchable Dropdown */}
-                <div className="dropdown">
+                <div className="attendance-select">
                     <label>Program:</label>
-                    <div className="dropdown-wrapper">
+                    <div className="dropdown">
                         <input
                             type="text"
                             value={program}
@@ -121,9 +122,9 @@ function Search_Context(){
         
 
                 {/* Term Searchable Dropdown */}
-                <div className="dropdown">
+                <div className="attendance-select">
                     <label>Term:</label>
-                    <div className="dropdown-wrapper">
+                    <div className="dropdown">
                         <input
                             type="text"
                             value={term}
@@ -158,9 +159,9 @@ function Search_Context(){
         
 
                 {/* Course Searchable Dropdown */}
-                <div className="dropdown">
+                <div className="attendance-select">
                     <label>Course:</label>
-                    <div className="dropdown-wrapper">
+                    <div className="dropdown">
                         <input
                             type="text"
                             value={course}
@@ -195,29 +196,47 @@ function Search_Context(){
 
 
                 {/* Start Date Select */}
-                <div className="dropdown">
+                <div className="attendance-select">
                     <label>Start Date:</label>
-                    <div className="dropdown-wrapper">
+                    <div className="date-select">
                         <input
                             type="date"
-                            value={date}
-                            onChange={(e) => setDate(e.target.value)}
-                            className="dropdown-input"
+                            value={startDate}
+                            id="start-date-select"
+                            onChange={(e) => setStartDate(e.target.value)}
+                            className="date-select-input"
                         />
+                        <span
+                            className="material-icons"
+                            onClick={() => {
+                                const dateInput = document.getElementById("start-date-select") as HTMLInputElement;
+                                dateInput.showPicker()
+                            }}>
+                            calendar_today
+                        </span>
                     </div>
                 </div>
 
 
                 {/* End Date Select */}
-                <div className="dropdown">
+                <div className="attendance-select">
                     <label>End Date:</label>
-                    <div className="dropdown-wrapper">
+                    <div className="date-select">
                         <input
                             type="date"
-                            value={date}
-                            onChange={(e) => setDate(e.target.value)}
-                            className="dropdown-input"
+                            value={endDate}
+                            id="end-date-select"
+                            onChange={(e) => setEndDate(e.target.value)}
+                            className="date-select-input"
                         />
+                        <span
+                            className="material-icons"
+                            onClick={() => {
+                                const dateInput = document.getElementById("end-date-select") as HTMLInputElement;
+                                dateInput.showPicker()
+                            }}>
+                            calendar_today
+                        </span>
                     </div>
                 </div>
 

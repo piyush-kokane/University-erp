@@ -2,29 +2,6 @@
     margin: 0px;
 }
 
-.attendance-dropdown-base-container {
-    margin: 0px;
-    padding-bottom: 20px;
-    color: var(--text-primary-color);
-}
-
-.attendance-dropdown-base-container h1 {
-    display: flex;
-    font-size: 16px;
-    font-weight: normal;
-    justify-self: left;
-    align-items: center;
-    margin-bottom: 20px;
-    color: var(--text-tertiary-color);
-    gap: 5px;
-}
-
-.attendance-dropdown-base-container span {
-    font-size: 16px;
-    font-weight: bold;
-    color: var(--text-tertiary-color);
-}
-
 .attendance-context-line-1 {
     transform: translateX(20px);
     width: calc(100% - 40px);
@@ -41,17 +18,40 @@
     margin: 0px;
 }
 
-.attendance-dropdown-holder {
+.attendance-select-base-container {
+    margin: 0px;
+    padding-bottom: 20px;
+    color: var(--text-primary-color);
+}
+
+.attendance-select-base-container h1 {
+    display: flex;
+    font-size: 16px;
+    font-weight: normal;
+    justify-self: left;
+    align-items: center;
+    margin-bottom: 20px;
+    color: var(--text-tertiary-color);
+    gap: 5px;
+}
+
+.attendance-select-base-container span {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--text-tertiary-color);
+}
+
+.attendance-select-holder {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 20px;
 }
 
-.attendance-dropdown-holder button {
+.attendance-select-holder button {
     height: 40px;
     width: 100px;
-    margin-left: 190px;
+    margin-left: 188px;
     display: flex;
     font-size: 16px;
     font-weight: normal;
@@ -61,22 +61,13 @@
     gap: 5px;
 }
 
-.attendance-dropdown-holder span {
+.attendance-select-holder span {
     font-size: 16px;
     font-weight: normal;
     color: white;
 }
 
-
-
-
-
-
-
-
-
-
-.dropdown {
+.attendance-select {
     position: relative;
     display: flex;
     align-items: center;
@@ -84,78 +75,12 @@
     color: var(--text-primary-color);
 }
 
-.dropdown label {
-    width: 80px;
-    text-align: right;
-    white-space: nowrap;
-}
-
-.dropdown-wrapper {
-    position: relative;
+.attendance-select > div {
     width: 200px;
 }
 
-.dropdown-wrapper span {
-    position: absolute;
-    right: 5px;
-    top: 50%;
-    transform: translateY(-40%);
-    font-size: 16px;
-    color: var(--text-primary-color);
-    cursor: pointer;
-}
-
-.dropdown-input {
-    width: 100%;
-    height: 30px;
-    padding: 8px;
-    padding-right: 22px;
-    border: none;
-    border-radius: 5px;
-    background: var(--panel-transparent-color);
-    font-size: 16px;
+.attendance-select label {
+    width: 80px;
+    text-align: right;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.dropdown-input:focus {
-    outline: 1px solid var(--panel-border-color);
-    box-shadow: 0 0 5px rgba(130, 130, 130, 0.5);
-}
-
-.dropdown-list {
-    position: absolute;
-    width: 100%;
-    background: var(--panel-color);
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    border: 1px solid var(--panel-border-color);
-    border-radius: 5px;
-    list-style: none;
-    padding: 0px;
-    margin: 0px;
-    margin-top: 5px;
-    max-height: 200px;
-    overflow-y: auto;
-    z-index: 999;
-}
-
-.dropdown-list li {
-    display: flex;
-    display: block;
-    text-align: left;
-    line-height: 35px;
-    padding: 0px 10px;
-    cursor: pointer;
-    height: 35px;
-    width: 100%;
-    margin: 0px;
-    border-bottom: 1px solid rgba(130, 130, 130, 0.2);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.dropdown-list li:hover {
-    background: rgba(130, 130, 130, 0.3);
 }
