@@ -20,17 +20,18 @@
 
 .attendance-select-base-container {
     margin: 0px;
-    padding-bottom: 20px;
+    padding: 20px 40px;
     color: var(--text-primary-color);
 }
 
 .attendance-select-base-container h1 {
     display: flex;
     font-size: 16px;
+    line-height: 16px;
     font-weight: normal;
     justify-self: left;
-    align-items: center;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 30px;
     color: var(--text-tertiary-color);
     gap: 5px;
 }
@@ -44,7 +45,7 @@
 .attendance-select-holder {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     gap: 20px;
 }
 

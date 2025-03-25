@@ -81,7 +81,7 @@ function Search_Context(){
     return(
         <div className="page-base-container attendance-select-base-container">
             
-            <h1><span className="material-symbols-outlined">info</span><b>Search Context :</b>  Please fill all the details and click on the Search button to the right..!</h1>
+            <h1><span className="material-symbols-outlined">info</span><b>Search Context:</b>Please fill all the details and click on the Search button to the right..!</h1>
             
             <div className="attendance-select-holder">
                 {/* Program Searchable Dropdown */}
