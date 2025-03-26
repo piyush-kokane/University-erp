@@ -248,15 +248,51 @@ function Search_Context(){
 }
 
 
-
-function Attendance() {
-    const [program, setProgram] = useState('');
-    const [course, setCourse] = useState('');
-  
+function Summer() {
     const total_present = 8;
     const total_absent = 2;
     const total_lectures = 10;
     const total_percentage = 80;
+    
+
+    return(
+        <div className="page-base-container attendance-summary-container">
+            {/* Credits Earned */}
+            <div className="summary-container-1">
+            <span className="material-icons">check_circle</span>
+            <h1>{total_present}</h1>
+            <h2>Total Present</h2>
+            </div>
+
+            {/* Credits Remaining */}
+            <div className="summary-container-1">
+            <span className="material-icons">cancel</span>
+            <h1>{total_absent}</h1>
+            <h2>Total Absent</h2>
+            </div>
+
+            {/* Total Attendance */}
+            <div className="summary-container-1">
+            <span className="material-icons">school</span>
+            <h1>{total_lectures}</h1>
+            <h2>Lectures Held</h2>
+            </div>
+
+            {/* Total Attendance */}
+            <div className="summary-container-1">
+            <span className="material-icons">equalizer</span>
+            <h1>{total_percentage}%</h1>
+            <h2>Subject Attendance</h2>
+            </div>
+        </div>
+    );
+}
+
+
+function Attendance() {
+
+  
+
 
     const data = [
         { id: 1, name: "Alice", age: 24, city: "New York" },
@@ -265,7 +301,7 @@ function Attendance() {
         { id: 4, name: "David", age: 26, city: "Houston" },
     ];
 
-    const [date, setDate] = useState("");
+
 
 
 
@@ -284,62 +320,31 @@ function Attendance() {
 
                     <div className="attendance-context-line-1" />
 
-                    <div className="page-base-container attendance-summary-container">
-
-                        {/* Credits Earned */}
-                        <div className="summary-container-1">
-                        <span className="material-icons">check_circle</span>
-                        <h1>{total_present}</h1>
-                        <h2>Total Present</h2>
-                        </div>
-
-                        {/* Credits Remaining */}
-                        <div className="summary-container-1">
-                        <span className="material-icons">cancel</span>
-                        <h1>{total_absent}</h1>
-                        <h2>Total Absent</h2>
-                        </div>
-
-                        {/* Total Attendance */}
-                        <div className="summary-container-1">
-                        <span className="material-icons">school</span>
-                        <h1>{total_lectures}</h1>
-                        <h2>Lectures Held</h2>
-                        </div>
-
-                        {/* Total Attendance */}
-                        <div className="summary-container-1">
-                        <span className="material-icons">equalizer</span>
-                        <h1>{total_percentage}%</h1>
-                        <h2>Subject Attendance</h2>
-                        </div>
-
-
-                    </div>
+                    <Summer />
 
                     <div className="page-base-container attendance-base-container">
 
-                    <div className="p-4">
-                        <table className="w-full border-collapse border border-gray-300 shadow-md">
-                            <thead>
-                            <tr className="bg-gray-800 text-white">
-                                <th className="p-2 border border-gray-400">ID</th>
-                                <th className="p-2 border border-gray-400">Name</th>
-                                <th className="p-2 border border-gray-400">Age</th>
-                                <th className="p-2 border border-gray-400">City</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {data.map((person, index) => (
-                                <tr key={person.id} className="odd:bg-gray-100 even:bg-white hover:bg-gray-200">
-                                <td className="p-2 border border-gray-300">{person.id}</td>
-                                <td className="p-2 border border-gray-300">{person.name}</td>
-                                <td className="p-2 border border-gray-300">{person.age}</td>
-                                <td className="p-2 border border-gray-300">{person.city}</td>
+                        <div className="p-4">
+                            <table className="w-full border-collapse border border-gray-300 shadow-md">
+                                <thead>
+                                <tr className="bg-gray-800 text-white">
+                                    <th className="p-2 border border-gray-400">ID</th>
+                                    <th className="p-2 border border-gray-400">Name</th>
+                                    <th className="p-2 border border-gray-400">Age</th>
+                                    <th className="p-2 border border-gray-400">City</th>
                                 </tr>
-                            ))}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                {data.map((person, index) => (
+                                    <tr key={person.id} className="odd:bg-gray-100 even:bg-white hover:bg-gray-200">
+                                    <td className="p-2 border border-gray-300">{person.id}</td>
+                                    <td className="p-2 border border-gray-300">{person.name}</td>
+                                    <td className="p-2 border border-gray-300">{person.age}</td>
+                                    <td className="p-2 border border-gray-300">{person.city}</td>
+                                    </tr>
+                                ))}
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
