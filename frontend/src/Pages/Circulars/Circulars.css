@@ -59,6 +59,11 @@
     cursor: pointer;
 }
 
+.circularpg-circular-item label span {
+    font-size: 16px;
+    transform: translateY(1px);
+}
+
 .circularpg-circular-item label:hover h2,
 .circularpg-circular-item label:hover {
     color: rgb(50, 150, 255);

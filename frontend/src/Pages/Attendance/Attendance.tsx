@@ -290,66 +290,58 @@ function Summer() {
 
 
 function Attendance() {
-
-  
-
-
-    const data = [
-        { id: 1, name: "Alice", age: 24, city: "New York" },
-        { id: 2, name: "Bob", age: 30, city: "Los Angeles" },
-        { id: 3, name: "Charlie", age: 28, city: "Chicago" },
-        { id: 4, name: "David", age: 26, city: "Houston" },
+    const sample_attendance = [
+        { date: "2025-03-23", time: "10:00 AM - 11:30 AM", faculty: "Dr. John Doe", attendance: "Present" },
+        { date: "2025-03-22", time: "2:00 PM - 3:30 PM", faculty: "Prof. Jane Smith", attendance: "Absent" },
+        { date: "2025-03-21", time: "9:00 AM - 10:30 AM", faculty: "Mr. Alex Brown", attendance: "Present" },
+        { date: "2025-03-20", time: "11:00 AM - 12:30 PM", faculty: "Dr. Emily White", attendance: "Present" },
+        { date: "2025-03-19", time: "1:00 PM - 2:30 PM", faculty: "Prof. Mark Green", attendance: "Absent" },
+        { date: "2025-03-18", time: "3:00 PM - 4:30 PM", faculty: "Mr. Lucas Carter", attendance: "Present" },
+        { date: "2025-03-17", time: "9:30 AM - 11:00 AM", faculty: "Dr. Sophia Black", attendance: "Not Marked" },
+        { date: "2025-03-16", time: "10:30 AM - 12:00 PM", faculty: "Prof. Daniel Scott", attendance: "Present" },
+        { date: "2025-03-15", time: "2:30 PM - 4:00 PM", faculty: "Mr. Oliver Grey", attendance: "Not Marked" },
+        { date: "2025-03-14", time: "8:00 AM - 9:30 AM", faculty: "Dr. Ava Brown", attendance: "Absent" },
     ];
-
-
-
-
-
-
-
-
-
-
+    
 
 
     return (
-        <>
-            <div className="page-container">
-                <div className="page-main-container">
-                    <Search_Context />
+        <div className="page-container">
+            <div className="page-main-container">
+                <Search_Context />
 
-                    <div className="attendance-context-line-1" />
+                <div className="attendance-context-line-1" />
 
-                    <Summer />
+                <Summer />
 
-                    <div className="page-base-container attendance-base-container">
+                <div className="page-base-container attendance-table-base-container">
 
-                        <div className="p-4">
-                            <table className="w-full border-collapse border border-gray-300 shadow-md">
-                                <thead>
-                                <tr className="bg-gray-800 text-white">
-                                    <th className="p-2 border border-gray-400">ID</th>
-                                    <th className="p-2 border border-gray-400">Name</th>
-                                    <th className="p-2 border border-gray-400">Age</th>
-                                    <th className="p-2 border border-gray-400">City</th>
+                    <table className="attendance-table">
+                        <thead>
+                            <tr>
+                                <th>Session Date</th>
+                                <th>Session Time</th>
+                                <th>Faculty Name</th>
+                                <th><center>Attendance</center></th>
+                                <th />
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {sample_attendance.map((session, index) => (
+                                <tr key={index}>
+                                    <td>{session.date}</td>
+                                    <td>{session.time}</td>
+                                    <td>{session.faculty}</td>
+                                    <td className={`attendance ${session.attendance.toLowerCase()==="present" ?"present" :session.attendance.toLowerCase()==="absent" ?"absent" :"not-marked"}`}><center>{session.attendance}</center></td>
+                                    <td><label><span className="material-icons">visibility</span><h2>view</h2></label></td>
                                 </tr>
-                                </thead>
-                                <tbody>
-                                {data.map((person, index) => (
-                                    <tr key={person.id} className="odd:bg-gray-100 even:bg-white hover:bg-gray-200">
-                                    <td className="p-2 border border-gray-300">{person.id}</td>
-                                    <td className="p-2 border border-gray-300">{person.name}</td>
-                                    <td className="p-2 border border-gray-300">{person.age}</td>
-                                    <td className="p-2 border border-gray-300">{person.city}</td>
-                                    </tr>
-                                ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                            ))}
+                        </tbody>
+                    </table>
+
                 </div>
             </div>
-        </>
+        </div>
     );
   }
 
