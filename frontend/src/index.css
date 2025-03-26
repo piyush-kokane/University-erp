@@ -367,7 +367,7 @@
         top: 50%;
         transform: translateY(-50%);
         font-size: 16px;
-        color: var(--text-primary-color);
+        color: var(--text-tertiary-color) !important;
         cursor: pointer;
     }
     .date-select-input {
