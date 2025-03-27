@@ -290,6 +290,8 @@ function Summer() {
 
 
 function Attendance() {
+    const [subject, setSubject] = useState("Advanced Web Technology");
+
     const sample_attendance = [
         { date: "2025-03-23", time: "10:00 AM - 11:30 AM", faculty: "Dr. John Doe", attendance: "Present" },
         { date: "2025-03-22", time: "2:00 PM - 3:30 PM", faculty: "Prof. Jane Smith", attendance: "Absent" },
@@ -311,11 +313,12 @@ function Attendance() {
                 <Search_Context />
 
                 <div className="attendancepg-context-line-1" />
+                <h2 className="attendancepg-subject-name">Subject: {subject}</h2>
+                <div className="attendancepg-context-line-1" />
 
                 <Summer />
 
                 <div className="page-base-container attendancepg-table-base-container">
-
                     <table className="attendancepg-table">
                         <thead>
                             <tr>

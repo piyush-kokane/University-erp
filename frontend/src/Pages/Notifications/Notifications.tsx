@@ -169,8 +169,6 @@ function Notifications() {
   }
 
 
-
-
   return (
     <>
       <div className="page-container">

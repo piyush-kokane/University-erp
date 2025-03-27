@@ -91,6 +91,16 @@
     white-space: nowrap;
 }
 
+.attendancepg-subject-name{
+    width: 100%;
+    margin: 0px;
+    font-size: 24px;
+    text-align: center;
+    color: var(--text-tertiary-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 /* Table Styling */
 .attendancepg-table {
@@ -99,7 +109,7 @@
     border-radius: 10px;
     border-collapse: separate;
     border-spacing: 0;
-    border: 2px solid rgba(200, 200, 200, 0.3); /* 2px border to entire table */
+    border: 2px solid rgba(200, 200, 200, 0.3);
     color: var(--text-primary-color);
     font-family: Arial, sans-serif;
 }
@@ -119,7 +129,7 @@
 .attendancepg-table th {
     padding: 10px;
     text-align: left;
-    border: none; /* 1px border for columns */
+    border: none;
 }
 
 .attendancepg-table tbody tr:nth-child(odd) {
@@ -132,7 +142,7 @@
 
 .attendancepg-table td {
     padding: 10px;
-    border: none; /* 1px border for columns */
+    border: none;
 }
 
 .attendancepg-table tbody tr {
