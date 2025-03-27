@@ -1,18 +1,30 @@
 .circularpg-tabs {
     display: flex;
-    padding: 40px;
-    padding-bottom: 0px;
+    padding-bottom: 20px;
     gap: 20px;
 }
 
 .circularpg-tabs a {
-    font: 18px;
+    font-size: 16px;
     font-weight: bold;
     color: var(--text-secondary-color);
     background-color: rgb(0, 100, 255);
     border: 1px solid rgba(150, 150, 150, 0.5);
     border-radius: 5px;
     padding: 5px 20px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.circularpg-tabs a.active {
+    color: var(--text-tertiary-color);
+    background-color: rgba(0, 100, 255, 0.5) !important;
+    border: 2px solid rgba(150, 150, 150, 0.5);
+    cursor: default;
+}
+
+.circularpg-tabs a:hover {
+    background-color: rgba(0, 100, 255, 0.8);
 }
 
 .circularpg-page-base-container {

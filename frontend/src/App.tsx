@@ -17,6 +17,7 @@ import Attendance from "./Pages/Attendance/Attendance";
 import Calendar from "./Pages/Calendar/Calendar";
 import Time_Table from "./Pages/Time_Table/Time_Table";
 import Circulars from "./Pages/Circulars/Circulars";
+import Notifications from "./Pages/Notifications/Notifications";
 
 
 
@@ -42,6 +43,7 @@ function Layout() {
     calendar: "/calendar",
     timetable: "/timetable",
     circulars: "/circulars",
+    notifications: "/notifications",
   };
   
   
@@ -116,6 +118,7 @@ function Layout() {
         <Route path={routes.calendar} element={<CheckLogin element={<Calendar />} />} />
         <Route path={routes.timetable} element={<CheckLogin element={<Time_Table />} />} />
         <Route path={routes.circulars} element={<CheckLogin element={<Circulars />} />} />
+        <Route path={routes.notifications} element={<CheckLogin element={<Notifications />} />} />
 
         {/* Unknown  Page */}
         <Route path="*" element={<Page_Not_Found />} />
