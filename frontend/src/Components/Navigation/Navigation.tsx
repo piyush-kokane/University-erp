@@ -35,14 +35,15 @@ function Navigation() {
   const Profilepic = user?.Profile;
 
   const menuItems = [
-    { name: "Dashboard", icon: "dashboard", path: "/dashboard" },
-    { name: "Profile", icon: "person", path: "/profile" },
-    { name: "Attendance", icon: "check_circle", path: "/attendance" },
-    { name: "Calendar", icon: "event", path: "/calendar" },
-    { name: "Time Table", icon: "schedule", path: "/timetable" },
-    { name: "Course", icon: "menu_book", path: "/course" },
-    { name: "Result", icon: "bar_chart", path: "/result" },
-    { name: "Circulars", icon: "campaign", path: "/circulars" },
+    { name: "Dashboard",     icon: "dashboard",     path: "/dashboard",     status: "active" },
+    { name: "Profile",       icon: "person",        path: "/profile",       status: "active" },
+    { name: "Attendance",    icon: "check_circle",  path: "/attendance",    status: "active" },
+    { name: "Calendar",      icon: "event",         path: "/calendar",      status: "active" },
+    { name: "Time Table",    icon: "schedule",      path: "/timetable",     status: "active" },
+    { name: "Course",        icon: "menu_book",     path: "/course",        status: "active" },
+    { name: "Result",        icon: "bar_chart",     path: "/result",        status: "active" },
+    { name: "Circulars",     icon: "campaign",      path: "/circulars",     status: "hidden" },
+    { name: "Notifications", icon: "notifications", path: "/notifications", status: "hidden" },
   ];
 
 

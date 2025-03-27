@@ -79,13 +79,13 @@ function Search_Context(){
     // ----------------------------------------------------------------------------------------------------
 
     return(
-        <div className="page-base-container attendance-select-base-container">
+        <div className="page-base-container attendancepg-select-base-container">
             
             <h1><span className="material-symbols-outlined">info</span><b>Search Context:</b>Please fill all the details and click on the Search button to the right..!</h1>
             
-            <div className="attendance-select-holder">
+            <div className="attendancepg-select-holder">
                 {/* Program Searchable Dropdown */}
-                <div className="attendance-select">
+                <div className="attendancepg-select">
                     <label>Program:</label>
                     <div className="dropdown">
                         <input
@@ -122,7 +122,7 @@ function Search_Context(){
         
 
                 {/* Term Searchable Dropdown */}
-                <div className="attendance-select">
+                <div className="attendancepg-select">
                     <label>Term:</label>
                     <div className="dropdown">
                         <input
@@ -159,7 +159,7 @@ function Search_Context(){
         
 
                 {/* Course Searchable Dropdown */}
-                <div className="attendance-select">
+                <div className="attendancepg-select">
                     <label>Course:</label>
                     <div className="dropdown">
                         <input
@@ -196,7 +196,7 @@ function Search_Context(){
 
 
                 {/* Start Date Select */}
-                <div className="attendance-select">
+                <div className="attendancepg-select">
                     <label>Start Date:</label>
                     <div className="date-select">
                         <input
@@ -219,7 +219,7 @@ function Search_Context(){
 
 
                 {/* End Date Select */}
-                <div className="attendance-select">
+                <div className="attendancepg-select">
                     <label>End Date:</label>
                     <div className="date-select">
                         <input
@@ -256,7 +256,7 @@ function Summer() {
     
 
     return(
-        <div className="page-base-container attendance-summary-container">
+        <div className="page-base-container attendancepg-summary-container">
             {/* Credits Earned */}
             <div className="summary-container-1">
             <span className="material-icons">check_circle</span>
@@ -310,13 +310,13 @@ function Attendance() {
             <div className="page-main-container">
                 <Search_Context />
 
-                <div className="attendance-context-line-1" />
+                <div className="attendancepg-context-line-1" />
 
                 <Summer />
 
-                <div className="page-base-container attendance-table-base-container">
+                <div className="page-base-container attendancepg-table-base-container">
 
-                    <table className="attendance-table">
+                    <table className="attendancepg-table">
                         <thead>
                             <tr>
                                 <th>Session Date</th>
