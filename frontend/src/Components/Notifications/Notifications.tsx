@@ -253,7 +253,7 @@ function Notifications({Close} : NotificationsProps){
         </div>
 
         <div className="notifications-footer">
-          <h1 onClick={() => navigate("/notifications")}>See All ➜</h1>
+          <h1 onClick={() => {navigate("/notifications"), handleClose()}}>See All ➜</h1>
         </div>
       </div>
     </>
