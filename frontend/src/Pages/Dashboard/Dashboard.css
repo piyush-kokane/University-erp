@@ -29,9 +29,6 @@
 }
 
 .attendance-title{
-  color: var(--text-primary-color);
-  width: fit-content;
-  justify-self: center;
   cursor: pointer;
 }
 

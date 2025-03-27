@@ -273,7 +273,7 @@ function DashboardPage() {
           {/* maped for subject names, seperaet div to make alignment perfect */}
           <div className="attendance-container-left">
             {attendance.map((item: AttendanceType) => (
-              <h1 key={item.subject} className="attendance-subject-name">{item.subject}</h1>
+              <h2 key={item.subject} className="attendance-subject-name">{item.subject}</h2>
             ))}
           </div>
 
@@ -296,7 +296,7 @@ function DashboardPage() {
           {/* maped for subject progress */}
           <div className="attendance-container-right">
             {attendance.map((item: AttendanceType) => (
-              <h1 key={item.subject} className="attendance-subject-attendance">{item.attended}/{item.total}</h1>
+              <h2 key={item.subject} className="attendance-subject-attendance">{item.attended}/{item.total}</h2>
             ))}
           </div>
 

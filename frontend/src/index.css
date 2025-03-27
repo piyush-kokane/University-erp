@@ -213,6 +213,8 @@
         margin-top: -15px;
         margin-bottom: 15px;
         font-size: 26px;
+        width: fit-content;
+        justify-self: center;
     }
 
     .page-container-line-1 {
