@@ -68,19 +68,7 @@ function Navigation() {
 
   const [activeMenuItem, setActiveMenuItem] = useState("");
 
-  const [activeTab, setActiveTab] = useState(localStorage.getItem("activeTab") || "");
-
-
-  //  EventListener for localStorage change, updates activeTab on change
-  useEffect(() => {
-    function handleChange() {
-      setActiveTab(localStorage.getItem("activeTab") || "");
-      console.log("haiiiiiiiiiiaiaiiaia")
-    }
-
-    window.addEventListener("resize", handleChange); // Listen for resize
-    return () => window.removeEventListener("resize", handleChange); // Cleanup on unmount
-  }, []);
+  const [activeTab, setActiveTab] = useState("");
 
 
   // if page url changes, set ActiveMenuItem & set ActiveTab accordingly to url
@@ -177,7 +165,8 @@ function Navigation() {
       >
         <nav className="sidebar-menu">
           {menuItems.map((item) => (
-            <a 
+            ((item.status === "active") || (item.path === location.pathname)) // only show Active Tabs
+            ?<a 
               key={item.name} 
               className={`sidebar-item ${activeMenuItem === item.name ? "active" : ""}`}
               onClick={() => navigate(item.path)}
@@ -185,6 +174,7 @@ function Navigation() {
               <span className="material-icons sidebar-icon">{item.icon}</span>
               <span className={`sidebar-text ${sidebarOpen ? "visible" : ""}`}>{item.name}</span>
             </a>
+            :<></>
           ))}
         </nav>
 

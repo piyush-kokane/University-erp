@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./circulars.css";
+import "./Notifications.css";
 import Footer from "../../Components/Footer/Footer";
 
 
@@ -12,7 +12,7 @@ interface DataType {
 }
 
 
-const sampleCirculars = [
+const sampleNotifications = [
     {
       title: "Circular/Notice",
       message: "Recruitment Forms For Dhvani, The Official Music Club of MIT World Peace University, are now available! If you have a passion for music and want to be a part of an incredible team, submit your application before the deadline. Auditions will be held next week.",
@@ -94,7 +94,7 @@ interface UDTF_Type {
 }
 const UserData_to_fetch = [
   // key is data stored in localStorage, src is  API endpoint
-  {key: "Circulars", src: "http://localhost:5000/api/circulars"},
+  {key: "Notifications", src: "http://localhost:5000/api/notifications"},
 ];
 
 
@@ -106,7 +106,7 @@ const fetchData = async (item: UDTF_Type) => {
     
 
     // remove following code once backend is integrated
-    return sampleCirculars;   
+    return sampleNotifications;
   }
   catch (error) {
     console.error(`Error fetching data for ${item.key}:`, error);
@@ -115,13 +115,13 @@ const fetchData = async (item: UDTF_Type) => {
 };
 
 
-function Circulars() {
+function Notifications() {
   const navigate = useNavigate();
 
 
   // initialise constants for UserDta, get data from localStorage if stored
-  const [Circulars, setCirculars] = useState(
-    JSON.parse(localStorage.getItem("Circulars") || "[]"));
+  const [Notifications, setNotifications] = useState(
+    JSON.parse(localStorage.getItem("Notifications") || "[]"));
   
 
   // Update UserData & localStorage if not set
@@ -133,7 +133,7 @@ function Circulars() {
           localStorage.setItem(item.key, JSON.stringify(data));
 
           // determine which variable to update
-          if (item.key === "Circulars") setCirculars(data);
+          if (item.key === "Notifications") setNotifications(data);
         });
       }
     });
@@ -141,14 +141,14 @@ function Circulars() {
 
 
 
-  function Circular() {
+  function Notification() {
     return (
       <div className="page-base-container circularpg-page-base-container">
-        <h1>Circulars</h1>
+        <h1>Notifications</h1>
         <div className="page-container-line-2"/>
 
         <div className="circularpg-circular-container">
-          {Circulars.map((item: DataType, index: number) => (
+          {Notifications.map((item: DataType, index: number) => (
             <div  key={index} className={"circularpg-circular-item"} >
               <h1>{item.title}</h1>
               <p>{item.message}</p>
@@ -176,11 +176,11 @@ function Circulars() {
       <div className="page-container">
         <div className="page-main-container">
           <div className="circularpg-tabs">
-            <a className={`active`} onClick={() => navigate("/circulars")}>Circulars</a>
-            <a onClick={() => navigate("/notifications")}>Notifications</a>
+            <a onClick={() => navigate("/circulars")}>Circulars</a>
+            <a className={`active`} onClick={() => navigate("/notifications")}>Notifications</a>
           </div>
 
-          <Circular />
+          <Notification />
         </div>
         <Footer />
       </div>
@@ -188,4 +188,4 @@ function Circulars() {
   );
 }
 
-export default Circulars;
+export default Notifications;
