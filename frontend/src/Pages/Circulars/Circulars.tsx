@@ -169,8 +169,6 @@ function Circulars() {
   }
 
 
-
-
   return (
     <>
       <div className="page-container">
