@@ -14,6 +14,7 @@ import Policy from "./Pages/Policy_&_Conditions/Policy_&_Conditions"
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Profile from "./Pages/Profile/Profile";
 import Attendance from "./Pages/Attendance/Attendance";
+import Course from "./Pages/Course/Course";
 import Calendar from "./Pages/Calendar/Calendar";
 import Time_Table from "./Pages/Time_Table/Time_Table";
 import Circulars from "./Pages/Circulars/Circulars";
@@ -42,6 +43,7 @@ function Layout() {
     attendance: "/attendance",
     calendar: "/calendar",
     timetable: "/timetable",
+    course: "/course",
     circulars: "/circulars",
     notifications: "/notifications",
   };
@@ -117,6 +119,7 @@ function Layout() {
         <Route path={routes.attendance} element={<CheckLogin element={<Attendance />} />} />
         <Route path={routes.calendar} element={<CheckLogin element={<Calendar />} />} />
         <Route path={routes.timetable} element={<CheckLogin element={<Time_Table />} />} />
+        <Route path={routes.course} element={<CheckLogin element={<Course />} />} />
         <Route path={routes.circulars} element={<CheckLogin element={<Circulars />} />} />
         <Route path={routes.notifications} element={<CheckLogin element={<Notifications />} />} />
 
