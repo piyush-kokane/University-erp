@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Course.css";
+import "./Attendance.css";
 
 
 
@@ -248,7 +248,7 @@ function Search_Context(){
 }
 
 
-function Summery() {
+function Summer() {
     const total_present = 8;
     const total_absent = 2;
     const total_lectures = 10;
@@ -289,7 +289,7 @@ function Summery() {
 }
 
 
-function Course() {
+function Attendance() {
     const [subject, setSubject] = useState("Advanced Web Technology");
 
     const sample_attendance = [
@@ -313,10 +313,10 @@ function Course() {
                 <Search_Context />
 
                 <div className="attendancepg-context-line-1" />
-                <h2 className="attendancepg-subject-name">Subject: {subject}</h2>
+                <h2 className="attendancepg-subject-name">This is Admin Page</h2>
                 <div className="attendancepg-context-line-1" />
 
-                <Summery />
+                <Summer />
 
                 <div className="page-base-container attendancepg-table-base-container">
                     <table className="attendancepg-table">
@@ -348,4 +348,4 @@ function Course() {
     );
   }
 
-  export default Course;
+  export default Attendance;
