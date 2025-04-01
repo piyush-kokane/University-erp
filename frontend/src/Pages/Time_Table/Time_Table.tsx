@@ -232,7 +232,7 @@ function Time_Table() {
     
 
     return (
-        <div className="page-container">
+      <div className="page-container">
         <div className="page-main-container">
   
           <div>
@@ -243,15 +243,14 @@ function Time_Table() {
           <div className="page-base-container">
             {view === 'daily' ? <DailyTimeTable /> : <WeeklyTimeTable />}
           </div>
-        </div>
-  
-        {/* Simple side-by-side layout */}
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <div style={{ width: '48%' }}>
-            <Professor />
-          </div>
-          <div style={{ width: '48%' }}>
-            <Course />
+
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <div style={{ width: '48%' }}>
+              <Professor />
+            </div>
+            <div style={{ width: '48%' }}>
+              <Course />
+            </div>
           </div>
         </div>
       </div>
