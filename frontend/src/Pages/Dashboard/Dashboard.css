@@ -198,26 +198,12 @@
 
 .timetable-container {
   width: 100%;
+  padding: 20px 0px;
   max-height: 500px;
   overflow-y: auto;
 }
 
-.timetable-table{
-  color: var(--text-primary-color);
-  margin: 20px 0px;
-}
-
-.timetable-table th, 
-.timetable-table td {
-  border: 2px solid rgba(200, 200, 200, 0.6);
-  padding: 10px;
-}
-
 .timetable-table th {
-  background-color: rgb(30, 120, 230);
   font-size: 18px;
 }
 
-.timetable-table td {
-  font-size: 16px;
-}

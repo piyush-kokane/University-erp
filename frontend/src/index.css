@@ -526,18 +526,21 @@
     table {
         width: 100%;
         border-collapse: collapse;
-        margin-bottom: 20px;
+    }
+    thead {
+        background: #007BFF;
     }
     th, td {
-        border: 1px solid #ddd;
+        border: 2px solid rgba(200, 200, 200, 0.6);
         padding: 10px;
         text-align: left;
     }
     th {
-        background: #007BFF;
         color: white;
     }
-
+    td {
+        color: var(--text-primary-color);
+    }
 
     /* Blockquotes */
     blockquote {
