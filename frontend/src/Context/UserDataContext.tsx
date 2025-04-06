@@ -112,7 +112,7 @@ export const UserContextProvider: React.FC<{ children: ReactNode }> = ({ childre
     }
   };
 
-  // Update UserData & localStorage
+  // replace saved data of previous login if any
   function updateUserData() {
     setUser(dataLoading); // Updating user will cause a reRender
   }
