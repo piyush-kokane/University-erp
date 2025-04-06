@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { UserData  } from "../../Context/UserDataContext";
+import { UserData } from "../../Context/UserDataContext";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./Login.css";
 
@@ -13,6 +13,8 @@ function Login() {
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
+
   const navigate = useNavigate();
 
   const location = useLocation();
@@ -20,12 +22,51 @@ function Login() {
 
 
   // Handle login logic here
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault(); // prevents refresh of tab
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault(); // Prevent page refresh
+  
+
+    /* Previous Code */
     navigate(goTo); // Navigate to the goTo route 
     console.log("Logging in with", { username, password, rememberMe });
     localStorage.setItem("loggedIn", "true"); // Set loggedIn to true
     updateUserData();
+    
+
+    /*
+    try {
+      const response = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
+  
+      const data = await response.json();
+      console.log("Login API Response:", data); // Log response for debugging
+  
+      if (!response.ok) {
+        console.error("Error:", data.message);
+        setError(data.message); // Display error message
+        return;
+      }
+  
+      if (!data.user) {
+        console.error("Error: No user data received", data);
+        setError("Invalid login details");
+        return;
+      }
+  
+      updateUserData();
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("loggedIn", "true");
+  
+      navigate(goTo); // Navigate to the goTo route 
+    }
+    catch (err) {
+      console.error("Login Error:", err);
+      setError("An error occurred. Please try again.");
+    }
+    */
   };
 
 
@@ -48,7 +89,8 @@ function Login() {
               placeholder="Username"
               className="input-field"
               value={username}
-              onChange={(e) => setUsername(e.target.value)} />
+              onChange={(e) => setUsername(e.target.value)}
+            />
             <span className="material-icons input-icon">person</span>
           </div>
 
@@ -58,7 +100,8 @@ function Login() {
               placeholder="Password"
               className="input-field"
               value={password}
-              onChange={(e) => setPassword(e.target.value)} />
+              onChange={(e) => setPassword(e.target.value)}
+            />
             <span
               className="material-icons input-icon password-toggle"
               onClick={() => setShowPassword(!showPassword)}
@@ -72,13 +115,16 @@ function Login() {
                 <input
                   type="checkbox"
                   checked={rememberMe}
-                  onChange={() => setRememberMe(!rememberMe)} />
+                  onChange={() => setRememberMe(!rememberMe)}
+                />
                 Remember me
               </label>
             </div>
 
             <a href="/forgot-password" className="forgot-password">Forgot Password?</a>
           </div>
+
+          {error && <p className="error-message">{error}</p>}
 
           <button type="submit" className="login-btn">Login</button>
         </form>

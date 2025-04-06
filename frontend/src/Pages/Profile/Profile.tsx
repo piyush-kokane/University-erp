@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { UserData  } from "../../Context/UserDataContext";
+import { UserData } from "../../Context/UserDataContext";
 import "./Profile.css";
 import Footer from "../../Components/Footer/Footer";
 
@@ -12,97 +12,41 @@ interface UserDataType {
 }
 
 
-// Sample UserData
-const sampleUserDocuments = [
-    { Key: "10th Marksheet", value: "/User_Data/10th_Marlsheet.png" },
-    { Key: "12th Marksheet", value: "/User_Data/12th_Marlsheet.png" },
-    { Key: "Leaving Certificate", value: "/User_Data/Leaving_Certificate.png" },
-    { Key: "Signature", value: "/User_Data/Signature.png" },
+const DataLoading = [
+    { Key: "loading", value: "" },
 ];
-
-const sampleStudentInfo = [
-    { Key: "Gender", value: "Male" },
-    { Key: "Date Of Birth", value: "18/2/2005" },
-    { Key: "Blood Group", value: "AB+" },
-    { Key: "gmail", value: "google@gmail.com" },
-    { Key: "Phone No.", value: "8806808503" },
-    { Key: "Emergency No.", value: "8806808503" },
-    { Key: "Aadhar No.", value: "8806808503" },
-    { Key: "Admission Type", value: "CET" },
-    { Key: "Admission Status", value: "Active" },
-    { Key: "Admission Date", value: "24/3/2023" },
-];
-
-const sampleStudentAddress = [
-    { Key: "Permanent Address", value: "Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address " },
-    { Key: "Current Address", value: "Address" },
-    { Key: "Area", value: "Area" },
-    { Key: "Land Mark", value: "Land Mark" },
-    { Key: "City", value: "Pune" },
-    { Key: "Pincode", value: "411038" },
-    { Key: "State", value: "Maharashtra" },
-    { Key: "Country", value: "India" },
-];
-
-const sampleParent1Info = [
-    { Key: "Guardian Type", value: "Father" },
-    { Key: "Fathers's gmail", value: "google@gmail.com" },
-    { Key: "Father's Contact", value: "9875642587" },
-    { Key: "Father's Profession", value: "Job" },
-];
-const sampleParent2Info = [
-    { Key: "Guardian Type", value: "Mother" },
-    { Key: "Mother's gmail", value: "google@gmail.com" },
-    { Key: "Mother's Contact", value: "9875642587" },
-    { Key: "Mother's Profession", value: "Housewife" },
-];
-
-
-const defaultStudentInfo = [
-    { Key: "Gender", value: "Male" },
-    { Key: "Date Of Birth", value: "18/2/2005" },
-    { Key: "Blood Group", value: "AB+" },
-    { Key: "gmail", value: "google@gmail.com" },
-    { Key: "Phone No.", value: "8806808503" },
-    { Key: "Emergency No.", value: "8806808503" },
-    { Key: "Aadhar No.", value: "8806808503" },
-    { Key: "Admission Type", value: "CET" },
-    { Key: "Admission Status", value: "Active" },
-    { Key: "Admission Date", value: "24/3/2023" },
-];
-
-
-interface UDTF_Type {
-    key: string;
-    src: string;
-}
-const UserData_to_fetch = [
-    // key is data stored in localStorage, src is  API endpoint
-    {key: "UserDocuments", src: "http://localhost:5000/api/userdocuments"},
-    {key: "StudentInfo", src: "http://localhost:5000/api/studentinfo"},
-    {key: "StudentAddress", src: "http://localhost:5000/api/studentaddress"},
-    {key: "Parent1Info", src: "http://localhost:5000/api/parent1info"},
-    {key: "Parent2Info", src: "http://localhost:5000/api/parent2info"},
+const DataNotLoading = [
+    { Key: "error", value: "" },
 ];
   
   
-const fetchData = async (item: UDTF_Type) => {
+const fetchData = async (key: string, src: string) => {
     try {
-        ///const response = await fetch(item.src);
-        ///const data = await response.json();
-        ///return data;
-    
+        // Simulate 2-second server delay
+        await new Promise(resolve => setTimeout(resolve, 2000));
 
+
+        const response = await fetch(src);
+        const data = await response.json();
+        return data;
+
+        
         // remove following code once backend is integrated
-        if (item.key === "UserDocuments")  return sampleUserDocuments;
-        if (item.key === "StudentInfo")  return sampleStudentInfo;   
-        if (item.key === "StudentAddress")  return sampleStudentAddress;   
-        if (item.key === "Parent1Info")  return sampleParent1Info;   
-        if (item.key === "Parent2Info")  return sampleParent2Info;   
+        // if (item.key === "UserDocuments")  return defaultUserDocuments;
+        // if (item.key === "StudentInfo")  return defaultStudentInfo;   
+        // if (item.key === "StudentAddress")  return defaultStudentAddress;   
+        // if (item.key === "Parent1Info")  return defaultParent1Info;   
+        // if (item.key === "Parent2Info")  return defaultParent2Info;   
     }
     catch (error) {
-        console.error(`Error fetching data for ${item.key}:`, error);
-        return defaultStudentInfo; // Return an empty array in case of error
+        console.error(`Error fetching data for ${key}:`, error);
+
+        // Fallback in case of errors
+        if (key === "UserDocuments")  return DataNotLoading;
+        if (key === "StudentInfo")  return DataNotLoading;   
+        if (key === "StudentAddress")  return DataNotLoading;   
+        if (key === "Parent1Info")  return DataNotLoading;   
+        if (key === "Parent2Info")  return DataNotLoading;   
     }
 };
 
@@ -129,22 +73,57 @@ function Profile() {
 
     // initialise constants for UserDta, get data from localStorage if stored
     const [UserDocuments, setUserDocuments] = useState(
-        JSON.parse(localStorage.getItem("UserDocuments") || "[]"));
-    
+        getData("UserDocuments", "http://localhost:5000/api/userdocuments")
+    );
     const [StudentInfo, setStudentInfo] = useState(
-        JSON.parse(localStorage.getItem("StudentInfo") || "[]"));
-
+        getData("StudentInfo", "http://localhost:5000/api/studentinfo")
+    );
     const [StudentAddress, setStudentAddress] = useState(
-        JSON.parse(localStorage.getItem("StudentAddress") || "[]"));
-
+        getData("StudentAddress", "http://localhost:5000/api/studentaddress")
+    );
     const [Parent1Info, setParent1Info] = useState(
-        JSON.parse(localStorage.getItem("Parent1Info") || "[]"));
-
+        getData("Parent1Info", "http://localhost:5000/api/parent1info")
+    );
     const [Parent2Info, setParent2Info] = useState(
-        JSON.parse(localStorage.getItem("Parent2Info") || "[]"));
+        getData("Parent2Info", "http://localhost:5000/api/parent2info")
+    );
+
+    // safely parse JSON from localStorage
+    function getData(key: string, src: string) {
+        function callFetch() {
+            fetchData(key, src).then((data) => {
+                // update localStorage
+                localStorage.setItem(key, JSON.stringify(data));
+    
+                // determine which variable to update
+                if (key === "UserDocuments") setUserDocuments(data);
+                if (key === "StudentInfo") setStudentInfo(data);
+                if (key === "StudentAddress") setStudentAddress(data);
+                if (key === "Parent1Info") setParent1Info(data);
+                if (key === "Parent2Info") setParent2Info(data);
+            });
+        }
 
 
-    // Update UserData & localStorage if not set
+        try {
+            const data = localStorage.getItem(key);
+            if (data) {
+                return JSON.parse(data);
+            }
+            else {
+                callFetch();
+                return DataLoading;
+            }
+        }
+        catch (error) {
+            console.warn(`Error parsing localStorage "${key}":`, error);
+            return DataNotLoading;
+        }
+    };
+
+
+
+    /* Update UserData & localStorage if not set
     useEffect(() => {
       UserData_to_fetch.forEach((item: UDTF_Type) => {
         if (!localStorage.getItem(item.key)) {
@@ -162,7 +141,7 @@ function Profile() {
         }
       });
     }, []);
-
+    */
     
     function About() {    
         return (
