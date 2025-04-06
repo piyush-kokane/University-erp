@@ -274,27 +274,60 @@ function Profile() {
                 <div className="page-base-container profilepg-container">
                     <h1>More Information</h1>
                     <div className="page-container-line-1"/>
-                    {StudentInfo.map((item: UserDataType) => (
-                        <div key={item.Key} className="profilepg-sub-container">
-                            <h1>{item.Key}</h1>
-                            <h2>{item.value}</h2>
-                            <div />
-                        </div>
-                    ))}
+                    {(() => {
+                        const loading = (StudentInfo[0].Key === "loading");
+                        const error = (StudentInfo[0].Key === "error");
+                        
+                        if (loading || error) {
+                            return (
+                                <div className="profilepg-sub-container">
+                                    {loading && <h1 className="!mb-2.5">{"Loading..."}</h1>}
+                                    {error && <h1 className="!mb-2.5">{"RIP Server 💀"}</h1>}
+                                    <div />
+                                </div>
+                            );
+                        }
+                        else {
+                            return StudentInfo.map((item: UserDataType) => (
+                                <div key={item.Key} className="profilepg-sub-container">
+                                    <h1>{item.Key}</h1>
+                                    <h2>{item.value}</h2>
+                                    <div />
+                                </div>
+                            ));
+                        }
+                    })()}
                 </div>
+
     
     
                 {/* Content panel 3 */}
                 <div className="page-base-container profilepg-container">
                     <h1>Student Address</h1>
                     <div className="page-container-line-1"/>
-                    {StudentAddress.map((item: UserDataType) => (
-                        <div key={item.Key} className="profilepg-sub-container">
-                            <h1>{item.Key}</h1>
-                            <h2>{item.value}</h2>
-                            <div />
-                        </div>
-                    ))}
+                    {(() => {
+                        const loading = (StudentAddress[0].Key === "loading");
+                        const error = (StudentAddress[0].Key === "error");
+                        
+                        if (loading || error) {
+                            return (
+                                <div className="profilepg-sub-container">
+                                    {loading && <h1 className="!mb-2.5">{"Loading..."}</h1>}
+                                    {error && <h1 className="!mb-2.5">{"Error"}</h1>}
+                                    <div />
+                                </div>
+                            );
+                        }
+                        else {
+                            return StudentAddress.map((item: UserDataType) => (
+                                <div key={item.Key} className="profilepg-sub-container">
+                                    <h1>{item.Key}</h1>
+                                    <h2>{item.value}</h2>
+                                    <div />
+                                </div>
+                            ));
+                        }
+                    })()}
                 </div>
     
     
@@ -302,22 +335,43 @@ function Profile() {
                 <div className="page-base-container profilepg-container">
                     <h1>Parent/Guardian Information</h1>
                     <div className="page-container-line-1"/>
-                    {Parent1Info.map((item: UserDataType) => (
-                        <div key={item.Key} className="profilepg-sub-container">
-                            <h1>{item.Key}</h1>
-                            <h2>{item.value}</h2>
-                            <div />
-                        </div>
-                    ))}
-    
-                    <div className="page-container-line-2"/>
-                    {Parent2Info.map((item: UserDataType) => (
-                        <div key={item.Key} className="profilepg-sub-container">
-                            <h1>{item.Key}</h1>
-                            <h2>{item.value}</h2>
-                            <div />
-                        </div>
-                    ))}
+                    {(() => {
+                        const loading = ((Parent1Info[0].Key === "loading") || (Parent2Info[0].Key === "loading"));
+                        const error = ((Parent1Info[0].Key === "error") || (Parent2Info[0].Key === "error"));
+                        
+                        if (loading || error) {
+                            return (
+                                <div className="profilepg-sub-container">
+                                    {loading && <h1 className="!mb-2.5">{"Loading..."}</h1>}
+                                    {error && <h1 className="!mb-2.5">{"Error"}</h1>}
+                                    <div />
+                                </div>
+                            );
+                        }
+                        else {
+                            return(
+                                <>
+                                    {Parent1Info.map((item: UserDataType) => (
+                                        <div key={item.Key} className="profilepg-sub-container">
+                                            <h1>{item.Key}</h1>
+                                            <h2>{item.value}</h2>
+                                            <div />
+                                        </div>
+                                    ))}
+                                    
+                                    <div className="page-container-line-2"/>
+
+                                    {Parent2Info.map((item: UserDataType) => (
+                                        <div key={item.Key} className="profilepg-sub-container">
+                                            <h1>{item.Key}</h1>
+                                            <h2>{item.value}</h2>
+                                            <div />
+                                        </div>
+                                    ))}
+                                </>
+                            );
+                        }
+                    })()}
                 </div>
             </>
         );
@@ -336,27 +390,44 @@ function Profile() {
         
         return (
             <>
-                {/* Content panel 2 */}
-                {UserDocuments.map((item: UserDataType) => (
-                    <div key={item.Key} className="page-base-container profilepg-container">
-                        <h1>{item.Key}</h1>
-                        <div className="page-container-line-1"/>
-
-                        {openDocuments[item.Key] && (
-                            <>
-                              <img src={item.value} alt={item.Key} />
-                              <div className="page-container-line-1"/>
-                            </>
-                        )}
-                        
-                        <a href={item.value} target="_blank" rel="noopener noreferrer" className="material-icons">open_in_new</a>
-                        <span onClick={() => toggleDocument(item.Key)} >
-                            { openDocuments[item.Key]
-                            ? "Hide"
-                            : "Show"
-                        } </span>
-                    </div>
-                ))}
+                {(() => {
+                    const loading = (UserDocuments[0].Key === "loading");
+                    const error = (UserDocuments[0].Key === "error");
+                    console.log(loading,error)
+                    if (loading || error) {
+                        return(
+                            <div className="page-base-container profilepg-container">
+                                {loading && <h1>User Documents Loading...</h1>}
+                                {error && <h1>Error</h1>}
+                                <div className="page-container-line-1"/>
+                                {loading && <span>Fetching data</span>}
+                                {error && <span>Fetching failed</span>}
+                            </div>
+                        );
+                    }
+                    else {
+                        return UserDocuments.map((item: UserDataType) => (
+                            <div key={item.Key} className="page-base-container profilepg-container">
+                                <h1>{item.Key}</h1>
+                                <div className="page-container-line-1"/>
+        
+                                {openDocuments[item.Key] && (
+                                    <>
+                                      <img src={item.value} alt={item.Key} />
+                                      <div className="page-container-line-1"/>
+                                    </>
+                                )}
+                                
+                                <a href={item.value} target="_blank" rel="noopener noreferrer" className="material-icons">open_in_new</a>
+                                <span onClick={() => toggleDocument(item.Key)} >
+                                    { openDocuments[item.Key]
+                                    ? "Hide"
+                                    : "Show"
+                                } </span>
+                            </div>
+                        ))
+                    }
+                })()}
             </>
         );
     }        
