@@ -18,51 +18,55 @@ interface UserContextType {
   ShortBio: string;
 }
 
-
-// Default user data for trial
-const sampleData = {
-  FullName: "Piyush Jayant Kokane",
-  FirstName: "Piyush",
-  LastName: "Kokane",
-  contact: "9487351892",
-  gmail: "google@gmail.com",
-  Prn: "1132230781",
-  Branch: "SY. B.Sc. CS.",
-  Term: "Semester 4",
-  Profile: "/User_Data/Profile.jpg",
-  Banner: "/User_Data/Banner.png",
-  Biotag: "I am proficient programmer",
-  LongBio:"I am a student at MIT-WPU with a strong technical background in web development and software engineering. My expertise includes React, TypeScript, Node.js, PHP, MySQL, MongoDB, Tailwind CSS, HTML, CSS, JavaScript, WordPress, and Figma. I have experience working on projects like university ERP systems, online shopping platforms, and productivity apps, focusing on creating efficient and user-friendly applications.",
-  ShortBio:"I study at MIT-WPU, and I have technical skills in React, TypeScript, Node.js, PHP, MySQL, MongoDB, Tailwind CSS, HTML, CSS, JavaScript.",
+const defaultData = {
+  FullName: "Loading",
+  FirstName: "Loading",
+  LastName: "Loading",
+  contact: "Loading",
+  gmail: "Loading",
+  Prn: "Loading",
+  Branch: "Loading",
+  Term: "Loading",
+  Profile: "/Images/profile.png",
+  Banner: "/Images/BG.png",
+  Biotag: "Loading",
+  LongBio: "Loading",
+  ShortBio: "Loading",
 };
 
-const defaultData = {
-  FullName: "Not Loading",
+const dataNotLoading = {
+  FullName: "N/A",
+  FirstName: "N/A",
+  LastName: "N/A",
   contact: "xxx-xxxx-xxx",
-  Prn: "not loading",
-  Branch: "not loading",
-  Term: "not loading",
+  gmail: "N/A",
+  Prn: "N/A",
+  Branch: "N/A",
+  Term: "N/A",
   Profile: "/Images/profile.png",
   Banner: "/Images/BG.png",
 };
 
 const fetchData = async () => {
   try {
-    ///const response = await fetch("http://localhost:5000/api/userdata"); // fetch from API endpoint
-    ///const data = await response.json();
-    ///return data;
-    
+    // Simulate 2-second server delay
+    await new Promise(resolve => setTimeout(resolve, 2000));
+
+    const response = await fetch("http://localhost:5000/api/userdata");
+    const data = await response.json();
+    return data;
 
     // remove following code once backend is integrated
-    return sampleData; 
+    // return sampleData;
   }
   catch (error) {
     console.error("Error fetching user data:", error);
-    return defaultData // Return an empty array in case of error
+    return dataNotLoading; // Fallback in case of errors
   }
 };
 
 
+// Define the User Context type
 interface UserContextValue {
   user: UserContextType | null;
   updateUserData: () => void;
@@ -76,12 +80,32 @@ export const UserData = createContext<UserContextValue | null>(null);
 export const UserContextProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   // initialise constants for UserDta, get data from localStorage if stored
   const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem("UserData") || "{}"));
+    getParsedLocalStorage("UserData", defaultData)
+  );
+
+    // Utility to safely parse JSON from localStorage
+    function getParsedLocalStorage(key: string, fallback: any) {
+      try {
+        const data = localStorage.getItem(key);
+        if (data) {
+          console.log(localStorage)
+          return JSON.parse(data);
+        }
+        else {
+          console.log("defaultData")
+          return defaultData;
+        }
+      }
+      catch (err) {
+          console.warn(`Error parsing localStorage "${key}":`, err);
+          return fallback;
+      }
+  };
 
   // Update UserData & localStorage if not set
   useEffect(() => {
     if (!localStorage.getItem("UserData")) {
-      updateUserData();
+      //updateUserData();
     }
   }, []);
 
@@ -93,5 +117,9 @@ export const UserContextProvider: React.FC<{ children: ReactNode }> = ({ childre
     });
   }
 
-  return <UserData.Provider value={{ user, updateUserData }}>{children}</UserData.Provider>;
+  return (
+    <UserData.Provider value={{ user, updateUserData }}>
+      {children}
+    </UserData.Provider>
+  );
 };

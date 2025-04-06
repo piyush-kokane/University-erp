@@ -178,7 +178,6 @@ function Course() {
         { name: "Operating System", code: "EE501", Type: "Lab", faculty: "Dr. Priya Nair", credits: "4" },
         { name: "DCN", code: "CS602", Type: "Lab", faculty: "Prof. Sandeep Verma", credits: "4" },
         { name: "A.I.", code: "CS703", Type: "Elective", faculty: "Dr. Ramesh Patel", credits: "6" },
-        { name: "A.I.", code: "CS703", Type: "Elective", faculty: "Dr. Ramesh Patel", credits: "6" },
     ];
     
 

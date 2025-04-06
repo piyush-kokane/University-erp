@@ -89,6 +89,7 @@ function Navigation() {
     // Clear localStorage except "theme"
     const theme = localStorage.getItem("theme");
     localStorage.clear();
+    console.log(localStorage)
     if (theme) localStorage.setItem("theme", theme);
 
     navigate("/login", { state: { from: location.pathname } }) // navigate to login page & set state.from to url of current page
