@@ -189,6 +189,16 @@
     text-overflow: ellipsis;
 }
 
+.profilepg-sub-container h3 {
+    margin: 0px;
+    color: var(--text-tertiary-color);
+    font-size: 20px;
+    font-weight: normal;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .profilepg-about > h1{
     font-size: 36px;
     color: var(--text-primary-color);

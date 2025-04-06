@@ -147,6 +147,7 @@ function Profile() {
                                 <div className="profilepg-sub-container">
                                     {loading && <h1 className="!mb-2.5">{"Loading..."}</h1>}
                                     {error && <h1 className="!mb-2.5">{"RIP Server 💀"}</h1>}
+                                    {error && <h2 className="!mb-2.5">{"死"}</h2>}
                                     <div />
                                 </div>
                             );
@@ -178,6 +179,7 @@ function Profile() {
                                 <div className="profilepg-sub-container">
                                     {loading && <h1 className="!mb-2.5">{"Loading..."}</h1>}
                                     {error && <h1 className="!mb-2.5">{"Error"}</h1>}
+                                    {error && <h3 className="!mb-2.5">{"Fetching failed"}</h3>}
                                     <div />
                                 </div>
                             );
@@ -208,6 +210,7 @@ function Profile() {
                                 <div className="profilepg-sub-container">
                                     {loading && <h1 className="!mb-2.5">{"Loading..."}</h1>}
                                     {error && <h1 className="!mb-2.5">{"Error"}</h1>}
+                                    {error && <h3 className="!mb-2.5">{"Fetching failed"}</h3>}
                                     <div />
                                 </div>
                             );
