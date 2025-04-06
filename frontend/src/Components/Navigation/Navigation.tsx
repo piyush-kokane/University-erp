@@ -30,7 +30,7 @@ function Navigation() {
 
   const userContext = useContext(UserData);
   if (!userContext) throw new Error("useContext(UserData) must be used within a UserContextProvider");
-  const { user, updateUserData } = userContext;
+  const { user } = userContext;
   
   const Profilepic = user?.Profile;
 
