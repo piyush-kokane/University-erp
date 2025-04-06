@@ -25,18 +25,12 @@ const fetchData = async (key: string, src: string) => {
         // Simulate 2-second server delay
         await new Promise(resolve => setTimeout(resolve, 2000));
 
-
         const response = await fetch(src);
         const data = await response.json();
-        return data;
-
         
-        // remove following code once backend is integrated
-        // if (item.key === "UserDocuments")  return defaultUserDocuments;
-        // if (item.key === "StudentInfo")  return defaultStudentInfo;   
-        // if (item.key === "StudentAddress")  return defaultStudentAddress;   
-        // if (item.key === "Parent1Info")  return defaultParent1Info;   
-        // if (item.key === "Parent2Info")  return defaultParent2Info;   
+        localStorage.setItem(key, JSON.stringify(data)); // update localStorage
+
+        return data;  
     }
     catch (error) {
         console.error(`Error fetching data for ${key}:`, error);
@@ -93,9 +87,6 @@ function Profile() {
     function getData(key: string, src: string) {
         function callFetch() {
             fetchData(key, src).then((data) => {
-                // update localStorage
-                localStorage.setItem(key, JSON.stringify(data));
-    
                 // determine which variable to update
                 if (key === "UserDocuments") setUserDocuments(data);
                 if (key === "StudentInfo") setStudentInfo(data);
@@ -117,7 +108,7 @@ function Profile() {
             }
         }
         catch (error) {
-            console.warn(`Error parsing localStorage "${key}":`, error);
+            console.error(`Error parsing localStorage "${key}":`, error);
             return DataNotLoading;
         }
     };
