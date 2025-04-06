@@ -18,20 +18,20 @@ interface UserContextType {
   ShortBio: string;
 }
 
-const defaultData = {
-  FullName: "Loading",
+const dataLoading = {
+  FullName: "Loading...",
   FirstName: "Loading",
   LastName: "Loading",
   contact: "Loading",
   gmail: "Loading",
-  Prn: "Loading",
-  Branch: "Loading",
-  Term: "Loading",
+  Prn: "Loading...",
+  Branch: "Loading...",
+  Term: "Loading...",
   Profile: "/Images/profile.png",
   Banner: "/Images/BG.png",
-  Biotag: "Loading",
-  LongBio: "Loading",
-  ShortBio: "Loading",
+  Biotag: "Loading...",
+  LongBio: "Loading...",
+  ShortBio: "Loading...",
 };
 
 const dataNotLoading = {
@@ -47,21 +47,25 @@ const dataNotLoading = {
   Banner: "/Images/BG.png",
 };
 
-const fetchData = async () => {
+const fetchData = async (key: string, src: string) => {
   try {
-    // Simulate 2-second server delay
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    console.log("fetching context")
+      // Simulate 2-second server delay
+      await new Promise(resolve => setTimeout(resolve, 2000));
 
-    const response = await fetch("http://localhost:5000/api/userdata");
-    const data = await response.json();
-    return data;
+      const response = await fetch(src);
+      const data = await response.json();
+      
+      // update localStorage
+      localStorage.setItem(key, JSON.stringify(data));
 
-    // remove following code once backend is integrated
-    // return sampleData;
+      return data;  
   }
   catch (error) {
-    console.error("Error fetching user data:", error);
-    return dataNotLoading; // Fallback in case of errors
+      console.error(`Error fetching data for ${key}:`, error);
+
+      // Fallback in case of errors
+      return dataNotLoading;
   }
 };
 
@@ -78,43 +82,39 @@ export const UserData = createContext<UserContextValue | null>(null);
 
 // Provider component
 export const UserContextProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  // initialise constants for UserDta, get data from localStorage if stored
+  // initialise constants for UserDta, ( key: localStorage-key , src: api-endpoint )
   const [user, setUser] = useState(
-    getParsedLocalStorage("UserData", defaultData)
+    getData("UserData", "http://localhost:5000/api/userdata")
   );
 
-    // Utility to safely parse JSON from localStorage
-    function getParsedLocalStorage(key: string, fallback: any) {
-      try {
-        const data = localStorage.getItem(key);
-        if (data) {
-          console.log(localStorage)
-          return JSON.parse(data);
-        }
-        else {
-          console.log("defaultData")
-          return defaultData;
-        }
-      }
-      catch (err) {
-          console.warn(`Error parsing localStorage "${key}":`, err);
-          return fallback;
-      }
-  };
-
-  // Update UserData & localStorage if not set
-  useEffect(() => {
-    if (!localStorage.getItem("UserData")) {
-      //updateUserData();
+  // getData from localStorage if stored else fetch from API
+  function getData(key: string, src: string) {
+    function callFetch() {
+      fetchData(key, src).then((data) => {
+        // update user
+        setUser(data);
+      });
     }
-  }, []);
+
+    try {
+      const data = localStorage.getItem(key);
+      if (data) {
+        return JSON.parse(data);
+      }
+      else {
+        callFetch();
+        return dataLoading;
+      }
+    }
+    catch (error) {
+      console.error(`Error parsing localStorage "${key}":`, error);
+      return dataNotLoading;
+    }
+  };
 
   // Update UserData & localStorage
   function updateUserData() {
-    fetchData().then((data) => {
-      localStorage.setItem("UserData", JSON.stringify(data));
-      setUser(data);
-    });
+    setUser(dataLoading); // Updating user will cause a reRender
   }
 
   return (

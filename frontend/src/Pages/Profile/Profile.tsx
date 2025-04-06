@@ -28,7 +28,8 @@ const fetchData = async (key: string, src: string) => {
         const response = await fetch(src);
         const data = await response.json();
         
-        localStorage.setItem(key, JSON.stringify(data)); // update localStorage
+        // update localStorage
+        localStorage.setItem(key, JSON.stringify(data));
 
         return data;  
     }
@@ -95,7 +96,6 @@ function Profile() {
                 if (key === "Parent2Info") setParent2Info(data);
             });
         }
-
 
         try {
             const data = localStorage.getItem(key);
