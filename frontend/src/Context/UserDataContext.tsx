@@ -49,7 +49,7 @@ const dataNotLoading = {
 
 const fetchData = async (key: string, src: string) => {
   try {
-    console.log("fetching context")
+      console.log("fetching context")
       // Simulate 2-second server delay
       await new Promise(resolve => setTimeout(resolve, 2000));
 
