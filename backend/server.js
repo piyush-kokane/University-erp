@@ -2,7 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const connectDB = require("./config/db");
-const Profile = require("./models/User.js"); 
+const UserData = require("./models/UserData.js"); 
 // Load environment variables
 dotenv.config();
 
@@ -24,6 +24,16 @@ app.use(cors());
 // Routes
 app.use("/api/auth", require("./routes/authRoutes")); // Authentication Routes
 app.use("/api/profile", require("./routes/profileRoutes")); // Profile Routes
+app.use("/api/userdata", require("./routes/userdata")); // UserData Routes
+
+app.get("/getUsers", (req,res) => {
+  UserData.find({}).then(function(users){
+    res.json(users)
+  }).catch(function(err){
+    res.json(err)
+  })
+
+})
 
 // Error Handling Middleware (Optional)
 app.use((err, req, res, next) => {
