@@ -49,13 +49,22 @@ const dataNotLoading = {
 
 const fetchData = async (key: string, src: string) => {
   try {
-      console.log("fetching context")
-      // Simulate 2-second server delay
+      console.log("Fetching UserDataContext")
+
+      // Simulate server delay in ms
       await new Promise(resolve => setTimeout(resolve, 0));
 
       const response = await fetch(src);
       const data = await response.json();
-      
+
+      // Check if the response status is OK
+      if (!response.ok) {
+        console.warn(`Error: ${response.status} ${data.message}`);
+        const returnData =  dataNotLoading;
+        returnData.FullName = data.message;
+        return returnData;
+      }
+
       // update localStorage
       localStorage.setItem(key, JSON.stringify(data));
 
