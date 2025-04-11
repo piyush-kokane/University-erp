@@ -65,8 +65,8 @@
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    border: 6px solid var(--profile-img-border-color);
-    background: var(--panel-color);
+    padding: 6px;
+    background: var(--profile-img-border-color);
 }
 
 .profilepg-navbar span {
