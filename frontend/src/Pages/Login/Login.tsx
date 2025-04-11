@@ -26,47 +26,33 @@ function Login() {
     e.preventDefault(); // Prevent page refresh
   
 
-    /* Previous Code */
+    /* Previous Code
     navigate(goTo); // Navigate to the goTo route 
     console.log("Logging in with", { username, password, rememberMe });
     localStorage.setItem("loggedIn", "true"); // Set loggedIn to true
     updateUserData();
-    
+     */
 
-    /*
     try {
-      const response = await fetch("http://localhost:5000/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
+      const response = await fetch('http://localhost:5000/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ Username: username, Password: password })
       });
   
       const data = await response.json();
-      console.log("Login API Response:", data); // Log response for debugging
   
-      if (!response.ok) {
-        console.error("Error:", data.message);
-        setError(data.message); // Display error message
-        return;
+      if (response.ok) {
+        // Store token and user data as needed
+        localStorage.setItem('token', data.token);
+        console.log('User data:', data.userData);
+      } else {
+        console.error('Login failed:', data.message);
       }
-  
-      if (!data.user) {
-        console.error("Error: No user data received", data);
-        setError("Invalid login details");
-        return;
-      }
-  
-      updateUserData();
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("loggedIn", "true");
-  
-      navigate(goTo); // Navigate to the goTo route 
+    } catch (error) {
+      console.error('Error during login:', error);
     }
-    catch (err) {
-      console.error("Login Error:", err);
-      setError("An error occurred. Please try again.");
-    }
-    */
+    updateUserData();
   };
 
 
