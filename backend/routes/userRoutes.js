@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require("mongoose");
 const router = express.Router();
-const User = require('../models/UserData');
+const User = require('../models/UserSchema');
 
 // GET: Fetch user profile by Username
 router.get('/:Username', async (req, res) => {

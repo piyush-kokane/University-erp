@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
 const userDataSchema = new mongoose.Schema({
   FullName: { type: String, required: true },
@@ -16,9 +17,10 @@ const userDataSchema = new mongoose.Schema({
   ShortBio: { type: String, required: true }
 });
 
-const userSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
   Username: { type: String, required: true, unique: true },
+  Password: { type: String, required: true },
   UserData: { type: userDataSchema, required: true }
 });
 
-module.exports = mongoose.model('users', userSchema); // users is name of collectioon
+module.exports = mongoose.model('users', UserSchema); // users is name of collectioon

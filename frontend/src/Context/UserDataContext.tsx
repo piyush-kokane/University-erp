@@ -49,32 +49,32 @@ const dataNotLoading = {
 
 const fetchData = async (key: string, src: string) => {
   try {
-      console.log("Fetching UserDataContext")
+    console.log("Fetching UserDataContext")
 
-      // Simulate server delay in ms
-      await new Promise(resolve => setTimeout(resolve, 0));
+    // Simulate server delay in ms
+    await new Promise(resolve => setTimeout(resolve, 0));
 
-      const response = await fetch(src);
-      const data = await response.json();
+    const response = await fetch(src);
+    const data = await response.json();
 
-      // Check if the response status is OK
-      if (!response.ok) {
-        console.warn(`Error: ${response.status} ${data.message}`);
-        const returnData =  dataNotLoading;
-        returnData.FullName = data.message;
-        return returnData;
-      }
+    // Check if the response status is OK
+    if (!response.ok) {
+      console.warn(`Error: ${response.status} ${data.message}`);
+      const returnData =  dataNotLoading;
+      returnData.FullName = data.message;
+      return returnData;
+    }
 
-      // update localStorage
-      localStorage.setItem(key, JSON.stringify(data));
+    // update localStorage
+    localStorage.setItem(key, JSON.stringify(data));
 
-      return data;  
+    return data;  
   }
   catch (error) {
-      console.error(`Error fetching data for ${key}:`, error);
+    console.error(`Error fetching data for ${key}:`, error);
 
-      // Fallback in case of errors
-      return dataNotLoading;
+    // Fallback in case of errors
+    return dataNotLoading;
   }
 };
 
