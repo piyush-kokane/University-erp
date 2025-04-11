@@ -93,11 +93,18 @@ export const UserData = createContext<UserContextValue | null>(null);
 export const UserContextProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   // initialise constants for UserDta, ( key: localStorage-key , src: api-endpoint )
   const [user, setUser] = useState(
-    getData("UserData", "http://localhost:5000/api/userdata/Piyush")
+    getData("UserData", "http://localhost:5000/api/userdata/")
   );
 
   // getData from localStorage if stored else fetch from API
   function getData(key: string, src: string) {
+    // get username from localStorage & add it to src 
+    const username = localStorage.getItem('username');
+    src += username;
+    console.log(src)
+
+
+    // function to call fetchData
     function callFetch() {
       fetchData(key, src).then((data) => {
         // update user
@@ -105,6 +112,7 @@ export const UserContextProvider: React.FC<{ children: ReactNode }> = ({ childre
       });
     }
 
+    
     try {
       const data = localStorage.getItem(key);
       if (data) {
