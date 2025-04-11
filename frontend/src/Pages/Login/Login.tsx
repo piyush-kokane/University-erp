@@ -42,17 +42,23 @@ function Login() {
   
       const data = await response.json();
   
-      if (response.ok) {
-        // Store token and user data as needed
-        localStorage.setItem('token', data.token);
-        console.log('User data:', data.userData);
-      } else {
-        console.error('Login failed:', data.message);
+      if (!response.ok) {
+        console.error('Error:', data.message);
+        setError(data.message);
+        return;
       }
-    } catch (error) {
+
+      console.log("Logging in with username:", username );
+      localStorage.setItem("username", username); // Set username
+      localStorage.setItem("loggedIn", "true"); // Set loggedIn to true
+      localStorage.setItem('token', data.token); // Store token
+      navigate(goTo); // Navigate to the goTo route 
+      updateUserData();
+      
+    }
+    catch (error) {
       console.error('Error during login:', error);
     }
-    updateUserData();
   };
 
 
