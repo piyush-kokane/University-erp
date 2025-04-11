@@ -1,5 +1,5 @@
 const express = require("express");
-const Profile = require("../models/User"); // Ensure the path is correct
+const Profile = require("../models/UserData"); // Ensure the path is correct
 const router = express.Router();
 
 // ✅ GET User Profile by Username

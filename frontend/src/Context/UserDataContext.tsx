@@ -51,7 +51,7 @@ const fetchData = async (key: string, src: string) => {
   try {
       console.log("fetching context")
       // Simulate 2-second server delay
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      await new Promise(resolve => setTimeout(resolve, 0));
 
       const response = await fetch(src);
       const data = await response.json();
@@ -84,7 +84,7 @@ export const UserData = createContext<UserContextValue | null>(null);
 export const UserContextProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   // initialise constants for UserDta, ( key: localStorage-key , src: api-endpoint )
   const [user, setUser] = useState(
-    getData("UserData", "http://localhost:5000/api/userdata")
+    getData("UserData", "http://localhost:5000/api/userdata/Piyush")
   );
 
   // getData from localStorage if stored else fetch from API
