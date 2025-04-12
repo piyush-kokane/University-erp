@@ -1,0 +1,26 @@
+{
+  "name": "university-erp",
+  "version": "1.0.0",
+  "description": "<h1>Title: University ERP</h1> <h2>Aim: Collaborative efforts to make our universiys erp better.</h2>",
+  "main": "index.js",
+  "scripts": {
+    "arise": "concurrently -n \"F,B\" -c \"blue,green\" \"npm run start:frontend\" \"npm run start:backend\"",
+    "start:frontend": "cd frontend && npm run dev",
+    "start:backend": "cd backend && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pjk38/University-erp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/pjk38/University-erp/issues"
+  },
+  "homepage": "https://github.com/pjk38/University-erp#readme",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

@@ -14,7 +14,7 @@ router.get('/:Username', async (req, res) => {
       return res.status(404).json({ message: 'data not found' });
     }
 
-    return res.status(404).json({ message: 'data not found' });
+    res.status(200).json(data);
   }
   catch (error) {
     console.error('❌ Error fetching Moreinfo:', error);
