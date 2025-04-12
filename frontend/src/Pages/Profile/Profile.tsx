@@ -22,7 +22,7 @@ const DataNotLoading = [
   
 const fetchData = async (key: string, src: string) => {
     try {
-        // Simulate 2-second server delay
+        // Simulate server delay
         await new Promise(resolve => setTimeout(resolve, 0));
 
         const response = await fetch(src);
@@ -71,7 +71,7 @@ function Profile() {
         getData("UserDocuments", "http://localhost:5000/api/userdocuments")
     );
     const [StudentInfo, setStudentInfo] = useState(
-        getData("StudentInfo", "http://localhost:5000/api/studentinfo")
+        getData("StudentInfo", "http://localhost:5000/api/info/")
     );
     const [StudentAddress, setStudentAddress] = useState(
         getData("StudentAddress", "http://localhost:5000/api/studentaddress")
@@ -86,6 +86,13 @@ function Profile() {
 
     // getData from localStorage if stored else fetch from API
     function getData(key: string, src: string) {
+        // get username from localStorage & add it to src 
+        const username = localStorage.getItem('username');
+        src += username;
+        console.log(src)
+
+
+        // function to call fetchData
         function callFetch() {
             fetchData(key, src).then((data) => {
                 // determine which variable to update
