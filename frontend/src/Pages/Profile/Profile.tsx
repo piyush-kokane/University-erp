@@ -12,22 +12,32 @@ interface UserDataType {
 }
 
 
-const DataLoading = [
+const dataLoading = [
     { Key: "loading", value: "" },
 ];
-const DataNotLoading = [
+const dataNotLoading = [
     { Key: "error", value: "" },
 ];
   
   
 const fetchData = async (key: string, src: string) => {
     try {
-        // Simulate server delay
+        // Simulate server delay in  ms
         await new Promise(resolve => setTimeout(resolve, 0));
 
         const response = await fetch(src);
         const data = await response.json();
-        
+
+        // Check if the response status is OK
+        if (!response.ok) {
+            console.error("Error:", response.status, data.message);
+            const returnData = [
+                { Key: "error", value: data.message },
+            ];
+            console.warn(returnData)
+            return returnData;
+        }
+    
         // update localStorage
         localStorage.setItem(key, JSON.stringify(data));
 
@@ -37,11 +47,7 @@ const fetchData = async (key: string, src: string) => {
         console.error(`Error fetching data for ${key}:`, error);
 
         // Fallback in case of errors
-        if (key === "UserDocuments")  return DataNotLoading;
-        if (key === "StudentInfo")  return DataNotLoading;   
-        if (key === "StudentAddress")  return DataNotLoading;   
-        if (key === "Parent1Info")  return DataNotLoading;   
-        if (key === "Parent2Info")  return DataNotLoading;   
+        return dataNotLoading;
     }
 };
 
@@ -71,7 +77,7 @@ function Profile() {
         getData("UserDocuments", "http://localhost:5000/api/documents/")
     );
     const [StudentInfo, setStudentInfo] = useState(
-        getData("StudentInfo", "http://localhost:5000/api/info/")
+        getData("StudentInfo", "http://localhost:5000/api/moreinfo/")
     );
     const [StudentAddress, setStudentAddress] = useState(
         getData("StudentAddress", "http://localhost:5000/api/address/")
@@ -110,12 +116,12 @@ function Profile() {
             }
             else {
                 callFetch();
-                return DataLoading;
+                return dataLoading;
             }
         }
         catch (error) {
             console.error(`Error parsing localStorage "${key}":`, error);
-            return DataNotLoading;
+            return dataNotLoading;
         }
     };
 
@@ -147,13 +153,24 @@ function Profile() {
                     {(() => {
                         const loading = (StudentInfo[0].Key === "loading");
                         const error = (StudentInfo[0].Key === "error");
+                        const errorMessage = StudentInfo[0].value;
                         
                         if (loading || error) {
                             return (
                                 <div className="profilepg-sub-container">
                                     {loading && <h1 className="!mb-2.5">{"Loading..."}</h1>}
-                                    {error && <h1 className="!mb-2.5">{"RIP Server 💀"}</h1>}
-                                    {error && <h2 className="!mb-2.5">{"死"}</h2>}
+                                    {error && errorMessage &&
+                                        <>
+                                            <h1 className="!mb-2.5">{"Error"}</h1>
+                                            <h2 className="!mb-2.5">{errorMessage}</h2>
+                                        </>
+                                    }
+                                    {error && !errorMessage &&
+                                        <>
+                                            <h1 className="!mb-2.5">{"RIP Server 💀"}</h1>
+                                            <h2 className="!mb-2.5">{"死"}</h2>
+                                        </>
+                                    }
                                     <div />
                                 </div>
                             );
