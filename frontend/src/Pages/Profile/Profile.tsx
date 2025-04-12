@@ -68,19 +68,19 @@ function Profile() {
 
     // initialise constants for UserDta, ( key: localStorage-key , src: api-endpoint )
     const [UserDocuments, setUserDocuments] = useState(
-        getData("UserDocuments", "http://localhost:5000/api/userdocuments")
+        getData("UserDocuments", "http://localhost:5000/api/documents/")
     );
     const [StudentInfo, setStudentInfo] = useState(
         getData("StudentInfo", "http://localhost:5000/api/info/")
     );
     const [StudentAddress, setStudentAddress] = useState(
-        getData("StudentAddress", "http://localhost:5000/api/studentaddress")
+        getData("StudentAddress", "http://localhost:5000/api/address/")
     );
     const [Parent1Info, setParent1Info] = useState(
-        getData("Parent1Info", "http://localhost:5000/api/parent1info")
+        getData("Parent1Info", "http://localhost:5000/api/parent1info/")
     );
     const [Parent2Info, setParent2Info] = useState(
-        getData("Parent2Info", "http://localhost:5000/api/parent2info")
+        getData("Parent2Info", "http://localhost:5000/api/parent2info/")
     );
 
 
@@ -89,7 +89,6 @@ function Profile() {
         // get username from localStorage & add it to src 
         const username = localStorage.getItem('username');
         src += username;
-        console.log(src)
 
 
         // function to call fetchData

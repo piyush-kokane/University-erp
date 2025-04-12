@@ -25,14 +25,6 @@ function Login() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault(); // Prevent page refresh
   
-
-    /* Previous Code
-    navigate(goTo); // Navigate to the goTo route 
-    console.log("Logging in with", { username, password, rememberMe });
-    localStorage.setItem("loggedIn", "true"); // Set loggedIn to true
-    updateUserData();
-     */
-
     try {
       const response = await fetch('http://localhost:5000/api/auth/login', {
         method: 'POST',
@@ -54,7 +46,6 @@ function Login() {
       localStorage.setItem('token', data.token); // Store token
       navigate(goTo); // Navigate to the goTo route 
       updateUserData();
-      
     }
     catch (error) {
       console.error('Error during login:', error);

@@ -16,16 +16,16 @@ app.use(express.json());
 app.use(cors());
 
 // Routes
-app.use('/api/userdata', require('./routes/userRoutes'));
+app.use('/api/userdata', require('./routes/userdataRoutes'));
 app.use('/api/auth', require('./routes/authRoutes'));
-app.use('/api/info', require('./routes/infoRoutes'));
+app.use('/api/info', require('./routes/moreInfoRoutes'));
 
 // Error Handling Middleware
 app.use((err, req, res, next) => {
-  console.error('Server Error:', err.message);
+  console.error('❌ Server Error:', err.message);
   res.status(500).json({ message: 'Internal Server Error' });
 });
 
 // Start Server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`✔️ㅤServer running on port ${PORT}`));
