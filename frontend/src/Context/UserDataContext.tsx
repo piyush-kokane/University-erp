@@ -3,11 +3,13 @@ import { createContext, ReactNode, useEffect, useState } from "react";
 
 // type def for UserData
 interface UserContextType {
+  Role: string,
+  Status: string, 
   FullName: string;
   FirstName: string;
   LastName: string;
-  contact: string;
-  gmail: string;
+  Contact: string;
+  Gmail: string;
   Prn: string;
   Branch: string;
   Term: string;
@@ -19,11 +21,13 @@ interface UserContextType {
 }
 
 const dataLoading = {
+  Role: "Loading",
+  Status: "Loading", 
   FullName: "Loading...",
   FirstName: "Loading",
   LastName: "Loading",
-  contact: "Loading",
-  gmail: "Loading",
+  Contact: "Loading",
+  Gmail: "Loading",
   Prn: "Loading...",
   Branch: "Loading...",
   Term: "Loading...",
@@ -35,11 +39,13 @@ const dataLoading = {
 };
 
 const dataNotLoading = {
+  Role: "N/A",
+  Status: "N/A", 
   FullName: "N/A",
   FirstName: "N/A",
   LastName: "N/A",
-  contact: "xxx-xxxx-xxx",
-  gmail: "N/A",
+  Contact: "xxx-xxxx-xxx",
+  Gmail: "N/A",
   Prn: "N/A",
   Branch: "N/A",
   Term: "N/A",
@@ -112,7 +118,7 @@ export const UserContextProvider: React.FC<{ children: ReactNode }> = ({ childre
       });
     }
 
-    
+
     try {
       const data = localStorage.getItem(key);
       if (data) {

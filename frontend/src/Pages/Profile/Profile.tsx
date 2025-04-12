@@ -23,7 +23,7 @@ const DataNotLoading = [
 const fetchData = async (key: string, src: string) => {
     try {
         // Simulate 2-second server delay
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        await new Promise(resolve => setTimeout(resolve, 0));
 
         const response = await fetch(src);
         const data = await response.json();
