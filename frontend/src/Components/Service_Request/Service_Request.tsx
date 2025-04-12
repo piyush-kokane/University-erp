@@ -16,7 +16,7 @@ function ServiceRequest({Close} : ServiceRequestProps){
     
     const FirstName = user?.FirstName;
     const LastName = user?.LastName;
-    const gmail = user?.gmail;
+    const gmail = user?.Gmail;
 
     const [issue, setIssue] = useState("");
     const [files, setFiles] = useState<File[]>([]); // Array of files
