@@ -16,7 +16,7 @@ const dataLoading = [
     { Key: "loading", value: "" },
 ];
 const dataNotLoading = [
-    { Key: "error", value: "" },
+    { Key: "error", value: "N/A" },
 ];
   
   
@@ -34,7 +34,6 @@ const fetchData = async (key: string, src: string) => {
             const returnData = [
                 { Key: "error", value: data.message },
             ];
-            console.warn(returnData)
             return returnData;
         }
     
@@ -153,19 +152,19 @@ function Profile() {
                     {(() => {
                         const loading = (StudentInfo[0].Key === "loading");
                         const error = (StudentInfo[0].Key === "error");
-                        const errorMessage = StudentInfo[0].value;
+                        const message = StudentInfo[0].value;
                         
                         if (loading || error) {
                             return (
                                 <div className="profilepg-sub-container">
                                     {loading && <h1 className="!mb-2.5">{"Loading..."}</h1>}
-                                    {error && errorMessage &&
+                                    {error && message!="N/A" &&
                                         <>
                                             <h1 className="!mb-2.5">{"Error"}</h1>
-                                            <h2 className="!mb-2.5">{errorMessage}</h2>
+                                            <h2 className="!mb-2.5">{message}</h2>
                                         </>
                                     }
-                                    {error && !errorMessage &&
+                                    {error && message=="N/A" &&
                                         <>
                                             <h1 className="!mb-2.5">{"RIP Server 💀"}</h1>
                                             <h2 className="!mb-2.5">{"死"}</h2>
@@ -196,13 +195,14 @@ function Profile() {
                     {(() => {
                         const loading = (StudentAddress[0].Key === "loading");
                         const error = (StudentAddress[0].Key === "error");
+                        const message = StudentInfo[0].value;
                         
                         if (loading || error) {
                             return (
                                 <div className="profilepg-sub-container">
                                     {loading && <h1 className="!mb-2.5">{"Loading..."}</h1>}
                                     {error && <h1 className="!mb-2.5">{"Error"}</h1>}
-                                    {error && <h3 className="!mb-2.5">{"Fetching failed"}</h3>}
+                                    {error && <h3 className="!mb-2.5">{message}</h3>}
                                     <div />
                                 </div>
                             );
@@ -227,13 +227,14 @@ function Profile() {
                     {(() => {
                         const loading = ((Parent1Info[0].Key === "loading") || (Parent2Info[0].Key === "loading"));
                         const error = ((Parent1Info[0].Key === "error") || (Parent2Info[0].Key === "error"));
-                        
+                        const message = StudentInfo[0].value;
+
                         if (loading || error) {
                             return (
                                 <div className="profilepg-sub-container">
                                     {loading && <h1 className="!mb-2.5">{"Loading..."}</h1>}
                                     {error && <h1 className="!mb-2.5">{"Error"}</h1>}
-                                    {error && <h3 className="!mb-2.5">{"Fetching failed"}</h3>}
+                                    {error && <h3 className="!mb-2.5">{message}</h3>}
                                     <div />
                                 </div>
                             );
