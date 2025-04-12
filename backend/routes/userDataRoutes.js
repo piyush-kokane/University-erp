@@ -8,14 +8,14 @@ router.get('/:Username', async (req, res) => {
   try {
     const username = req.params.Username;
     const user = await User.findOne({ Username: username });
-    const userdata = user.UserData;
+    const data = user.UserData;
 
-    if (!userdata) {
+    if (!data) {
       console.error('❌ Error: UserData not found');
       return res.status(404).json({ message: 'Profile not found' });
     }
 
-    res.status(200).json(userdata);
+    res.status(200).json(data);
   }
   catch (error) {
     console.error('❌ Error fetching profile:', error);

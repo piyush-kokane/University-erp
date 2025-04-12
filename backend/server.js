@@ -16,9 +16,9 @@ app.use(express.json());
 app.use(cors());
 
 // Routes
-app.use('/api/userdata', require('./routes/userdataRoutes'));
 app.use('/api/auth', require('./routes/authRoutes'));
-app.use('/api/info', require('./routes/moreInfoRoutes'));
+app.use('/api/userdata', require('./routes/userDataRoutes'));
+app.use('/api/moreinfo', require('./routes/moreInfoRoutes'));
 
 // Error Handling Middleware
 app.use((err, req, res, next) => {
