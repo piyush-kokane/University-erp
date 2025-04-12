@@ -8,6 +8,8 @@ require('dotenv').config();
 
 router.post('/login', async (req, res) => {
   const { Username, Password } = req.body;
+  const now = new Date();
+  
   try {
     // Find user by username
     const user = await User.findOne({ Username });
@@ -21,6 +23,9 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ message: 'Invalid password' });
     }
 
+    // Log
+    console.log(` ● User '${Username}' loged in at: ${now}`)
+
     // Create JWT payload
     const payload = { userId: user._id };
 
@@ -30,8 +35,8 @@ router.post('/login', async (req, res) => {
     // Send token and user data to client
     res.json({ token, userData: user.UserData });
   }
-  catch (err) {
-    console.error('Login error:', err.message);
+  catch (error) {
+    console.error('❌ Login error:', error.message);
     res.status(500).json({ message: 'Server error' });
   }
 });

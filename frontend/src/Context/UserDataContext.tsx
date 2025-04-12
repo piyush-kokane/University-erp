@@ -55,8 +55,6 @@ const dataNotLoading = {
 
 const fetchData = async (key: string, src: string) => {
   try {
-    console.log("Fetching UserDataContext")
-
     // Simulate server delay in ms
     await new Promise(resolve => setTimeout(resolve, 0));
 
@@ -65,7 +63,7 @@ const fetchData = async (key: string, src: string) => {
 
     // Check if the response status is OK
     if (!response.ok) {
-      console.warn(`Error: ${response.status} ${data.message}`);
+      console.error("Error:", response.status, data.message);
       const returnData =  dataNotLoading;
       returnData.FullName = data.message;
       return returnData;
@@ -107,7 +105,6 @@ export const UserContextProvider: React.FC<{ children: ReactNode }> = ({ childre
     // get username from localStorage & add it to src 
     const username = localStorage.getItem('username');
     src += username;
-    console.log(src)
 
 
     // function to call fetchData
