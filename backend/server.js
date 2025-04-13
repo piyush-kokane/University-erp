@@ -1,4 +1,5 @@
 const express = require('express');
+const bcrypt = require('bcryptjs');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const connectDB = require('./config/db');
@@ -33,3 +34,12 @@ app.use((err, req, res, next) => {
 // Start Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`✔️ㅤServer running on port ${PORT}`));
+
+
+// Find Hashed Password
+const Password = "123";
+const saltRounds = 10;
+bcrypt.hash(Password, saltRounds, (err, hashed) => {
+  if (err) console.error("Error hashing password:", err);
+  else console.log("Hashed Password:", hashed);
+});
