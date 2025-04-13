@@ -27,7 +27,11 @@ const UserSchema = new mongoose.Schema({
   Username: { type: String, required: true, unique: true },
   Password: { type: String, required: true },
   UserData: { type: userDataSchema, required: true },
-  Moreinfo: { type: [KeyValueSchema], default: [] }
+  Moreinfo: { type: [KeyValueSchema], default: [] },
+  Address: { type: [KeyValueSchema], default: [] },
+  Parent1Info: { type: [KeyValueSchema], default: [] },
+  Parent2Info: { type: [KeyValueSchema], default: [] },
+  Documents: { type: [KeyValueSchema], default: [] }
 });
 
 module.exports = mongoose.model('users', UserSchema); // users is name of collectioon
