@@ -19,6 +19,10 @@ app.use(cors());
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/userdata', require('./routes/userDataRoutes'));
 app.use('/api/moreinfo', require('./routes/moreInfoRoutes'));
+app.use('/api/address', require('./routes/addressRoutes'));
+app.use('/api/parent1info', require('./routes/parent1InfoRoutes'));
+app.use('/api/parent2info', require('./routes/parent2InfoRoutes'));
+app.use('/api/documents', require('./routes/documentsRoutes'));
 
 // Error Handling Middleware
 app.use((err, req, res, next) => {
