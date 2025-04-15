@@ -10,6 +10,9 @@ interface UserDataType {
     Key: string;
     value: string;
 }
+interface ParentType {
+    parentDetails: UserDataType[];
+}
 
 
 const dataLoading = [
@@ -81,12 +84,10 @@ function Profile() {
     const [StudentAddress, setStudentAddress] = useState(
         getData("StudentAddress", "http://localhost:5000/api/address/")
     );
-    const [Parent1Info, setParent1Info] = useState(
-        getData("Parent1Info", "http://localhost:5000/api/parent1info/")
+    const [ParentInfo, setParentInfo] = useState(
+        getData("ParentInfo", "http://localhost:5000/api/parentinfo/")
     );
-    const [Parent2Info, setParent2Info] = useState(
-        getData("Parent2Info", "http://localhost:5000/api/parent2info/")
-    );
+
 
 
     // getData from localStorage if stored else fetch from API
@@ -103,8 +104,7 @@ function Profile() {
                 if (key === "UserDocuments") setUserDocuments(data);
                 if (key === "StudentInfo") setStudentInfo(data);
                 if (key === "StudentAddress") setStudentAddress(data);
-                if (key === "Parent1Info") setParent1Info(data);
-                if (key === "Parent2Info") setParent2Info(data);
+                if (key === "ParentInfo") setParentInfo(data);
             });
         }
 
@@ -195,7 +195,7 @@ function Profile() {
                     {(() => {
                         const loading = (StudentAddress[0].Key === "loading");
                         const error = (StudentAddress[0].Key === "error");
-                        const message = StudentInfo[0].value;
+                        const message = StudentAddress[0].value;
                         
                         if (loading || error) {
                             return (
@@ -225,9 +225,9 @@ function Profile() {
                     <h1>Parent/Guardian Information</h1>
                     <div className="page-container-line-1"/>
                     {(() => {
-                        const loading = ((Parent1Info[0].Key === "loading") || (Parent2Info[0].Key === "loading"));
-                        const error = ((Parent1Info[0].Key === "error") || (Parent2Info[0].Key === "error"));
-                        const message = StudentInfo[0].value;
+                        const loading = (ParentInfo[0].Key === "loading");
+                        const error = (ParentInfo[0].Key === "error");
+                        const message = ParentInfo[0].value;
 
                         if (loading || error) {
                             return (
@@ -242,23 +242,23 @@ function Profile() {
                         else {
                             return(
                                 <>
-                                    {Parent1Info.map((item: UserDataType) => (
-                                        <div key={item.Key} className="profilepg-sub-container">
-                                            <h1>{item.Key}</h1>
-                                            <h2>{item.value}</h2>
-                                            <div />
-                                        </div>
-                                    ))}
-                                    
-                                    <div className="page-container-line-2"/>
+                                    {ParentInfo.map((parent: ParentType, index: number) => (
+                                        
+                                        <div key={index}>
+                                            {index !== 0 && <div className="page-container-line-2 !mt-1" />}
 
-                                    {Parent2Info.map((item: UserDataType) => (
-                                        <div key={item.Key} className="profilepg-sub-container">
-                                            <h1>{item.Key}</h1>
-                                            <h2>{item.value}</h2>
-                                            <div />
+                                            {parent.parentDetails.map((item: UserDataType) => (
+                                                <div key={item.Key} className="profilepg-sub-container">
+                                                    <h1>{item.Key}</h1>
+                                                    <h2>{item.Value}</h2>
+                                                    <div />
+                                                </div>
+                                            ))}
                                         </div>
+
                                     ))}
+
+
                                 </>
                             );
                         }
@@ -349,7 +349,7 @@ function Profile() {
                 </div>
     
     
-                {/* Content panel 4 */}
+                {/* Content panel 4
                 <div className="page-base-container profilepg-container">
                     <h1>Parent/Guardian Information</h1>
                     <div className="page-container-line-1"/>
@@ -390,7 +390,7 @@ function Profile() {
                             );
                         }
                     })()}
-                </div>
+                </div> */}
             </>
         );
     }  

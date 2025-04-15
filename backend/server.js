@@ -21,8 +21,7 @@ app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/userdata', require('./routes/userDataRoutes'));
 app.use('/api/moreinfo', require('./routes/moreInfoRoutes'));
 app.use('/api/address', require('./routes/addressRoutes'));
-app.use('/api/parent1info', require('./routes/parent1InfoRoutes'));
-app.use('/api/parent2info', require('./routes/parent2InfoRoutes'));
+app.use('/api/parentinfo', require('./routes/parentInfoRoutes'));
 app.use('/api/documents', require('./routes/documentsRoutes'));
 
 // Error Handling Middleware
@@ -36,10 +35,12 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`✔️ㅤServer running on port ${PORT}`));
 
 
-// Find Hashed Password
-const Password = "123";
+// Find Hashed Password, comment out when not in need
+/*
+const Password = "456";
 const saltRounds = 10;
 bcrypt.hash(Password, saltRounds, (err, hashed) => {
   if (err) console.error("Error hashing password:", err);
   else console.log("Hashed Password:", hashed);
 });
+*/
