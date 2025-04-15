@@ -23,14 +23,18 @@ const KeyValueSchema = new mongoose.Schema({
   Value: { type: String, required: true }
 }, { _id: false });
 
+const parentInfoSchema = new mongoose.Schema({
+  parentDetails: { type: [KeyValueSchema], default: [] }
+}, { _id: false });
+
 const UserSchema = new mongoose.Schema({
   Username: { type: String, required: true, unique: true },
   Password: { type: String, required: true },
   UserData: { type: userDataSchema, required: true },
+  Info: { type: [KeyValueSchema], default: [] },
   Moreinfo: { type: [KeyValueSchema], default: [] },
   Address: { type: [KeyValueSchema], default: [] },
-  Parent1Info: { type: [KeyValueSchema], default: [] },
-  Parent2Info: { type: [KeyValueSchema], default: [] },
+  ParentInfo: { type: [parentInfoSchema], default: [] },
   Documents: { type: [KeyValueSchema], default: [] }
 });
 
