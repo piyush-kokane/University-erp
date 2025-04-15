@@ -8,7 +8,7 @@ import Footer from "../../Components/Footer/Footer";
 // type def for UserData
 interface UserDataType {
     Key: string;
-    value: string;
+    Value: string;
 }
 interface ParentType {
     parentDetails: UserDataType[];
@@ -16,10 +16,10 @@ interface ParentType {
 
 
 const dataLoading = [
-    { Key: "loading", value: "" },
+    { Key: "loading", Value: "" },
 ];
 const dataNotLoading = [
-    { Key: "error", value: "N/A" },
+    { Key: "error", Value: "N/A" },
 ];
   
   
@@ -35,7 +35,7 @@ const fetchData = async (key: string, src: string) => {
         if (!response.ok) {
             console.error("Error:", response.status, data.message);
             const returnData = [
-                { Key: "error", value: data.message },
+                { Key: "error", Value: data.message },
             ];
             return returnData;
         }
@@ -67,16 +67,13 @@ function Profile() {
     let LongBio = user?.LongBio;
     let Biotag = user?.Biotag;
 
-    const ProgramInfo = [
-        { Key: "PRN", value: user?.Prn },
-        { Key: "Branch", value: user?.Branch },
-        { Key: "Term", value: user?.Term },
-    ];
-
 
     // initialise constants for UserDta, ( key: localStorage-key , src: api-endpoint )
     const [UserDocuments, setUserDocuments] = useState(
         getData("UserDocuments", "http://localhost:5000/api/documents/")
+    );
+    const [StudentAbout, setStudentAbout] = useState(
+        getData("StudentAbout", "http://localhost:5000/api/about/")
     );
     const [StudentInfo, setStudentInfo] = useState(
         getData("StudentInfo", "http://localhost:5000/api/moreinfo/")
@@ -102,6 +99,7 @@ function Profile() {
             fetchData(key, src).then((data) => {
                 // determine which variable to update
                 if (key === "UserDocuments") setUserDocuments(data);
+                if (key === "StudentAbout") setStudentAbout(data);
                 if (key === "StudentInfo") setStudentInfo(data);
                 if (key === "StudentAddress") setStudentAddress(data);
                 if (key === "ParentInfo") setParentInfo(data);
@@ -135,13 +133,31 @@ function Profile() {
                     <p>{LongBio}</p>
                     
                     <div className="page-container-line-2"/>
-                    {ProgramInfo.map((item) => (
-                        <div key={item.Key} className="profilepg-sub-container">
-                            <h1>{item.Key}</h1>
-                            <h2>{item.value}</h2>
-                            <div />
-                        </div>
-                    ))}
+                    {(() => {
+                        const loading = (StudentAbout[0].Key === "loading");
+                        const error = (StudentAbout[0].Key === "error");
+                        const message = StudentAbout[0].Value;
+                        
+                        if (loading || error) {
+                            return (
+                                <div className="profilepg-sub-container">
+                                    {loading && <h1 className="!mb-1">{"Loading..."}</h1>}
+                                    {error && <h1 className="!mb-1">{"Error"}</h1>}
+                                    {error && <h3 className="!mb-1">{message}</h3>}
+                                    <div />
+                                </div>
+                            );
+                        }
+                        else {
+                            return StudentAbout.map((item: UserDataType) => (
+                                <div key={item.Key} className="profilepg-sub-container">
+                                    <h1>{item.Key}</h1>
+                                    <h2>{item.Value}</h2>
+                                    <div />
+                                </div>
+                            ));
+                        }
+                    })()}
                 </div>
     
     
@@ -152,7 +168,7 @@ function Profile() {
                     {(() => {
                         const loading = (StudentInfo[0].Key === "loading");
                         const error = (StudentInfo[0].Key === "error");
-                        const message = StudentInfo[0].value;
+                        const message = StudentInfo[0].Value;
                         
                         if (loading || error) {
                             return (
@@ -178,7 +194,7 @@ function Profile() {
                             return StudentInfo.map((item: UserDataType) => (
                                 <div key={item.Key} className="profilepg-sub-container">
                                     <h1>{item.Key}</h1>
-                                    <h2>{item.value}</h2>
+                                    <h2>{item.Value}</h2>
                                     <div />
                                 </div>
                             ));
@@ -195,7 +211,7 @@ function Profile() {
                     {(() => {
                         const loading = (StudentAddress[0].Key === "loading");
                         const error = (StudentAddress[0].Key === "error");
-                        const message = StudentAddress[0].value;
+                        const message = StudentAddress[0].Value;
                         
                         if (loading || error) {
                             return (
@@ -211,7 +227,7 @@ function Profile() {
                             return StudentAddress.map((item: UserDataType) => (
                                 <div key={item.Key} className="profilepg-sub-container">
                                     <h1>{item.Key}</h1>
-                                    <h2>{item.value}</h2>
+                                    <h2>{item.Value}</h2>
                                     <div />
                                 </div>
                             ));
@@ -227,7 +243,7 @@ function Profile() {
                     {(() => {
                         const loading = (ParentInfo[0].Key === "loading");
                         const error = (ParentInfo[0].Key === "error");
-                        const message = ParentInfo[0].value;
+                        const message = ParentInfo[0].Value;
 
                         if (loading || error) {
                             return (
@@ -271,7 +287,7 @@ function Profile() {
     function Cource() {    
         return (
             <>
-                {/* Content panel 1 */}
+                {/* Content panel 1
                 <div className="page-base-container profilepg-about">
                     <h1>Cource</h1>
                     <h2>{Biotag}</h2>
@@ -281,11 +297,11 @@ function Profile() {
                     {ProgramInfo.map((item) => (
                         <div key={item.Key} className="profilepg-sub-container">
                             <h1>{item.Key}</h1>
-                            <h2>{item.value}</h2>
+                            <h2>{item.Value}</h2>
                             <div />
                         </div>
                     ))}
-                </div>
+                </div> */}
     
     
                 {/* Content panel 2 */}
@@ -309,7 +325,7 @@ function Profile() {
                             return StudentInfo.map((item: UserDataType) => (
                                 <div key={item.Key} className="profilepg-sub-container">
                                     <h1>{item.Key}</h1>
-                                    <h2>{item.value}</h2>
+                                    <h2>{item.Value}</h2>
                                     <div />
                                 </div>
                             ));
@@ -340,7 +356,7 @@ function Profile() {
                             return StudentAddress.map((item: UserDataType) => (
                                 <div key={item.Key} className="profilepg-sub-container">
                                     <h1>{item.Key}</h1>
-                                    <h2>{item.value}</h2>
+                                    <h2>{item.Value}</h2>
                                     <div />
                                 </div>
                             ));
@@ -372,7 +388,7 @@ function Profile() {
                                     {Parent1Info.map((item: UserDataType) => (
                                         <div key={item.Key} className="profilepg-sub-container">
                                             <h1>{item.Key}</h1>
-                                            <h2>{item.value}</h2>
+                                            <h2>{item.Value}</h2>
                                             <div />
                                         </div>
                                     ))}
@@ -382,7 +398,7 @@ function Profile() {
                                     {Parent2Info.map((item: UserDataType) => (
                                         <div key={item.Key} className="profilepg-sub-container">
                                             <h1>{item.Key}</h1>
-                                            <h2>{item.value}</h2>
+                                            <h2>{item.Value}</h2>
                                             <div />
                                         </div>
                                     ))}
@@ -431,12 +447,12 @@ function Profile() {
         
                                 {openDocuments[item.Key] && (
                                     <>
-                                      <img src={item.value} alt={item.Key} />
+                                      <img src={item.Value} alt={item.Key} />
                                       <div className="page-container-line-1"/>
                                     </>
                                 )}
                                 
-                                <a href={item.value} target="_blank" rel="noopener noreferrer" className="material-icons">open_in_new</a>
+                                <a href={item.Value} target="_blank" rel="noopener noreferrer" className="material-icons">open_in_new</a>
                                 <span onClick={() => toggleDocument(item.Key)} >
                                     { openDocuments[item.Key]
                                     ? "Hide"
