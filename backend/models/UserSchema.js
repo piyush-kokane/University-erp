@@ -31,7 +31,7 @@ const UserSchema = new mongoose.Schema({
   Username: { type: String, required: true, unique: true },
   Password: { type: String, required: true },
   UserData: { type: userDataSchema, required: true },
-  Info: { type: [KeyValueSchema], default: [] },
+  About: { type: [KeyValueSchema], default: [] },
   Moreinfo: { type: [KeyValueSchema], default: [] },
   Address: { type: [KeyValueSchema], default: [] },
   ParentInfo: { type: [parentInfoSchema], default: [] },

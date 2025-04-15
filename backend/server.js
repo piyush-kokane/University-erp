@@ -19,6 +19,7 @@ app.use(cors());
 // Routes
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/userdata', require('./routes/userDataRoutes'));
+app.use('/api/about', require('./routes/AboutRoutes'));
 app.use('/api/moreinfo', require('./routes/moreInfoRoutes'));
 app.use('/api/address', require('./routes/addressRoutes'));
 app.use('/api/parentinfo', require('./routes/parentInfoRoutes'));
