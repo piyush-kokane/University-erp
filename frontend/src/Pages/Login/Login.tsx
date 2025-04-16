@@ -39,6 +39,12 @@ function Login() {
         setError(data.message);
         return;
       }
+      else {
+        // Clear localStorage except "theme"
+        const theme = localStorage.getItem("theme");
+        localStorage.clear();
+        if (theme) localStorage.setItem("theme", theme);
+      }
 
       console.log("Logging in with username:", username );
       localStorage.setItem("username", username); // Set username
