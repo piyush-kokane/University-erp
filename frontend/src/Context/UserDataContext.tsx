@@ -55,8 +55,6 @@ const dataNotLoading = {
 
 const fetchData = async (key: string, src: string) => {
   try {
-    console.log("Fetching UserDataContext")
-
     // Simulate server delay in ms
     await new Promise(resolve => setTimeout(resolve, 0));
 
@@ -106,8 +104,8 @@ export const UserContextProvider: React.FC<{ children: ReactNode }> = ({ childre
   function getData(key: string, src: string) {
     // get username from localStorage & add it to src 
     const username = localStorage.getItem('username');
-    src += username;
-
+    if (username) src += username;
+    else return null;
 
     // function to call fetchData
     function callFetch() {
