@@ -55,6 +55,8 @@ const dataNotLoading = {
 
 const fetchData = async (key: string, src: string) => {
   try {
+    console.log("Fetching UserDataContext")
+
     // Simulate server delay in ms
     await new Promise(resolve => setTimeout(resolve, 0));
 

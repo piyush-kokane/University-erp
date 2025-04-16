@@ -39,19 +39,22 @@ function Login() {
         setError(data.message);
         return;
       }
-      else {
-        // Clear localStorage except "theme"
-        const theme = localStorage.getItem("theme");
-        localStorage.clear();
-        if (theme) localStorage.setItem("theme", theme);
-      }
+
+      // Clear localStorage except "theme"
+      const theme = localStorage.getItem("theme");
+      localStorage.clear();
+      if (theme) localStorage.setItem("theme", theme);
+
+      // Set localStorage
+      localStorage.setItem("username", username);  // Set username
+      localStorage.setItem("loggedIn", "true");   // Set loggedIn to true
+      localStorage.setItem('token', data.token); // Store token
 
       console.log("Logging in with username:", username );
-      localStorage.setItem("username", username); // Set username
-      localStorage.setItem("loggedIn", "true"); // Set loggedIn to true
-      localStorage.setItem('token', data.token); // Store token
+      
+      updateUserData(); // Update UserData
+
       navigate(goTo); // Navigate to the goTo route 
-      updateUserData();
     }
     catch (error) {
       console.error('Error during login:', error);

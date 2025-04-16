@@ -8,6 +8,11 @@ import "./Navigation.css";
 
 
 
+// User Role
+type RoleType = "admin" | "faculty" | "student";
+const Role: RoleType = "student";
+
+
 function Navigation() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -34,7 +39,8 @@ function Navigation() {
   
   const Profilepic = user?.Profile;
 
-  const menuItems = [
+  // Navigations for student
+  const studentMenuItems = [
     { name: "Dashboard",     icon: "dashboard",     path: "/dashboard",     status: "active" },
     { name: "Profile",       icon: "person",        path: "/profile",       status: "active" },
     { name: "Attendance",    icon: "check_circle",  path: "/attendance",    status: "active" },
@@ -45,6 +51,28 @@ function Navigation() {
     { name: "Circulars",     icon: "campaign",      path: "/circulars",     status: "hidden" },
     { name: "Notifications", icon: "notifications", path: "/notifications", status: "hidden" },
   ];
+
+  // Navigations for faculty
+  const facultyMenuItems = [
+    { name: "Dashboard",     icon: "dashboard",     path: "/dashboard",     status: "active" },
+    { name: "Profile",       icon: "person",        path: "/profile",       status: "active" },
+    { name: "Attendance",    icon: "check_circle",  path: "/attendance",    status: "active" },
+    { name: "Calendar",      icon: "event",         path: "/calendar",      status: "active" },
+    { name: "Time Table",    icon: "schedule",      path: "/timetable",     status: "active" },
+    { name: "Circulars",     icon: "campaign",      path: "/circulars",     status: "hidden" },
+    { name: "Notifications", icon: "notifications", path: "/notifications", status: "hidden" },
+  ];
+
+  // Navigations for admin
+  const adminMenuItems = [
+    { name: "Dashboard",     icon: "dashboard",     path: "/dashboard",     status: "active" },
+    { name: "Calendar",      icon: "event",         path: "/calendar",      status: "active" },
+    { name: "Time Table",    icon: "schedule",      path: "/timetable",     status: "active" },
+    { name: "Circulars",     icon: "campaign",      path: "/circulars",     status: "active" },
+    { name: "Notifications", icon: "notifications", path: "/notifications", status: "hidden" },
+  ];
+  
+  const menuItems = Role === "admin" ? adminMenuItems : Role === "faculty" ? facultyMenuItems : studentMenuItems;
 
 
   const [Searchbar, setSearchbar] = useState(false); // if isSmallScreen hide searchbar by defauly
