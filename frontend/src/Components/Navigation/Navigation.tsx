@@ -175,7 +175,7 @@ function Navigation() {
               <span className="material-icons sidebar-icon">{item.icon}</span>
               <span className={`sidebar-text ${sidebarOpen ? "visible" : ""}`}>{item.name}</span>
             </a>
-            :<></>
+            : null
           ))}
         </nav>
 
