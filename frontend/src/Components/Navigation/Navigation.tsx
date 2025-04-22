@@ -8,9 +8,13 @@ import "./Navigation.css";
 
 
 
-// User Role
-type RoleType = "admin" | "faculty" | "student";
-const Role: RoleType = "student";
+// Type for menuItems
+type MenuItem = {
+  name: string;
+  icon: string;
+  path: string;
+  status: string;
+};
 
 
 function Navigation() {
@@ -39,42 +43,11 @@ function Navigation() {
   
   const Profilepic = user?.Profile;
 
-  // Navigations for student
-  const studentMenuItems = [
-    { name: "Dashboard",     icon: "dashboard",     path: "/dashboard",     status: "active" },
-    { name: "Profile",       icon: "person",        path: "/profile",       status: "active" },
-    { name: "Attendance",    icon: "check_circle",  path: "/attendance",    status: "active" },
-    { name: "Calendar",      icon: "event",         path: "/calendar",      status: "active" },
-    { name: "Time Table",    icon: "schedule",      path: "/timetable",     status: "active" },
-    { name: "Course",        icon: "menu_book",     path: "/course",        status: "active" },
-    { name: "Result",        icon: "bar_chart",     path: "/result",        status: "active" },
-    { name: "Circulars",     icon: "campaign",      path: "/circulars",     status: "hidden" },
-    { name: "Notifications", icon: "notifications", path: "/notifications", status: "hidden" },
-  ];
 
-  // Navigations for faculty
-  const facultyMenuItems = [
-    { name: "Dashboard",     icon: "dashboard",     path: "/dashboard",     status: "active" },
-    { name: "Profile",       icon: "person",        path: "/profile",       status: "active" },
-    { name: "Attendance",    icon: "check_circle",  path: "/attendance",    status: "active" },
-    { name: "Calendar",      icon: "event",         path: "/calendar",      status: "active" },
-    { name: "Time Table",    icon: "schedule",      path: "/timetable",     status: "active" },
-    { name: "Circulars",     icon: "campaign",      path: "/circulars",     status: "hidden" },
-    { name: "Notifications", icon: "notifications", path: "/notifications", status: "hidden" },
-  ];
+  const storedRoutes = localStorage.getItem("protectedRoutes");
+  const menuItems = storedRoutes ? JSON.parse(storedRoutes) : null;
 
-  // Navigations for admin
-  const adminMenuItems = [
-    { name: "Dashboard",     icon: "dashboard",     path: "/dashboard",     status: "active" },
-    { name: "Calendar",      icon: "event",         path: "/calendar",      status: "active" },
-    { name: "Time Table",    icon: "schedule",      path: "/timetable",     status: "active" },
-    { name: "Circulars",     icon: "campaign",      path: "/circulars",     status: "active" },
-    { name: "Notifications", icon: "notifications", path: "/notifications", status: "hidden" },
-  ];
   
-  const menuItems = Role === "admin" ? adminMenuItems : Role === "faculty" ? facultyMenuItems : studentMenuItems;
-
-
   const [Searchbar, setSearchbar] = useState(false); // if isSmallScreen hide searchbar by defauly
   const enableSearchbar  = () => setSearchbar(true);
   const disableSearchbar  = () => setSearchbar(false);
@@ -101,7 +74,7 @@ function Navigation() {
 
   // if page url changes, set ActiveMenuItem & set ActiveTab accordingly to url
   useEffect(() => {
-    menuItems.forEach(item => {
+    menuItems.forEach((item: MenuItem)  => {
       if(location.pathname === item.path) {
         setActiveMenuItem(item.name);
         setActiveTab(item.name);
@@ -192,7 +165,7 @@ function Navigation() {
         onMouseLeave={() => setSidebarOpen(false)}
       >
         <nav className="sidebar-menu">
-          {menuItems.map((item) => (
+          {menuItems.map((item: MenuItem) => (
             ((item.status === "active") || (item.path === location.pathname)) // only show Active Tabs
             ?<a 
               key={item.name} 
