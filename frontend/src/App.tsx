@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation  } from "react-router-dom";
 import { AlertSystemContext } from "./Components/Alert/AlertSystem";
+import { UserData  } from "./Context/UserDataContext";
 import "./App.css";
 
 import BG from "./BG/BG";
@@ -23,50 +24,57 @@ import Admin_Attendance from "./Pages/Admin/Attendance/Attendance";
 
 
 
-// User Role
-type RoleType = "admin" | "faculty" | "student";
-const Role: RoleType = "student";
-
-
 function Layout() {
+  const userContext = useContext(UserData);
+  if (!userContext) throw new Error("useContext(UserData) must be used within a UserContextProvider");
+  const { user } = userContext;
+  
+  const Role = user?.Role;
+
   const AlertSystem = useContext(AlertSystemContext);
   const location = useLocation();
 
 
   // Protected pages for student
   const studentRoutes = [
-    {src: "/dashboard", component: <Dashboard />},
-    {src: "/profile", component: <Profile />}, 
-    {src: "/attendance", component: <Attendance />},
-    {src: "/calendar", component: <Calendar />},
-    {src: "/timetable", component: <Time_Table />},
-    {src: "/course", component: <Course />},
-    {src: "/result", component: <Course />},
-    {src: "/circulars", component: <Circulars />},
-    {src: "/notifications", component: <Notifications />},
+    { name: "Dashboard",     icon: "dashboard",     path: "/dashboard",     component: <Dashboard />,     status: "active" },
+    { name: "Profile",       icon: "person",        path: "/profile",       component: <Profile />,       status: "active" },
+    { name: "Attendance",    icon: "check_circle",  path: "/attendance",    component: <Attendance />,    status: "active" },
+    { name: "Calendar",      icon: "event",         path: "/calendar",      component: <Calendar />,      status: "active" },
+    { name: "Time Table",    icon: "schedule",      path: "/timetable",     component: <Time_Table />,    status: "active" },
+    { name: "Course",        icon: "menu_book",     path: "/course",        component: <Course />,        status: "active" },
+    { name: "Result",        icon: "bar_chart",     path: "/result",        component: <Course />,        status: "active" },
+    { name: "Circulars",     icon: "campaign",      path: "/circulars",     component: <Circulars />,     status: "hidden" },
+    { name: "Notifications", icon: "notifications", path: "/notifications", component: <Notifications />, status: "hidden" },
   ];
 
   // Protected pages for faculty
   const facultyRoutes = [
-    {src: "/dashboard", component: <Dashboard />},
-    {src: "/profile", component: <Profile />}, 
-    {src: "/attendance", component: <Attendance />},
-    {src: "/calendar", component: <Calendar />},
-    {src: "/timetable", component: <Time_Table />},
-    {src: "/circulars", component: <Circulars />},
-    {src: "/notifications", component: <Notifications />},
+    { name: "Dashboard",     icon: "dashboard",     path: "/dashboard",     component: <Dashboard />,     status: "active" },
+    { name: "Profile",       icon: "person",        path: "/profile",       component: <Profile />,       status: "active" },
+    { name: "Attendance",    icon: "check_circle",  path: "/attendance",    component: <Attendance />,    status: "active" },
+    { name: "Calendar",      icon: "event",         path: "/calendar",      component: <Calendar />,      status: "active" },
+    { name: "Time Table",    icon: "schedule",      path: "/timetable",     component: <Time_Table />,    status: "active" },
+    { name: "Circulars",     icon: "campaign",      path: "/circulars",     component: <Circulars />,     status: "hidden" },
+    { name: "Notifications", icon: "notifications", path: "/notifications", component: <Notifications />, status: "hidden" },
   ];
 
   // Protected pages for admin
   const adminRoutes = [
-    {src: "/dashboard", component: <Dashboard />},
-    {src: "/calendar", component: <Admin_Attendance />},
-    {src: "/timetable", component: <Admin_Attendance />},
-    {src: "/circulars", component: <Admin_Attendance />},
-    {src: "/notifications", component: <Admin_Attendance />},
+    { name: "Dashboard",     icon: "dashboard",     path: "/dashboard",     component: <Dashboard />,        status: "active" },
+    { name: "Calendar",      icon: "event",         path: "/calendar",      component: <Admin_Attendance />, status: "active" },
+    { name: "Time Table",    icon: "schedule",      path: "/timetable",     component: <Admin_Attendance />, status: "active" },
+    { name: "Circulars",     icon: "campaign",      path: "/circulars",     component: <Admin_Attendance />, status: "active" },
+    { name: "Notifications", icon: "notifications", path: "/notifications", component: <Admin_Attendance />, status: "hidden" },
   ];
 
   const protectedRoutes = Role === "admin" ? adminRoutes : Role === "faculty" ? facultyRoutes : studentRoutes;
+
+
+  // Remove component from protectedRoutes & save rest in savedRoutes
+  const savedRoutes = protectedRoutes.map(({ component, ...rest }) => rest);
+  localStorage.setItem("protectedRoutes", JSON.stringify(savedRoutes));
+
 
   // all available routes 
   const allRoutes: { [key: string]: string } = {
@@ -80,8 +88,8 @@ function Layout() {
 
   // Add protectedRoutes to routes
   protectedRoutes.forEach((route) => {
-    const key = route.src.replace(/^\//, "");
-    allRoutes[key] = route.src;
+    const key = route.name;
+    allRoutes[key] = route.path;
   });
   
   
@@ -151,10 +159,10 @@ function Layout() {
         <Route path={allRoutes.conditions} element={<Policy />} />
 
         {/* Protected pages */}
-        {protectedRoutes.map(({ src, component }) => (
+        {protectedRoutes.map(({ name, path, component }) => (
           <Route
-            key={src}
-            path={src}
+            key={name}
+            path={path}
             element={<CheckLogin element={component} />}
           />
         ))}
