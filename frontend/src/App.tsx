@@ -20,7 +20,11 @@ import Calendar from "./Pages/Calendar/Calendar";
 import Time_Table from "./Pages/Time_Table/Time_Table";
 import Circulars from "./Pages/Circulars/Circulars";
 import Notifications from "./Pages/Notifications/Notifications";
-import Admin_Attendance from "./Pages/Admin/Attendance/Attendance";
+
+import Faculty_Attendance from "./Pages/Faculty/Attendance/Attendance";
+
+import Admin_Circulars from "./Pages/Admin/Circulars/Circulars";
+import Admin_TT from "./Pages/Admin/Time_Table/Time_Table";
 
 
 
@@ -52,7 +56,7 @@ function Layout() {
   const facultyRoutes = [
     { name: "Dashboard",     icon: "dashboard",     path: "/dashboard",     component: <Dashboard />,     status: "active" },
     { name: "Profile",       icon: "person",        path: "/profile",       component: <Profile />,       status: "active" },
-    { name: "Attendance",    icon: "check_circle",  path: "/attendance",    component: <Attendance />,    status: "active" },
+    { name: "Attendance",    icon: "check_circle",  path: "/attendance",    component: <Faculty_Attendance />,    status: "active" },
     { name: "Calendar",      icon: "event",         path: "/calendar",      component: <Calendar />,      status: "active" },
     { name: "Time Table",    icon: "schedule",      path: "/timetable",     component: <Time_Table />,    status: "active" },
     { name: "Circulars",     icon: "campaign",      path: "/circulars",     component: <Circulars />,     status: "hidden" },
@@ -62,10 +66,10 @@ function Layout() {
   // Protected pages for admin
   const adminRoutes = [
     { name: "Dashboard",     icon: "dashboard",     path: "/dashboard",     component: <Dashboard />,        status: "active" },
-    { name: "Calendar",      icon: "event",         path: "/calendar",      component: <Admin_Attendance />, status: "active" },
-    { name: "Time Table",    icon: "schedule",      path: "/timetable",     component: <Admin_Attendance />, status: "active" },
-    { name: "Circulars",     icon: "campaign",      path: "/circulars",     component: <Admin_Attendance />, status: "active" },
-    { name: "Notifications", icon: "notifications", path: "/notifications", component: <Admin_Attendance />, status: "hidden" },
+    { name: "Calendar",      icon: "event",         path: "/calendar",      component: <Admin_Circulars />, status: "active" },
+    { name: "Time Table",    icon: "schedule",      path: "/timetable",     component: <Admin_TT />, status: "active" },
+    { name: "Circulars",     icon: "campaign",      path: "/circulars",     component: <Admin_Circulars />, status: "active" },
+    { name: "Notifications", icon: "notifications", path: "/notifications", component: <Admin_Circulars />, status: "hidden" },
   ];
 
   const protectedRoutes = Role === "admin" ? adminRoutes : Role === "faculty" ? facultyRoutes : studentRoutes;
