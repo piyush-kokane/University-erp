@@ -9,7 +9,7 @@ const Circulars = () => {
         <div className="page-main-container">
           <div className="page-base-container">
             <h2 className="text-xl font-bold mb-4">Admin Circular Announcement</h2>
-            <form className="space-y-4">
+            <form className="space-y-4 circular-form">
 
               
               <div className="flex items-center gap-4">
