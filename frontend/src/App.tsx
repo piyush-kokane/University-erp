@@ -121,10 +121,7 @@ function Layout() {
 
 
   // Check if user is loggedin
-  function CheckLogin({ element }: { element: React.ReactElement }) {
-    return element;
-
-    
+  function CheckLogin({ element }: { element: React.ReactElement }) {   
     const isLoggedIn = localStorage.getItem("loggedIn") === "true"; // Read from localStorage
   
     if (!isLoggedIn) {

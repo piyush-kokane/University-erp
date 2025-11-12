@@ -20,7 +20,7 @@ function Search_Context(){
 
     // ----------------------------------------------------------------------------------------------------
 
-    const [program, setProgram] = useState('');
+    const [program, setProgram] = useState("B.Sc Computer Science");
     const [programIsOpen, setProgramIsOpen] = useState(false);
 
     // Filter options based on user input
@@ -36,7 +36,7 @@ function Search_Context(){
 
     // ----------------------------------------------------------------------------------------------------
 
-    const [term, setTerm] = useState("");
+    const [term, setTerm] = useState("Semester 5");
     const [termIsOpen, setTermIsOpen] = useState(false);
 
     // Filter options based on user input

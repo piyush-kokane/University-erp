@@ -4,8 +4,8 @@ import "./Attendance.css";
 
 
 function Search_Context(){
-    const [startDate, setStartDate] = useState("");
-    const [endDate, setEndDate] = useState("");
+    const [startDate, setStartDate] = useState("2025-03-01");
+    const [endDate, setEndDate] = useState("2025-03-31");
 
     const programOptions = [
         { key: "bca", label: "B.Ca Computer Science" },
@@ -30,7 +30,7 @@ function Search_Context(){
 
     // ----------------------------------------------------------------------------------------------------
 
-    const [program, setProgram] = useState('');
+    const [program, setProgram] = useState('B.Sc Computer Science');
     const [programIsOpen, setProgramIsOpen] = useState(false);
 
     // Filter options based on user input
@@ -46,7 +46,7 @@ function Search_Context(){
 
     // ----------------------------------------------------------------------------------------------------
 
-    const [course, setCourse] = useState('');
+    const [course, setCourse] = useState('Advanced Web Technology');
     const [courseIsOpen, setCourseIsOpen] = useState(false);
 
     // Filter options based on user input
@@ -62,7 +62,7 @@ function Search_Context(){
 
     // ----------------------------------------------------------------------------------------------------
 
-    const [term, setTerm] = useState("");
+    const [term, setTerm] = useState("Semester 5");
     const [termIsOpen, setTermIsOpen] = useState(false);
 
     // Filter options based on user input
@@ -249,7 +249,7 @@ function Search_Context(){
 
 
 function Summer() {
-    const total_present = 8;
+    const total_present = 6;
     const total_absent = 2;
     const total_lectures = 10;
     const total_percentage = 80;
@@ -302,7 +302,7 @@ function Attendance() {
         { date: "2025-03-17", time: "9:30 AM - 11:00 AM", faculty: "Dr. Sophia Black", attendance: "Not Marked" },
         { date: "2025-03-16", time: "10:30 AM - 12:00 PM", faculty: "Prof. Daniel Scott", attendance: "Present" },
         { date: "2025-03-15", time: "2:30 PM - 4:00 PM", faculty: "Mr. Oliver Grey", attendance: "Not Marked" },
-        { date: "2025-03-14", time: "8:00 AM - 9:30 AM", faculty: "Dr. Ava Brown", attendance: "Absent" },
+        { date: "2025-03-14", time: "8:00 AM - 9:30 AM", faculty: "Dr. Ava Brown", attendance: "Present" },
     ];
     
 

@@ -1,11 +1,18 @@
 import { useState, useEffect, useContext } from "react";
 import { UserData } from "../../Context/UserDataContext";
+import { useNavigate } from "react-router-dom";
 import "./Profile.css";
 import Footer from "../../Components/Footer/Footer";
 
 
 
 // type def for UserData
+interface AttendanceType {
+  subject: string;
+  attended: number;
+  total: number;
+}
+
 interface UserDataType {
     Key: string;
     Value: string;
@@ -281,160 +288,131 @@ function Profile() {
         );
     }    
 
-    function Cource() {    
+    function Cource() {   
+      const navigate = useNavigate();
+
+      const [TermAttendance, setTermAttendance] = useState(
+        JSON.parse(localStorage.getItem("TermAttendance") || "[]"));
+
         return (
             <>
-                {/* Content panel 1 */}
-                <div className="page-base-container profilepg-about">
-                    <h1>Cource</h1>
-                    <h2>{Biotag}</h2>
-                    <p>{LongBio}</p>
-                    
-                    <div className="page-container-line-2"/>
-                    {(() => {
-                        const loading = (UserAbout[0].Key === "loading");
-                        const error = (UserAbout[0].Key === "error");
-                        const message = UserAbout[0].Value;
-                        
-                        if (loading || error) {
-                            return (
-                                <div className="profilepg-sub-container">
-                                    {loading && <h1 className="!mb-1">{"Loading..."}</h1>}
-                                    {error && <h1 className="!mb-1">{"Error"}</h1>}
-                                    {error && <h3 className="!mb-1">{message}</h3>}
-                                    <div />
-                                </div>
-                            );
-                        }
-                        else {
-                            return UserAbout.map((item: UserDataType) => (
-                                <div key={item.Key} className="profilepg-sub-container">
-                                    <h1>{item.Key}</h1>
-                                    <h2>{item.Value}</h2>
-                                    <div />
-                                </div>
-                            ));
-                        }
-                    })()}
-                </div>
-    
-    
-                {/* Content panel 2 */}
-                <div className="page-base-container profilepg-container">
-                    <h1>More Information</h1>
-                    <div className="page-container-line-1"/>
-                    {(() => {
-                        const loading = (UserMoreInfo[0].Key === "loading");
-                        const error = (UserMoreInfo[0].Key === "error");
-                        const message = UserMoreInfo[0].Value;
-                        
-                        if (loading || error) {
-                            return (
-                                <div className="profilepg-sub-container">
-                                    {loading && <h1 className="!mb-2.5">{"Loading..."}</h1>}
-                                    {error && message!="N/A" &&
-                                        <>
-                                            <h1 className="!mb-2.5">{"Error"}</h1>
-                                            <h2 className="!mb-2.5">{message}</h2>
-                                        </>
-                                    }
-                                    {error && message=="N/A" &&
-                                        <>
-                                            <h1 className="!mb-2.5">{"RIP Server 💀"}</h1>
-                                            <h2 className="!mb-2.5">{"死"}</h2>
-                                        </>
-                                    }
-                                    <div />
-                                </div>
-                            );
-                        }
-                        else {
-                            return UserMoreInfo.map((item: UserDataType) => (
-                                <div key={item.Key} className="profilepg-sub-container">
-                                    <h1>{item.Key}</h1>
-                                    <h2>{item.Value}</h2>
-                                    <div />
-                                </div>
-                            ));
-                        }
-                    })()}
-                </div>
-    
-    
-                {/* Content panel 3 */}
-                <div className="page-base-container profilepg-container">
-                    <h1>Student Address</h1>
-                    <div className="page-container-line-1"/>
-                    {(() => {
-                        const loading = (UserAddress[0].Key === "loading");
-                        const error = (UserAddress[0].Key === "error");
-                        const message = UserAddress[0].Value;
-                        
-                        if (loading || error) {
-                            return (
-                                <div className="profilepg-sub-container">
-                                    {loading && <h1 className="!mb-2.5">{"Loading..."}</h1>}
-                                    {error && <h1 className="!mb-2.5">{"Error"}</h1>}
-                                    {error && <h3 className="!mb-2.5">{message}</h3>}
-                                    <div />
-                                </div>
-                            );
-                        }
-                        else {
-                            return UserAddress.map((item: UserDataType) => (
-                                <div key={item.Key} className="profilepg-sub-container">
-                                    <h1>{item.Key}</h1>
-                                    <h2>{item.Value}</h2>
-                                    <div />
-                                </div>
-                            ));
-                        }
-                    })()}
-                </div>
-    
-    
-                {/* Content panel 4 */}
-                <div className="page-base-container profilepg-container">
-                    <h1>Parent/Guardian Information</h1>
-                    <div className="page-container-line-1"/>
-                    {(() => {
-                        const loading = (UserParentInfo[0].Key === "loading");
-                        const error = (UserParentInfo[0].Key === "error");
-                        const message = UserParentInfo[0].Value;
+              {/* Content panel 1 */}
+              <div className="page-base-container profilepg-about">
+                  <h1>Current Semester Overview</h1>
 
-                        if (loading || error) {
-                            return (
-                                <div className="profilepg-sub-container">
-                                    {loading && <h1 className="!mb-2.5">{"Loading..."}</h1>}
-                                    {error && <h1 className="!mb-2.5">{"Error"}</h1>}
-                                    {error && <h3 className="!mb-2.5">{message}</h3>}
-                                    <div />
-                                </div>
-                            );
-                        }
-                        else {
-                            return(
-                                <>
-                                    {UserParentInfo.map((parent: ParentType, index: number) => (
-                                        
-                                        <div key={index}>
-                                            {index !== 0 && <div className="page-container-line-2 !mt-1" />}
+                  <div className="page-container-line-2" />
 
-                                            {parent.parentDetails.map((item: UserDataType) => (
-                                                <div key={item.Key} className="profilepg-sub-container">
-                                                    <h1>{item.Key}</h1>
-                                                    <h2>{item.Value}</h2>
-                                                    <div />
-                                                </div>
-                                            ))}
-                                        </div>
+                  <div className="profilepg-sub-container">
+                      <h1>GPA</h1>
+                      <h2>8.7 / 10</h2>
+                      <div />
+                  </div>
 
-                                    ))}
-                                </>
-                            );
-                        }
-                    })()}
+                  <div className="profilepg-sub-container">
+                      <h1>Credits Completed</h1>
+                      <h2>4 / 14</h2>
+                      <div />
+                  </div>
+
+                  <div className="profilepg-sub-container">
+                      <h1>Credits Remaning</h1>
+                      <h2>10 / 14</h2>
+                      <div />
+                  </div>
+
+                  <div className="profilepg-sub-container">
+                      <h1>Total Attendance</h1>
+                      <h2>92%</h2>
+                      <div />
+                  </div>
+              </div>
+
+
+              {/* Content panel 2 */}
+              <div className="page-base-container">
+                <h1 className="attendance-title">Subject wise Attendance</h1>
+                <div className="page-container-line-2"/>
+
+                <div className="attendance-container">
+                  
+                  {/* maped for subject names, seperaet div to make alignment perfect */}
+                  <div className="attendance-container-left">
+                    {TermAttendance.map((item: AttendanceType) => (
+                      <h2 key={item.subject} className="attendance-subject-name">{item.subject}</h2>
+                    ))}
+                  </div>
+
+                  {/* maped for subject progress bar */}
+                  <div className="attendance-container-middle">
+                    {TermAttendance.map((item: AttendanceType) => {
+                      const attendancePercentage = (item.attended / item.total) * 100;
+
+                      return (
+                        <div key={item.subject} className="attendance-progress-bar">
+                          <div 
+                            className={`attendance-progress-fill ${attendancePercentage >= 80 ? "high" : attendancePercentage >= 60 ? "mid" : "low"}`}
+                            style={{ width: `${attendancePercentage}%` }}
+                          />
+                        </div>
+                      );
+                    })}
+                  </div>
+                  
+                  {/* maped for subject progress */}
+                  <div className="attendance-container-right">
+                    {TermAttendance.map((item: AttendanceType) => (
+                      <h2 key={item.subject} className="attendance-subject-attendance">{item.attended}/{item.total}</h2>
+                    ))}
+                  </div>
+
                 </div>
+                <div className="page-container-line-2"/>
+                <a className="dashboard-footer-link" onClick={() => navigate("/attendance")}>View full Attendance ➜</a>
+              </div>
+
+
+              {/* Content panel 3 */}
+              <div className="page-base-container profilepg-container">
+                  <h1>Assignments & Submissions</h1>
+                  <div className="page-container-line-1" />
+
+                  {[
+                      { title: "Mini Project Report", status: "Submitted" },
+                      { title: "AI Lab File", status: "Pending" },
+                      { title: "DBMS Practical", status: "Graded - A" },
+                  ].map((item, idx) => (
+                      <div key={idx} className="profilepg-sub-container">
+                          <h1>{item.title}</h1>
+                          <h2>{item.status}</h2>
+                          <div />
+                      </div>
+                  ))}
+              </div>
+
+
+              {/* Content panel 4 */}
+              <div className="page-base-container profilepg-container">
+                  <h1>Examination Status</h1>
+                  <div className="page-container-line-1" />
+
+                  <div className="profilepg-sub-container">
+                      <h1>Mid Term Exams</h1>
+                      <h2>Completed</h2>
+                      <div />
+                  </div>
+
+                  <div className="profilepg-sub-container">
+                      <h1>Final Semester Exams</h1>
+                      <h2>Scheduled for Dec 2025</h2>
+                      <div />
+                  </div>
+
+                  <div className="profilepg-sub-container">
+                      <h1>Backlogs</h1>
+                      <h2>None</h2>
+                      <div />
+                  </div>
+              </div>
             </>
         );
     }  
