@@ -136,7 +136,7 @@
         /* navbar */
         --navbar-color: rgb(0, 0, 10);
         --navbar-text-color: rgb(255, 255, 255);
-        --sidebar-close-color: rgb(200, 200, 255);
+        --navbar-hover-color: rgb(200, 200, 255);
 
         /* sidebar */
         --sidebar-close-color: rgba(0, 0, 50, 0.5);
