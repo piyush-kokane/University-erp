@@ -131,7 +131,7 @@ function Layout() {
 
     // If not loggedin redirect to login page and show alert
     if (!isLoggedIn) {
-      return <Navigate to={allRoutes.login} state={{ from: location.pathname }} />;
+      //return <Navigate to={allRoutes.login} state={{ from: location.pathname }} />;
       // navigate to login & set state.from to the url of page user is trying to access 
       // this state.from variable is used to set fallback after login
       // for eg if user goes to login page from landing page, after login he will come back to landing page
